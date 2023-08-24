@@ -9,7 +9,8 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "prettier": "prettier --write --ignore-unknown .",
-    "prettier:check": "prettier --check --ignore-unknown ."
+    "prettier:check": "prettier --check --ignore-unknown .",
+    "stackblitz": "yarn && yarn dev"
   },
   "git": {
     "pre-commit": "lint-staged"
@@ -25,5 +26,9 @@
     "lint-staged": "^14.0.1",
     "nuxt": "^3.6.5",
     "prettier": "^3.0.2"
+  },
+  "stackblitz": {
+    "installDependencies": false,
+    "startCommand": "yarn stackblitz"
   }
 }
