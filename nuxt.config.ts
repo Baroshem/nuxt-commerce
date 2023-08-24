@@ -9,5 +9,12 @@ export default defineNuxtConfig({
         domains: ["cdn.shopify.com"],
       },
     ],
+    [
+      "nuxt-security",
+      {
+        // rateLimiter will be optional and disabled by default due to issues
+        rateLimiter: false,
+      },
+    ],
   ],
 });
