@@ -12,6 +12,10 @@ describe("example", async () => {
     expect(await $fetch("/")).toMatch("Hello Nuxt!");
   });
 
+  it("Contains SfButton", async () => {
+    expect(await $fetch("/")).toMatch("SfButton");
+  });
+
   if (isDev()) {
     it("[dev] ensure vite client script is added", async () => {
       expect(await $fetch("/")).toMatch('/_nuxt/@vite/client"');
