@@ -8,15 +8,13 @@ const { data } = await useAsyncGql({
 
 const product = computed(() => data?.value?.productByHandle);
 
-useHead({
+useSeoMeta({
   title: product.value?.title || "Product",
-  meta: [
-    {
-      hid: "description",
-      name: "description",
-      content: product.value?.description || "",
-    },
-  ],
+  description: product.value?.description || "Product Description",
+  ogTitle: product.value?.title || "Product",
+  ogDescription: product.value?.description || "Product Description",
+  ogImage: "https://example.com/image.png",
+  twitterCard: "summary_large_image",
 });
 </script>
 

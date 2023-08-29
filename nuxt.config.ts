@@ -1,22 +1,29 @@
+const shopify = {
+  host: "https://graphql.myshopify.com/api/2023-07/graphql.json",
+  header: "X-Shopify-Storefront-Access-Token",
+  token: "ecdc7f91ed0970e733268535c828fbbe",
+};
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
   modules: [
     "@nuxtjs/tailwindcss",
+    "nuxt-simple-robots",
+    "nuxt-simple-sitemap",
     [
       "nuxt-graphql-client",
       {
         clients: {
           default: {
-            host: "https://graphql.myshopify.com/api/2023-07/graphql.json",
+            host: shopify.host,
             codegenHeaders: {
-              "X-Shopify-Storefront-Access-Token":
-                "ecdc7f91ed0970e733268535c828fbbe",
+              [shopify.header]: shopify.token,
             },
             token: {
-              name: "X-Shopify-Storefront-Access-Token",
-              value: "ecdc7f91ed0970e733268535c828fbbe",
+              name: shopify.header,
+              value: shopify.token,
             },
           },
         },
@@ -41,5 +48,18 @@ export default defineNuxtConfig({
         },
       },
     ],
+    [
+      "@nuxtjs/google-fonts",
+      {
+        families: {
+          "Red Hat Display": [400, 500, 700],
+          "Red Hat Text": [300, 400, 500, 700],
+        },
+      },
+    ],
   ],
+
+  site: {
+    url: "https://commerce.nuxtjs.org",
+  },
 });
