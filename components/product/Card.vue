@@ -1,32 +1,40 @@
+<script lang="ts" setup>
+import {
+  SfRating,
+  SfCounter,
+  SfLink,
+  SfButton,
+  SfIconShoppingCart,
+  SfIconFavorite,
+} from "@storefront-ui/vue";
+
+defineProps({
+  title: String,
+  description: String,
+  image: String,
+  link: String,
+  price: String,
+});
+</script>
+
 <template>
   <div
     class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px]"
   >
     <div class="relative">
-      <SfLink href="#" class="block">
+      <NuxtLink :to="link" class="block">
         <NuxtImg
-          src="https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"
+          :src="image"
           alt="Great product"
           class="block object-cover h-auto rounded-md aspect-square"
           width="300"
           height="300"
+          format="avif"
         />
-      </SfLink>
-      <SfButton
-        type="button"
-        variant="tertiary"
-        size="sm"
-        square
-        class="absolute bottom-0 right-0 mr-2 mb-2 bg-white ring-1 ring-inset ring-neutral-200 !rounded-full"
-        aria-label="Add to wishlist"
-      >
-        <SfIconFavorite size="sm" />
-      </SfButton>
+      </NuxtLink>
     </div>
     <div class="p-4 border-t border-neutral-200">
-      <SfLink href="#" variant="secondary" class="no-underline">
-        Athletic mens walking sneakers
-      </SfLink>
+      <p>{{ title }}</p>
       <div class="flex items-center pt-1">
         <SfRating size="xs" :value="5" :max="5" />
 
@@ -37,9 +45,9 @@
       <p
         class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700"
       >
-        Lightweight • Non slip • Flexible outsole • Easy to wear on and off
+        {{ description }}
       </p>
-      <span class="block pb-2 font-bold typography-text-lg">$2345,99</span>
+      <span class="block pb-2 font-bold typography-text-lg">{{ price }}</span>
       <SfButton type="button" size="sm">
         <template #prefix>
           <SfIconShoppingCart size="sm" />
@@ -49,14 +57,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import {
-  SfRating,
-  SfCounter,
-  SfLink,
-  SfButton,
-  SfIconShoppingCart,
-  SfIconFavorite,
-} from "@storefront-ui/vue";
-</script>

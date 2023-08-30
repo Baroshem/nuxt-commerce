@@ -1,9 +1,3 @@
-const shopify = {
-  host: "https://graphql.myshopify.com/api/2023-07/graphql.json",
-  header: "X-Shopify-Storefront-Access-Token",
-  token: "ecdc7f91ed0970e733268535c828fbbe",
-};
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -17,13 +11,14 @@ export default defineNuxtConfig({
       {
         clients: {
           default: {
-            host: shopify.host,
+            host: "https://graphql.myshopify.com/api/2023-07/graphql.json",
             codegenHeaders: {
-              [shopify.header]: shopify.token,
+              "X-Shopify-Storefront-Access-Token":
+                "ecdc7f91ed0970e733268535c828fbbe",
             },
-            token: {
-              name: shopify.header,
-              value: shopify.token,
+            headers: {
+              "X-Shopify-Storefront-Access-Token":
+                "ecdc7f91ed0970e733268535c828fbbe",
             },
           },
         },
@@ -42,7 +37,11 @@ export default defineNuxtConfig({
         rateLimiter: false,
         headers: {
           contentSecurityPolicy: {
-            "img-src": ["https://storage.googleapis.com"], // TODO: this will probably be removed as we wont use this api in the final app
+            "img-src": [
+              "https://storage.googleapis.com",
+              "https://cdn.shopify.com",
+              "http://localhost:3001", // TODO: add an if here that is based on the environment and current host
+            ],
           },
           crossOriginEmbedderPolicy: false, // TODO: check if this will be necessary in the final application
         },

@@ -8,6 +8,14 @@ const { data } = await useAsyncGql({
 
 const product = computed(() => data?.value?.productByHandle);
 
+// const { data: related } = await useAsyncGql({
+//   operation: "Products",
+//   variables: {
+//     first: 3,
+//     query: `product_type:${product.value?.productType}`,
+//   },
+// });
+
 useSeoMeta({
   title: product.value?.title || "Product",
   description: product.value?.description || "Product Description",
@@ -24,10 +32,9 @@ useSeoMeta({
       <ProductGallery class="mr-40" />
       <ProductDetail />
     </div>
-    {{}}
     <h2 class="text-2xl text-center my-5">Related Products</h2>
-    <div class="flex justify-center my-5">
+    <!-- <div class="flex justify-center my-5">
       <ProductCard v-for="product in 4" :key="product" class="mx-2" />
-    </div>
+    </div> -->
   </div>
 </template>

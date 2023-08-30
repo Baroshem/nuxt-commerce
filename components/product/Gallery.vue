@@ -85,7 +85,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
 import {
   SfScrollable,
   SfButton,
@@ -94,7 +93,6 @@ import {
   type SfScrollableOnDragEndData,
 } from "@storefront-ui/vue";
 import { unrefElement, useIntersectionObserver } from "@vueuse/core";
-import { watch, type ComponentPublicInstance } from "vue";
 
 const withBase = (filepath: string) =>
   `https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/gallery/${filepath}`;

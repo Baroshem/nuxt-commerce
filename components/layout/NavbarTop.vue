@@ -86,12 +86,9 @@
   </header>
 </template>
 <script lang="ts" setup>
-import { ref } from "vue";
 import {
   SfButton,
   SfIconShoppingCart,
-  SfIconFavorite,
-  SfIconPerson,
   SfIconExpandMore,
   SfInput,
   SfIconSearch,
@@ -103,16 +100,6 @@ const actionItems = [
     icon: SfIconShoppingCart,
     ariaLabel: "Cart",
     role: "button",
-  },
-  {
-    icon: SfIconFavorite,
-    ariaLabel: "Wishlist",
-    role: "button",
-  },
-  {
-    icon: SfIconPerson,
-    ariaLabel: "Log in",
-    role: "login",
   },
 ];
 
