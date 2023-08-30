@@ -12,7 +12,9 @@
     "prettier:check": "prettier --check --ignore-unknown .",
     "stackblitz": "yarn && yarn dev",
     "test": "vitest run --silent",
-    "test:watch": "vitest watch"
+    "test:watch": "vitest watch",
+    "lhci:mobile": "lhci autorun",
+    "lhci:desktop": "lhci autorun --collect.settings.preset=desktop"
   },
   "git": {
     "pre-commit": "lint-staged"
@@ -25,6 +27,7 @@
     "startCommand": "yarn stackblitz"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.12.0",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxt/image": "^1.0.0-rc.1",
