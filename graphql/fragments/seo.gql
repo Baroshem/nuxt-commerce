@@ -1,0 +1,4 @@
+fragment seo on SEO {
+  description
+  title
+}

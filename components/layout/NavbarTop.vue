@@ -8,19 +8,15 @@
       <NuxtLink
         to="/"
         aria-label="SF Homepage"
-        class="inline-block mr-4 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0"
+        class="inline-block focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0"
       >
         <picture>
-          <source
-            srcset="
-              https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/vsf_logo.svg
-            "
-            media="(min-width: 768px)"
-          />
+          <source srcset="/nuxt-dark.svg" media="(min-width: 768px)" />
           <NuxtImg
-            src="https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/vsf_logo_sign.svg"
+            src="/logo.svg"
             alt="Sf Logo"
             class="w-8 h-8 md:h-6 md:w-[176px] lg:w-[12.5rem] lg:h-[1.75rem]"
+            format="avif"
           />
         </picture>
       </NuxtLink>

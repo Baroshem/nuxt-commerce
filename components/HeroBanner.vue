@@ -10,6 +10,7 @@
       <NuxtImg
         src="https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/hero-bg-mobile.png"
         class="absolute w-full h-full z-[-1] md:object-cover"
+        format="avif"
       />
     </picture>
     <div
@@ -19,6 +20,7 @@
         <NuxtImg
           src="https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/hero-headphones.png"
           alt="Headphones"
+          format="avif"
           class="h-full object-cover object-left"
         />
       </div>

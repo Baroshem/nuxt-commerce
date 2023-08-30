@@ -29,39 +29,29 @@
       </div>
     </div>
     <div
-      class="bg-neutral-900 justify-end px-4 py-10 md:flex md:py-6 max-w-[1536px] min-w-full"
+      class="bg-neutral-900 px-4 justify-center py-10 md:flex md:py-6 max-w-[1536px] min-w-full text-center"
     >
-      <div class="flex justify-center py-2 gap-x-4 md:self-start">
-        <SfButton
-          v-for="{ label, link, icon } in socialMedia"
-          :key="label"
-          tag="a"
-          square
-          variant="tertiary"
-          class="text-white active:text-white hover:text-white hover:!bg-neutral-500 active:!bg-transparent"
-          :href="link"
-          :aria-label="`Go to ${label} page`"
-        >
-          <component :is="icon" />
-        </SfButton>
-      </div>
-      <div
-        class="flex items-center justify-center gap-6 py-2 my-4 md:ml-auto md:my-0"
-      >
-        <SfLink
-          v-for="{ label, link } in bottomLinks"
-          :key="label"
-          variant="secondary"
-          class="text-white no-underline typography-text-sm active:text-white active:underline hover:text-white hover:underline"
-          :href="link"
-        >
-          {{ label }}
-        </SfLink>
-      </div>
       <p
         class="flex items-center justify-center py-2 leading-5 text-center typography-text-sm text-white/50 font-body md:ml-6"
       >
-        @2023 Nuxt
+        Made with 💚 by
+        <NuxtImg
+          width="24"
+          height="24"
+          class="mx-2"
+          src="/vsf.svg"
+          format="avif"
+          loading="lazy"
+        />
+        &
+        <NuxtImg
+          src="/logo.svg"
+          width="24"
+          height="24"
+          class="mx-2"
+          loading="lazy"
+          format="avif"
+        />
       </p>
     </div>
   </footer>

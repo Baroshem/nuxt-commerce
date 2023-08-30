@@ -1,18 +1,35 @@
 fragment product on Product {
   id
-  images(first: 1) {
+  featuredImage {
+    ...image
+  }
+  images(first: 20) {
     edges {
       node {
-        src
+        ...image
       }
     }
   }
+  options {
+    id
+    name
+    values
+  }
   title
+  availableForSale
   description
   priceRange {
     maxVariantPrice {
       amount
       currencyCode
     }
+    minVariantPrice {
+      amount
+      currencyCode
+    }
   }
+  seo {
+    ...seo
+  }
+  tags
 }

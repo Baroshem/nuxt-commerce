@@ -1,14 +1,11 @@
 <script setup lang="ts">
-useHead({
+useSeoMeta({
   title: "Nuxt Commerce",
-  meta: [
-    {
-      hid: "description",
-      name: "description",
-      content:
-        "E-Commerce application built with Nuxt, Storefront UI & Shopify",
-    },
-  ],
+  description:
+    "E-Commerce application built with Nuxt, Storefront UI & Shopify",
+  ogTitle: "Nuxt Commerce",
+  ogDescription:
+    "E-Commerce application built with Nuxt, Storefront UI & Shopify",
 });
 
 const { data } = await useAsyncGql("getProducts", { first: 10 });
@@ -30,7 +27,7 @@ const products = computed(() => data.value?.products?.edges);
           :key="node.id"
           :title="node.title"
           :description="node.description"
-          :image="node.images.edges[0].node.src"
+          :image="node.featuredImage?.url"
           :link="`/product/${node.handle}`"
           :price="`${node.priceRange.maxVariantPrice.amount} ${node.priceRange.maxVariantPrice.currencyCode}`"
           class="mx-2"

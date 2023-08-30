@@ -2,7 +2,7 @@ query getProduct($handle: String!) {
   product(handle: $handle) {
     ...product
     productType
-    variants(first: 1) {
+    variants(first: 10) {
       edges {
         node {
           id

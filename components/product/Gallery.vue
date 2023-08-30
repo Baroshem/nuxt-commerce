@@ -23,7 +23,7 @@
         </SfButton>
       </template>
       <button
-        v-for="({ imageThumbSrc, alt }, index) in images"
+        v-for="({ thumbnail, alt }, index) in images"
         :key="`${alt}-${index}-thumbnail`"
         :ref="(el) => assignRef(el, index)"
         type="button"
@@ -40,7 +40,8 @@
           class="border border-neutral-200"
           width="78"
           height="78"
-          :src="imageThumbSrc"
+          format="avif"
+          :src="thumbnail"
         />
       </button>
       <template #nextButton="defaultProps">
@@ -68,7 +69,7 @@
       @on-drag-end="onDragged"
     >
       <div
-        v-for="({ imageSrc, alt }, index) in images"
+        v-for="({ src, alt }, index) in images"
         :key="`${alt}-${index}`"
         class="flex justify-center h-full basis-full shrink-0 grow snap-center"
       >
@@ -76,8 +77,9 @@
           :aria-label="alt"
           :aria-hidden="activeIndex !== index"
           class="object-cover w-auto h-full"
+          format="avif"
           :alt="alt"
-          :src="imageSrc"
+          :src="src"
         />
       </div>
     </SfScrollable>
@@ -93,67 +95,21 @@ import {
   type SfScrollableOnDragEndData,
 } from "@storefront-ui/vue";
 import { unrefElement, useIntersectionObserver } from "@vueuse/core";
+import { PropType } from "nuxt/dist/app/compat/capi";
 
-const withBase = (filepath: string) =>
-  `https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/gallery/${filepath}`;
+export type GalleryImage = {
+  src: string;
+  thumbnail: string;
+  alt: string;
+};
 
-const images = [
-  {
-    imageSrc: withBase("gallery_1.png"),
-    imageThumbSrc: withBase("gallery_1_thumb.png"),
-    alt: "backpack1",
+const props = defineProps({
+  images: {
+    type: Array as PropType<GalleryImage[]>,
+    required: true,
   },
-  {
-    imageSrc: withBase("gallery_2.png"),
-    imageThumbSrc: withBase("gallery_2_thumb.png"),
-    alt: "backpack2",
-  },
-  {
-    imageSrc: withBase("gallery_3.png"),
-    imageThumbSrc: withBase("gallery_3_thumb.png"),
-    alt: "backpack3",
-  },
-  {
-    imageSrc: withBase("gallery_4.png"),
-    imageThumbSrc: withBase("gallery_4_thumb.png"),
-    alt: "backpack4",
-  },
-  {
-    imageSrc: withBase("gallery_5.png"),
-    imageThumbSrc: withBase("gallery_5_thumb.png"),
-    alt: "backpack5",
-  },
-  {
-    imageSrc: withBase("gallery_6.png"),
-    imageThumbSrc: withBase("gallery_6_thumb.png"),
-    alt: "backpack6",
-  },
-  {
-    imageSrc: withBase("gallery_7.png"),
-    imageThumbSrc: withBase("gallery_7_thumb.png"),
-    alt: "backpack7",
-  },
-  {
-    imageSrc: withBase("gallery_8.png"),
-    imageThumbSrc: withBase("gallery_8_thumb.png"),
-    alt: "backpack8",
-  },
-  {
-    imageSrc: withBase("gallery_9.png"),
-    imageThumbSrc: withBase("gallery_9_thumb.png"),
-    alt: "backpack9",
-  },
-  {
-    imageSrc: withBase("gallery_10.png"),
-    imageThumbSrc: withBase("gallery_10_thumb.png"),
-    alt: "backpack10",
-  },
-  {
-    imageSrc: withBase("gallery_11.png"),
-    imageThumbSrc: withBase("gallery_11_thumb.png"),
-    alt: "backpack11",
-  },
-];
+});
+
 const thumbsRef = ref<HTMLElement>();
 const firstThumbRef = ref<HTMLButtonElement>();
 const lastThumbRef = ref<HTMLButtonElement>();
@@ -204,7 +160,7 @@ watch(
 const onDragged = (event: SfScrollableOnDragEndData) => {
   if (event.swipeRight && activeIndex.value > 0) {
     activeIndex.value -= 1;
-  } else if (event.swipeLeft && activeIndex.value < images.length - 1) {
+  } else if (event.swipeLeft && activeIndex.value < props.images.length - 1) {
     activeIndex.value += 1;
   }
 };
@@ -214,7 +170,7 @@ const assignRef = (
   index: number
 ) => {
   if (!el) return;
-  if (index === images.length - 1) {
+  if (index === props.images.length - 1) {
     lastThumbRef.value = el as HTMLButtonElement;
   } else if (index === 0) {
     firstThumbRef.value = el as HTMLButtonElement;
