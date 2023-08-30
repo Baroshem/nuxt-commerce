@@ -1,0 +1,18 @@
+fragment product on Product {
+  id
+  images(first: 1) {
+    edges {
+      node {
+        src
+      }
+    }
+  }
+  title
+  description
+  priceRange {
+    maxVariantPrice {
+      amount
+      currencyCode
+    }
+  }
+}

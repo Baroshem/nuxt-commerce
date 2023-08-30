@@ -1,20 +1,17 @@
 <script setup lang="ts">
 const route = useRoute();
 
-const { data } = await useAsyncGql({
-  operation: "Product",
-  variables: { handle: route.params.handle as string },
+const { data } = await useAsyncGql("getProduct", {
+  handle: route.params.handle[0],
 });
 
-const product = computed(() => data?.value?.productByHandle);
+const product = computed(() => data?.value?.product);
 
-// const { data: related } = await useAsyncGql({
-//   operation: "Products",
-//   variables: {
-//     first: 3,
-//     query: `product_type:${product.value?.productType}`,
-//   },
-// });
+const { data: recommended } = await useAsyncGql("getProductRecommendations", {
+  productId: product.value!!.id,
+});
+
+const recommendedProducts = recommended.value.productRecommendations;
 
 useSeoMeta({
   title: product.value?.title || "Product",
@@ -32,9 +29,29 @@ useSeoMeta({
       <ProductGallery class="mr-40" />
       <ProductDetail />
     </div>
-    <h2 class="text-2xl text-center my-5">Related Products</h2>
-    <!-- <div class="flex justify-center my-5">
-      <ProductCard v-for="product in 4" :key="product" class="mx-2" />
-    </div> -->
+    <section
+      class="justify-center max-w-[1536px] w-full text-center mx-auto my-5"
+    >
+      <h2 class="text-2xl mb-6">Related Products</h2>
+      <div class="flex overflow-x-scroll">
+        <ProductCard
+          v-for="{
+            id,
+            title,
+            description,
+            images,
+            priceRange,
+            handle,
+          } in recommendedProducts"
+          :key="id"
+          :title="title"
+          :description="description"
+          :image="images.edges[0].node.src"
+          :link="`/product/${handle}`"
+          :price="`${priceRange.maxVariantPrice.amount} ${priceRange.maxVariantPrice.currencyCode}`"
+          class="mx-2"
+        />
+      </div>
+    </section>
   </div>
 </template>

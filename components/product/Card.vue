@@ -5,7 +5,6 @@ import {
   SfLink,
   SfButton,
   SfIconShoppingCart,
-  SfIconFavorite,
 } from "@storefront-ui/vue";
 
 defineProps({
@@ -19,7 +18,7 @@ defineProps({
 
 <template>
   <div
-    class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px]"
+    class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px] text-left"
   >
     <div class="relative">
       <NuxtLink :to="link" class="block">
@@ -43,7 +42,7 @@ defineProps({
         </SfLink>
       </div>
       <p
-        class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700"
+        class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700 truncate"
       >
         {{ description }}
       </p>

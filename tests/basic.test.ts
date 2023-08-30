@@ -8,12 +8,8 @@ describe("example", async () => {
     server: true,
   });
 
-  it("Renders Hello Nuxt", async () => {
-    expect(await $fetch("/")).toMatch("Hello Nuxt!");
-  });
-
-  it("Contains SfButton", async () => {
-    expect(await $fetch("/")).toMatch("SfButton");
+  it("Renders Top Products", async () => {
+    expect(await $fetch("/")).toMatch("Top Products");
   });
 
   if (isDev()) {

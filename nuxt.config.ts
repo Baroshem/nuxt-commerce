@@ -1,5 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      htmlAttrs: { lang: "en" },
+      link: [{ rel: "icon", href: "/logo.svg", type: "image/svg+xml" }],
+    },
+    pageTransition: { name: "page", mode: "out-in" },
+  },
+
   devtools: { enabled: true },
 
   modules: [

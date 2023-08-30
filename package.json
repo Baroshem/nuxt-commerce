@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "nuxt-commerce",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -20,6 +20,10 @@
   "lint-staged": {
     "*": "prettier --write --ignore-unknown"
   },
+  "stackblitz": {
+    "installDependencies": false,
+    "startCommand": "yarn stackblitz"
+  },
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^0.1.1",
@@ -37,10 +41,6 @@
     "nuxt-simple-sitemap": "^3.2.6",
     "prettier": "^3.0.2",
     "vitest": "^0.34.2"
-  },
-  "stackblitz": {
-    "installDependencies": false,
-    "startCommand": "yarn stackblitz"
   },
   "dependencies": {
     "nuxt-graphql-client": "^0.2.30"

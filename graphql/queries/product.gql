@@ -1,0 +1,31 @@
+query getProduct($handle: String!) {
+  product(handle: $handle) {
+    ...product
+    productType
+    variants(first: 1) {
+      edges {
+        node {
+          id
+        }
+      }
+    }
+  }
+}
+
+query getProducts($first: Int!, $query: String) {
+  products(first: $first, query: $query) {
+    edges {
+      node {
+        ...product
+        handle
+      }
+    }
+  }
+}
+
+query getProductRecommendations($productId: ID!) {
+  productRecommendations(productId: $productId) {
+    ...product
+    handle
+  }
+}
