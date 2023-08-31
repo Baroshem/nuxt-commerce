@@ -27,6 +27,10 @@ Building modern e-commerce websites might require you to add other functionaliti
 3. [Delayed Hydration](https://github.com/harlan-zw/nuxt-delay-hydration)
 4. [I18N](https://v8.i18n.nuxtjs.org/)
 
+## Have more advanced use case?
+
+Does your project need Data Orchestration, third party integrations, hosting or other e-commerce related functionalities? Check out [Vue Storefront](https://vuestorefront.io/) and the [open source Nuxt template using agnostic sdk & middleware](https://github.com/vuestorefront/storefront-nuxt3-boilerplate)
+
 ## Setup
 
 Make sure to install the dependencies:
