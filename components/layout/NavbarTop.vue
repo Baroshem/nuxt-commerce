@@ -114,10 +114,6 @@ const navigation = [
     name: "Casual Things",
     to: "casual-things",
   },
-  {
-    name: "Summer Clothes",
-    to: "summer-clothes",
-  },
 ];
 
 const NuxtLink = resolveComponent("NuxtLink");
