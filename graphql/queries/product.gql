@@ -17,7 +17,6 @@ query getProducts($first: Int!, $query: String) {
     edges {
       node {
         ...product
-        handle
       }
     }
   }
@@ -26,6 +25,5 @@ query getProducts($first: Int!, $query: String) {
 query getProductRecommendations($productId: ID!) {
   productRecommendations(productId: $productId) {
     ...product
-    handle
   }
 }

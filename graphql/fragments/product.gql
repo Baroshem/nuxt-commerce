@@ -15,6 +15,7 @@ fragment product on Product {
     name
     values
   }
+  handle
   title
   availableForSale
   description

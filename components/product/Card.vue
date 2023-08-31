@@ -33,7 +33,7 @@ defineProps({
       </NuxtLink>
     </div>
     <div class="p-4 border-t border-neutral-200">
-      <p>{{ title }}</p>
+      <p class="truncate">{{ title }}</p>
       <div class="flex items-center pt-1">
         <SfRating size="xs" :value="5" :max="5" />
 

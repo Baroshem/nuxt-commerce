@@ -1,0 +1,27 @@
+query getCollection(
+  $handle: String!
+  $items: Int!
+  $sortKey: ProductCollectionSortKeys
+  $reverse: Boolean
+) {
+  collection(handle: $handle) {
+    ...collection
+    products(sortKey: $sortKey, reverse: $reverse, first: $items) {
+      edges {
+        node {
+          ...product
+        }
+      }
+    }
+  }
+}
+
+query getCollections($first: Int!) {
+  collections(first: $first, sortKey: TITLE) {
+    edges {
+      node {
+        ...collection
+      }
+    }
+  }
+}

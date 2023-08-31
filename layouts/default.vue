@@ -2,11 +2,11 @@
 
 <template>
   <main>
-    <LayoutNavbarTop />
+    <LayoutNavbarTop class="mb-5" />
     <main>
       <slot />
     </main>
     <LayoutNavbarBottom class="flex sm:hidden" />
-    <LayoutFooter />
+    <LayoutFooter class="mt-5" />
   </main>
 </template>

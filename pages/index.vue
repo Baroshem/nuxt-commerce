@@ -15,10 +15,8 @@ const products = computed(() => data.value?.products?.edges);
 
 <template>
   <div>
-    <HeroBanner class="max-w-[1536px] w-full text-center mx-auto my-0" />
-    <section
-      class="justify-center max-w-[1536px] w-full text-center mx-auto my-5"
-    >
+    <HeroBanner />
+    <section class="justify-center">
       <h2 class="text-2xl mb-6">Top Products</h2>
 
       <div class="flex overflow-x-scroll">

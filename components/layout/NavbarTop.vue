@@ -3,12 +3,12 @@
     class="flex justify-center w-full py-2 px-4 lg:py-5 lg:px-6 bg-white border-b border-neutral-200"
   >
     <div
-      class="flex flex-wrap lg:flex-nowrap items-center flex-row justify-start h-full max-w-[1536px] w-full"
+      class="flex flex-wrap lg:flex-nowrap items-center flex-row justify-start h-full w-full"
     >
       <NuxtLink
         to="/"
         aria-label="SF Homepage"
-        class="inline-block focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0"
+        class="inline-block focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0 w-32"
       >
         <picture>
           <source srcset="/nuxt-dark.svg" media="(min-width: 768px)" />
@@ -28,12 +28,17 @@
       >
         <SfIconMenu />
       </SfButton>
-      <SfButton class="hidden lg:flex lg:mr-4" type="button" variant="tertiary">
-        <template #suffix>
-          <SfIconExpandMore class="hidden lg:block" />
-        </template>
-        <span class="hidden lg:flex whitespace-nowrap">Browse products</span>
-      </SfButton>
+      <ul class="flex">
+        <li v-for="{ name, to } in navigation">
+          <SfLink
+            :tag="NuxtLink"
+            :href="`/collection/${to}`"
+            variant="secondary"
+            class="mx-4"
+            >{{ name }}</SfLink
+          >
+        </li>
+      </ul>
       <form
         role="search"
         class="hidden sm:flex order-3 mt-2 lg:mt-0 pb-2 lg:pb-0"
@@ -85,10 +90,10 @@
 import {
   SfButton,
   SfIconShoppingCart,
-  SfIconExpandMore,
   SfInput,
   SfIconSearch,
   SfIconMenu,
+  SfLink,
 } from "@storefront-ui/vue";
 
 const actionItems = [
@@ -98,6 +103,24 @@ const actionItems = [
     role: "button",
   },
 ];
+
+// TODO: Replace later with dynamic fetch from Shopify for pages.
+const navigation = [
+  {
+    name: "Latest Stuff",
+    to: "latest-stuff",
+  },
+  {
+    name: "Casual Things",
+    to: "casual-things",
+  },
+  {
+    name: "Summer Clothes",
+    to: "summer-clothes",
+  },
+];
+
+const NuxtLink = resolveComponent("NuxtLink");
 
 const inputValue = ref("");
 
