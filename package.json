@@ -36,6 +36,7 @@
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@storefront-ui/vue": "^2.5.0",
     "@types/node": "^18.17.1",
+    "eslint": "latest",
     "eslint-config-prettier": "^9.0.0",
     "lint-staged": "^14.0.1",
     "nuxt": "^3.6.5",
