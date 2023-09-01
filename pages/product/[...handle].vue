@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
+const config = useRuntimeConfig()
 
 const { data } = await useAsyncGql("getProduct", {
   handle: route.params.handle[0],
@@ -29,7 +30,7 @@ useSeoMeta({
   description: product.value?.seo.description || product.value?.description,
   ogTitle: product.value?.seo.title || product.value?.title,
   ogDescription: product.value?.seo.description || product.value?.description,
-  ogImage: product.value?.featuredImage?.url,
+  ogImage: product.value?.featuredImage?.url || `${config.public.site.url}/logo.svg`,
   twitterCard: "summary_large_image",
 });
 </script>
@@ -37,8 +38,12 @@ useSeoMeta({
 <template>
   <div>
     <div class="flex justify-center">
-      <ProductGallery class="mr-40" :images="galleryImages" />
-      <ProductDetail
+      <ProductImageGallery
+        class="mr-40"
+        :images="galleryImages"
+      />
+      <ProductInfoDetails
+        v-if="product"
         :title="product?.title"
         :description="product?.description"
         :price="`${product?.priceRange.maxVariantPrice.amount} ${product?.priceRange.maxVariantPrice.currencyCode}`"
@@ -50,9 +55,11 @@ useSeoMeta({
     <section
       class="justify-center max-w-[1536px] w-full text-center mx-auto my-5"
     >
-      <h2 class="text-2xl mb-6">Related Products</h2>
+      <h2 class="text-2xl mb-6">
+        Related Products
+      </h2>
       <div class="flex overflow-x-scroll">
-        <ProductCard
+        <ProductTileCard
           v-for="{
             id,
             title,

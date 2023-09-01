@@ -4,7 +4,10 @@ import { SfIconCheck } from "@storefront-ui/vue";
 const route = useRoute();
 
 defineProps({
-  collections: Array<{ title: string; handle: string }>,
+  collections: {
+    type: Array<{ title: string; handle: string }>,
+    default: () => [],
+  },
 });
 
 function isActiveCollection(collectionHandle: string) {
@@ -21,7 +24,10 @@ function isActiveCollection(collectionHandle: string) {
     </h6>
     <div class="px-2">
       <ul class="mt-2 mb-6">
-        <li v-for="collection in collections" :key="collection.title">
+        <li
+          v-for="collection in collections"
+          :key="collection.title"
+        >
           <div
             :class="[
               'first-of-type:mt-2 rounded-md active:bg-primary-100 flex p-2 justify-between text-left',

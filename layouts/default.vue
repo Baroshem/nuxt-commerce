@@ -7,6 +7,6 @@
       <slot />
     </main>
     <LayoutNavbarBottom class="flex sm:hidden" />
-    <LayoutFooter class="mt-5" />
+    <LayoutTheFooter class="mt-5" />
   </main>
 </template>

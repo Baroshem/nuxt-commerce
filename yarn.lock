@@ -2395,6 +2395,11 @@
   resolved "https://registry.yarnpkg.com/@storefront-ui/tw-plugin-peer-next/-/tw-plugin-peer-next-2.3.1.tgz#0b4fe9040bd76a91061d71d339b63d2821845a78"
   integrity sha512-u7vZogjljmpMR/CoInQhNIOd9Cat8emj85GxEUjPbdYU+vSTWFtVBPJFrPm9+G7Ackl4iV1BS7epx+QqdrU67A==
 
+"@storefront-ui/typography@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@storefront-ui/typography/-/typography-2.3.1.tgz#40dd1a756c6c222fd59e706ffa17337c05475b16"
+  integrity sha512-zRSMac4KDGLNgAXlyk+2VDJ7V+fBbGQneBXbHgXygb003LYFXC/nY3Me3q3GnTeam9cEY15XyNvFiCOxTYF8dA==
+
 "@storefront-ui/vue@^2.5.0":
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/@storefront-ui/vue/-/vue-2.5.0.tgz#9b3e8e1903260b53adc787c097c2e9bdf010395d"

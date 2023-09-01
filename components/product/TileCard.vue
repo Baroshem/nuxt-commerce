@@ -8,11 +8,26 @@ import {
 } from "@storefront-ui/vue";
 
 defineProps({
-  title: String,
-  description: String,
-  image: String,
-  link: String,
-  price: String,
+  title: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  image: {
+    type: String,
+    required: true
+  },
+  link: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: String,
+    required: true
+  },
 });
 </script>
 
@@ -21,7 +36,10 @@ defineProps({
     class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px] text-left"
   >
     <div class="relative">
-      <NuxtLink :to="link" class="block">
+      <NuxtLink
+        :to="link"
+        class="block"
+      >
         <NuxtImg
           :src="image"
           alt="Great product"
@@ -33,12 +51,24 @@ defineProps({
       </NuxtLink>
     </div>
     <div class="p-4 border-t border-neutral-200">
-      <p class="truncate">{{ title }}</p>
+      <p class="truncate">
+        {{ title }}
+      </p>
       <div class="flex items-center pt-1">
-        <SfRating size="xs" :value="5" :max="5" />
+        <SfRating
+          size="xs"
+          :value="5"
+          :max="5"
+        />
 
-        <SfLink href="#" variant="secondary" class="pl-1 no-underline">
-          <SfCounter size="xs">123</SfCounter>
+        <SfLink
+          href="#"
+          variant="secondary"
+          class="pl-1 no-underline"
+        >
+          <SfCounter size="xs">
+            123
+          </SfCounter>
         </SfLink>
       </div>
       <p
@@ -47,7 +77,10 @@ defineProps({
         {{ description }}
       </p>
       <span class="block pb-2 font-bold typography-text-lg">{{ price }}</span>
-      <SfButton type="button" size="sm">
+      <SfButton
+        type="button"
+        size="sm"
+      >
         <template #prefix>
           <SfIconShoppingCart size="sm" />
         </template>

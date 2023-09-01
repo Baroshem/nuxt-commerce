@@ -11,7 +11,10 @@
         class="inline-block focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0 w-32"
       >
         <picture>
-          <source srcset="/nuxt-dark.svg" media="(min-width: 768px)" />
+          <source
+            srcset="/nuxt-dark.svg"
+            media="(min-width: 768px)"
+          >
           <NuxtImg
             src="/logo.svg"
             alt="Sf Logo"
@@ -29,14 +32,18 @@
         <SfIconMenu />
       </SfButton>
       <ul class="flex">
-        <li v-for="{ name, to } in navigation">
+        <li
+          v-for="{ name, to } in navigation"
+          :key="name"
+        >
           <SfLink
             :tag="NuxtLink"
             :href="`/collection/${to}`"
             variant="secondary"
             class="mx-4"
-            >{{ name }}</SfLink
           >
+            {{ name }}
+          </SfLink>
         </li>
       </ul>
       <form
