@@ -1,13 +1,14 @@
 <script setup lang="ts">
 const route = useRoute();
-const config = useRuntimeConfig()
+const config = useRuntimeConfig();
 
 const { data: collectionData } = await useAsyncGql("getCollection", {
   handle: route.params.handle[0],
   items: 10,
+  variants: 1,
 });
 
-const collection = computed(() => collectionData?.value?.collection)
+const collection = computed(() => collectionData?.value?.collection);
 
 const collectionProducts = computed(
   () => collectionData.value.collection?.products.edges
@@ -26,9 +27,11 @@ const collections = computed(() =>
 
 useSeoMeta({
   title: collection.value?.seo.title || collection.value?.title,
-  description: collection.value?.seo.description || collection.value?.description,
+  description:
+    collection.value?.seo.description || collection.value?.description,
   ogTitle: collection.value?.seo.title || collection.value?.title,
-  ogDescription: collection.value?.seo.description || collection.value?.description,
+  ogDescription:
+    collection.value?.seo.description || collection.value?.description,
   ogImage: `${config.public.site.url}/logo.svg`,
   twitterCard: "summary_large_image",
 });
@@ -51,7 +54,8 @@ useSeoMeta({
         :description="node.description"
         :image="node.featuredImage?.url"
         :link="`/product/${node.handle}`"
-        :price="`${node.priceRange.maxVariantPrice.amount} ${node.priceRange.maxVariantPrice.currencyCode}`"
+        :price="`${node.priceRange.maxVariantPrice.currencyCode} ${node.priceRange.maxVariantPrice.amount}`"
+        :variant-id="node.variants.edges[0].node.id"
       />
     </div>
   </div>

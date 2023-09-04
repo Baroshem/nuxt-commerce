@@ -1,0 +1,23 @@
+mutation addToCart($cartId: ID!, $lines: [CartLineInput!]!) {
+  cartLinesAdd(cartId: $cartId, lines: $lines) {
+    cart {
+      ...cart
+    }
+  }
+}
+
+mutation createCart($lineItems: [CartLineInput!]) {
+  cartCreate(input: { lines: $lineItems }) {
+    cart {
+      ...cart
+    }
+  }
+}
+
+mutation removeFromCart($cartId: ID!, $lineIds: [ID!]!) {
+  cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+    cart {
+      ...cart
+    }
+  }
+}

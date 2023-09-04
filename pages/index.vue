@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const config = useRuntimeConfig()
+const config = useRuntimeConfig();
 
 useSeoMeta({
   title: "Nuxt Commerce",
@@ -12,7 +12,7 @@ useSeoMeta({
   twitterCard: "summary_large_image",
 });
 
-const { data } = await useAsyncGql("getProducts", { first: 10 });
+const { data } = await useAsyncGql("getProducts", { first: 10, variants: 1 });
 
 const products = computed(() => data.value?.products?.edges);
 </script>
@@ -33,7 +33,8 @@ const products = computed(() => data.value?.products?.edges);
           :description="node.description"
           :image="node.featuredImage?.url"
           :link="`/product/${node.handle}`"
-          :price="`${node.priceRange.maxVariantPrice.amount} ${node.priceRange.maxVariantPrice.currencyCode}`"
+          :price="`${node.priceRange.maxVariantPrice.currencyCode} ${node.priceRange.maxVariantPrice.amount}`"
+          :variant-id="node.variants.edges[0].node.id"
           class="mx-2"
         />
       </div>

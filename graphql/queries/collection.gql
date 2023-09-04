@@ -1,6 +1,7 @@
 query getCollection(
   $handle: String!
   $items: Int!
+  $variants: Int!
   $sortKey: ProductCollectionSortKeys
   $reverse: Boolean
 ) {
@@ -10,6 +11,13 @@ query getCollection(
       edges {
         node {
           ...product
+          variants(first: $variants) {
+            edges {
+              node {
+                id
+              }
+            }
+          }
         }
       }
     }

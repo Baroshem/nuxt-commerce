@@ -1,3 +1,46 @@
+<script lang="ts" setup>
+import { GetCartQuery } from "#gql";
+import {
+  SfButton,
+  SfIconShoppingCart,
+  SfInput,
+  SfIconSearch,
+  SfIconMenu,
+  useDisclosure,
+  SfModal,
+  SfIconClose,
+} from "@storefront-ui/vue";
+
+const { isOpen, open, close } = useDisclosure({ initialValue: false });
+
+// TODO: Replace later with dynamic fetch from Shopify for pages.
+const navigation = [
+  {
+    name: "Latest Stuff",
+    to: "latest-stuff",
+  },
+  {
+    name: "Casual Things",
+    to: "casual-things",
+  },
+];
+
+defineProps({
+  cart: {
+    type: Object as PropType<GetCartQuery["cart"]>,
+    default: () => ({}),
+  },
+});
+
+const NuxtLink = resolveComponent("NuxtLink");
+
+const inputValue = ref("");
+
+const search = () => {
+  alert(`Successfully found 10 results for ${inputValue.value}`);
+};
+</script>
+
 <template>
   <header
     class="flex justify-center w-full py-2 px-4 lg:py-5 lg:px-6 bg-white border-b border-neutral-200"
@@ -36,14 +79,13 @@
           v-for="{ name, to } in navigation"
           :key="name"
         >
-          <SfLink
-            :tag="NuxtLink"
-            :href="`/collection/${to}`"
+          <NuxtLink
+            :to="`/collection/${to}`"
             variant="secondary"
-            class="mx-4"
+            class="mx-4 hover:underline hover:text-primary-500"
           >
             {{ name }}
-          </SfLink>
+          </NuxtLink>
         </li>
       </ul>
       <form
@@ -77,57 +119,61 @@
       <nav class="flex-1 flex justify-end lg:order-last lg:ml-4">
         <div class="flex flex-row flex-nowrap">
           <SfButton
-            v-for="actionItem in actionItems"
-            :key="actionItem.ariaLabel"
             class="mr-2 -ml-0.5 rounded-md text-primary-700 hover:bg-primary-100 active:bg-primary-200 hover:text-primary-600 active:text-primary-700"
-            :aria-label="actionItem.ariaLabel"
+            aria-label="Cart"
             variant="tertiary"
             square
+            @click="open"
           >
             <template #prefix>
-              <Component :is="actionItem.icon" />
+              <SfIconShoppingCart />
             </template>
           </SfButton>
         </div>
       </nav>
     </div>
+
+    <transition
+      enter-active-class="transition duration-200 ease-out"
+      leave-active-class="transition duration-200 ease-out"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
+      <div
+        v-if="isOpen"
+        class="fixed inset-0 bg-neutral-700 bg-opacity-50 z-[11]"
+      />
+    </transition>
+
+    <!-- Modal -->
+    <transition
+      enter-active-class="transition duration-200 ease-out"
+      leave-active-class="transition duration-200 ease-out"
+      enter-from-class="opacity-0 translate-y-10"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 translate-y-10"
+    >
+      <SfModal
+        v-model="isOpen"
+        class="max-w-[90%] md:max-w-lg z-[11] mr-0 h-full !p-6 !w-auto !rounded-none"
+        tag="section"
+        role="alertdialog"
+        aria-labelledby="promoModalTitle"
+        aria-describedby="promoModalDesc"
+      >
+        <SfButton
+          square
+          variant="tertiary"
+          class="absolute right-2 top-2"
+          @click="close"
+        >
+          <SfIconClose />
+        </SfButton>
+        <CartOrderSummary :cart="cart" />
+      </SfModal>
+    </transition>
   </header>
 </template>
-<script lang="ts" setup>
-import {
-  SfButton,
-  SfIconShoppingCart,
-  SfInput,
-  SfIconSearch,
-  SfIconMenu,
-  SfLink,
-} from "@storefront-ui/vue";
-
-const actionItems = [
-  {
-    icon: SfIconShoppingCart,
-    ariaLabel: "Cart",
-    role: "button",
-  },
-];
-
-// TODO: Replace later with dynamic fetch from Shopify for pages.
-const navigation = [
-  {
-    name: "Latest Stuff",
-    to: "latest-stuff",
-  },
-  {
-    name: "Casual Things",
-    to: "casual-things",
-  },
-];
-
-const NuxtLink = resolveComponent("NuxtLink");
-
-const inputValue = ref("");
-
-const search = () => {
-  alert(`Successfully found 10 results for ${inputValue.value}`);
-};
-</script>

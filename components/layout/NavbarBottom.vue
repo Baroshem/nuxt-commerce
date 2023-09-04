@@ -1,5 +1,7 @@
 <template>
-  <nav class="max-w-[500px] bottom-0 w-full left-0 fixed flex flex-row items-stretch bg-white text-primary-700">
+  <nav
+    class="max-w-[500px] bottom-0 w-full left-0 fixed flex flex-row items-stretch bg-white text-primary-700"
+  >
     <SfButton
       v-for="item in items"
       :key="item.label"
@@ -17,35 +19,41 @@
     </SfButton>
   </nav>
 </template>
-  <script setup lang="ts">
-  import { ref } from 'vue';
-  import { SfButton, SfIconHome, SfIconMenu, SfIconShoppingCart, SfIconFavorite, SfIconPerson } from '@storefront-ui/vue';
-  
-  const items = [
-    {
-      label: 'Home',
-      icon: SfIconHome,
-    },
-    {
-      label: 'Products',
-      icon: SfIconMenu,
-    },
-    {
-      label: 'Cart',
-      icon: SfIconShoppingCart,
-    },
-    {
-      label: 'Watchlist',
-      icon: SfIconFavorite,
-    },
-    {
-      label: 'Account',
-      icon: SfIconPerson,
-    },
-  ];
-  const selectedItem = ref('');
-  function onClickHandler(itemLabel: string) {
-    selectedItem.value = itemLabel;
-  }
-  </script>
-  
+<script setup lang="ts">
+import { ref } from "vue";
+import {
+  SfButton,
+  SfIconHome,
+  SfIconMenu,
+  SfIconShoppingCart,
+  SfIconFavorite,
+  SfIconPerson,
+} from "@storefront-ui/vue";
+
+const items = [
+  {
+    label: "Home",
+    icon: SfIconHome,
+  },
+  {
+    label: "Products",
+    icon: SfIconMenu,
+  },
+  {
+    label: "Cart",
+    icon: SfIconShoppingCart,
+  },
+  {
+    label: "Watchlist",
+    icon: SfIconFavorite,
+  },
+  {
+    label: "Account",
+    icon: SfIconPerson,
+  },
+];
+const selectedItem = ref("");
+function onClickHandler(itemLabel: string) {
+  selectedItem.value = itemLabel;
+}
+</script>

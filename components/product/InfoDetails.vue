@@ -2,9 +2,7 @@
 import {
   SfButton,
   SfCounter,
-  SfLink,
   SfChip,
-  SfRating,
   SfIconSell,
   SfIconShoppingCart,
 } from "@storefront-ui/vue";
@@ -12,27 +10,27 @@ import {
 defineProps({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    required: true
+    required: true,
   },
   price: {
     type: String,
-    required: true
+    required: true,
   },
   sale: {
     type: Boolean,
-    required: true
+    required: true,
   },
   tags: {
     type: Array<string>,
-    required: true
+    required: true,
   },
   options: {
     type: Array<{ id: string; name: string; values: Array<string> }>,
-    required: true
+    required: true,
   },
 });
 </script>
@@ -53,26 +51,6 @@ defineProps({
       {{ title }}
     </h1>
     <strong class="block font-bold typography-headline-3">{{ price }}</strong>
-    <div class="inline-flex items-center mt-4 mb-2">
-      <SfRating
-        size="xs"
-        :value="3"
-        :max="5"
-      />
-      <SfCounter
-        class="ml-1"
-        size="xs"
-      >
-        123
-      </SfCounter>
-      <SfLink
-        href="#"
-        variant="secondary"
-        class="ml-2 text-xs text-neutral-500"
-      >
-        123 reviews
-      </SfLink>
-    </div>
 
     <div class="my-2">
       <SfCounter
@@ -81,9 +59,7 @@ defineProps({
         class="mr-2"
         pill
       >
-        {{
-          tag
-        }}
+        {{ tag }}
       </SfCounter>
     </div>
 

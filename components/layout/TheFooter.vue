@@ -2,6 +2,31 @@
 import { SfLink, SfListItem } from "@storefront-ui/vue";
 const categories = [
   {
+    label: "About",
+    subcategories: [
+      {
+        subcategoryLabel: "About us",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Order pickup",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Purchase status",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Track orders",
+        link: "#",
+      },
+      {
+        subcategoryLabel: "Returns",
+        link: "#",
+      },
+    ],
+  },
+  {
     label: "How to buy",
     subcategories: [
       {
@@ -68,31 +93,6 @@ const categories = [
       },
     ],
   },
-  {
-    label: "About",
-    subcategories: [
-      {
-        subcategoryLabel: "About us",
-        link: "#",
-      },
-      {
-        subcategoryLabel: "Order pickup",
-        link: "#",
-      },
-      {
-        subcategoryLabel: "Purchase status",
-        link: "#",
-      },
-      {
-        subcategoryLabel: "Track orders",
-        link: "#",
-      },
-      {
-        subcategoryLabel: "Returns",
-        link: "#",
-      },
-    ],
-  },
 ];
 </script>
 
@@ -106,9 +106,7 @@ const categories = [
         :key="label"
         class="grid grid-cols xs:pb-4"
       >
-        <div
-          class="ml-4 text-lg font-medium leading-7 text-neutral-900 font-body"
-        >
+        <div class="text-lg font-medium leading-7 text-neutral-900 font-body">
           {{ label }}
         </div>
         <SfListItem
@@ -127,29 +125,44 @@ const categories = [
       </div>
     </div>
     <div
-      class="bg-neutral-900 px-4 justify-center py-10 md:flex md:py-6 max-w-[1536px] min-w-full text-center"
+      class="bg-neutral-900 px-4 justify-between py-10 md:flex md:py-6 max-w-[1536px] min-w-full text-center"
     >
       <p
         class="flex items-center justify-center py-2 leading-5 text-center typography-text-sm text-white/50 font-body md:ml-6"
       >
+        @2023 Nuxt
+      </p>
+      <p
+        class="flex items-center justify-center py-2 leading-5 text-center typography-text-sm text-white/50 font-body md:ml-6"
+      >
         Made with 💚 by
-        <NuxtImg
-          width="24"
-          height="24"
-          class="mx-2"
-          src="/vsf.svg"
-          format="avif"
-          loading="lazy"
-        />
+        <a
+          href="https://vuestorefront.io"
+          target="_blank"
+        >
+          <NuxtImg
+            width="24"
+            height="24"
+            class="mx-2"
+            src="/vsf.svg"
+            format="avif"
+            loading="lazy"
+          />
+        </a>
         &
-        <NuxtImg
-          src="/logo.svg"
-          width="24"
-          height="24"
-          class="mx-2"
-          loading="lazy"
-          format="avif"
-        />
+        <a
+          href="https://nuxt.com"
+          target="_blank"
+        >
+          <NuxtImg
+            src="/logo.svg"
+            width="24"
+            height="24"
+            class="mx-2"
+            loading="lazy"
+            format="avif"
+          />
+        </a>
       </p>
     </div>
   </footer>

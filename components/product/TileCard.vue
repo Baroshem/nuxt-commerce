@@ -1,34 +1,63 @@
 <script lang="ts" setup>
-import {
-  SfRating,
-  SfCounter,
-  SfLink,
-  SfButton,
-  SfIconShoppingCart,
-} from "@storefront-ui/vue";
+import { SfButton, SfIconShoppingCart } from "@storefront-ui/vue";
 
-defineProps({
+const props = defineProps({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    required: true
+    required: true,
   },
   image: {
     type: String,
-    required: true
+    required: true,
   },
   link: {
     type: String,
-    required: true
+    required: true,
   },
   price: {
     type: String,
-    required: true
+    required: true,
+  },
+  variantId: {
+    type: String,
+    required: true,
   },
 });
+
+const cartId = useCookie("cartId");
+
+async function addToCart() {
+  if (!props.variantId) return "Missing Variant ID";
+  let cart;
+  if (cartId.value) {
+    const { data } = await useAsyncGql("getCart", { cartId: cartId.value });
+
+    cart = data.value && data.value.cart;
+  }
+
+  if (!cartId.value || !cart) {
+    const { data } = await useAsyncGql("createCart");
+
+    cart = data.value.cartCreate?.cart;
+
+    cartId.value = cart?.id;
+  }
+
+  try {
+    if (!cartId.value) return "Missing Cart ID";
+
+    await useAsyncGql("addToCart", {
+      cartId: cartId.value,
+      lines: [{ merchandiseId: props.variantId, quantity: 1 }],
+    });
+  } catch (e) {
+    return "Error adding item to cart";
+  }
+}
 </script>
 
 <template>
@@ -54,23 +83,6 @@ defineProps({
       <p class="truncate">
         {{ title }}
       </p>
-      <div class="flex items-center pt-1">
-        <SfRating
-          size="xs"
-          :value="5"
-          :max="5"
-        />
-
-        <SfLink
-          href="#"
-          variant="secondary"
-          class="pl-1 no-underline"
-        >
-          <SfCounter size="xs">
-            123
-          </SfCounter>
-        </SfLink>
-      </div>
       <p
         class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700 truncate"
       >
@@ -80,6 +92,7 @@ defineProps({
       <SfButton
         type="button"
         size="sm"
+        @click="addToCart"
       >
         <template #prefix>
           <SfIconShoppingCart size="sm" />
