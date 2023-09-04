@@ -8,14 +8,14 @@ if (!cartId.value) {
 const { data } = await useAsyncGql("getCart", {
   cartId: cartId.value as string,
 });
+
+const { isToastVisible } = useCart();
 </script>
 
 <template>
   <main>
-    <LayoutNavbarTop
-      class="mb-5"
-      :cart="data.cart"
-    />
+    <LayoutNavbarTop class="mb-5" :cart="data.cart" />
+    <LayoutToastAllert v-show="isToastVisible" />
     <main>
       <slot />
     </main>

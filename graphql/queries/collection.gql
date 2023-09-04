@@ -12,9 +12,15 @@ query getCollection(
         node {
           ...product
           variants(first: $variants) {
-            edges {
-              node {
-                id
+            nodes {
+              id
+              price {
+                amount
+                currencyCode
+              }
+              selectedOptions {
+                name
+                value
               }
             }
           }

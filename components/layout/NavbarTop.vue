@@ -9,6 +9,7 @@ import {
   useDisclosure,
   SfModal,
   SfIconClose,
+  SfBadge,
 } from "@storefront-ui/vue";
 
 const { isOpen, open, close } = useDisclosure({ initialValue: false });
@@ -23,6 +24,10 @@ const navigation = [
     name: "Casual Things",
     to: "casual-things",
   },
+  {
+    name: "Summer Clothes",
+    to: "summer-collection",
+  },
 ];
 
 defineProps({
@@ -31,8 +36,6 @@ defineProps({
     default: () => ({}),
   },
 });
-
-const NuxtLink = resolveComponent("NuxtLink");
 
 const inputValue = ref("");
 
@@ -54,10 +57,7 @@ const search = () => {
         class="inline-block focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0 w-32"
       >
         <picture>
-          <source
-            srcset="/nuxt-dark.svg"
-            media="(min-width: 768px)"
-          >
+          <source srcset="/nuxt-dark.svg" media="(min-width: 768px)" />
           <NuxtImg
             src="/logo.svg"
             alt="Sf Logo"
@@ -75,10 +75,7 @@ const search = () => {
         <SfIconMenu />
       </SfButton>
       <ul class="flex">
-        <li
-          v-for="{ name, to } in navigation"
-          :key="name"
-        >
+        <li v-for="{ name, to } in navigation" :key="name">
           <NuxtLink
             :to="`/collection/${to}`"
             variant="secondary"
@@ -119,7 +116,7 @@ const search = () => {
       <nav class="flex-1 flex justify-end lg:order-last lg:ml-4">
         <div class="flex flex-row flex-nowrap">
           <SfButton
-            class="mr-2 -ml-0.5 rounded-md text-primary-700 hover:bg-primary-100 active:bg-primary-200 hover:text-primary-600 active:text-primary-700"
+            class="mr-2 -ml-0.5 rounded-md text-primary-700 hover:bg-primary-100 active:bg-primary-200 hover:text-primary-600 active:text-primary-700 relative"
             aria-label="Cart"
             variant="tertiary"
             square
@@ -127,6 +124,10 @@ const search = () => {
           >
             <template #prefix>
               <SfIconShoppingCart />
+              <SfBadge
+                v-if="cart?.lines.edges.length"
+                :content="cart?.lines.edges.length"
+              />
             </template>
           </SfButton>
         </div>

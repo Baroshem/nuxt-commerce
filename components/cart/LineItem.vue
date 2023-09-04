@@ -35,7 +35,6 @@ defineProps({
             width="100"
             height="100"
             format="avif"
-            loading="lazy"
             class="rounded-xl"
           />
         </NuxtLink>

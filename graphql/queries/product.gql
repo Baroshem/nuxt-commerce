@@ -1,11 +1,16 @@
 query getProduct($handle: String!, $variants: Int!) {
   product(handle: $handle) {
     ...product
-    productType
     variants(first: $variants) {
-      edges {
-        node {
-          id
+      nodes {
+        id
+        price {
+          amount
+          currencyCode
+        }
+        selectedOptions {
+          name
+          value
         }
       }
     }
@@ -18,9 +23,15 @@ query getProducts($first: Int!, $variants: Int!) {
       node {
         ...product
         variants(first: $variants) {
-          edges {
-            node {
-              id
+          nodes {
+            id
+            price {
+              amount
+              currencyCode
+            }
+            selectedOptions {
+              name
+              value
             }
           }
         }
@@ -33,9 +44,15 @@ query getProductRecommendations($productId: ID!, $variants: Int!) {
   productRecommendations(productId: $productId) {
     ...product
     variants(first: $variants) {
-      edges {
-        node {
-          id
+      nodes {
+        id
+        price {
+          amount
+          currencyCode
+        }
+        selectedOptions {
+          name
+          value
         }
       }
     }

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { GetProductQuery } from "#gql";
 import {
   SfButton,
   SfCounter,
@@ -7,38 +8,26 @@ import {
   SfIconShoppingCart,
 } from "@storefront-ui/vue";
 
-defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: String,
-    required: true,
-  },
-  sale: {
-    type: Boolean,
-    required: true,
-  },
-  tags: {
-    type: Array<string>,
-    required: true,
-  },
-  options: {
-    type: Array<{ id: string; name: string; values: Array<string> }>,
-    required: true,
+const props = defineProps({
+  product: {
+    type: Object as PropType<GetProductQuery["product"]>,
+    default: () => ({}),
   },
 });
+
+const selectedOptions = ref({});
+
+function getVariantPrice() {
+  if (!Object.keys(selectedOptions.value).length) {
+    return `${props.product?.priceRange.minVariantPrice.currencyCode} ${props.product?.priceRange.minVariantPrice.amount}`;
+  }
+}
 </script>
 
 <template>
   <section class="md:max-w-[640px] text-left">
     <div
-      v-if="sale"
+      v-if="product?.availableForSale"
       class="inline-flex items-center justify-center text-sm font-medium text-white bg-secondary-600 py-1.5 px-3 mb-4"
     >
       <SfIconSell
@@ -47,16 +36,20 @@ defineProps({
       />
       Sale
     </div>
-    <h1 class="mb-1 font-bold typography-headline-4">
-      {{ title }}
-    </h1>
-    <strong class="block font-bold typography-headline-3">{{ price }}</strong>
+    <div class="flex justify-between font-bold">
+      <h1 class="mb-1 typography-headline-2">
+        {{ product?.title }}
+      </h1>
+      <strong class="block typography-headline-3">{{
+        getVariantPrice()
+      }}</strong>
+    </div>
 
     <div class="my-2">
       <SfCounter
-        v-for="tag in tags"
+        v-for="tag in product?.tags"
         :key="tag"
-        class="mr-2"
+        class="mr-2 text-primary-700"
         pill
       >
         {{ tag }}
@@ -64,7 +57,7 @@ defineProps({
     </div>
 
     <div
-      v-for="option in options"
+      v-for="option in product?.options"
       :key="option.id"
       class="my-6"
     >
@@ -81,7 +74,7 @@ defineProps({
       </SfChip>
     </div>
 
-    <p>{{ description }}</p>
+    <p>{{ product?.description }}</p>
     <div class="py-4 mb-4">
       <div class="items-start xs:flex">
         <SfButton

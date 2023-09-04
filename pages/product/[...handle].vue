@@ -44,12 +44,7 @@ useSeoMeta({
       <ProductImageGallery :images="galleryImages" />
       <ProductInfoDetails
         v-if="product"
-        :title="product?.title"
-        :description="product?.description"
-        :price="`${product?.priceRange.maxVariantPrice.currencyCode} ${product?.priceRange.maxVariantPrice.amount}`"
-        :sale="product?.availableForSale"
-        :tags="product?.tags"
-        :options="product?.options"
+        :product="product"
       />
     </div>
     <section
@@ -60,22 +55,9 @@ useSeoMeta({
       </h2>
       <div class="flex overflow-x-scroll">
         <ProductTileCard
-          v-for="{
-            id,
-            title,
-            description,
-            featuredImage,
-            priceRange,
-            handle,
-            variants,
-          } in recommendedProducts"
-          :key="id"
-          :title="title"
-          :description="description"
-          :image="featuredImage?.url"
-          :link="`/product/${handle}`"
-          :price="`${priceRange.maxVariantPrice.currencyCode} ${priceRange.maxVariantPrice.amount}`"
-          :variant-id="variants.edges[0].node.id"
+          v-for="recommendedProduct in recommendedProducts"
+          :key="recommendedProduct.id"
+          :product="recommendedProduct"
           class="mx-2"
         />
       </div>

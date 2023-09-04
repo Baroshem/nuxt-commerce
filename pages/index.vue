@@ -29,12 +29,7 @@ const products = computed(() => data.value?.products?.edges);
         <ProductTileCard
           v-for="{ node } in products"
           :key="node.id"
-          :title="node.title"
-          :description="node.description"
-          :image="node.featuredImage?.url"
-          :link="`/product/${node.handle}`"
-          :price="`${node.priceRange.maxVariantPrice.currencyCode} ${node.priceRange.maxVariantPrice.amount}`"
-          :variant-id="node.variants.edges[0].node.id"
+          :product="node"
           class="mx-2"
         />
       </div>

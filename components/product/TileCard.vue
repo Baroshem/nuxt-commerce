@@ -1,63 +1,48 @@
 <script lang="ts" setup>
+import { GetProductQuery } from "#gql";
 import { SfButton, SfIconShoppingCart } from "@storefront-ui/vue";
 
 const props = defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  image: {
-    type: String,
-    required: true,
-  },
-  link: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: String,
-    required: true,
-  },
-  variantId: {
-    type: String,
-    required: true,
+  product: {
+    type: Object as PropType<GetProductQuery["product"]>,
+    default: () => ({}),
   },
 });
 
-const cartId = useCookie("cartId");
+// const variantId = computed(() => props.product?.variants.nodes[0].id);
 
-async function addToCart() {
-  if (!props.variantId) return "Missing Variant ID";
-  let cart;
-  if (cartId.value) {
-    const { data } = await useAsyncGql("getCart", { cartId: cartId.value });
+// const cartId = useCookie("cartId");
 
-    cart = data.value && data.value.cart;
-  }
+const { addToCart, loading } = useCart();
 
-  if (!cartId.value || !cart) {
-    const { data } = await useAsyncGql("createCart");
+// async function addToCart() {
+//   if (!variantId.value) return "Missing Variant ID";
+//   let cart;
+//   if (cartId.value) {
+//     const { data } = await useAsyncGql("getCart", { cartId: cartId.value });
 
-    cart = data.value.cartCreate?.cart;
+//     cart = data.value && data.value.cart;
+//   }
 
-    cartId.value = cart?.id;
-  }
+//   if (!cartId.value || !cart) {
+//     const { data } = await useAsyncGql("createCart");
 
-  try {
-    if (!cartId.value) return "Missing Cart ID";
+//     cart = data.value.cartCreate?.cart;
 
-    await useAsyncGql("addToCart", {
-      cartId: cartId.value,
-      lines: [{ merchandiseId: props.variantId, quantity: 1 }],
-    });
-  } catch (e) {
-    return "Error adding item to cart";
-  }
-}
+//     cartId.value = cart?.id;
+//   }
+
+//   try {
+//     if (!cartId.value) return "Missing Cart ID";
+
+//     await useAsyncGql("addToCart", {
+//       cartId: cartId.value,
+//       lines: [{ merchandiseId: variantId.value, quantity: 1 }],
+//     });
+//   } catch (e) {
+//     return "Error adding item to cart";
+//   }
+// }
 </script>
 
 <template>
@@ -65,12 +50,9 @@ async function addToCart() {
     class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px] text-left"
   >
     <div class="relative">
-      <NuxtLink
-        :to="link"
-        class="block"
-      >
+      <NuxtLink :to="`/product/${product?.handle}`" class="block">
         <NuxtImg
-          :src="image"
+          :src="product?.featuredImage?.url"
           alt="Great product"
           class="block object-cover h-auto rounded-md aspect-square"
           width="300"
@@ -81,18 +63,21 @@ async function addToCart() {
     </div>
     <div class="p-4 border-t border-neutral-200">
       <p class="truncate">
-        {{ title }}
+        {{ product?.title }}
       </p>
       <p
         class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700 truncate"
       >
-        {{ description }}
+        {{ product?.description }}
       </p>
-      <span class="block pb-2 font-bold typography-text-lg">{{ price }}</span>
+      <span class="block pb-2 font-bold typography-text-lg">{{
+        `${product?.priceRange.minVariantPrice.currencyCode} ${product?.priceRange.minVariantPrice.amount}`
+      }}</span>
       <SfButton
         type="button"
         size="sm"
-        @click="addToCart"
+        :disabled="loading"
+        @click="addToCart(product)"
       >
         <template #prefix>
           <SfIconShoppingCart size="sm" />

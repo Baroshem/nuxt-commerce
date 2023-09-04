@@ -41,21 +41,13 @@ useSeoMeta({
   <div class="flex">
     <div class="w-48 mx-10">
       <CollectionSortBy />
-      <CollectionFilterSelector
-        class="mt-6"
-        :collections="collections"
-      />
+      <CollectionFilterSelector class="mt-6" :collections="collections" />
     </div>
     <div class="flex flex-wrap gap-4">
       <ProductTileCard
         v-for="{ node } in collectionProducts"
         :key="node.id"
-        :title="node.title"
-        :description="node.description"
-        :image="node.featuredImage?.url"
-        :link="`/product/${node.handle}`"
-        :price="`${node.priceRange.maxVariantPrice.currencyCode} ${node.priceRange.maxVariantPrice.amount}`"
-        :variant-id="node.variants.edges[0].node.id"
+        :product="node"
       />
     </div>
   </div>
