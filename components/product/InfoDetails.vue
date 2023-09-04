@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { GetProductQuery } from "#gql";
+import { CurrencyCode } from ".nuxt/gql/default";
 import {
   SfButton,
   SfCounter,
@@ -15,13 +16,35 @@ const props = defineProps({
   },
 });
 
-const selectedOptions = ref({});
+const { addToCart, loading } = useCart();
 
-function getVariantPrice() {
+const selectedOptions = ref<Record<string, string>>({});
+
+const computedVariant = computed(() => {
+  const productVariants = props.product?.variants.nodes;
+
+  if (!productVariants) return undefined;
+
   if (!Object.keys(selectedOptions.value).length) {
-    return `${props.product?.priceRange.minVariantPrice.currencyCode} ${props.product?.priceRange.minVariantPrice.amount}`;
+    return productVariants[0];
   }
+
+  return productVariants.find((variant) =>
+    variant.selectedOptions.every(
+      (option) => option.value === selectedOptions.value[option.name]
+    )
+  );
+});
+
+function getVariantPrice(variant?: {
+  amount: any;
+  currencyCode: CurrencyCode;
+}) {
+  return variant ? `${variant.currencyCode} ${variant.amount}` : "";
 }
+
+// TODO: add disabled to chips after selecting a variant
+// TODO: add quantity selector
 </script>
 
 <template>
@@ -41,7 +64,7 @@ function getVariantPrice() {
         {{ product?.title }}
       </h1>
       <strong class="block typography-headline-3">{{
-        getVariantPrice()
+        getVariantPrice(computedVariant?.price)
       }}</strong>
     </div>
 
@@ -69,6 +92,7 @@ function getVariantPrice() {
         :key="value"
         size="base"
         class="mr-2"
+        @click="selectedOptions[option.name] = value"
       >
         {{ value }}
       </SfChip>
@@ -81,6 +105,8 @@ function getVariantPrice() {
           type="button"
           size="lg"
           class="w-full"
+          :disabled="loading"
+          @click="addToCart(product, computedVariant?.id)"
         >
           <template #prefix>
             <SfIconShoppingCart size="sm" />

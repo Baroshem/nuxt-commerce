@@ -41,7 +41,10 @@ useSeoMeta({
   <div class="flex">
     <div class="w-48 mx-10">
       <CollectionSortBy />
-      <CollectionFilterSelector class="mt-6" :collections="collections" />
+      <CollectionFilterSelector
+        class="mt-6"
+        :collections="collections"
+      />
     </div>
     <div class="flex flex-wrap gap-4">
       <ProductTileCard

@@ -1,6 +1,8 @@
 import { GetProductQuery } from "#gql";
 
 const isToastVisible = ref(false);
+// TODO: add global cart object
+// const cart = ref<GetCartQuery['cart']>(undefined);
 
 export const useCart = () => {
   const loading = ref(false);
