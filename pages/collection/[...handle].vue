@@ -1,11 +1,13 @@
 <script setup lang="ts">
 const route = useRoute();
 const config = useRuntimeConfig();
+const sortKey = ref("");
 
 const { data: collectionData } = await useAsyncGql("getCollection", {
   handle: route.params.handle[0],
   items: 10,
   variants: 1,
+  sortKey: "RELEVANCE" as any,
 });
 
 const collection = computed(() => collectionData?.value?.collection);
@@ -25,6 +27,17 @@ const collections = computed(() =>
   }))
 );
 
+watch(sortKey, async (newVal) => {
+  const { data: sortedCollectionData } = await useAsyncGql("getCollection", {
+    handle: route.params.handle[0],
+    items: 10,
+    variants: 1,
+    sortKey: newVal as any,
+  });
+
+  collectionData.value = sortedCollectionData.value;
+});
+
 useSeoMeta({
   title: collection.value?.seo.title || collection.value?.title,
   description:
@@ -39,8 +52,8 @@ useSeoMeta({
 
 <template>
   <div class="flex">
-    <div class="w-48 mx-10">
-      <CollectionSortBy />
+    <div class="w-96 mx-10">
+      <CollectionSortBy @sorting-updated="(newVal) => (sortKey = newVal)" />
       <CollectionFilterSelector
         class="mt-6"
         :collections="collections"

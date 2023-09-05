@@ -22,6 +22,7 @@ const items = computed(
       ),
       id: node.id,
       options: node.merchandise.selectedOptions,
+      quantity: node.quantity,
     }))
 );
 

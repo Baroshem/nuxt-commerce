@@ -27,12 +27,17 @@ import { ref } from "vue";
 import { SfSelect } from "@storefront-ui/vue";
 
 const options = ref([
-  { label: "Relevance", value: "relevance" },
-  { label: "Price: Low to High", value: "price low to high" },
-  { label: "Price: High to Low", value: "price high to low" },
-  { label: "New Arrivals", value: "new arrivals" },
-  { label: "Customer Rating", value: "customer rating" },
-  { label: "Bestsellers", value: "bestsellers" },
+  { label: "Relevance", value: "RELEVANCE" },
+  { label: "Title", value: "TITLE" },
+  { label: "Price", value: "PRICE" },
+  { label: "Best Selling", value: "BEST_SELLING" },
+  { label: "Created", value: "CREATED" },
 ]);
 const selected = ref("");
+
+const emit = defineEmits<(e: "sorting-updated", value: string) => void>();
+
+watch(selected, (newVal) => {
+  emit("sorting-updated", newVal);
+});
 </script>

@@ -4,6 +4,7 @@ query getProduct($handle: String!, $variants: Int!) {
     variants(first: $variants) {
       nodes {
         id
+        availableForSale
         price {
           amount
           currencyCode
@@ -25,6 +26,7 @@ query getProducts($first: Int!, $variants: Int!) {
         variants(first: $variants) {
           nodes {
             id
+            availableForSale
             price {
               amount
               currencyCode
@@ -46,6 +48,7 @@ query getProductRecommendations($productId: ID!, $variants: Int!) {
     variants(first: $variants) {
       nodes {
         id
+        availableForSale
         price {
           amount
           currencyCode

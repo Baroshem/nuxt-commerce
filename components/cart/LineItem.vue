@@ -7,6 +7,7 @@ export type LineItem = {
   id: string;
   title: string;
   price: string;
+  quantity: number;
   options: {
     name: string;
     value: string;
@@ -26,7 +27,7 @@ defineProps({
 </script>
 
 <template>
-  <SfListItem>
+  <SfListItem class="!px-0">
     <div class="flex items-center justify-between">
       <div class="flex items-center">
         <NuxtLink :to="`/product/${item.handle}`">
@@ -40,7 +41,7 @@ defineProps({
         </NuxtLink>
         <div class="ml-5">
           <p class="text-lg">
-            {{ item.title }}
+            {{ item.title }} ({{ item.quantity }})
           </p>
           <p class="font-bold">
             {{ item.price }}

@@ -17,24 +17,52 @@ const props = defineProps({
 });
 
 const { addToCart, loading } = useCart();
+const router = useRouter();
+const currentRoute = useRoute();
 
-const selectedOptions = ref<Record<string, string>>({});
+const quantity = ref<number>(1);
+
+const optionsInUrl = computed(() => Object.keys(currentRoute.query).length);
+
+const areOptionsSelected = computed(
+  () => optionsInUrl.value === props.product?.options.length
+);
 
 const computedVariant = computed(() => {
   const productVariants = props.product?.variants.nodes;
 
   if (!productVariants) return undefined;
 
-  if (!Object.keys(selectedOptions.value).length) {
+  if (!optionsInUrl.value) {
     return productVariants[0];
   }
 
   return productVariants.find((variant) =>
     variant.selectedOptions.every(
-      (option) => option.value === selectedOptions.value[option.name]
+      (option) => option.value === currentRoute.query[option.name]
     )
   );
 });
+
+function isOptionDisabled(name: string, value: string) {
+  if (!optionsInUrl.value) return false;
+
+  if (!currentRoute.query[name]) return false;
+
+  return currentRoute.query[name] !== value;
+}
+
+function toggleOption(name: string, value: string) {
+  if (isOptionDisabled(name, value)) return;
+
+  if (currentRoute.query[name]) {
+    router.replace({ query: { ...currentRoute.query, [name]: undefined } });
+  } else {
+    router.replace({
+      query: { ...currentRoute.query, [name]: value },
+    });
+  }
+}
 
 function getVariantPrice(variant?: {
   amount: any;
@@ -42,9 +70,6 @@ function getVariantPrice(variant?: {
 }) {
   return variant ? `${variant.currencyCode} ${variant.amount}` : "";
 }
-
-// TODO: add disabled to chips after selecting a variant
-// TODO: add quantity selector
 </script>
 
 <template>
@@ -92,21 +117,27 @@ function getVariantPrice(variant?: {
         :key="value"
         size="base"
         class="mr-2"
-        @click="selectedOptions[option.name] = value"
+        :input-props="{ disabled: isOptionDisabled(option.name, value) }"
+        @click="toggleOption(option.name, value)"
       >
         {{ value }}
       </SfChip>
     </div>
 
     <p>{{ product?.description }}</p>
+
     <div class="py-4 mb-4">
       <div class="items-start xs:flex">
+        <ProductQuantitySelector
+          class="mr-4"
+          @quantity-updated="(newVal) => (quantity = newVal)"
+        />
         <SfButton
           type="button"
           size="lg"
           class="w-full"
-          :disabled="loading"
-          @click="addToCart(product, computedVariant?.id)"
+          :disabled="loading || !areOptionsSelected"
+          @click="addToCart(product, computedVariant?.id, quantity)"
         >
           <template #prefix>
             <SfIconShoppingCart size="sm" />
