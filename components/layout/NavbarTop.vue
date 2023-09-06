@@ -49,7 +49,10 @@ defineProps({
         class="inline-block focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0 w-32"
       >
         <picture>
-          <source srcset="/nuxt-dark.svg" media="(min-width: 768px)" />
+          <source
+            srcset="/nuxt-dark.svg"
+            media="(min-width: 768px)"
+          >
           <NuxtImg
             src="/logo.svg"
             alt="Sf Logo"
@@ -67,7 +70,10 @@ defineProps({
         <SfIconMenu />
       </SfButton>
       <ul class="flex">
-        <li v-for="{ name, to } in navigation" :key="name">
+        <li
+          v-for="{ name, to } in navigation"
+          :key="name"
+        >
           <NuxtLink
             :to="`/collection/${to}`"
             variant="secondary"

@@ -25,8 +25,15 @@ watch(selected, (newVal) => {
       Sort by
     </h6>
     <div class="px-4">
-      <SfSelect v-model="selected" aria-label="Sort by">
-        <option v-for="{ value, label } in options" :key="value" :value="value">
+      <SfSelect
+        v-model="selected"
+        aria-label="Sort by"
+      >
+        <option
+          v-for="{ value, label } in options"
+          :key="value"
+          :value="value"
+        >
           {{ label }}
         </option>
       </SfSelect>

@@ -70,7 +70,10 @@ function toggleOption(name: string, value: string) {
       v-if="product?.availableForSale"
       class="inline-flex items-center justify-center text-sm font-medium text-white bg-secondary-600 py-1.5 px-3 mb-4"
     >
-      <SfIconSell size="sm" class="mr-1.5" />
+      <SfIconSell
+        size="sm"
+        class="mr-1.5"
+      />
       Sale
     </div>
     <div class="flex justify-between font-bold">
@@ -93,7 +96,11 @@ function toggleOption(name: string, value: string) {
       </SfCounter>
     </div>
 
-    <div v-for="option in product?.options" :key="option.id" class="my-6">
+    <div
+      v-for="option in product?.options"
+      :key="option.id"
+      class="my-6"
+    >
       <p class="uppercase mb-2">
         {{ option.name }}
       </p>

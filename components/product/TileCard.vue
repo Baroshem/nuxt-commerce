@@ -26,7 +26,10 @@ const computedPrice = computed(
     class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px] text-left"
   >
     <div class="relative">
-      <NuxtLink :to="`/product/${product?.handle}`" class="block">
+      <NuxtLink
+        :to="`/product/${product?.handle}`"
+        class="block"
+      >
         <NuxtImg
           :src="product?.featuredImage?.url"
           alt="Great product"

@@ -13,7 +13,9 @@
       @focus="open"
       @keydown="handleInputKeyDown"
     >
-      <template #prefix><SfIconSearch /></template>
+      <template #prefix>
+        <SfIconSearch />
+      </template>
       <template #suffix>
         <button
           v-if="inputModel"
@@ -22,8 +24,9 @@
           class="flex rounded-md focus-visible:outline focus-visible:outline-offset"
           @click="reset"
         >
-          <SfIconCancel /></button
-      ></template>
+          <SfIconCancel />
+        </button>
+      </template>
     </SfInput>
     <div
       v-if="isOpen"
@@ -48,8 +51,15 @@
         ref="dropdownListRef"
         class="py-2 bg-white border border-solid rounded-md border-neutral-100 drop-shadow-md"
       >
-        <li v-for="{ node } in result?.edges" :key="node.id">
-          <SfListItem tag="button" type="button" class="flex justify-start">
+        <li
+          v-for="{ node } in result?.edges"
+          :key="node.id"
+        >
+          <SfListItem
+            tag="button"
+            type="button"
+            class="flex justify-start"
+          >
             <NuxtLink
               class="flex items-center justify-between"
               :to="`/product/${node.handle}`"
@@ -65,7 +75,9 @@
                   width="48"
                   height="48"
                 />
-                <p class="ml-4">{{ node.title }}</p>
+                <p class="ml-4">
+                  {{ node.title }}
+                </p>
               </div>
 
               <p class="font-bold">
