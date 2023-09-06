@@ -9,6 +9,10 @@ const { data: collectionData } = await useAsyncGql("getCollection", {
   variants: 1,
 });
 
+if (!collectionData?.value?.collection) {
+  throw createError({ statusCode: 404, statusMessage: "Collection Not Found" });
+}
+
 const collection = computed(() => collectionData?.value?.collection);
 
 const collectionProducts = computed(
@@ -53,10 +57,7 @@ useSeoMeta({
   <div class="flex">
     <div class="w-96 mx-10">
       <CollectionSortBy @sorting-updated="(newVal) => (sortKey = newVal)" />
-      <CollectionFilterSelector
-        class="mt-6"
-        :collections="collections"
-      />
+      <CollectionFilterSelector class="mt-6" :collections="collections" />
     </div>
     <div class="flex flex-wrap gap-4">
       <ProductTileCard
