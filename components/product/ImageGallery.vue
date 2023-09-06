@@ -8,7 +8,6 @@ import {
   type SfScrollableOnDragEndData,
 } from "@storefront-ui/vue";
 import { unrefElement, useIntersectionObserver } from "@vueuse/core";
-import { PropType } from "nuxt/dist/app/compat/capi";
 
 export type GalleryImage = {
   src: string;

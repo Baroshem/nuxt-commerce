@@ -7,7 +7,6 @@ const { data: collectionData } = await useAsyncGql("getCollection", {
   handle: route.params.handle[0],
   items: 10,
   variants: 1,
-  sortKey: "RELEVANCE" as any,
 });
 
 const collection = computed(() => collectionData?.value?.collection);
@@ -54,10 +53,7 @@ useSeoMeta({
   <div class="flex">
     <div class="w-96 mx-10">
       <CollectionSortBy @sorting-updated="(newVal) => (sortKey = newVal)" />
-      <CollectionFilterSelector
-        class="mt-6"
-        :collections="collections"
-      />
+      <CollectionFilterSelector class="mt-6" :collections="collections" />
     </div>
     <div class="flex flex-wrap gap-4">
       <ProductTileCard

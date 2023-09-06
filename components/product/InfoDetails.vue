@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { GetProductQuery } from "#gql";
-import { CurrencyCode } from ".nuxt/gql/default";
 import {
   SfButton,
   SfCounter,
@@ -16,7 +15,7 @@ const props = defineProps({
   },
 });
 
-const { addToCart, loading } = useCart();
+const { addToCart, loading, getPriceWithCurrency } = useCart();
 const router = useRouter();
 const currentRoute = useRoute();
 
@@ -63,13 +62,6 @@ function toggleOption(name: string, value: string) {
     });
   }
 }
-
-function getVariantPrice(variant?: {
-  amount: any;
-  currencyCode: CurrencyCode;
-}) {
-  return variant ? `${variant.currencyCode} ${variant.amount}` : "";
-}
 </script>
 
 <template>
@@ -78,10 +70,7 @@ function getVariantPrice(variant?: {
       v-if="product?.availableForSale"
       class="inline-flex items-center justify-center text-sm font-medium text-white bg-secondary-600 py-1.5 px-3 mb-4"
     >
-      <SfIconSell
-        size="sm"
-        class="mr-1.5"
-      />
+      <SfIconSell size="sm" class="mr-1.5" />
       Sale
     </div>
     <div class="flex justify-between font-bold">
@@ -89,7 +78,7 @@ function getVariantPrice(variant?: {
         {{ product?.title }}
       </h1>
       <strong class="block typography-headline-3">{{
-        getVariantPrice(computedVariant?.price)
+        getPriceWithCurrency(computedVariant?.price)
       }}</strong>
     </div>
 
@@ -104,11 +93,7 @@ function getVariantPrice(variant?: {
       </SfCounter>
     </div>
 
-    <div
-      v-for="option in product?.options"
-      :key="option.id"
-      class="my-6"
-    >
+    <div v-for="option in product?.options" :key="option.id" class="my-6">
       <p class="uppercase mb-2">
         {{ option.name }}
       </p>

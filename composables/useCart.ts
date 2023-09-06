@@ -7,6 +7,14 @@ const isToastVisible = ref(false);
 export const useCart = () => {
   const loading = ref(false);
 
+  const getPriceWithCurrency = (
+    price?: { amount: string; currencyCode: string } | null
+  ) => {
+    if (!price) return "";
+
+    return `${price.currencyCode} ${price.amount}`;
+  };
+
   const addToCart = async (
     product: GetProductQuery["product"],
     variantId?: string,
@@ -62,5 +70,6 @@ export const useCart = () => {
     isToastVisible,
     loading,
     addToCart,
+    getPriceWithCurrency,
   };
 };

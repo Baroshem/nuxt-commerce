@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+import { SfButton } from "@storefront-ui/vue";
+</script>
+
 <template>
   <div class="relative min-h-[600px]">
     <picture>
@@ -6,7 +10,7 @@
           https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/hero-bg.png
         "
         media="(min-width: 768px)"
-      >
+      />
       <NuxtImg
         src="https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/hero-bg-mobile.png"
         class="absolute w-full h-full z-[-1] md:object-cover"
@@ -42,14 +46,8 @@
           battery.
         </p>
         <div class="flex flex-col md:flex-row gap-4 mt-6">
-          <SfButton size="lg">
-            Order now
-          </SfButton>
-          <SfButton
-            size="lg"
-            variant="secondary"
-            class="bg-white"
-          >
+          <SfButton size="lg"> Order now </SfButton>
+          <SfButton size="lg" variant="secondary" class="bg-white">
             Show more
           </SfButton>
         </div>
@@ -57,7 +55,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { SfButton } from "@storefront-ui/vue";
-</script>

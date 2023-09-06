@@ -3,8 +3,6 @@ import { GetCartQuery } from "#gql";
 import {
   SfButton,
   SfIconShoppingCart,
-  SfInput,
-  SfIconSearch,
   SfIconMenu,
   useDisclosure,
   SfModal,
@@ -36,12 +34,6 @@ defineProps({
     default: () => ({}),
   },
 });
-
-const inputValue = ref("");
-
-const search = () => {
-  alert(`Successfully found 10 results for ${inputValue.value}`);
-};
 </script>
 
 <template>
@@ -57,10 +49,7 @@ const search = () => {
         class="inline-block focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0 w-32"
       >
         <picture>
-          <source
-            srcset="/nuxt-dark.svg"
-            media="(min-width: 768px)"
-          >
+          <source srcset="/nuxt-dark.svg" media="(min-width: 768px)" />
           <NuxtImg
             src="/logo.svg"
             alt="Sf Logo"
@@ -78,10 +67,7 @@ const search = () => {
         <SfIconMenu />
       </SfButton>
       <ul class="flex">
-        <li
-          v-for="{ name, to } in navigation"
-          :key="name"
-        >
+        <li v-for="{ name, to } in navigation" :key="name">
           <NuxtLink
             :to="`/collection/${to}`"
             variant="secondary"
@@ -91,34 +77,7 @@ const search = () => {
           </NuxtLink>
         </li>
       </ul>
-      <form
-        role="search"
-        class="hidden sm:flex order-3 mt-2 lg:mt-0 pb-2 lg:pb-0"
-        @submit.prevent="search"
-      >
-        <SfInput
-          v-model="inputValue"
-          type="search"
-          class="[&::-webkit-search-cancel-button]:appearance-none"
-          placeholder="Search"
-          wrapper-class="flex-1 h-10 pr-0"
-          size="base"
-        >
-          <template #suffix>
-            <span class="flex items-center">
-              <SfButton
-                variant="tertiary"
-                square
-                aria-label="search"
-                type="submit"
-                class="rounded-l-none hover:bg-transparent active:bg-transparent"
-              >
-                <SfIconSearch />
-              </SfButton>
-            </span>
-          </template>
-        </SfInput>
-      </form>
+      <LayoutSearchBar class="w-96" />
       <nav class="flex-1 flex justify-end lg:order-last lg:ml-4">
         <div class="flex flex-row flex-nowrap">
           <SfButton

@@ -18,8 +18,8 @@ query getProduct($handle: String!, $variants: Int!) {
   }
 }
 
-query getProducts($first: Int!, $variants: Int!) {
-  products(first: $first) {
+query getProducts($first: Int!, $variants: Int!, $query: String) {
+  products(first: $first, query: $query) {
     edges {
       node {
         ...product

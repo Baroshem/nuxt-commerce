@@ -2,14 +2,23 @@
 import { GetProductQuery } from "#gql";
 import { SfButton, SfIconShoppingCart } from "@storefront-ui/vue";
 
-defineProps({
+const props = defineProps({
   product: {
     type: Object as PropType<GetProductQuery["product"]>,
     default: () => ({}),
   },
 });
 
-const { addToCart, loading } = useCart();
+const { addToCart, loading, getPriceWithCurrency } = useCart();
+
+const computedPrice = computed(
+  () =>
+    props.product?.priceRange.minVariantPrice &&
+    getPriceWithCurrency({
+      amount: props.product?.priceRange.minVariantPrice.amount,
+      currencyCode: props.product?.priceRange.minVariantPrice.currencyCode,
+    })
+);
 </script>
 
 <template>
@@ -17,10 +26,7 @@ const { addToCart, loading } = useCart();
     class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px] text-left"
   >
     <div class="relative">
-      <NuxtLink
-        :to="`/product/${product?.handle}`"
-        class="block"
-      >
+      <NuxtLink :to="`/product/${product?.handle}`" class="block">
         <NuxtImg
           :src="product?.featuredImage?.url"
           alt="Great product"
@@ -41,7 +47,7 @@ const { addToCart, loading } = useCart();
         {{ product?.description }}
       </p>
       <span class="block pb-2 font-bold typography-text-lg">{{
-        `${product?.priceRange.minVariantPrice.currencyCode} ${product?.priceRange.minVariantPrice.amount}`
+        computedPrice
       }}</span>
       <SfButton
         type="button"

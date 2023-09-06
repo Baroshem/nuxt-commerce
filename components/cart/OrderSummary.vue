@@ -9,6 +9,8 @@ const props = defineProps({
   },
 });
 
+const { getPriceWithCurrency } = useCart();
+
 const costs = computed(() => props.cart?.cost);
 
 const items = computed(
@@ -25,14 +27,6 @@ const items = computed(
       quantity: node.quantity,
     }))
 );
-
-const getPriceWithCurrency = (
-  price?: { amount: string; currencyCode: string } | null
-) => {
-  if (!price) return "";
-
-  return `${price.currencyCode} ${price.amount}`;
-};
 
 async function removeItemFromCart(itemId: string) {
   if (!props.cart?.id) return;
@@ -77,9 +71,7 @@ async function redirectToCheckout() {
         class="px-4 md:px-6 mt-6 flex flex-col flex-grow overflow-auto text-center"
       >
         <SfIconShoppingCart class="text-center mx-auto my-2 !w-24 !h-24" />
-        <p class="text-lg">
-          No items in cart
-        </p>
+        <p class="text-lg">No items in cart</p>
       </div>
       <div class="px-4 pb-4 mt-3 md:px-6 md:pb-6 md:mt-0">
         <div class="flex justify-between typography-text-base pb-4">
@@ -98,11 +90,7 @@ async function redirectToCheckout() {
           <p>Total</p>
           <p>{{ getPriceWithCurrency(costs?.totalAmount) }}</p>
         </div>
-        <SfButton
-          size="lg"
-          class="w-full"
-          @click="redirectToCheckout"
-        >
+        <SfButton size="lg" class="w-full" @click="redirectToCheckout">
           Checkout
         </SfButton>
       </div>
