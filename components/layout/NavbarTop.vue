@@ -69,7 +69,7 @@ defineProps({
       >
         <SfIconMenu />
       </SfButton>
-      <ul class="flex">
+      <ul class="flex hidden lg:flex">
         <li
           v-for="{ name, to } in navigation"
           :key="name"
@@ -83,7 +83,7 @@ defineProps({
           </NuxtLink>
         </li>
       </ul>
-      <LayoutSearchBar class="w-96" />
+      <LayoutSearchBar class="w-96 order-last lg:order-3 mt-2 lg:mt-0" />
       <nav class="flex-1 flex justify-end lg:order-last lg:ml-4">
         <div class="flex flex-row flex-nowrap">
           <SfButton

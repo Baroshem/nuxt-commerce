@@ -18,9 +18,17 @@ const handleError = () => clearError({ redirect: "/" });
     class="max-w-[1536px] w-full text-center mx-auto my-0"
   >
     <section>
-      <h2 class="text-9xl mb-4">{{ error.statusCode }}</h2>
-      <h3 class="text-3xl">{{ error.message }}</h3>
-      <SfButton size="lg" class="mt-4" @click="handleError">
+      <h2 class="text-9xl mb-4">
+        {{ error.statusCode }}
+      </h2>
+      <h3 class="text-3xl">
+        {{ error.message }}
+      </h3>
+      <SfButton
+        size="lg"
+        class="mt-4"
+        @click="handleError"
+      >
         Back to home
       </SfButton>
     </section>

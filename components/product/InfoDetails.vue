@@ -65,7 +65,7 @@ function toggleOption(name: string, value: string) {
 </script>
 
 <template>
-  <section class="md:max-w-[640px] text-left">
+  <section class="md:max-w-[640px] text-left p-4 lg:p-0">
     <div
       v-if="product?.availableForSale"
       class="inline-flex items-center justify-center text-sm font-medium text-white bg-secondary-600 py-1.5 px-3 mb-4"
@@ -121,7 +121,7 @@ function toggleOption(name: string, value: string) {
     <div class="py-4 mb-4">
       <div class="items-start xs:flex">
         <ProductQuantitySelector
-          class="mr-4"
+          class="mr-0 lg:mr-4 mb-4 lg:mb-0 items-stretch xs:items-center w-full lg:w-auto"
           @quantity-updated="(newVal) => (quantity = newVal)"
         />
         <SfButton

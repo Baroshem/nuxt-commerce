@@ -44,14 +44,19 @@ useSeoMeta({
 
 <template>
   <div>
-    <div class="flex justify-between">
+    <div class="block lg:flex justify-between">
       <ProductImageGallery :images="galleryImages" />
-      <ProductInfoDetails v-if="product" :product="product" />
+      <ProductInfoDetails
+        v-if="product"
+        :product="product"
+      />
     </div>
     <section
       class="justify-center max-w-[1536px] w-full text-center mx-auto my-5"
     >
-      <h2 class="text-2xl mb-6">Related Products</h2>
+      <h2 class="text-2xl mb-6">
+        Related Products
+      </h2>
       <div class="flex overflow-x-scroll">
         <ProductTileCard
           v-for="recommendedProduct in recommendedProducts"
