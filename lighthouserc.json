@@ -3,7 +3,7 @@
     "assert": {
       "assertions": {
         "categories:performance": [
-          "warn",
+          "error",
           {
             "minScore": 0.9
           }

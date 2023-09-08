@@ -4,6 +4,9 @@ Demo E-Commerce application built with Nuxt, Storefront UI & Shopify
 
 Made with 💚 by Nuxt & Vue Storefront
 
+Work in Progress Video of how it works
+https://github.com/nuxt/commerce/assets/37120330/62bd42ac-5af0-47e8-b80a-87b4cc422fbb
+
 ## Features
 
 Nuxt Commerce comes with several useful features out of the box:
