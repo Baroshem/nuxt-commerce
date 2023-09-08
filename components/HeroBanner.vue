@@ -6,15 +6,18 @@ import { SfButton } from "@storefront-ui/vue";
   <div class="relative min-h-[600px]">
     <picture>
       <source
-        srcset="
-          https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/hero-bg.png
-        "
+        srcset="/hero-bg.png"
         media="(min-width: 768px)"
       >
       <NuxtImg
-        src="https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/hero-bg-mobile.png"
+        src="/hero-bg-mobile.png"
         class="absolute w-full h-full z-[-1] md:object-cover"
         format="avif"
+        alt="Hero"
+        height="1004"
+        fetch-priority="high"
+        preload
+        width="618"
       />
     </picture>
     <div
@@ -22,28 +25,24 @@ import { SfButton } from "@storefront-ui/vue";
     >
       <div class="flex flex-col md:items-stretch md:overflow-hidden">
         <NuxtImg
-          src="https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/hero-headphones.png"
+          src="/hero-headphones.png"
           alt="Headphones"
           format="avif"
+          height="600"
+          fetch-priority="high"
+          preload
+          width="800"
           class="h-full object-cover object-left"
         />
       </div>
       <div
         class="p-4 md:p-10 md:max-w-[768px] md:flex md:flex-col md:justify-center md:items-start md:basis-2/4"
       >
-        <p
-          class="typography-text-xs md:typography-text-sm font-bold tracking-widest text-neutral-500 uppercase"
-        >
-          Feel the music
-        </p>
-        <h1
-          class="typography-display-2 md:typography-display-1 md:leading-[67.5px] font-bold mt-2 mb-4"
-        >
-          New Wireless Pro
+        <h1 class="text-6xl md:leading-[67.5px] font-bold mt-2 mb-4">
+          Nuxt Commerce
         </h1>
         <p class="typography-text-base md:typography-text-lg">
-          Spatial audio. Adjustable ear cups. On-device controls. All-day
-          battery.
+          E-Commerce template built with Nuxt, Storefront UI & Shopify 🚀
         </p>
         <div class="flex flex-col md:flex-row gap-4 mt-6">
           <SfButton size="lg">

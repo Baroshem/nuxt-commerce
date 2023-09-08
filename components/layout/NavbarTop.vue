@@ -57,7 +57,6 @@ defineProps({
             src="/logo.svg"
             alt="Sf Logo"
             class="w-8 h-8 md:h-6 md:w-[176px] lg:w-[12.5rem] lg:h-[1.75rem]"
-            format="avif"
           />
         </picture>
       </NuxtLink>
@@ -96,7 +95,7 @@ defineProps({
             <template #prefix>
               <SfIconShoppingCart />
               <SfBadge
-                v-if="cart?.lines.edges.length"
+                v-if="cart?.lines?.edges?.length"
                 :content="cart?.lines.edges.length"
               />
             </template>

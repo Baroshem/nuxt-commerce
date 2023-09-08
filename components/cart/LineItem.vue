@@ -31,13 +31,12 @@ defineProps({
     <div class="flex items-center justify-between">
       <div class="flex items-center">
         <NuxtLink :to="`/product/${item.handle}`">
-          <NuxtImg
+          <img
             :src="item.image"
             width="100"
             height="100"
-            format="avif"
             class="rounded-xl"
-          />
+          >
         </NuxtLink>
         <div class="ml-5">
           <p class="text-lg">

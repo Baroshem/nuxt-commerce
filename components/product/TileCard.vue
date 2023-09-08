@@ -31,7 +31,7 @@ const computedPrice = computed(
         class="block"
       >
         <NuxtImg
-          :src="product?.featuredImage?.url"
+          :src="product?.featuredImage?.url.split('?')[0]"
           alt="Great product"
           class="block object-cover h-auto rounded-md aspect-square"
           width="300"
@@ -56,6 +56,7 @@ const computedPrice = computed(
         type="button"
         size="sm"
         :disabled="loading"
+        class="w-full lg:w-auto h-10"
         @click="addToCart(product)"
       >
         <template #prefix>

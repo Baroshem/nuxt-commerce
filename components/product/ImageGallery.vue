@@ -7,7 +7,12 @@ import {
   SfLoaderCircular,
   type SfScrollableOnDragEndData,
 } from "@storefront-ui/vue";
-import { unrefElement, useIntersectionObserver } from "@vueuse/core";
+import {
+  unrefElement,
+  useIntersectionObserver,
+  useBreakpoints,
+  breakpointsTailwind,
+} from "@vueuse/core";
 
 export type GalleryImage = {
   src: string;
@@ -21,6 +26,8 @@ const props = defineProps({
     required: true,
   },
 });
+
+const breakpoints = useBreakpoints(breakpointsTailwind);
 
 const thumbsRef = ref<HTMLElement>();
 const firstThumbRef = ref<HTMLButtonElement>();
@@ -110,6 +117,7 @@ const assignRef = (
           class="absolute !rounded-full z-10 top-4 rotate-90 bg-white"
           variant="secondary"
           size="sm"
+          aria-label="Scroll Thumbnail Images to Top"
           square
         >
           <SfIconChevronLeft size="sm" />
@@ -120,7 +128,7 @@ const assignRef = (
         :key="`${alt}-${index}-thumbnail`"
         :ref="(el) => assignRef(el, index)"
         type="button"
-        :aria-label="alt"
+        :aria-label="alt || 'Product Thumbnail'"
         :aria-current="activeIndex === index"
         :class="`md:w-[78px] md:h-auto relative shrink-0 pb-1 mx-4 -mb-2 border-b-4 snap-start cursor-pointer focus-visible:outline focus-visible:outline-offset transition-colors flex-grow md:flex-grow-0  ${
           activeIndex === index ? 'border-primary-700' : 'border-transparent'
@@ -129,10 +137,10 @@ const assignRef = (
         @focus="activeIndex = index"
       >
         <NuxtImg
-          :alt="alt"
+          :alt="alt || 'Product Thumbnail'"
           class="border border-neutral-200"
-          width="78"
-          height="78"
+          :width="breakpoints.smaller('lg') ? '111' : '78'"
+          :height="breakpoints.smaller('lg') ? '111' : '78'"
           format="avif"
           :src="thumbnail"
         />
@@ -143,7 +151,8 @@ const assignRef = (
           v-bind="defaultProps"
           :disabled="activeIndex === images.length"
           class="absolute !rounded-full z-10 bottom-4 rotate-90 bg-white"
-          variant="secondańry"
+          variant="secondary"
+          aria-label="Scroll Thumbnail Images to Bottom"
           size="sm"
           square
         >
@@ -173,12 +182,16 @@ const assignRef = (
         />
         <NuxtImg
           v-show="!isImageLoading"
-          :aria-label="alt"
+          :aria-label="alt || 'Product Image'"
           :aria-hidden="activeIndex !== index"
           class="object-cover w-auto h-full"
           format="avif"
           :alt="alt"
-          :src="src"
+          height="600"
+          width="600"
+          :fetch-priority="index === 0 ? 'high' : 'low'"
+          :preload="index === 0"
+          :src="src.split('?')[0]"
           @load="isImageLoading = false"
         />
       </div>

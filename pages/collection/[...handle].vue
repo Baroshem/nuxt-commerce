@@ -44,25 +44,28 @@ watch(sortKey, async (newVal) => {
 useSeoMeta({
   title: collection.value?.seo.title || collection.value?.title,
   description:
-    collection.value?.seo.description || collection.value?.description,
+    collection.value?.seo.description ||
+    collection.value?.description ||
+    collection.value?.seo.title ||
+    collection.value?.title,
   ogTitle: collection.value?.seo.title || collection.value?.title,
   ogDescription:
-    collection.value?.seo.description || collection.value?.description,
+    collection.value?.seo.description ||
+    collection.value?.description ||
+    collection.value?.seo.title ||
+    collection.value?.title,
   ogImage: `${config.public.site.url}/logo.svg`,
   twitterCard: "summary_large_image",
 });
 </script>
 
 <template>
-  <div class="flex">
-    <div class="w-96 mx-10">
+  <div class="block lg:flex">
+    <div class="mx-0 w-full lg:w-96 lg:mx-10">
       <CollectionSortBy @sorting-updated="(newVal) => (sortKey = newVal)" />
-      <CollectionFilterSelector
-        class="mt-6"
-        :collections="collections"
-      />
+      <CollectionFilterSelector :collections="collections" />
     </div>
-    <div class="flex flex-wrap gap-4">
+    <div class="flex flex-wrap gap-4 justify-center lg:justify-normal">
       <ProductTileCard
         v-for="{ node } in collectionProducts"
         :key="node.id"

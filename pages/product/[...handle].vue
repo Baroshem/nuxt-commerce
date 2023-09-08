@@ -17,7 +17,7 @@ const galleryImages = computed(
   () =>
     product?.value?.images.edges.map((edge) => ({
       src: edge.node.url as string,
-      thumbnail: edge.node.url as string,
+      thumbnail: edge.node.url.split('?')[0] as string,
       alt: edge.node.altText as string,
     })) || []
 );

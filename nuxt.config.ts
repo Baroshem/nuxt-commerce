@@ -3,7 +3,10 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: "en" },
-      link: [{ rel: "icon", href: "/logo.svg", type: "image/svg+xml" }],
+      link: [
+        { rel: "icon", href: "/logo.svg", type: "image/svg+xml" },
+        { rel: 'preconnect', href: 'https://graphql.myshopify.com' }
+      ],
     },
     pageTransition: { name: "page", mode: "out-in" },
   },
@@ -46,10 +49,14 @@ export default defineNuxtConfig({
         headers: {
           contentSecurityPolicy: {
             "img-src": [
-              "https://storage.googleapis.com",
               "https://cdn.shopify.com",
-              "http://localhost:3001", // TODO: add an if here that is based on the environment and current host
+              "http://localhost:3000", // TODO: add an if here that is based on the environment and current host
             ],
+            // Needed for SSG
+            "script-src-attr": [
+              "'unsafe-inline'",
+            ],
+            "script-src" : process.env.NODE_ENV === 'production' ? ['http://localhost:3000'] : false
           },
           crossOriginEmbedderPolicy: false, // TODO: check if this will be necessary in the final application
         },

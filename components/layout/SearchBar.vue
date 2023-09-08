@@ -67,7 +67,7 @@
             >
               <div class="flex items-center">
                 <NuxtImg
-                  :src="node.featuredImage?.url"
+                  :src="node.featuredImage?.url.split('?')[0]"
                   :alt="
                     node.featuredImage?.altText || node.seo.title || node.title
                   "

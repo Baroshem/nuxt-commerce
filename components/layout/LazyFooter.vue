@@ -109,19 +109,21 @@ const categories = [
         <div class="text-lg font-medium leading-7 text-neutral-900 font-body">
           {{ label }}
         </div>
-        <SfListItem
-          v-for="{ subcategoryLabel, link } in subcategories"
-          :key="subcategoryLabel"
-          class="py-2 !bg-transparent typography-text-sm font-body"
-        >
-          <SfLink
-            class="no-underline text-neutral-600 hover:underline hover:!text-neutral-900 active:underline active:!text-neutral-900"
-            variant="secondary"
-            :href="link"
+        <ul>
+          <SfListItem
+            v-for="{ subcategoryLabel, link } in subcategories"
+            :key="subcategoryLabel"
+            class="py-2 !bg-transparent typography-text-sm font-body"
           >
-            {{ subcategoryLabel }}
-          </SfLink>
-        </SfListItem>
+            <SfLink
+              class="no-underline text-neutral-600 hover:underline hover:!text-neutral-900 active:underline active:!text-neutral-900"
+              variant="secondary"
+              :href="link"
+            >
+              {{ subcategoryLabel }}
+            </SfLink>
+          </SfListItem>
+        </ul>
       </div>
     </div>
     <div
@@ -139,28 +141,32 @@ const categories = [
         <a
           href="https://vuestorefront.io"
           target="_blank"
+          aria-label="Link to Vue Storefront Home Page"
         >
           <NuxtImg
             width="24"
             height="24"
             class="mx-2"
+            alt="Vue Storefront Logo"
             src="/vsf.svg"
-            format="avif"
             loading="lazy"
+            fetch-priority="low"
           />
         </a>
         &
         <a
           href="https://nuxt.com"
           target="_blank"
+          aria-label="Link to Nuxt Home Page"
         >
           <NuxtImg
             src="/logo.svg"
             width="24"
+            alt="Nuxt Logo"
             height="24"
             class="mx-2"
             loading="lazy"
-            format="avif"
+            fetch-priority="low"
           />
         </a>
       </p>

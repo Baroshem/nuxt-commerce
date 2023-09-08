@@ -16,12 +16,10 @@ const { isToastVisible } = useCart();
   <main>
     <LayoutNavbarTop
       class="mb-5"
-      :cart="data.cart"
+      :cart="data?.cart"
     />
     <LayoutToastAllert v-show="isToastVisible" />
-    <main>
-      <slot />
-    </main>
-    <LayoutTheFooter class="mt-5" />
+    <slot />
+    <LayoutLazyFooter class="mt-5" />
   </main>
 </template>

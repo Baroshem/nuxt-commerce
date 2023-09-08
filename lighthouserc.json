@@ -1,7 +1,7 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "yarn build && yarn preview",
+      "startServerCommand": "yarn generate && yarn preview",
       "url": [
         "http://localhost:3000/",
         "http://localhost:3000/product/ekktar-crew-jumper",
