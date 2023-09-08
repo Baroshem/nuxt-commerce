@@ -42,19 +42,47 @@ import { SfButton } from "@storefront-ui/vue";
           Nuxt Commerce
         </h1>
         <p class="typography-text-base md:typography-text-lg">
-          E-Commerce template built with Nuxt, Storefront UI & Shopify 🚀
+          E-Commerce template built with
+          <a
+            href="https://nuxt.com/"
+            target="_blank"
+            class="hover:underline hover:text-primary-500"
+            aria-label="Link to Nuxt Home Page"
+          >Nuxt</a>,
+          <a
+            href="https://docs.storefrontui.io/v2/"
+            target="_blank"
+            class="hover:underline hover:text-primary-500"
+            aria-label="Link to Storefront UI Documentation Page"
+          >Storefront UI</a>
+          &
+          <a
+            href="https://www.shopify.com/"
+            target="_blank"
+            class="hover:underline hover:text-primary-500"
+            aria-label="Link to Shopify Home Page"
+          >Shopify</a>
+          🚀
         </p>
         <div class="flex flex-col md:flex-row gap-4 mt-6">
-          <SfButton size="lg">
-            Order now
-          </SfButton>
-          <SfButton
-            size="lg"
-            variant="secondary"
-            class="bg-white"
-          >
-            Show more
-          </SfButton>
+          <NuxtLink to="/collection/latest-stuff">
+            <SfButton
+              size="lg"
+              class="w-full"
+            >
+              See products
+            </SfButton>
+          </NuxtLink>
+
+          <NuxtLink to="/about">
+            <SfButton
+              size="lg"
+              variant="secondary"
+              class="bg-white v-full"
+            >
+              About
+            </SfButton>
+          </NuxtLink>
         </div>
       </div>
     </div>

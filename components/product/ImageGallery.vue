@@ -26,7 +26,7 @@ const props = defineProps({
     required: true,
   },
 });
-
+// This throws an error in the dev environment but works in production. I tried to use sizes from NuxtImage but it does not work https://github.com/nuxt/image/issues/645
 const breakpoints = useBreakpoints(breakpointsTailwind);
 
 const thumbsRef = ref<HTMLElement>();

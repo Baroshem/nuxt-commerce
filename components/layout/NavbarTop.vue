@@ -11,6 +11,11 @@ import {
 } from "@storefront-ui/vue";
 
 const { isOpen, open, close } = useDisclosure({ initialValue: false });
+const {
+  isOpen: isCategoryMenuOpen,
+  open: openCategoryMenu,
+  close: closeCategoryMenu,
+} = useDisclosure({ initialValue: false });
 
 // TODO: Replace later with dynamic fetch from Shopify for pages.
 const navigation = [
@@ -65,9 +70,72 @@ defineProps({
         class="lg:hidden order-first lg:order-1 mr-4"
         square
         variant="tertiary"
+        @click="openCategoryMenu"
       >
         <SfIconMenu />
       </SfButton>
+
+      <transition
+        enter-active-class="transition duration-200 ease-out"
+        leave-active-class="transition duration-200 ease-out"
+        enter-from-class="opacity-0"
+        enter-to-class="opacity-100"
+        leave-from-class="opacity-100"
+        leave-to-class="opacity-0"
+      >
+        <div
+          v-if="isCategoryMenuOpen"
+          class="fixed inset-0 bg-neutral-700 bg-opacity-50 z-[11]"
+        />
+      </transition>
+
+      <!-- Modal -->
+      <transition
+        enter-active-class="transition duration-200 ease-out"
+        leave-active-class="transition duration-200 ease-out"
+        enter-from-class="opacity-0 translate-y-10"
+        enter-to-class="opacity-100 translate-y-0"
+        leave-from-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-0 translate-y-10"
+      >
+        <SfModal
+          v-model="isCategoryMenuOpen"
+          class="max-w-[70%] md:max-w-lg z-[11] ml-0 h-full !p-6 !w-auto !rounded-none"
+          tag="section"
+          role="alertdialog"
+          aria-labelledby="promoModalTitle"
+          aria-describedby="promoModalDesc"
+        >
+          <SfButton
+            square
+            variant="tertiary"
+            class="absolute right-2 top-2"
+            @click="closeCategoryMenu"
+          >
+            <SfIconClose />
+          </SfButton>
+          <h3 class="text-4xl">
+            Navigation
+          </h3>
+          <ul class="flex flex-col mt-4 text-left">
+            <li
+              v-for="{ name, to } in navigation"
+              :key="name"
+              class="py-2"
+            >
+              <NuxtLink
+                :to="`/collection/${to}`"
+                variant="secondary"
+                class="mx-4 hover:underline hover:text-primary-500 text-xl"
+                @click="closeCategoryMenu"
+              >
+                {{ name }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </SfModal>
+      </transition>
+
       <ul class="flex hidden lg:flex">
         <li
           v-for="{ name, to } in navigation"
