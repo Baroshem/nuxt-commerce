@@ -1,7 +1,10 @@
 {
   "ci": {
+    "assert": {
+      "preset": "lighthouse:recommended"
+    },
     "collect": {
-      "startServerCommand": "yarn generate && yarn preview",
+      "staticDistDir": "./.output/public",
       "url": [
         "http://localhost:3000/",
         "http://localhost:3000/product/ekktar-crew-jumper",

@@ -41,12 +41,10 @@ jobs:
       - name: Test
         run: yarn test
 
-      - name: lighthouse mobile audit
-        run: yarn lhci:mobile
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      - name: Generate Project
+        run: yarn generate
 
-      - name: lighthouse desktop audit
-        run: yarn lhci:desktop
+      - name: lighthouse mobile audit
+        run: yarn lhci
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
