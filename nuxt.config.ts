@@ -50,13 +50,14 @@ export default defineNuxtConfig({
           contentSecurityPolicy: {
             "img-src": [
               "https://cdn.shopify.com",
-              "http://localhost:3000", // TODO: add an if here that is based on the environment and current host
+              "http://localhost:*",
             ],
             // Needed for SSG
             "script-src-attr": [
               "'unsafe-inline'",
             ],
-            "script-src" : process.env.NODE_ENV === 'production' ? ['http://localhost:3000'] : false
+            // TODO: replace later with the actual domain name, probably `https://commerce.nuxtjs.org`
+            "script-src" : process.env.NODE_ENV === 'production' ? ['http://localhost:*'] : false
           },
           crossOriginEmbedderPolicy: false, // TODO: check if this will be necessary in the final application
         },

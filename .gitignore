@@ -21,3 +21,5 @@ logs
 .env
 .env.*
 !.env.example
+
+.lighthouseci

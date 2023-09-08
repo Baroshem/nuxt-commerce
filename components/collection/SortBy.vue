@@ -65,7 +65,7 @@ function toggleMobileSorting() {
       </div>
       <div
         v-show="isSortingVisible"
-        class="px-4"
+        class="px-4 mb-4"
       >
         <SfSelect
           v-model="selected"

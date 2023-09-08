@@ -78,7 +78,7 @@ import { SfButton } from "@storefront-ui/vue";
             <SfButton
               size="lg"
               variant="secondary"
-              class="bg-white v-full"
+              class="bg-white w-full"
             >
               About
             </SfButton>
