@@ -58,7 +58,7 @@ export default defineNuxtConfig({
               "'unsafe-inline'",
             ],
             // TODO: replace later with the actual domain name, probably `https://commerce.nuxtjs.org`
-            "script-src" : process.env.NODE_ENV === 'production' ? ['http://localhost:*', 'https://commerce-nuxt-js.vercel.app/'] : false
+            "script-src" : process.env.NODE_ENV === 'production' ? ['https://commerce-nuxt-js.vercel.app'] : false
           },
           crossOriginEmbedderPolicy: false, // TODO: check if this will be necessary in the final application
         },
