@@ -51,13 +51,14 @@ export default defineNuxtConfig({
             "img-src": [
               "https://cdn.shopify.com",
               "http://localhost:*",
+              "https://commerce-nuxt-js.vercel.app/"
             ],
             // Needed for SSG
             "script-src-attr": [
               "'unsafe-inline'",
             ],
             // TODO: replace later with the actual domain name, probably `https://commerce.nuxtjs.org`
-            "script-src" : process.env.NODE_ENV === 'production' ? ['http://localhost:*'] : false
+            "script-src" : process.env.NODE_ENV === 'production' ? ['http://localhost:*', 'https://commerce-nuxt-js.vercel.app/'] : false
           },
           crossOriginEmbedderPolicy: false, // TODO: check if this will be necessary in the final application
         },
