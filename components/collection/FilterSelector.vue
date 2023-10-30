@@ -59,7 +59,7 @@ function toggleMobileFiltering() {
       </div>
     </div>
 
-    <div class="w-full md:max-w-[376px] block lg:hidden">
+    <div class="w-full lg:max-w-[376px] block lg:hidden">
       <div
         class="flex w-full relative"
         @click="toggleMobileFiltering"

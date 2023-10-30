@@ -136,7 +136,7 @@ defineProps({
         </SfModal>
       </transition>
 
-      <ul class="flex hidden lg:flex">
+      <ul class="hidden lg:flex">
         <li
           v-for="{ name, to } in navigation"
           :key="name"
@@ -151,7 +151,7 @@ defineProps({
         </li>
       </ul>
       <LayoutSearchBar class="w-96 order-last lg:order-3 mt-2 lg:mt-0" />
-      <nav class="flex-1 flex justify-end lg:order-last lg:ml-4">
+      <nav class="flex-1 flex justify-end order-2 sm:order-last lg:ml-4">
         <div class="flex flex-row flex-nowrap">
           <SfButton
             class="mr-2 -ml-0.5 rounded-md text-primary-700 hover:bg-primary-100 active:bg-primary-200 hover:text-primary-600 active:text-primary-700 relative"
