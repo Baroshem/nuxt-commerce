@@ -8,7 +8,10 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://graphql.myshopify.com' }
       ],
     },
-    pageTransition: { name: "page", mode: "out-in" },
+  },
+
+  experimental: {
+    viewTransition: true
   },
 
   devtools: { enabled: true },
@@ -73,7 +76,7 @@ export default defineNuxtConfig({
     ],
   ],
 
-  site: {
-    url: "https://commerce.nuxtjs.org",
-  },
+  runtimeConfig: {
+    siteUrl: "https://commerce.nuxtjs.org"
+  }
 });

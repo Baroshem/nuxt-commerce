@@ -1,4 +1,4 @@
-import { GetProductQuery } from "#gql";
+import type { GetProductQuery } from "#gql";
 
 const isToastVisible = ref(false);
 // TODO: add global cart object

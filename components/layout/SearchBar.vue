@@ -1,3 +1,109 @@
+<script lang="ts" setup>
+import { offset } from "@floating-ui/vue";
+import { watchDebounced } from "@vueuse/shared";
+import { unrefElement } from "@vueuse/core";
+import {
+  SfIconCancel,
+  SfIconSearch,
+  SfInput,
+  SfListItem,
+  SfLoaderCircular,
+  useDisclosure,
+  useDropdown,
+  useTrapFocus,
+} from "@storefront-ui/vue";
+import type { GetProductsQuery } from "#gql";
+
+const inputModel = ref("");
+const inputRef = ref();
+const dropdownListRef = ref();
+const isLoadingSnippets = ref(false);
+const result = ref<GetProductsQuery["products"]>();
+const { isOpen, close, open } = useDisclosure();
+const { referenceRef, floatingRef, style } = useDropdown({
+  isOpen,
+  onClose: close,
+  placement: "bottom-start",
+  middleware: [offset(4)],
+});
+const { focusables: focusableElements } = useTrapFocus(
+  dropdownListRef as Ref<HTMLElement>,
+  {
+    trapTabs: false,
+    arrowKeysUpDown: true,
+    activeState: isOpen,
+    initialFocus: false,
+  }
+);
+const { getPriceWithCurrency } = useCart();
+
+const submit = () => {
+  close();
+  alert(`Search for phrase: ${inputModel.value}`);
+};
+
+const focusInput = () => {
+  const inputEl = unrefElement(inputRef)?.querySelector("input");
+  inputEl?.focus();
+};
+
+const reset = () => {
+  inputModel.value = "";
+  result.value = undefined;
+  close();
+  focusInput();
+};
+
+const handleInputKeyDown = (event: KeyboardEvent) => {
+  if (event.key === "Escape") reset();
+  if (event.key === "ArrowUp") {
+    open();
+    if (isOpen && focusableElements.value.length > 0) {
+      focusableElements.value[focusableElements.value.length - 1].focus();
+    }
+  }
+  if (event.key === "ArrowDown") {
+    open();
+    if (isOpen && focusableElements.value.length > 0) {
+      focusableElements.value[0].focus();
+    }
+  }
+};
+
+watch(inputModel, () => {
+  if (inputModel.value === "") {
+    reset();
+  }
+});
+
+watchDebounced(
+  inputModel,
+  () => {
+    if (inputModel.value) {
+      const getSnippets = async () => {
+        open();
+        isLoadingSnippets.value = true;
+        try {
+          const { data } = await useAsyncGql("getProducts", {
+            first: 10,
+            variants: 1,
+            query: inputModel.value,
+          });
+          result.value = data.value.products;
+        } catch (error) {
+          close();
+          console.error(error);
+        }
+        isLoadingSnippets.value = false;
+      };
+
+      getSnippets();
+    }
+  },
+  { debounce: 500 }
+);
+</script>
+
 <template>
   <form
     ref="referenceRef"
@@ -95,109 +201,3 @@
     </div>
   </form>
 </template>
-
-<script lang="ts" setup>
-import { offset } from "@floating-ui/vue";
-import { watchDebounced } from "@vueuse/shared";
-import { unrefElement } from "@vueuse/core";
-import {
-  SfIconCancel,
-  SfIconSearch,
-  SfInput,
-  SfListItem,
-  SfLoaderCircular,
-  useDisclosure,
-  useDropdown,
-  useTrapFocus,
-} from "@storefront-ui/vue";
-import { GetProductsQuery } from "#gql";
-
-const inputModel = ref("");
-const inputRef = ref();
-const dropdownListRef = ref();
-const isLoadingSnippets = ref(false);
-const result = ref<GetProductsQuery["products"]>();
-const { isOpen, close, open } = useDisclosure();
-const { referenceRef, floatingRef, style } = useDropdown({
-  isOpen,
-  onClose: close,
-  placement: "bottom-start",
-  middleware: [offset(4)],
-});
-const { focusables: focusableElements } = useTrapFocus(
-  dropdownListRef as Ref<HTMLElement>,
-  {
-    trapTabs: false,
-    arrowKeysUpDown: true,
-    activeState: isOpen,
-    initialFocus: false,
-  }
-);
-const { getPriceWithCurrency } = useCart();
-
-const submit = () => {
-  close();
-  alert(`Search for phrase: ${inputModel.value}`);
-};
-
-const focusInput = () => {
-  const inputEl = unrefElement(inputRef)?.querySelector("input");
-  inputEl?.focus();
-};
-
-const reset = () => {
-  inputModel.value = "";
-  result.value = undefined;
-  close();
-  focusInput();
-};
-
-const handleInputKeyDown = (event: KeyboardEvent) => {
-  if (event.key === "Escape") reset();
-  if (event.key === "ArrowUp") {
-    open();
-    if (isOpen && focusableElements.value.length > 0) {
-      focusableElements.value[focusableElements.value.length - 1].focus();
-    }
-  }
-  if (event.key === "ArrowDown") {
-    open();
-    if (isOpen && focusableElements.value.length > 0) {
-      focusableElements.value[0].focus();
-    }
-  }
-};
-
-watch(inputModel, () => {
-  if (inputModel.value === "") {
-    reset();
-  }
-});
-
-watchDebounced(
-  inputModel,
-  () => {
-    if (inputModel.value) {
-      const getSnippets = async () => {
-        open();
-        isLoadingSnippets.value = true;
-        try {
-          const { data } = await useAsyncGql("getProducts", {
-            first: 10,
-            variants: 1,
-            query: inputModel.value,
-          });
-          result.value = data.value.products;
-        } catch (error) {
-          close();
-          console.error(error);
-        }
-        isLoadingSnippets.value = false;
-      };
-
-      getSnippets();
-    }
-  },
-  { debounce: 500 }
-);
-</script>

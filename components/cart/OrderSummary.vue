@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { SfButton, SfIconShoppingCart } from "@storefront-ui/vue";
-import { GetCartQuery } from "#gql";
+import type { GetCartQuery } from "#gql";
 
 const props = defineProps({
   cart: {

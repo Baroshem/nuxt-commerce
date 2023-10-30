@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { GetCartQuery } from "#gql";
+import type { GetCartQuery } from "#gql";
 import {
   SfButton,
   SfIconShoppingCart,

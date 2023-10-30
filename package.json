@@ -28,25 +28,25 @@
   "devDependencies": {
     "@lhci/cli": "^0.10.0",
     "@nuxt/devtools": "latest",
-    "@nuxt/eslint-config": "^0.1.1",
-    "@nuxt/image": "^1.0.0-rc.1",
-    "@nuxt/test-utils": "^3.6.5",
+    "@nuxt/eslint-config": "^0.2.0",
+    "@nuxt/image": "^1.0.0",
+    "@nuxt/test-utils": "^3.8.0",
     "@nuxtjs/google-fonts": "^3.0.2",
-    "@nuxtjs/tailwindcss": "^6.8.0",
-    "@storefront-ui/typography": "^2.3.1",
-    "@storefront-ui/vue": "^2.5.0",
-    "@types/node": "^18.17.1",
+    "@nuxtjs/tailwindcss": "^6.8.1",
+    "@storefront-ui/typography": "^2.4.0",
+    "@storefront-ui/vue": "^2.6.0",
+    "@types/node": "^20.8.9",
     "eslint": "latest",
     "eslint-config-prettier": "^9.0.0",
-    "lint-staged": "^14.0.1",
-    "nuxt": "^3.6.5",
-    "nuxt-security": "^0.14.4",
-    "nuxt-simple-robots": "^3.1.2",
-    "nuxt-simple-sitemap": "^3.2.6",
+    "lint-staged": "^15.0.2",
+    "nuxt": "^3.8.0",
+    "nuxt-security": "^1.0.0-rc.2",
+    "nuxt-simple-robots": "^3.1.9",
+    "nuxt-simple-sitemap": "^3.4.1",
     "prettier": "^3.0.2",
-    "vitest": "^0.34.2"
+    "vitest": "^0.34.6"
   },
   "dependencies": {
-    "nuxt-graphql-client": "^0.2.30"
+    "nuxt-graphql-client": "^0.2.31"
   }
 }

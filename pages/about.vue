@@ -56,7 +56,7 @@ useSeoMeta({
   ogTitle: "Nuxt Commerce",
   ogDescription:
     "E-Commerce application built with Nuxt, Storefront UI & Shopify",
-  ogImage: `${config.public.site.url}/logo.svg`,
+  ogImage: `${config.siteUrl}/logo.svg`,
   twitterCard: "summary_large_image",
 });
 </script>

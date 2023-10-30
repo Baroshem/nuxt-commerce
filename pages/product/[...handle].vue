@@ -37,7 +37,7 @@ useSeoMeta({
   ogTitle: product.value?.seo.title || product.value?.title,
   ogDescription: product.value?.seo.description || product.value?.description,
   ogImage:
-    product.value?.featuredImage?.url || `${config.public.site.url}/logo.svg`,
+    product.value?.featuredImage?.url || `${config.siteUrl}/logo.svg`,
   twitterCard: "summary_large_image",
 });
 </script>
