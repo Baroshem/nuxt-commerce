@@ -1,8 +1,7 @@
-import type { GetProductQuery } from "#gql";
+import type { GetCartQuery, GetProductQuery } from "#gql";
 
-const isToastVisible = ref(false);
-// TODO: add global cart object
-// const cart = ref<GetCartQuery['cart']>(undefined);
+const toast = ref<string | undefined>(undefined);
+const cart = ref<GetCartQuery['cart']>(undefined);
 
 export const useCart = () => {
   const loading = ref(false);
@@ -53,23 +52,60 @@ export const useCart = () => {
         lines: [{ merchandiseId: computedVariantId.value, quantity }],
       });
 
-      await useAsyncGql("getCart", { cartId: cartId.value });
+      await getCart()
 
-      isToastVisible.value = true;
-      setTimeout(() => {
-        isToastVisible.value = false;
-      }, 5000);
+      displayToast('Product added to cart.')
     } catch (e) {
-      return "Error addint item to cart";
+      return "Error adding item to cart";
     } finally {
       loading.value = false;
     }
   };
 
+  async function getCart() {
+    const cartId = useCookie("cartId");
+    if (!cartId.value) {
+      const { data } = await useAsyncGql("createCart");
+      cartId.value = data.value.cartCreate?.cart?.id;
+    }
+
+    const { data } = await useAsyncGql("getCart", {
+      cartId: cartId.value as string,
+    });
+
+    cart.value = data.value.cart
+  }
+
+  async function removeItemFromCart(itemId: string) {
+    if (!cart?.value?.id) return;
+    try {
+    
+    await useAsyncGql("removeFromCart", {
+      cartId: cart?.value.id,
+      lineIds: [itemId],
+    });
+    await getCart()
+
+      displayToast('Product removed from cart.')
+    } catch (error) {
+      return "Error removing item from cart";
+    }
+  }
+
   return {
-    isToastVisible,
+    cart,
+    toast,
     loading,
     addToCart,
+    removeItemFromCart,
+    getCart,
     getPriceWithCurrency,
   };
 };
+
+function displayToast(text: string) {
+  toast.value = text;
+  setTimeout(() => {
+    toast.value = undefined;
+  }, 5000);
+}

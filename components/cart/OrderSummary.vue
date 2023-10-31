@@ -1,44 +1,12 @@
 <script lang="ts" setup>
 import { SfButton, SfIconShoppingCart } from "@storefront-ui/vue";
-import type { GetCartQuery } from "#gql";
 
-const props = defineProps({
-  cart: {
-    type: Object as PropType<GetCartQuery["cart"]>,
-    default: () => ({}),
-  },
-});
+const { getPriceWithCurrency, cart } = useCart();
 
-const { getPriceWithCurrency } = useCart();
-
-const costs = computed(() => props.cart?.cost);
-
-const items = computed(
-  () =>
-    props.cart?.lines.edges.map(({ node }) => ({
-      image: node.merchandise.product.featuredImage?.url,
-      title: node.merchandise.product.title,
-      handle: node.merchandise.product.handle,
-      price: getPriceWithCurrency(
-        node.merchandise.product.priceRange.minVariantPrice
-      ),
-      id: node.id,
-      options: node.merchandise.selectedOptions,
-      quantity: node.quantity,
-    }))
-);
-
-async function removeItemFromCart(itemId: string) {
-  if (!props.cart?.id) return;
-  await useAsyncGql("removeFromCart", {
-    cartId: props.cart?.id,
-    lineIds: [itemId],
-  });
-  await useAsyncGql("getCart", { cartId: props.cart?.id });
-}
+const costs = computed(() => cart?.value?.cost);
 
 async function redirectToCheckout() {
-  window.location.href = props.cart?.checkoutUrl;
+  window.location.href = cart?.value?.checkoutUrl;
 }
 </script>
 
@@ -51,19 +19,18 @@ async function redirectToCheckout() {
         Order Summary
       </p>
       <p class="typography-text-base font-medium">
-        (Items: {{ items?.length }})
+        (Items: {{ cart?.lines?.edges?.length }})
       </p>
     </div>
     <div class="flex flex-col h-full justify-between overflow-hidden">
       <ul
-        v-if="items?.length"
+        v-if="cart?.lines?.edges?.length"
         class="px-4 md:px-6 mt-3 md:mt-0 flex flex-col flex-grow overflow-auto"
       >
         <CartLineItem
-          v-for="item in items"
-          :key="item.id"
-          :item="item"
-          :remove-item-from-cart="removeItemFromCart"
+          v-for="{ node } in cart?.lines.edges"
+          :key="node.id"
+          :item="node"
         />
       </ul>
       <div

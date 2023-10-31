@@ -1,26 +1,12 @@
 <script setup lang="ts">
+import type { CartFragment } from "#gql";
 import { SfButton, SfListItem, SfIconClose } from "@storefront-ui/vue";
 
-export type LineItem = {
-  handle: string;
-  image: string;
-  id: string;
-  title: string;
-  price: string;
-  quantity: number;
-  options: {
-    name: string;
-    value: string;
-  }[];
-};
+const { getPriceWithCurrency, removeItemFromCart } = useCart();
 
 defineProps({
   item: {
-    type: Object as PropType<LineItem>,
-    required: true,
-  },
-  removeItemFromCart: {
-    type: Function,
+    type: Object as PropType<CartFragment['lines']['edges'][0]['node']>,
     required: true,
   },
 });
@@ -30,9 +16,9 @@ defineProps({
   <SfListItem class="!px-0">
     <div class="flex items-center justify-between">
       <div class="flex items-center">
-        <NuxtLink :to="`/product/${item.handle}`">
+        <NuxtLink :to="`/product/${item.merchandise.product.handle}`">
           <img
-            :src="item.image"
+            :src="item.merchandise.product.featuredImage?.url"
             width="100"
             height="100"
             class="rounded-xl"
@@ -40,13 +26,13 @@ defineProps({
         </NuxtLink>
         <div class="ml-5">
           <p class="text-lg">
-            {{ item.title }} ({{ item.quantity }})
+            {{ item.merchandise.product.title }} ({{ item.quantity }})
           </p>
           <p class="font-bold">
-            {{ item.price }}
+            {{ getPriceWithCurrency(item.merchandise.product.priceRange.minVariantPrice) }}
           </p>
           <p class="text-gray-500">
-            {{ item.options.map((option) => option.value).join(", ") }}
+            {{ item.merchandise.selectedOptions.map((option) => option.value).join(", ") }}
           </p>
         </div>
       </div>

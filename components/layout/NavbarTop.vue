@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { GetCartQuery } from "#gql";
 import {
   SfButton,
   SfIconShoppingCart,
@@ -16,8 +15,8 @@ const {
   open: openCategoryMenu,
   close: closeCategoryMenu,
 } = useDisclosure({ initialValue: false });
+const { cart } = useCart();
 
-// TODO: Replace later with dynamic fetch from Shopify for pages.
 const navigation = [
   {
     name: "Latest Stuff",
@@ -32,13 +31,6 @@ const navigation = [
     to: "summer-collection",
   },
 ];
-
-defineProps({
-  cart: {
-    type: Object as PropType<GetCartQuery["cart"]>,
-    default: () => ({}),
-  },
-});
 </script>
 
 <template>
@@ -211,7 +203,7 @@ defineProps({
         >
           <SfIconClose />
         </SfButton>
-        <CartOrderSummary :cart="cart" />
+        <CartOrderSummary />
       </SfModal>
     </transition>
   </header>
