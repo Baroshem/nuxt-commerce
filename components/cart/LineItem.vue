@@ -13,7 +13,7 @@ defineProps({
 </script>
 
 <template>
-  <SfListItem class="!px-0">
+  <SfListItem class="!px-0 cursor-default">
     <div class="flex items-center justify-between">
       <div class="flex items-center">
         <NuxtLink :to="`/product/${item.merchandise.product.handle}`">

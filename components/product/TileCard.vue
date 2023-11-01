@@ -23,7 +23,7 @@ const computedPrice = computed(
 
 <template>
   <div
-    class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px] text-left"
+    class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px] max-h-[469px] text-left"
   >
     <div class="relative">
       <NuxtLink
