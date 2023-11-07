@@ -3,7 +3,7 @@ const route = useRoute();
 const config = useRuntimeConfig();
 const sortKey = ref("");
 
-const { data: collectionData, pending } = await useAsyncGql("getCollection", {
+const { data: collectionData } = await useAsyncGql("getCollection", {
   handle: route.params.handle[0],
   items: 10,
   variants: 1,
@@ -65,9 +65,7 @@ useSeoMeta({
       <CollectionSortBy @sorting-updated="(newVal) => (sortKey = newVal)" />
       <CollectionFilterSelector :collections="collections" />
     </div>
-    <div
-      class="flex flex-wrap gap-4 justify-center lg:justify-normal "
-    >
+    <div class="flex flex-wrap gap-4 justify-center lg:justify-normal">
       <ProductTileCard
         v-for="{ node } in collectionProducts"
         :key="node.id"

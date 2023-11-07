@@ -76,7 +76,7 @@ export const useCart = () => {
     cart.value = data.value.cart
   }
 
-  async function removeItemFromCart(itemId: string) {
+  async function removeFromCart(itemId: string) {
     if (!cart?.value?.id) return;
     try {
     
@@ -97,7 +97,7 @@ export const useCart = () => {
     toast,
     loading,
     addToCart,
-    removeItemFromCart,
+    removeFromCart,
     getCart,
     getPriceWithCurrency,
   };

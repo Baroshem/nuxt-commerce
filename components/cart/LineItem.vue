@@ -2,11 +2,11 @@
 import type { CartFragment } from "#gql";
 import { SfButton, SfListItem, SfIconClose } from "@storefront-ui/vue";
 
-const { getPriceWithCurrency, removeItemFromCart } = useCart();
+const { getPriceWithCurrency, removeFromCart } = useCart();
 
 defineProps({
   item: {
-    type: Object as PropType<CartFragment['lines']['edges'][0]['node']>,
+    type: Object as PropType<CartFragment["lines"]["edges"][0]["node"]>,
     required: true,
   },
 });
@@ -29,10 +29,18 @@ defineProps({
             {{ item.merchandise.product.title }} ({{ item.quantity }})
           </p>
           <p class="font-bold">
-            {{ getPriceWithCurrency(item.merchandise.product.priceRange.minVariantPrice) }}
+            {{
+              getPriceWithCurrency(
+                item.merchandise.product.priceRange.minVariantPrice
+              )
+            }}
           </p>
           <p class="text-gray-500">
-            {{ item.merchandise.selectedOptions.map((option) => option.value).join(", ") }}
+            {{
+              item.merchandise.selectedOptions
+                .map((option) => option.value)
+                .join(", ")
+            }}
           </p>
         </div>
       </div>
@@ -41,7 +49,7 @@ defineProps({
         square
         variant="tertiary"
         class="text-red-500"
-        @click="removeItemFromCart(item.id)"
+        @click="removeFromCart(item.id)"
       >
         <SfIconClose />
       </SfButton>
