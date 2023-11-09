@@ -35,25 +35,25 @@ const navigation = [
 
 <template>
   <header
-    class="flex justify-center w-full py-2 px-4 lg:py-5 lg:px-6 bg-white border-b border-neutral-200"
+    class="flex justify-center w-full py-2 lg:py-5 border-b border-slate-800"
   >
     <div
-      class="flex flex-wrap lg:flex-nowrap items-center flex-row justify-start h-full w-full"
+      class="flex flex-wrap lg:flex-nowrap items-center justify-between flex-row h-full w-full text-white"
     >
       <NuxtLink
         to="/"
         aria-label="SF Homepage"
-        class="inline-block focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0 w-32"
+        class="inline-block focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0 w-52"
       >
         <picture>
           <source
-            srcset="/nuxt-dark.svg"
+            srcset="/logo-nuxt-commerce.svg"
             media="(min-width: 768px)"
           >
           <NuxtImg
             src="/logo.svg"
-            alt="Sf Logo"
-            class="w-8 h-8 md:h-6 md:w-[176px] lg:w-[12.5rem] lg:h-[1.75rem]"
+            alt="Nuxt Commerce Logo"
+            class="w-8 h-8 md:h-6 md:w-[176px] lg:w-[13.5rem] lg:h-[1.75rem]"
           />
         </picture>
       </NuxtLink>
@@ -136,32 +136,34 @@ const navigation = [
           <NuxtLink
             :to="`/collection/${to}`"
             variant="secondary"
-            class="mx-4 hover:underline hover:text-primary-500"
+            class="mx-4 hover:text-green-500 text-slate-200 font-semibold text-sm"
           >
             {{ name }}
           </NuxtLink>
         </li>
       </ul>
-      <LayoutSearchBar class="w-96 order-last lg:order-3 mt-2 lg:mt-0" />
-      <nav class="flex-1 flex justify-end order-2 sm:order-last lg:ml-4">
-        <div class="flex flex-row flex-nowrap">
-          <SfButton
-            class="mr-2 -ml-0.5 rounded-md text-primary-700 hover:bg-primary-100 active:bg-primary-200 hover:text-primary-600 active:text-primary-700 relative"
-            aria-label="Cart"
-            variant="tertiary"
-            square
-            @click="open"
-          >
-            <template #prefix>
-              <SfIconShoppingCart />
-              <SfBadge
-                v-if="cart?.lines?.edges?.length"
-                :content="cart?.lines.edges.length"
-              />
-            </template>
-          </SfButton>
-        </div>
-      </nav>
+      <div class="flex">
+        <LayoutSearchBar class=" w-60 order-last lg:order-3 mt-2 lg:mt-0" />
+        <nav class="flex-1 flex justify-end order-2 sm:order-last lg:ml-4">
+          <div class="flex flex-row flex-nowrap">
+            <SfButton
+              class="mr-2 -ml-0.5 rounded-md text-white hover:bg-primary-100 active:bg-primary-200 hover:text-primary-600 active:text-primary-700 relative"
+              aria-label="Cart"
+              variant="tertiary"
+              square
+              @click="open"
+            >
+              <template #prefix>
+                <SfIconShoppingCart />
+                <SfBadge
+                  v-if="cart?.lines?.edges?.length"
+                  :content="cart?.lines.edges.length"
+                />
+              </template>
+            </SfButton>
+          </div>
+        </nav>
+      </div>
     </div>
 
     <transition

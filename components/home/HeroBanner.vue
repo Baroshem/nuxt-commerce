@@ -4,28 +4,12 @@ import { SfButton } from "@storefront-ui/vue";
 
 <template>
   <div class="relative min-h-[600px]">
-    <picture>
-      <source
-        srcset="/hero-bg.png"
-        media="(min-width: 768px)"
-      >
-      <NuxtImg
-        src="/hero-bg-mobile.png"
-        class="absolute w-full h-full z-[-1] md:object-cover"
-        format="avif"
-        alt="Hero"
-        height="1004"
-        fetch-priority="high"
-        preload
-        width="618"
-      />
-    </picture>
     <div
       class="md:flex md:flex-row-reverse md:justify-center max-w[1536px] mx-auto md:min-h-[600px]"
     >
       <div class="flex flex-col md:items-stretch md:overflow-hidden">
         <NuxtImg
-          src="/hero-headphones.png"
+          src="/hero.png"
           alt="Headphones"
           format="avif"
           height="600"
@@ -36,12 +20,12 @@ import { SfButton } from "@storefront-ui/vue";
         />
       </div>
       <div
-        class="p-4 md:p-10 md:max-w-[768px] md:flex md:flex-col md:justify-center md:items-start md:basis-2/4"
+        class="p-4 md:max-w-[768px] md:flex md:flex-col md:justify-center md:items-start md:basis-2/4"
       >
-        <h1 class="text-6xl md:leading-[67.5px] font-bold mt-2 mb-4">
-          Nuxt Commerce
+        <h1 class="text-6xl md:leading-[67.5px] font-bold mt-2 mb-4 text-white">
+          Nuxt <span class="text-green-400">Commerce</span>
         </h1>
-        <p class="typography-text-base md:typography-text-lg">
+        <p class="typography-text-base md:typography-text-lg text-white">
           E-Commerce template built with
           <a
             href="https://nuxt.com/"
@@ -68,7 +52,7 @@ import { SfButton } from "@storefront-ui/vue";
           <NuxtLink to="/collection/latest-stuff">
             <SfButton
               size="lg"
-              class="w-full"
+              class="w-full bg-green-400 hover:bg-green-500 text-slate-950"
             >
               See products
             </SfButton>
@@ -78,7 +62,7 @@ import { SfButton } from "@storefront-ui/vue";
             <SfButton
               size="lg"
               variant="secondary"
-              class="bg-white w-full"
+              class="bg-transparent w-full border-green-400 text-green-400 hover:bg-green-900 hover:text-green-300"
             >
               About
             </SfButton>

@@ -22,14 +22,9 @@ const computedPrice = computed(
 </script>
 
 <template>
-  <div
-    class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px] max-h-[469px] text-left"
-  >
+  <div class="rounded-md hover:shadow-lg max-w-[300px] max-h-[469px] text-left">
     <div class="relative">
-      <NuxtLink
-        :to="`/product/${product?.handle}`"
-        class="block"
-      >
+      <NuxtLink :to="`/product/${product?.handle}`" class="block">
         <NuxtImg
           :src="product?.featuredImage?.url.split('?')[0]"
           alt="Great product"
@@ -40,30 +35,28 @@ const computedPrice = computed(
         />
       </NuxtLink>
     </div>
-    <div class="p-4 border-t border-neutral-200">
-      <p class="truncate">
-        {{ product?.title }}
-      </p>
+    <div class="p-1 text-white">
+      <div class="flex justify-between items-center">
+        <p class="truncate text-slate-300">
+          {{ product?.title }}
+        </p>
+        <SfButton
+          type="button"
+          size="sm"
+          :disabled="loading"
+          class="w-full lg:w-auto h-10 bg-transparent hover:bg-transparent hover:text-slate-300"
+          @click="addToCart(product)"
+        >
+          <SfIconShoppingCart size="sm" />
+        </SfButton>
+      </div>
       <p
-        class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700 truncate"
+        class="block py-2 font-normal leading-5 typography-text-sm text-slate-500 truncate"
       >
         {{ product?.description }}
       </p>
-      <span class="block pb-2 font-bold typography-text-lg">{{
-        computedPrice
-      }}</span>
-      <SfButton
-        type="button"
-        size="sm"
-        :disabled="loading"
-        class="w-full lg:w-auto h-10"
-        @click="addToCart(product)"
-      >
-        <template #prefix>
-          <SfIconShoppingCart size="sm" />
-        </template>
-        Add to cart
-      </SfButton>
+
+      <span class="block pb-2 text-slate-400 text-sm">{{ computedPrice }}</span>
     </div>
   </div>
 </template>

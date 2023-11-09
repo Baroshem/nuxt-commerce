@@ -1,5 +1,11 @@
 <script lang="ts" setup>
-import { SfLink, SfListItem } from "@storefront-ui/vue";
+import { SfLink, SfListItem, SfInput, SfButton } from "@storefront-ui/vue";
+const inputValue = ref('');
+
+function subscribeNewsletter (email: string) {
+  console.log(email)
+}
+
 const categories = [
   {
     label: "About",
@@ -18,10 +24,6 @@ const categories = [
       },
       {
         subcategoryLabel: "Track orders",
-        link: "#",
-      },
-      {
-        subcategoryLabel: "Returns",
         link: "#",
       },
     ],
@@ -43,10 +45,6 @@ const categories = [
       },
       {
         subcategoryLabel: "Track orders",
-        link: "#",
-      },
-      {
-        subcategoryLabel: "Returns",
         link: "#",
       },
     ],
@@ -72,51 +70,30 @@ const categories = [
       },
     ],
   },
-  {
-    label: "Services",
-    subcategories: [
-      {
-        subcategoryLabel: "Gift cards",
-        link: "#",
-      },
-      {
-        subcategoryLabel: "Order pickup",
-        link: "#",
-      },
-      {
-        subcategoryLabel: "Purchase status",
-        link: "#",
-      },
-      {
-        subcategoryLabel: "Track orders",
-        link: "#",
-      },
-    ],
-  },
 ];
 </script>
 
 <template>
-  <footer class="pt-10 bg-neutral-100">
+  <footer class="mt-16 pt-12 border-t border-slate-800">
     <div
-      class="grid justify-center grid-cols-[1fr_1fr] md:grid-cols-[repeat(4,1fr)] px-4 md:px-6 pb-10 max-w-[1536px] mx-auto"
+      class="grid justify-center grid-cols-[1fr_1fr] md:grid-cols-[repeat(4,1fr)] pb-10 max-w-[1536px] mx-auto"
     >
       <div
         v-for="{ label, subcategories } in categories"
         :key="label"
-        class="grid grid-cols xs:pb-4"
+        class="grid grid-cols xs:pb-4 text-left"
       >
-        <div class="text-lg font-medium leading-7 text-neutral-900 font-body">
+        <div class="text-lg font-medium leading-7 text-white font-body">
           {{ label }}
         </div>
         <ul>
           <SfListItem
             v-for="{ subcategoryLabel, link } in subcategories"
             :key="subcategoryLabel"
-            class="py-2 !bg-transparent typography-text-sm font-body"
+            class="py-2 !bg-transparent typography-text-sm font-body px-0"
           >
             <SfLink
-              class="no-underline text-neutral-600 hover:underline hover:!text-neutral-900 active:underline active:!text-neutral-900"
+              class="no-underline text-slate-300 hover:underline hover:!text-neutral-900 active:underline active:!text-neutral-900"
               variant="secondary"
               :href="link"
             >
@@ -125,14 +102,37 @@ const categories = [
           </SfListItem>
         </ul>
       </div>
+
+      <form
+        class="mb-4 max-w-[688px] mx-auto h-max w-full"
+        @submit.prevent="subscribeNewsletter(inputValue)"
+      >
+        <p class="text-white text-base text-left mb-2">
+          Subscribe to our newsletter
+        </p>
+        <div class="flex gap-1">
+          <SfInput
+            v-model="inputValue"
+            type="email"
+            wrapper-class="grow"
+            placeholder="you@example.com"
+          />
+          <SfButton
+            type="submit"
+            class="bg-green-400 hover:bg-green-500 text-slate-950"
+          >
+            Subscribe
+          </SfButton>
+        </div>
+      </form>
     </div>
     <div
-      class="bg-neutral-900 px-4 justify-between py-10 md:flex md:py-6 max-w-[1536px] min-w-full text-center"
+      class="justify-between md:flex max-w-[1536px] min-w-full text-center mb-6"
     >
       <p
-        class="flex items-center justify-center py-2 leading-5 text-center typography-text-sm text-white/50 font-body md:ml-6"
+        class="flex items-center justify-center leading-5 text-center typography-text-sm text-white/50 font-body"
       >
-        @2023 Nuxt
+        Copyright © 2016-2023 Nuxt - MIT License
       </p>
       <p
         class="flex items-center justify-center py-2 leading-5 text-center typography-text-sm text-white/50 font-body md:ml-6"
