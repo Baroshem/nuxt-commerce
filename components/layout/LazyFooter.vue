@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { SfLink, SfListItem, SfInput, SfButton } from "@storefront-ui/vue";
-const inputValue = ref('');
+const inputValue = ref("");
 
-function subscribeNewsletter (email: string) {
-  console.log(email)
+function subscribeNewsletter(email: string) {
+  console.log(email);
 }
 
 const categories = [
@@ -71,17 +71,66 @@ const categories = [
     ],
   },
 ];
+
+const paymentIcons = [
+  {
+    id: 0,
+    name: "Paypal Icon",
+    path: "/paypal.png",
+  },
+  {
+    id: 1,
+    name: "Visa Icon",
+    path: "/visa.png",
+  },
+  {
+    id: 2,
+    name: "Master Card Icon",
+    path: "/mastercard.png",
+  },
+  {
+    id: 3,
+    name: "Apple Pay Icon",
+    path: "/applepay.png",
+  },
+  {
+    id: 4,
+    name: "Google Pay Icon",
+    path: "/googlepay.png",
+  },
+];
+
+const socialIcons = [
+  {
+    id: 0,
+    name: "Nuxt Twitter Icon",
+    path: "/twitter.png",
+    link: "https://twitter.com/nuxt_js",
+  },
+  {
+    id: 1,
+    name: "Nuxt Discord Icon",
+    path: "/discord.png",
+    link: "https://discord.com/invite/ps2h6QT",
+  },
+  {
+    id: 2,
+    name: "Nuxt GitHub Icon",
+    path: "/github.png",
+    link: "https://github.com/nuxt",
+  },
+];
 </script>
 
 <template>
-  <footer class="mt-16 pt-12 border-t border-slate-800">
+  <footer class="pt-12 border-t border-slate-800">
     <div
-      class="grid justify-center grid-cols-[1fr_1fr] md:grid-cols-[repeat(4,1fr)] pb-10 max-w-[1536px] mx-auto"
+      class="lg:grid px-4 lg:px-0 justify-center grid-cols-[1fr_1fr] md:grid-cols-[repeat(4,1fr)] pb-10 max-w-[1536px] mx-auto"
     >
       <div
         v-for="{ label, subcategories } in categories"
         :key="label"
-        class="grid grid-cols xs:pb-4 text-left"
+        class="grid grid-cols xs:pb-4 text-center lg:text-left"
       >
         <div class="text-lg font-medium leading-7 text-white font-body">
           {{ label }}
@@ -90,10 +139,10 @@ const categories = [
           <SfListItem
             v-for="{ subcategoryLabel, link } in subcategories"
             :key="subcategoryLabel"
-            class="py-2 !bg-transparent typography-text-sm font-body px-0"
+            class="!bg-transparent typography-text-sm font-body !px-0"
           >
             <SfLink
-              class="no-underline text-slate-300 hover:underline hover:!text-neutral-900 active:underline active:!text-neutral-900"
+              class="no-underline text-slate-400 hover:text-slate-500 active:underline active:!text-neutral-900"
               variant="secondary"
               :href="link"
             >
@@ -107,19 +156,20 @@ const categories = [
         class="mb-4 max-w-[688px] mx-auto h-max w-full"
         @submit.prevent="subscribeNewsletter(inputValue)"
       >
-        <p class="text-white text-base text-left mb-2">
+        <p class="text-white text-base text-left mb-4">
           Subscribe to our newsletter
         </p>
         <div class="flex gap-1">
           <SfInput
             v-model="inputValue"
             type="email"
-            wrapper-class="grow"
+            wrapper-class="grow !bg-gray-700 ring-gray-500"
+            class="bg-gray-700 "
             placeholder="you@example.com"
           />
           <SfButton
             type="submit"
-            class="bg-green-400 hover:bg-green-500 text-slate-950"
+            class="bg-white !text-black hover:bg-gray-200 ml-2"
           >
             Subscribe
           </SfButton>
@@ -127,49 +177,66 @@ const categories = [
       </form>
     </div>
     <div
-      class="justify-between md:flex max-w-[1536px] min-w-full text-center mb-6"
+      class="justify-between flex max-w-[1536px] min-w-full text-center border-t border-slate-800 py-8 items-center flex-col lg:flex-row gap-5 lg:gap-0"
     >
-      <p
-        class="flex items-center justify-center leading-5 text-center typography-text-sm text-white/50 font-body"
-      >
-        Copyright © 2016-2023 Nuxt - MIT License
-      </p>
-      <p
-        class="flex items-center justify-center py-2 leading-5 text-center typography-text-sm text-white/50 font-body md:ml-6"
-      >
-        Made with 💚 by
-        <a
-          href="https://vuestorefront.io"
-          target="_blank"
-          aria-label="Link to Vue Storefront Home Page"
+      <div>
+        <ul class="flex">
+          <li v-for="icon in paymentIcons" :key="icon.id">
+            <NuxtImg
+              width="24"
+              height="24"
+              class="mx-2"
+              :alt="icon.name"
+              :src="icon.path"
+              loading="lazy"
+              fetch-priority="low"
+            />
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p
+          class="flex items-center justify-center leading-5 text-center typography-text-sm text-white/50 font-body"
         >
-          <NuxtImg
-            width="24"
-            height="24"
-            class="mx-2"
-            alt="Vue Storefront Logo"
-            src="/vsf.svg"
-            loading="lazy"
-            fetch-priority="low"
-          />
-        </a>
-        &
-        <a
-          href="https://nuxt.com"
-          target="_blank"
-          aria-label="Link to Nuxt Home Page"
+          Copyright © 2016-2023 Nuxt - MIT License
+        </p>
+        <p
+          class="flex items-center justify-center py-2 leading-5 text-center typography-text-sm text-white/50 font-body"
         >
-          <NuxtImg
-            src="/logo.svg"
-            width="24"
-            alt="Nuxt Logo"
-            height="24"
-            class="mx-2"
-            loading="lazy"
-            fetch-priority="low"
-          />
-        </a>
-      </p>
+          Made with 💚 by
+          <a
+            href="https://vuestorefront.io"
+            target="_blank"
+            aria-label="Link to Vue Storefront Home Page"
+            class="ml-1 hover:underline"
+          >
+            Vue Storefront
+          </a>
+        </p>
+      </div>
+
+      <div>
+        <ul class="flex">
+          <li v-for="icon in socialIcons" :key="icon.id">
+            <a
+              :href="icon.link"
+              target="_blank"
+              :aria-label="icon.name"
+            >
+              <NuxtImg
+                width="30"
+                height="30"
+                class="mx-2"
+                :alt="icon.name"
+                :src="icon.path"
+                loading="lazy"
+                fetch-priority="low"
+              />
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </footer>
 </template>

@@ -5,7 +5,7 @@ const sortKey = ref("");
 
 const { data: collectionData } = await useAsyncGql("getCollection", {
   handle: route.params.handle[0],
-  items: 10,
+  items: 12,
   variants: 1,
 });
 
@@ -60,17 +60,32 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="block lg:flex">
-    <div class="mx-0 min-w-full lg:min-w-fit lg:mx-8">
-      <CollectionSortBy @sorting-updated="(newVal) => (sortKey = newVal)" />
-      <CollectionFilterSelector :collections="collections" />
-    </div>
-    <div class="flex flex-wrap gap-4 justify-center lg:justify-normal">
-      <ProductTileCard
-        v-for="{ node } in collectionProducts"
-        :key="node.id"
-        :product="node"
-      />
+  <div>
+    <section class="my-20">
+      <h1 class="text-5xl font-semibold text-white">{{ collection?.title }}</h1>
+      <p class="text-slate-400 text-base mt-6">
+        Nuxt is an open source framework that makes web development intuitive
+        and powerful..
+      </p>
+    </section>
+
+    <div class="block lg:flex border-t border-slate-800">
+      <div class="mx-0 min-w-full lg:min-w-fit mt-8">
+        <CollectionFilterSelector :collections="collections" />
+      </div>
+      <div class="mt-8 w-full">
+        <div class="flex justify-between ml-10">
+          <h2 class=" text-lg text-white font-medium">All products ({{ collectionProducts?.length }})</h2>
+          <CollectionSortSelector @sorting-updated="(newVal) => (sortKey = newVal)"/>
+        </div>
+        <div class="flex flex-wrap gap-10 justify-center lg:justify-normal mt-8 lg:ml-10">
+          <ProductTileCard
+            v-for="{ node } in collectionProducts"
+            :key="node.id"
+            :product="node"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>

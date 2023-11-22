@@ -2,9 +2,7 @@
 import type { GetProductQuery } from "#gql";
 import {
   SfButton,
-  SfCounter,
   SfChip,
-  SfIconSell,
   SfIconShoppingCart,
 } from "@storefront-ui/vue";
 
@@ -65,17 +63,7 @@ function toggleOption(name: string, value: string) {
 </script>
 
 <template>
-  <section class="md:max-w-[640px] text-left p-4 lg:p-0">
-    <div
-      v-if="product?.availableForSale"
-      class="inline-flex items-center justify-center text-sm font-medium text-white bg-secondary-600 py-1.5 px-3 mb-4"
-    >
-      <SfIconSell
-        size="sm"
-        class="mr-1.5"
-      />
-      Sale
-    </div>
+  <section class="md:max-w-[640px] text-left p-4 lg:p-0 text-white">
     <div class="flex justify-between font-bold">
       <h1 class="mb-1 typography-headline-2">
         {{ product?.title }}
@@ -85,30 +73,23 @@ function toggleOption(name: string, value: string) {
       }}</strong>
     </div>
 
-    <div class="my-2">
-      <SfCounter
-        v-for="tag in product?.tags"
-        :key="tag"
-        class="mr-2 text-primary-700"
-        pill
-      >
-        {{ tag }}
-      </SfCounter>
-    </div>
+    <p class=" mt-6 text-slate-400">
+      {{ product?.description }}
+    </p>
 
     <div
       v-for="option in product?.options"
       :key="option.id"
       class="my-6"
     >
-      <p class="uppercase mb-2">
+      <p class="mb-2 text-slate-400">
         {{ option.name }}
       </p>
       <SfChip
         v-for="value in option.values"
         :key="value"
         size="base"
-        class="mr-2"
+        class="mr-6 bg-gray-700 rounded-lg !px-6 ring-gray-500 hover:bg-gray-500 hover:!ring-gray-400 active:bg-green-400"
         :input-props="{ disabled: isOptionDisabled(option.name, value) }"
         @click="toggleOption(option.name, value)"
       >
@@ -116,22 +97,27 @@ function toggleOption(name: string, value: string) {
       </SfChip>
     </div>
 
-    <p>{{ product?.description }}</p>
-
     <div class="py-4 mb-4">
-      <div class="items-start xs:flex">
-        <ProductQuantitySelector
-          class="mr-0 lg:mr-4 mb-4 lg:mb-0 items-stretch xs:items-center w-full lg:w-auto"
-          @quantity-updated="(newVal) => (quantity = newVal)"
-        />
+      <div class="items-end xs:flex">
+        <div>
+          <p class="text-slate-400 mb-2">
+            Quantity
+          </p>
+          <ProductQuantitySelector
+            class="mr-0 lg:mr-4 items-stretch xs:items-center w-full lg:w-auto"
+            @quantity-updated="(newVal) => (quantity = newVal)"
+          />
+        </div>
+
         <SfButton
           type="button"
           size="lg"
-          class="w-full"
+          class="lg:w-full !bg-green-400 hover:!bg-green-500 !text-slate-950 !h-[42px] w-72 ml-8 lg:ml-0"
+          :class="loading || !areOptionsSelected && '!bg-gray-400 hover:!bg-gray-400'"
           :disabled="loading || !areOptionsSelected"
           @click="addToCart(product, computedVariant?.id, quantity)"
         >
-          <template #prefix>
+          <template #suffix>
             <SfIconShoppingCart size="sm" />
           </template>
           Add to cart

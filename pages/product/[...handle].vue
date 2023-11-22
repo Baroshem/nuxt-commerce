@@ -52,9 +52,9 @@ useSeoMeta({
       />
     </div>
     <section
-      class="justify-center max-w-[1536px] w-full text-center mx-auto my-5"
+      class="max-w-[1536px] w-full mx-auto my-20 text-left ml-4 lg:ml-0"
     >
-      <h2 class="text-2xl mb-6">
+      <h2 class="text-3xl mb-10 text-white">
         Related Products
       </h2>
       <div class="flex overflow-x-scroll">

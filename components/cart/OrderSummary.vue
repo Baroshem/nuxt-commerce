@@ -13,13 +13,13 @@ async function redirectToCheckout() {
 <template>
   <div class="text-left h-full flex flex-col">
     <div
-      class="flex justify-between items-end bg-neutral-100 md:bg-transparent py-2 px-4 md:px-6 md:pt-6 md:pb-4"
+      class="block justify-between items-end py-2 px-4 md:px-6 md:pt-6 md:pb-4"
     >
       <p class="typography-headline-4 font-bold md:typography-headline-3">
         Order Summary
       </p>
-      <p class="typography-text-base font-medium">
-        (Items: {{ cart?.lines?.edges?.length }})
+      <p class="typography-text-base font-medium mt-2">
+        {{ cart?.lines?.edges?.length }} item(s) 
       </p>
     </div>
     <div class="flex flex-col h-full justify-between overflow-hidden">
@@ -44,7 +44,7 @@ async function redirectToCheckout() {
       </div>
       <div class="px-4 pb-4 mt-3 md:px-6 md:pb-6 md:mt-0">
         <div class="flex justify-between typography-text-base pb-4">
-          <div class="flex flex-col grow pr-2">
+          <div class="flex flex-col grow pr-2 text-slate-400">
             <p>Items Subtotal</p>
             <p>Estimated Sales Tax</p>
           </div>
@@ -54,14 +54,14 @@ async function redirectToCheckout() {
           </div>
         </div>
         <div
-          class="flex justify-between typography-headline-4 md:typography-headline-3 font-bold pb-4 mb-4 border-b border-neutral-200"
+          class="flex justify-between typography-headline-4 md:typography-headline-3 font-medium pb-4 mb-4"
         >
           <p>Total</p>
           <p>{{ getPriceWithCurrency(costs?.totalAmount) }}</p>
         </div>
         <SfButton
           size="lg"
-          class="w-full"
+          class="w-full !bg-green-400 text-gray-900"
           @click="redirectToCheckout"
         >
           Checkout

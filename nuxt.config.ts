@@ -54,7 +54,7 @@ export default defineNuxtConfig({
             "img-src": [
               "https://cdn.shopify.com",
               "http://localhost:*",
-              "https://commerce-nuxt-js.vercel.app/"
+              "https://commerce-nuxt-js.vercel.app/",
             ],
             // Needed for SSG
             "script-src-attr": [
@@ -62,15 +62,6 @@ export default defineNuxtConfig({
             ],
           },
           crossOriginEmbedderPolicy: false, // TODO: check if this will be necessary in the final application
-        },
-      },
-    ],
-    [
-      "@nuxtjs/google-fonts",
-      {
-        families: {
-          "Red Hat Display": [400, 500, 700],
-          "Red Hat Text": [300, 400, 500, 700],
         },
       },
     ],

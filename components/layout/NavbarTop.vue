@@ -38,34 +38,37 @@ const navigation = [
     class="flex justify-center w-full py-2 lg:py-5 border-b border-slate-800"
   >
     <div
-      class="flex flex-wrap lg:flex-nowrap items-center justify-between flex-row h-full w-full text-white"
+      class="flex flex-wrap lg:flex-nowrap items-center justify-between flex-row h-full w-full text-slate-200 pb-2 lg:pb-0"
     >
-      <NuxtLink
-        to="/"
-        aria-label="SF Homepage"
-        class="inline-block focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0 w-52"
-      >
-        <picture>
-          <source
-            srcset="/logo-nuxt-commerce.svg"
-            media="(min-width: 768px)"
-          >
-          <NuxtImg
-            src="/logo.svg"
-            alt="Nuxt Commerce Logo"
-            class="w-8 h-8 md:h-6 md:w-[176px] lg:w-[13.5rem] lg:h-[1.75rem]"
-          />
-        </picture>
-      </NuxtLink>
-      <SfButton
-        aria-label="Open categories"
-        class="lg:hidden order-first lg:order-1 mr-4"
-        square
-        variant="tertiary"
-        @click="openCategoryMenu"
-      >
-        <SfIconMenu />
-      </SfButton>
+      <div class="flex items-center">
+        <SfButton
+          aria-label="Open categories"
+          class="lg:hidden mr-4 text-white"
+          square
+          variant="tertiary"
+          size="lg"
+          @click="openCategoryMenu"
+        >
+          <SfIconMenu />
+        </SfButton>
+        <NuxtLink
+          to="/"
+          aria-label="SF Homepage"
+          class="inline-block focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0 lg:w-52"
+        >
+          <picture>
+            <source
+              srcset="/logo-nuxt-commerce.svg"
+              media="(min-width: 768px)"
+            />
+            <NuxtImg
+              src="/logo.svg"
+              alt="Nuxt Commerce Logo"
+              class="w-8 h-8 md:h-6 md:w-[176px] lg:w-[13.5rem] lg:h-[1.75rem]"
+            />
+          </picture>
+        </NuxtLink>
+      </div>
 
       <transition
         enter-active-class="transition duration-200 ease-out"
@@ -92,7 +95,7 @@ const navigation = [
       >
         <SfModal
           v-model="isCategoryMenuOpen"
-          class="max-w-[70%] md:max-w-lg z-[11] ml-0 h-full !p-6 !w-auto !rounded-none"
+          class="max-w-[70%] md:max-w-lg z-[11] ml-0 h-full !p-6 !w-auto !rounded-none !bg-gray-900 border-none"
           tag="section"
           role="alertdialog"
           aria-labelledby="promoModalTitle"
@@ -101,20 +104,14 @@ const navigation = [
           <SfButton
             square
             variant="tertiary"
-            class="absolute right-2 top-2"
+            class="absolute right-2 top-2 text-white"
             @click="closeCategoryMenu"
           >
             <SfIconClose />
           </SfButton>
-          <h3 class="text-4xl">
-            Navigation
-          </h3>
+          <h3 class="text-4xl">Navigation</h3>
           <ul class="flex flex-col mt-4 text-left">
-            <li
-              v-for="{ name, to } in navigation"
-              :key="name"
-              class="py-2"
-            >
+            <li v-for="{ name, to } in navigation" :key="name" class="py-2">
               <NuxtLink
                 :to="`/collection/${to}`"
                 variant="secondary"
@@ -129,10 +126,7 @@ const navigation = [
       </transition>
 
       <ul class="hidden lg:flex">
-        <li
-          v-for="{ name, to } in navigation"
-          :key="name"
-        >
+        <li v-for="{ name, to } in navigation" :key="name">
           <NuxtLink
             :to="`/collection/${to}`"
             variant="secondary"
@@ -142,12 +136,10 @@ const navigation = [
           </NuxtLink>
         </li>
       </ul>
-      <div class="flex">
-        <LayoutSearchBar class=" w-60 order-last lg:order-3 mt-2 lg:mt-0" />
-        <nav class="flex-1 flex justify-end order-2 sm:order-last lg:ml-4">
-          <div class="flex flex-row flex-nowrap">
+      <div class="flex items-baseline lg:items-center">
+        <LayoutSearchBar class="w-60 mt-2 lg:mt-0" />
             <SfButton
-              class="mr-2 -ml-0.5 rounded-md text-white hover:bg-primary-100 active:bg-primary-200 hover:text-primary-600 active:text-primary-700 relative"
+              class="mr-2 ml-4 rounded-md text-slate-200 hover:bg-primary-100 active:bg-primary-200 hover:text-primary-600 active:text-primary-700 relative"
               aria-label="Cart"
               variant="tertiary"
               square
@@ -161,8 +153,6 @@ const navigation = [
                 />
               </template>
             </SfButton>
-          </div>
-        </nav>
       </div>
     </div>
 
@@ -191,7 +181,7 @@ const navigation = [
     >
       <SfModal
         v-model="isOpen"
-        class="max-w-[90%] md:max-w-lg z-[11] mr-0 h-full !p-6 !w-auto !rounded-none"
+        class="max-w-[90%] md:max-w-lg z-[11] mr-0 h-full !p-6 !w-auto !rounded-none !bg-gray-900 border-none text-white"
         tag="section"
         role="alertdialog"
         aria-labelledby="promoModalTitle"
@@ -200,7 +190,7 @@ const navigation = [
         <SfButton
           square
           variant="tertiary"
-          class="absolute right-2 top-2"
+          class="absolute right-2 top-2 text-white"
           @click="close"
         >
           <SfIconClose />

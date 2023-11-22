@@ -22,13 +22,16 @@ const computedPrice = computed(
 </script>
 
 <template>
-  <div class="rounded-md hover:shadow-lg max-w-[300px] max-h-[469px] text-left">
+  <div class="rounded-md hover:shadow-lg max-w-full lg:max-w-[220px] min-w-[220px] max-h-[469px] text-left">
     <div class="relative">
-      <NuxtLink :to="`/product/${product?.handle}`" class="block">
+      <NuxtLink
+        :to="`/product/${product?.handle}`"
+        class="block"
+      >
         <NuxtImg
           :src="product?.featuredImage?.url.split('?')[0]"
           alt="Great product"
-          class="block object-cover h-auto rounded-md aspect-square"
+          class="block object-cover rounded-md aspect-square h-72"
           width="300"
           height="300"
           format="avif"
@@ -47,15 +50,12 @@ const computedPrice = computed(
           class="w-full lg:w-auto h-10 bg-transparent hover:bg-transparent hover:text-slate-300"
           @click="addToCart(product)"
         >
-          <SfIconShoppingCart size="sm" />
+          <SfIconShoppingCart
+            size="sm"
+            class="text-slate-400"
+          />
         </SfButton>
       </div>
-      <p
-        class="block py-2 font-normal leading-5 typography-text-sm text-slate-500 truncate"
-      >
-        {{ product?.description }}
-      </p>
-
       <span class="block pb-2 text-slate-400 text-sm">{{ computedPrice }}</span>
     </div>
   </div>

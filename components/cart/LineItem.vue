@@ -13,7 +13,7 @@ defineProps({
 </script>
 
 <template>
-  <SfListItem class="!px-0 cursor-default">
+  <SfListItem class="!px-0 cursor-default hover:bg-slate-800">
     <div class="flex items-center justify-between">
       <div class="flex items-center">
         <NuxtLink :to="`/product/${item.merchandise.product.handle}`">
@@ -28,7 +28,7 @@ defineProps({
           <p class="text-lg">
             {{ item.merchandise.product.title }} ({{ item.quantity }})
           </p>
-          <p class="font-bold">
+          <p class="font-medium">
             {{
               getPriceWithCurrency(
                 item.merchandise.product.priceRange.minVariantPrice

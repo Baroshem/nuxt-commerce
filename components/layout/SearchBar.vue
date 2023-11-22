@@ -108,7 +108,7 @@ watchDebounced(
   <form
     ref="referenceRef"
     role="search"
-    class="relative"
+    class="relative text-black bg-gray-700"
     @submit.prevent="submit"
   >
     <SfInput
@@ -116,6 +116,8 @@ watchDebounced(
       v-model="inputModel"
       aria-label="Search"
       placeholder="Search 'Shirt' or 'Boot'..."
+      wrapper-class="!bg-gray-700 ring-gray-500"
+      class="bg-gray-700 text-white"
       @focus="open"
       @keydown="handleInputKeyDown"
     >

@@ -130,15 +130,15 @@ const assignRef = (
         type="button"
         :aria-label="alt || 'Product Thumbnail'"
         :aria-current="activeIndex === index"
-        :class="`md:w-[78px] md:h-auto relative shrink-0 pb-1 mx-4 -mb-2 border-b-4 snap-start cursor-pointer focus-visible:outline focus-visible:outline-offset transition-colors flex-grow md:flex-grow-0  ${
-          activeIndex === index ? 'border-primary-700' : 'border-transparent'
+        :class="`md:h-auto relative rounded-lg shrink-0 mx-4 -mb-2 border-2 snap-start cursor-pointer focus-visible:outline focus-visible:outline-offset transition-colors flex-grow md:flex-grow-0  ${
+          activeIndex === index ? 'border-green-400' : 'border-transparent'
         }`"
         @mouseover="activeIndex = index"
         @focus="activeIndex = index"
       >
         <NuxtImg
           :alt="alt || 'Product Thumbnail'"
-          class="border border-neutral-200"
+          class="border border-neutral-200 rounded-lg"
           :width="breakpoints.smaller('lg') ? '111' : '78'"
           :height="breakpoints.smaller('lg') ? '111' : '78'"
           format="avif"
@@ -184,7 +184,7 @@ const assignRef = (
           v-show="!isImageLoading"
           :aria-label="alt || 'Product Image'"
           :aria-hidden="activeIndex !== index"
-          class="object-cover w-auto h-full"
+          class="object-cover w-auto h-full rounded-lg"
           format="avif"
           :alt="alt"
           height="600"

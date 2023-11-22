@@ -52,7 +52,7 @@ import { SfButton } from "@storefront-ui/vue";
           <NuxtLink to="/collection/latest-stuff">
             <SfButton
               size="lg"
-              class="w-full bg-green-400 hover:bg-green-500 text-slate-950"
+              class="w-full !bg-green-400 hover:!bg-green-500 !text-slate-950"
             >
               See products
             </SfButton>
@@ -62,7 +62,7 @@ import { SfButton } from "@storefront-ui/vue";
             <SfButton
               size="lg"
               variant="secondary"
-              class="bg-transparent w-full border-green-400 text-green-400 hover:bg-green-900 hover:text-green-300"
+              class="bg-transparent w-full !border-green-400 !text-green-400 hover:!bg-green-900 hover:!text-green-300"
             >
               About
             </SfButton>
