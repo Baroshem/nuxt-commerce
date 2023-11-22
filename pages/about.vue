@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { SfButton } from '@storefront-ui/vue'
 const config = useRuntimeConfig();
 
 const cardDetails = [
@@ -62,12 +63,12 @@ useSeoMeta({
 </script>
 
 <template>
-  <section>
+  <section class="text-white">
     <div class="mb-8">
-      <h2 class="text-2xl mb-6">
+      <h2 class="text-4xl mb-6">
         Nuxt Commerce
       </h2>
-      <p class="typography-text-base md:typography-text-lg">
+      <p class="typography-text-base md:typography-text-lg text-slate-400">
         E-Commerce template built with
         <a
           href="https://nuxt.com/"
@@ -91,19 +92,16 @@ useSeoMeta({
         🚀
       </p>
 
-      <p class="mt-2">
+      <p class="mt-2 text-slate-400">
         Made with 💚 by Nuxt & Vue Storefront
       </p>
     </div>
 
-    <p class="mb-4">
-      Nuxt Commerce comes with several useful features out of the box:
-    </p>
     <div class="flex flex-wrap gap-4 lg:gap-6 max-w[1536px]">
       <div
         v-for="({ title, description, link }, index) in cardDetails"
         :key="`${title}-${index}`"
-        class="flex flex-col min-w-[325px] max-w-[365px] lg:w-[496px] relative border border-neutral-200 rounded-md hover:shadow-xl"
+        class="flex flex-col min-w-[325px] lg:w-[496px] relative border border-slate-600 rounded-md hover:shadow-xl bg-slate-800"
       >
         <a
           class="absolute inset-0 z-1 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-md"
@@ -116,15 +114,18 @@ useSeoMeta({
             {{ title }}
           </p>
           <p
-            class="mt-1 mb-4 font-normal typography-text-sm text-neutral-700 text-left"
+            class="mt-1 mb-4 font-normal typography-text-sm text-slate-400 text-left"
           >
             {{ description }}
           </p>
-          <!-- <NuxtLink :to="link">
-            <SfButton size="sm" variant="tertiary" class="relative mt-auto"
-              >Read more</SfButton
+          <NuxtLink :to="link">
+            <SfButton
+              size="sm"
+              class="relative mt-auto"
             >
-          </NuxtLink> -->
+              Read more
+            </SfButton>
+          </NuxtLink>
         </div>
       </div>
     </div>

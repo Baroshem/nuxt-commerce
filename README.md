@@ -1,11 +1,10 @@
 # Nuxt Commerce
 
-Demo E-Commerce application built with Nuxt, Storefront UI & Shopify
+Demo E-Commerce application built with [Nuxt](https://nuxt.com), [Storefront UI](https://docs.storefrontui.io/v2/) & [Shopify](https://www.shopify.com/)
 
-Made with 💚 by Nuxt & Vue Storefront
+Made with 💚 by [Nuxt](https://nuxt.com) & [Vue Storefront](https://vuestorefront.io/)
 
-Work in Progress Video of how it works
-https://github.com/nuxt/commerce/assets/37120330/62bd42ac-5af0-47e8-b80a-87b4cc422fbb
+![Demo](./public/landing.png)
 
 ## Features
 
