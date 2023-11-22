@@ -62,7 +62,9 @@ useSeoMeta({
 <template>
   <div>
     <section class="my-20">
-      <h1 class="text-5xl font-semibold text-white">{{ collection?.title }}</h1>
+      <h1 class="text-5xl font-semibold text-white">
+        {{ collection?.title }}
+      </h1>
       <p class="text-slate-400 text-base mt-6">
         Nuxt is an open source framework that makes web development intuitive
         and powerful..
@@ -75,8 +77,10 @@ useSeoMeta({
       </div>
       <div class="mt-8 w-full">
         <div class="flex justify-between ml-10">
-          <h2 class=" text-lg text-white font-medium">All products ({{ collectionProducts?.length }})</h2>
-          <CollectionSortSelector @sorting-updated="(newVal) => (sortKey = newVal)"/>
+          <h2 class=" text-lg text-white font-medium">
+            All products ({{ collectionProducts?.length }})
+          </h2>
+          <CollectionSortSelector @sorting-updated="(newVal) => (sortKey = newVal)" />
         </div>
         <div class="flex flex-wrap gap-10 justify-center lg:justify-normal mt-8 lg:ml-10">
           <ProductTileCard

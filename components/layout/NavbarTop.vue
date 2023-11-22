@@ -60,7 +60,7 @@ const navigation = [
             <source
               srcset="/logo-nuxt-commerce.svg"
               media="(min-width: 768px)"
-            />
+            >
             <NuxtImg
               src="/logo.svg"
               alt="Nuxt Commerce Logo"
@@ -109,9 +109,15 @@ const navigation = [
           >
             <SfIconClose />
           </SfButton>
-          <h3 class="text-4xl">Navigation</h3>
+          <h3 class="text-4xl">
+            Navigation
+          </h3>
           <ul class="flex flex-col mt-4 text-left">
-            <li v-for="{ name, to } in navigation" :key="name" class="py-2">
+            <li
+              v-for="{ name, to } in navigation"
+              :key="name"
+              class="py-2"
+            >
               <NuxtLink
                 :to="`/collection/${to}`"
                 variant="secondary"
@@ -126,7 +132,10 @@ const navigation = [
       </transition>
 
       <ul class="hidden lg:flex">
-        <li v-for="{ name, to } in navigation" :key="name">
+        <li
+          v-for="{ name, to } in navigation"
+          :key="name"
+        >
           <NuxtLink
             :to="`/collection/${to}`"
             variant="secondary"
@@ -138,21 +147,21 @@ const navigation = [
       </ul>
       <div class="flex items-baseline lg:items-center">
         <LayoutSearchBar class="w-60 mt-2 lg:mt-0" />
-            <SfButton
-              class="mr-2 ml-4 rounded-md text-slate-200 hover:bg-primary-100 active:bg-primary-200 hover:text-primary-600 active:text-primary-700 relative"
-              aria-label="Cart"
-              variant="tertiary"
-              square
-              @click="open"
-            >
-              <template #prefix>
-                <SfIconShoppingCart />
-                <SfBadge
-                  v-if="cart?.lines?.edges?.length"
-                  :content="cart?.lines.edges.length"
-                />
-              </template>
-            </SfButton>
+        <SfButton
+          class="mr-2 ml-4 rounded-md text-slate-200 hover:bg-primary-100 active:bg-primary-200 hover:text-primary-600 active:text-primary-700 relative"
+          aria-label="Cart"
+          variant="tertiary"
+          square
+          @click="open"
+        >
+          <template #prefix>
+            <SfIconShoppingCart />
+            <SfBadge
+              v-if="cart?.lines?.edges?.length"
+              :content="cart?.lines.edges.length"
+            />
+          </template>
+        </SfButton>
       </div>
     </div>
 
