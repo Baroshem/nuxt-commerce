@@ -41,7 +41,7 @@
     "nuxt": "^3.8.0",
     "nuxt-security": "^1.0.0-rc.2",
     "nuxt-simple-robots": "^3.1.9",
-    "nuxt-simple-sitemap": "^3.4.1",
+    "nuxt-simple-sitemap": "^4.0.0",
     "prettier": "^3.0.2",
     "vitest": "^0.34.6"
   },
