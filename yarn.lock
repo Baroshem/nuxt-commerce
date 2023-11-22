@@ -2262,9 +2262,7 @@
     std-env "^3.4.3"
 
 "@nuxt/test-utils@^3.8.0":
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/@nuxt/test-utils/-/test-utils-3.8.0.tgz#d5b3965c1e9b0691f66f4d1ff763fb9edad264ba"
-  integrity sha512-E2QUa7AlD7ngr9xzl9uaU6EaLhc0jUSQ/SZd04nR2KftKt0IGy6xlix71vHxar8+nnE1rfMO/jsO7otDOjBT5w==
+  version "3.8.1"
   dependencies:
     "@nuxt/kit" "3.8.0"
     "@nuxt/schema" "3.8.0"
@@ -8500,9 +8498,7 @@ nuxt-site-config@^1.5.4, nuxt-site-config@^1.5.5:
     ufo "^1.3.1"
 
 nuxt@^3.8.0:
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-3.8.0.tgz#e7149ed7a08dea1349881262adc0bd7559783036"
-  integrity sha512-ZnisJYx5AcUl7xlw18m6zfINBpNhld+ZF+jdTLRZxkLjKSFZeFMGqKxOR1jNVSmxfIXM/guK0uV9GPm6HK/z7g==
+  version "3.8.2"
   dependencies:
     "@nuxt/devalue" "^2.0.2"
     "@nuxt/devtools" "^1.0.0"
