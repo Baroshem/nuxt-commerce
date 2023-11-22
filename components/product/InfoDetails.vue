@@ -112,8 +112,8 @@ function toggleOption(name: string, value: string) {
         <SfButton
           type="button"
           size="lg"
-          class="lg:w-full !bg-green-400 hover:!bg-green-500 !text-slate-950 !h-[42px] w-72 ml-8 lg:ml-0"
-          :class="loading || !areOptionsSelected && '!bg-gray-400 hover:!bg-gray-400'"
+          class="lg:w-full  !text-slate-950 !h-[42px] w-72 ml-8 lg:ml-0"
+          :class="loading || !areOptionsSelected ? '!bg-gray-400 hover:!bg-gray-400' : '!bg-green-400 hover:!bg-green-500'"
           :disabled="loading || !areOptionsSelected"
           @click="addToCart(product, computedVariant?.id, quantity)"
         >
