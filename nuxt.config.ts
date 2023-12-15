@@ -16,6 +16,12 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
+  routeRules: {
+    '/**': {
+      index: true
+    }
+  },
+
   modules: [
     "@nuxtjs/tailwindcss",
     "nuxt-simple-robots",

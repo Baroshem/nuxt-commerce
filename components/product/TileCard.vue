@@ -22,7 +22,9 @@ const computedPrice = computed(
 </script>
 
 <template>
-  <div class="rounded-md hover:shadow-lg max-w-full lg:max-w-[220px] min-w-[220px] max-h-[469px] text-left">
+  <div
+    class="rounded-md hover:shadow-lg max-w-full lg:max-w-[220px] min-w-[220px] max-h-[469px] text-left"
+  >
     <div class="relative">
       <NuxtLink
         :to="`/product/${product?.handle}`"
@@ -47,6 +49,7 @@ const computedPrice = computed(
           type="button"
           size="sm"
           :disabled="loading"
+          aria-label="Add to cart button"
           class="w-full lg:w-auto h-10 bg-transparent hover:bg-transparent hover:text-slate-300"
           @click="addToCart(product)"
         >

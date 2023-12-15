@@ -164,7 +164,7 @@ const socialIcons = [
             v-model="inputValue"
             type="email"
             wrapper-class="grow !bg-gray-700 ring-gray-500"
-            class="bg-gray-700 "
+            class="bg-gray-700 placeholder:text-white"
             placeholder="you@example.com"
           />
           <SfButton
