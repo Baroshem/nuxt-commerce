@@ -66,7 +66,7 @@ export const useCart = () => {
   async function getCart() {
     const cartId = useCookie("cartId");
     if (!cartId.value) {
-      const { data } = await nuxtApp.runWithContext(() => useAsyncGql("createCart")); 
+      const { data } = await useAsyncGql("createCart"); 
       cartId.value = data.value.cartCreate?.cart?.id;
     }
 
