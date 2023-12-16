@@ -26,7 +26,7 @@
     "startCommand": "yarn stackblitz"
   },
   "devDependencies": {
-    "@lhci/cli": "^0.10.0",
+    "@lhci/cli": "^0.13.0",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxt/image": "^1.1.0",
