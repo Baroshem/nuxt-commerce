@@ -27,24 +27,6 @@ export default defineNuxtConfig({
     "nuxt-simple-robots",
     "nuxt-simple-sitemap",
     [
-      "nuxt-graphql-client",
-      {
-        clients: {
-          default: {
-            host: "https://graphql.myshopify.com/api/2023-07/graphql.json",
-            codegenHeaders: {
-              "X-Shopify-Storefront-Access-Token":
-                "ecdc7f91ed0970e733268535c828fbbe",
-            },
-            headers: {
-              "X-Shopify-Storefront-Access-Token":
-                "ecdc7f91ed0970e733268535c828fbbe",
-            },
-          },
-        },
-      },
-    ],
-    [
       "@nuxt/image",
       {
         domains: ["cdn.shopify.com"],

@@ -1,9 +1,15 @@
+<script setup lang="ts">
+const { getCart } = useCart();
+
+await getCart();
+</script>
+
 <template>
-  <Body class=" bg-slate-950" />
-  <NuxtLayout
-    name="default"
-    class="max-w-[1536px] text-center mx-auto my-0"
-  >
+  <Body class="bg-slate-950" />
+  <main class="max-w-[1536px] text-center mx-auto my-0">
+    <LayoutNavbarTop class="mb-5" />
+    <LayoutToastAlert />
     <NuxtPage />
-  </NuxtLayout>
+    <LayoutLazyFooter class="mt-5" />
+  </main>
 </template>
