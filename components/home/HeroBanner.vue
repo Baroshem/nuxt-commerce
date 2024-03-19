@@ -32,20 +32,23 @@ import { SfButton } from "@storefront-ui/vue";
             target="_blank"
             class="hover:underline hover:text-primary-500"
             aria-label="Link to Nuxt Home Page"
-          >Nuxt</a>,
+            >Nuxt</a
+          >,
           <a
             href="https://docs.storefrontui.io/v2/"
             target="_blank"
             class="hover:underline hover:text-primary-500"
             aria-label="Link to Storefront UI Documentation Page"
-          >Storefront UI</a>
+            >Storefront UI</a
+          >
           &
           <a
             href="https://www.shopify.com/"
             target="_blank"
             class="hover:underline hover:text-primary-500"
             aria-label="Link to Shopify Home Page"
-          >Shopify</a>
+            >Shopify</a
+          >
           🚀
         </p>
         <div class="flex flex-col md:flex-row gap-4 mt-6">
