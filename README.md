@@ -2,7 +2,7 @@
 
 Demo E-Commerce application built with [Nuxt](https://nuxt.com), [Storefront UI](https://docs.storefrontui.io/v2/) & [Shopify](https://www.shopify.com/)
 
-Made with 💚 by [Nuxt](https://nuxt.com) & [Vue Storefront](https://vuestorefront.io/)
+Made with 💚 by [Nuxt](https://nuxt.com) & [Alokai](https://alokai.com/)
 
 ![Demo](./public/landing.png)
 
