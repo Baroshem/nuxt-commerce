@@ -76,27 +76,27 @@ const paymentIcons = [
   {
     id: 0,
     name: "Paypal Icon",
-    path: "/paypal.png",
+    path: "/icons/paypal.png",
   },
   {
     id: 1,
     name: "Visa Icon",
-    path: "/visa.png",
+    path: "/icons/visa.png",
   },
   {
     id: 2,
     name: "Master Card Icon",
-    path: "/mastercard.png",
+    path: "/icons/mastercard.png",
   },
   {
     id: 3,
     name: "Apple Pay Icon",
-    path: "/applepay.png",
+    path: "/icons/applepay.png",
   },
   {
     id: 4,
     name: "Google Pay Icon",
-    path: "/googlepay.png",
+    path: "/icons/googlepay.png",
   },
 ];
 
@@ -104,19 +104,19 @@ const socialIcons = [
   {
     id: 0,
     name: "Nuxt Twitter Icon",
-    path: "/twitter.png",
+    path: "/icons/twitter.png",
     link: "https://twitter.com/nuxt_js",
   },
   {
     id: 1,
     name: "Nuxt Discord Icon",
-    path: "/discord.png",
+    path: "/icons/discord.png",
     link: "https://discord.com/invite/ps2h6QT",
   },
   {
     id: 2,
     name: "Nuxt GitHub Icon",
-    path: "/github.png",
+    path: "/icons/github.png",
     link: "https://github.com/nuxt",
   },
 ];
@@ -169,7 +169,7 @@ const socialIcons = [
           />
           <SfButton
             type="submit"
-            class="bg-white !text-black hover:bg-gray-200 ml-2"
+            class="bg-white !text-black hover:!bg-gray-200 ml-2"
           >
             Subscribe
           </SfButton>
@@ -181,10 +181,7 @@ const socialIcons = [
     >
       <div>
         <ul class="flex">
-          <li
-            v-for="icon in paymentIcons"
-            :key="icon.id"
-          >
+          <li v-for="icon in paymentIcons" :key="icon.id">
             <NuxtImg
               width="24"
               height="24"
@@ -202,34 +199,27 @@ const socialIcons = [
         <p
           class="flex items-center justify-center leading-5 text-center typography-text-sm text-white/50 font-body"
         >
-          Copyright © 2016-2023 Nuxt - MIT License
+          Copyright © 2024-present Nuxt - MIT License
         </p>
         <p
           class="flex items-center justify-center py-2 leading-5 text-center typography-text-sm text-white/50 font-body"
         >
           Made with 💚 by
           <a
-            href="https://vuestorefront.io"
+            href="https://alokai.com"
             target="_blank"
-            aria-label="Link to Vue Storefront Home Page"
+            aria-label="Link to Vue Alokai Home Page"
             class="ml-1 hover:underline"
           >
-            Vue Storefront
+            Alokai
           </a>
         </p>
       </div>
 
       <div>
         <ul class="flex">
-          <li
-            v-for="icon in socialIcons"
-            :key="icon.id"
-          >
-            <a
-              :href="icon.link"
-              target="_blank"
-              :aria-label="icon.name"
-            >
+          <li v-for="icon in socialIcons" :key="icon.id">
+            <a :href="icon.link" target="_blank" :aria-label="icon.name">
               <NuxtImg
                 width="30"
                 height="30"
