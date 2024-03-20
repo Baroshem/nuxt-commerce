@@ -110,6 +110,7 @@ const navigation = [
             <SfIconClose />
           </SfButton>
           <h3 class="text-4xl">Navigation</h3>
+          <LayoutSearchBar class="mt-4 lg:mt-0" />
           <ul class="flex flex-col mt-4 text-left">
             <li v-for="{ name, to } in navigation" :key="name" class="py-2">
               <NuxtLink
@@ -137,7 +138,7 @@ const navigation = [
         </li>
       </ul>
       <div class="flex items-baseline lg:items-center">
-        <LayoutSearchBar class="w-60 mt-2 lg:mt-0" />
+        <LayoutSearchBar class="w-60 mt-2 lg:mt-0 hidden xs:block" />
         <SfButton
           class="mr-2 ml-4 rounded-md text-slate-200 hover:bg-primary-100 active:bg-primary-200 hover:text-primary-600 active:text-primary-700 relative"
           aria-label="Cart"

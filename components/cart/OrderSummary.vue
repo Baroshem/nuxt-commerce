@@ -64,7 +64,7 @@ async function removeItem(id: string) {
         <SfIconShoppingCart class="text-center mx-auto my-2 !w-24 !h-24" />
         <p class="text-lg">No items in cart</p>
       </div>
-      <div class="px-4 pb-4 mt-3 md:px-6 md:pb-6">
+      <div class="px-4 pb-1 mt-3 md:px-6 md:pb-6">
         <div
           class="flex justify-between typography-text-base pb-4 border-t border-slate-800 pt-6"
         >
@@ -90,7 +90,6 @@ async function removeItem(id: string) {
           <p>{{ getPriceWithCurrency(costs?.totalAmount) }}</p>
         </div>
         <SfButton
-          size="lg"
           class="w-full !text-gray-900"
           :class="
             loading

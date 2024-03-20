@@ -81,7 +81,7 @@ function toggleOption(name: string, value: string) {
         v-for="value in option.values"
         :key="value"
         size="base"
-        class="mr-6 bg-gray-700 rounded-lg !px-6 ring-gray-500 hover:bg-gray-500 hover:!ring-gray-400 active:bg-green-400"
+        class="mr-6 bg-gray-800 rounded-lg !px-6 !ring-gray-700 hover:!bg-gray-700"
         :input-props="{ disabled: isOptionDisabled(option.name, value) }"
         @click="toggleOption(option.name, value)"
       >
@@ -90,11 +90,11 @@ function toggleOption(name: string, value: string) {
     </div>
 
     <div class="py-4 mb-4">
-      <div class="items-end xs:flex">
-        <div>
+      <div class="items-end flex">
+        <div class="w-max">
           <p class="text-slate-400 mb-2">Quantity</p>
           <ProductQuantitySelector
-            class="mr-0 lg:mr-4 items-stretch xs:items-center w-full lg:w-auto"
+            class="mr-0 lg:mr-4 items-stretch xs:items-center lg:w-auto"
             @quantity-updated="(newVal: number) => (quantity = newVal)"
           />
         </div>
@@ -102,7 +102,7 @@ function toggleOption(name: string, value: string) {
         <SfButton
           type="button"
           size="lg"
-          class="lg:w-full !text-slate-950 !h-[42px] w-72 ml-8 lg:ml-0"
+          class="w-48 md:w-full !text-slate-950 !h-[42px] ml-8 lg:ml-0"
           :class="
             loading || !areOptionsSelected
               ? '!bg-gray-400 hover:!bg-gray-400'
