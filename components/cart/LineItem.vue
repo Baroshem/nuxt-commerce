@@ -2,12 +2,23 @@
 import type { CartFragment } from "#gql";
 import { SfButton, SfListItem, SfIconClose } from "@storefront-ui/vue";
 
-const { getPriceWithCurrency, removeFromCart, updateItemQuantity } =
-  useShopifyCart();
+const { getPriceWithCurrency } = useShopifyCart();
+
+const emit = defineEmits<{
+  (e: "remove-item", value: string): void;
+  (
+    e: "update-quantity",
+    value: { item: CartFragment["lines"]["edges"][0]["node"]; quantity: number }
+  ): void;
+}>();
 
 defineProps({
   item: {
     type: Object as PropType<CartFragment["lines"]["edges"][0]["node"]>,
+    required: true,
+  },
+  disabled: {
+    type: Boolean,
     required: true,
   },
 });
@@ -32,7 +43,7 @@ defineProps({
           <SfButton
             square
             class="text-white absolute -top-3 -right-3 h-6 w-6 !bg-gray-800 border-gray-700 border hover:!bg-slate-700"
-            @click="removeFromCart(item.id)"
+            @click="emit('remove-item', item.id)"
           >
             <SfIconClose class="min-h-[16px] min-w-[16px]" />
           </SfButton>
@@ -59,8 +70,10 @@ defineProps({
           <CartQuantitySelector
             class="absolute right-0 bottom-0"
             :quantity="item.quantity"
+            :disabled="disabled"
             @quantity-updated="
-              (newVal: number) => updateItemQuantity(item, newVal)
+              (newVal: number) =>
+                emit('update-quantity', { item, quantity: newVal })
             "
           />
         </div>

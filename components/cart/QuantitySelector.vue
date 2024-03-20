@@ -7,6 +7,10 @@ const props = defineProps({
     type: Number,
     required: true,
   },
+  disabled: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 const emit = defineEmits<(e: "quantity-updated", value: number) => void>();
@@ -29,7 +33,7 @@ watch(count, (newVal: number) => {
     <div class="flex border border-gray-700 rounded-md bg-gray-800">
       <SfButton
         variant="tertiary"
-        :disabled="count <= min"
+        :disabled="count <= min || disabled"
         square
         class="rounded-r-none !p-1"
         :aria-controls="inputId"
@@ -42,13 +46,14 @@ watch(count, (newVal: number) => {
         :id="inputId"
         v-model="count"
         type="number"
+        :disabled="disabled"
         class="appearance-none w-8 text-center bg-transparent font-medium [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-inner-spin-button]:display-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-outer-spin-button]:display-none [&::-webkit-outer-spin-button]:m-0 [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none disabled:placeholder-disabled-900 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm"
         :min="min"
         :max="max"
       />
       <SfButton
         variant="tertiary"
-        :disabled="count >= max"
+        :disabled="count >= max || disabled"
         square
         class="rounded-l-none !p-1"
         :aria-controls="inputId"

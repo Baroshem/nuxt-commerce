@@ -1,12 +1,33 @@
 <script lang="ts" setup>
 import { SfButton, SfIconShoppingCart } from "@storefront-ui/vue";
+import type { CartFragment } from "#gql";
 
-const { getPriceWithCurrency, cart, loading } = useShopifyCart();
+const {
+  getPriceWithCurrency,
+  cart,
+  loading,
+  updateItemQuantity,
+  removeFromCart,
+} = useShopifyCart();
 
 const costs = computed(() => cart?.value?.cost);
 
 async function redirectToCheckout() {
   window.location.href = cart?.value?.checkoutUrl;
+}
+
+async function updateQuantity({
+  item,
+  quantity,
+}: {
+  item: CartFragment["lines"]["edges"][0]["node"];
+  quantity: number;
+}) {
+  await updateItemQuantity(item, quantity);
+}
+
+async function removeItem(id: string) {
+  await removeFromCart(id);
 }
 </script>
 
@@ -31,6 +52,9 @@ async function redirectToCheckout() {
           v-for="{ node } in cart?.lines.edges"
           :key="node.id"
           :item="node"
+          :disabled="loading"
+          @remove-item="removeItem"
+          @update-quantity="updateQuantity"
         />
       </ul>
       <div

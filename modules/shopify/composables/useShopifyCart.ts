@@ -2,10 +2,10 @@ import type { CartFragment, GetCartQuery, GetProductQuery } from "#gql";
 
 const toast = ref<string | undefined>(undefined);
 const cart = ref<GetCartQuery["cart"]>(undefined);
-const loading = ref(false);
 
 export const useShopifyCart = () => {
   const nuxtApp = useNuxtApp();
+  const loading = ref(false);
 
   const getPriceWithCurrency = (
     price?: { amount: string; currencyCode: string } | null
