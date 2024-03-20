@@ -163,16 +163,11 @@ const socialIcons = [
           <SfInput
             v-model="inputValue"
             type="email"
-            wrapper-class="grow !bg-gray-700 ring-gray-500"
+            wrapper-class="grow !bg-gray-700 ring-gray-500 mr-2"
             class="bg-gray-700 placeholder:text-white"
             placeholder="you@example.com"
           />
-          <SfButton
-            type="submit"
-            class="bg-white !text-black hover:!bg-gray-200 ml-2"
-          >
-            Subscribe
-          </SfButton>
+          <SfButton type="submit"> Subscribe </SfButton>
         </div>
       </form>
     </div>
