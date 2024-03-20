@@ -9,7 +9,7 @@ const props = defineProps({
   },
 });
 
-const { addToCart, loading, getPriceWithCurrency } = useCart();
+const { addToCart, loading, getPriceWithCurrency } = useShopifyCart();
 
 const computedPrice = computed(
   () =>
@@ -26,10 +26,7 @@ const computedPrice = computed(
     class="rounded-md hover:shadow-lg max-w-full lg:max-w-[220px] min-w-[220px] max-h-[469px] text-left"
   >
     <div class="relative">
-      <NuxtLink
-        :to="`/product/${product?.handle}`"
-        class="block"
-      >
+      <NuxtLink :to="`/product/${product?.handle}`" class="block">
         <NuxtImg
           :src="product?.featuredImage?.url.split('?')[0]"
           alt="Great product"
@@ -55,7 +52,7 @@ const computedPrice = computed(
         >
           <SfIconShoppingCart
             size="sm"
-            class="text-slate-400"
+            class="text-slate-400 hover:text-slate-600"
           />
         </SfButton>
       </div>

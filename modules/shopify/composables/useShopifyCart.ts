@@ -3,7 +3,7 @@ import type { GetCartQuery, GetProductQuery } from "#gql";
 const toast = ref<string | undefined>(undefined);
 const cart = ref<GetCartQuery['cart']>(undefined);
 
-export const useCart = () => {
+export const useShopifyCart = () => {
   const nuxtApp = useNuxtApp()
   const loading = ref(false);
 

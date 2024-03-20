@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { getCart } = useCart();
+const { getCart } = useShopifyCart();
 
 await getCart();
 </script>

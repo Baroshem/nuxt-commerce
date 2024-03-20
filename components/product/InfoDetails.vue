@@ -1,10 +1,6 @@
 <script lang="ts" setup>
 import type { GetProductQuery } from "#gql";
-import {
-  SfButton,
-  SfChip,
-  SfIconShoppingCart,
-} from "@storefront-ui/vue";
+import { SfButton, SfChip, SfIconShoppingCart } from "@storefront-ui/vue";
 
 const props = defineProps({
   product: {
@@ -13,7 +9,7 @@ const props = defineProps({
   },
 });
 
-const { addToCart, loading, getPriceWithCurrency } = useCart();
+const { addToCart, loading, getPriceWithCurrency } = useShopifyCart();
 const router = useRouter();
 const currentRoute = useRoute();
 
@@ -73,15 +69,11 @@ function toggleOption(name: string, value: string) {
       }}</strong>
     </div>
 
-    <p class=" mt-6 text-slate-400">
+    <p class="mt-6 text-slate-400">
       {{ product?.description }}
     </p>
 
-    <div
-      v-for="option in product?.options"
-      :key="option.id"
-      class="my-6"
-    >
+    <div v-for="option in product?.options" :key="option.id" class="my-6">
       <p class="mb-2 text-slate-400">
         {{ option.name }}
       </p>
@@ -100,20 +92,22 @@ function toggleOption(name: string, value: string) {
     <div class="py-4 mb-4">
       <div class="items-end xs:flex">
         <div>
-          <p class="text-slate-400 mb-2">
-            Quantity
-          </p>
+          <p class="text-slate-400 mb-2">Quantity</p>
           <ProductQuantitySelector
             class="mr-0 lg:mr-4 items-stretch xs:items-center w-full lg:w-auto"
-            @quantity-updated="(newVal) => (quantity = newVal)"
+            @quantity-updated="(newVal: number) => (quantity = newVal)"
           />
         </div>
 
         <SfButton
           type="button"
           size="lg"
-          class="lg:w-full  !text-slate-950 !h-[42px] w-72 ml-8 lg:ml-0"
-          :class="loading || !areOptionsSelected ? '!bg-gray-400 hover:!bg-gray-400' : '!bg-green-400 hover:!bg-green-500'"
+          class="lg:w-full !text-slate-950 !h-[42px] w-72 ml-8 lg:ml-0"
+          :class="
+            loading || !areOptionsSelected
+              ? '!bg-gray-400 hover:!bg-gray-400'
+              : '!bg-green-400 hover:!bg-green-500'
+          "
           :disabled="loading || !areOptionsSelected"
           @click="addToCart(product, computedVariant?.id, quantity)"
         >

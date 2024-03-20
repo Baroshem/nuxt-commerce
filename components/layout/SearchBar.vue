@@ -35,7 +35,7 @@ const { focusables: focusableElements } = useTrapFocus(
     initialFocus: false,
   }
 );
-const { getPriceWithCurrency } = useCart();
+const { getPriceWithCurrency } = useShopifyCart();
 
 const submit = () => {
   close();
@@ -159,15 +159,8 @@ watchDebounced(
         ref="dropdownListRef"
         class="py-2 bg-white border border-solid rounded-md border-neutral-100 drop-shadow-md"
       >
-        <li
-          v-for="{ node } in result?.edges"
-          :key="node.id"
-        >
-          <SfListItem
-            tag="button"
-            type="button"
-            class="flex justify-start"
-          >
+        <li v-for="{ node } in result?.edges" :key="node.id">
+          <SfListItem tag="button" type="button" class="flex justify-start">
             <NuxtLink
               class="flex items-center justify-between"
               :to="`/product/${node.handle}`"

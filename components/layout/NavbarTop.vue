@@ -15,7 +15,7 @@ const {
   open: openCategoryMenu,
   close: closeCategoryMenu,
 } = useDisclosure({ initialValue: false });
-const { cart } = useCart();
+const { cart } = useShopifyCart();
 
 const navigation = [
   {
@@ -60,7 +60,7 @@ const navigation = [
             <source
               srcset="/logo-nuxt-commerce.svg"
               media="(min-width: 768px)"
-            >
+            />
             <NuxtImg
               src="/logo.svg"
               alt="Nuxt Commerce Logo"
@@ -109,15 +109,9 @@ const navigation = [
           >
             <SfIconClose />
           </SfButton>
-          <h3 class="text-4xl">
-            Navigation
-          </h3>
+          <h3 class="text-4xl">Navigation</h3>
           <ul class="flex flex-col mt-4 text-left">
-            <li
-              v-for="{ name, to } in navigation"
-              :key="name"
-              class="py-2"
-            >
+            <li v-for="{ name, to } in navigation" :key="name" class="py-2">
               <NuxtLink
                 :to="`/collection/${to}`"
                 variant="secondary"
@@ -132,10 +126,7 @@ const navigation = [
       </transition>
 
       <ul class="hidden lg:flex">
-        <li
-          v-for="{ name, to } in navigation"
-          :key="name"
-        >
+        <li v-for="{ name, to } in navigation" :key="name">
           <NuxtLink
             :to="`/collection/${to}`"
             variant="secondary"

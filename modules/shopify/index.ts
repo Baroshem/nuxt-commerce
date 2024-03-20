@@ -2,8 +2,15 @@ import {
   defineNuxtModule,
   installModule,
   createResolver,
-  addImportsDir
+  addImportsDir,
 } from "@nuxt/kit";
+
+const SHOPIFY_GRAPHQL_API_URL =
+  process.env.SHOPIFY_GRAPHQL_API_URL ||
+  "https://graphql.myshopify.com/api/2023-07/graphql.json";
+const SHOPIFY_ACCESS_TOKEN_HEADER = "X-Shopify-Storefront-Access-Token";
+const SHOPIFY_ACCESS_TOKEN =
+  process.env.SHOPIFY_ACCESS_TOKEN || "ecdc7f91ed0970e733268535c828fbbe";
 
 export default defineNuxtModule({
   meta: {
@@ -11,19 +18,17 @@ export default defineNuxtModule({
   },
   async setup() {
     const { resolve } = createResolver(import.meta.url);
-    addImportsDir(resolve('composables'))
+    addImportsDir(resolve("composables"));
 
     await installModule("nuxt-graphql-client", {
       clients: {
         default: {
-          host: "https://graphql.myshopify.com/api/2023-07/graphql.json",
+          host: SHOPIFY_GRAPHQL_API_URL,
           codegenHeaders: {
-            "X-Shopify-Storefront-Access-Token":
-              "ecdc7f91ed0970e733268535c828fbbe",
+            [SHOPIFY_ACCESS_TOKEN_HEADER]: SHOPIFY_ACCESS_TOKEN,
           },
           headers: {
-            "X-Shopify-Storefront-Access-Token":
-              "ecdc7f91ed0970e733268535c828fbbe",
+            [SHOPIFY_ACCESS_TOKEN_HEADER]: SHOPIFY_ACCESS_TOKEN,
           },
         },
       },

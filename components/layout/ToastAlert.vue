@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { SfIconCheckCircle } from "@storefront-ui/vue";
-const { toast } = useCart();
+const { toast } = useShopifyCart();
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { SfButton, SfIconShoppingCart } from "@storefront-ui/vue";
 
-const { getPriceWithCurrency, cart } = useCart();
+const { getPriceWithCurrency, cart } = useShopifyCart();
 
 const costs = computed(() => cart?.value?.cost);
 
@@ -19,7 +19,7 @@ async function redirectToCheckout() {
         Order Summary
       </p>
       <p class="typography-text-base font-medium mt-2">
-        {{ cart?.lines?.edges?.length }} item(s) 
+        {{ cart?.lines?.edges?.length }} item(s)
       </p>
     </div>
     <div class="flex flex-col h-full justify-between overflow-hidden">
@@ -38,9 +38,7 @@ async function redirectToCheckout() {
         class="px-4 md:px-6 mt-6 flex flex-col flex-grow overflow-auto text-center"
       >
         <SfIconShoppingCart class="text-center mx-auto my-2 !w-24 !h-24" />
-        <p class="text-lg">
-          No items in cart
-        </p>
+        <p class="text-lg">No items in cart</p>
       </div>
       <div class="px-4 pb-4 mt-3 md:px-6 md:pb-6 md:mt-0">
         <div class="flex justify-between typography-text-base pb-4">

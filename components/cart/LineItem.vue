@@ -2,7 +2,7 @@
 import type { CartFragment } from "#gql";
 import { SfButton, SfListItem, SfIconClose } from "@storefront-ui/vue";
 
-const { getPriceWithCurrency, removeFromCart } = useCart();
+const { getPriceWithCurrency, removeFromCart } = useShopifyCart();
 
 defineProps({
   item: {
@@ -22,7 +22,7 @@ defineProps({
             width="100"
             height="100"
             class="rounded-xl"
-          >
+          />
         </NuxtLink>
         <div class="ml-5">
           <p class="text-lg">
