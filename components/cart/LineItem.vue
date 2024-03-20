@@ -67,10 +67,11 @@ defineProps({
                 .join(", ")
             }}
           </p>
-          <CartQuantitySelector
+          <ProductQuantitySelector
             class="absolute right-0 bottom-0"
             :quantity="item.quantity"
             :disabled="disabled"
+            small
             @quantity-updated="
               (newVal: number) =>
                 emit('update-quantity', { item, quantity: newVal })
