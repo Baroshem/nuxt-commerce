@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SfIconArrowForward } from '@storefront-ui/vue'
+import { SfIconArrowForward } from "@storefront-ui/vue";
 const config = useRuntimeConfig();
 
 useSeoMeta({
@@ -14,7 +14,7 @@ useSeoMeta({
 });
 
 const { data: collectionData } = await useAsyncGql("getCollection", {
-  handle: 'latest-stuff',
+  handle: "latest-stuff",
   items: 10,
   variants: 1,
 });
@@ -34,11 +34,10 @@ const products = computed(() => data.value?.products?.edges);
     <section class="justify-center">
       <div class="flex justify-between my-16">
         <div class="text-left">
-          <h2 class="text-4xl font-medium text-white mb-6">
-            New Collection
-          </h2>
+          <h2 class="text-4xl font-medium text-white mb-6">New Collection</h2>
           <p class="text-slate-400">
-            Nuxt is an open source framework that makes web development intuitive and powerful.
+            Nuxt is an open source framework that makes web development
+            intuitive and powerful.
           </p>
         </div>
 
@@ -51,7 +50,9 @@ const products = computed(() => data.value?.products?.edges);
         </NuxtLink>
       </div>
 
-      <div class="flex overflow-x-scroll">
+      <div
+        class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+      >
         <ProductTileCard
           v-for="{ node } in collectionProducts"
           :key="node.id"
@@ -62,11 +63,10 @@ const products = computed(() => data.value?.products?.edges);
 
       <div class="flex justify-between my-16">
         <div class="text-left">
-          <h2 class="text-4xl font-medium text-white mb-6">
-            Top products
-          </h2>
+          <h2 class="text-4xl font-medium text-white mb-6">Top products</h2>
           <p class="text-slate-400">
-            Nuxt is an open source framework that makes web development intuitive and powerful.
+            Nuxt is an open source framework that makes web development
+            intuitive and powerful.
           </p>
         </div>
 
@@ -79,7 +79,9 @@ const products = computed(() => data.value?.products?.edges);
         </NuxtLink>
       </div>
 
-      <div class="flex overflow-x-scroll">
+      <div
+        class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+      >
         <ProductTileCard
           v-for="{ node } in products"
           :key="node.id"

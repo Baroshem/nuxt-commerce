@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { SfButton, SfIconShoppingCart } from "@storefront-ui/vue";
 
-const { getPriceWithCurrency, cart } = useShopifyCart();
+const { getPriceWithCurrency, cart, loading } = useShopifyCart();
 
 const costs = computed(() => cart?.value?.cost);
 
@@ -15,7 +15,7 @@ async function redirectToCheckout() {
     <div
       class="block justify-between items-end py-2 px-4 md:px-6 md:pt-6 md:pb-4"
     >
-      <p class="typography-headline-4 font-bold md:typography-headline-3">
+      <p class="typography-headline-4 font-semibold md:typography-headline-3">
         Order Summary
       </p>
       <p class="typography-text-base font-medium mt-2">
@@ -25,7 +25,7 @@ async function redirectToCheckout() {
     <div class="flex flex-col h-full justify-between overflow-hidden">
       <ul
         v-if="cart?.lines?.edges?.length"
-        class="px-4 md:px-6 mt-3 md:mt-0 flex flex-col flex-grow overflow-auto"
+        class="px-4 md:px-6 pt-3 flex flex-col flex-grow overflow-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         <CartLineItem
           v-for="{ node } in cart?.lines.edges"
@@ -40,15 +40,23 @@ async function redirectToCheckout() {
         <SfIconShoppingCart class="text-center mx-auto my-2 !w-24 !h-24" />
         <p class="text-lg">No items in cart</p>
       </div>
-      <div class="px-4 pb-4 mt-3 md:px-6 md:pb-6 md:mt-0">
-        <div class="flex justify-between typography-text-base pb-4">
+      <div class="px-4 pb-4 mt-3 md:px-6 md:pb-6">
+        <div
+          class="flex justify-between typography-text-base pb-4 border-t border-slate-800 pt-6"
+        >
           <div class="flex flex-col grow pr-2 text-slate-400">
-            <p>Items Subtotal</p>
-            <p>Estimated Sales Tax</p>
+            <p>Subtotal</p>
+            <p class="mt-2">Sales Tax</p>
+            <p class="mt-2">Shipping</p>
           </div>
           <div class="flex flex-col text-right">
             <p>{{ getPriceWithCurrency(costs?.subtotalAmount) }}</p>
-            <p>{{ getPriceWithCurrency(costs?.totalTaxAmount) }}</p>
+            <p class="mt-2">
+              {{ getPriceWithCurrency(costs?.totalTaxAmount) }}
+            </p>
+            <p class="mt-3 text-sm font-normal text-gray-500">
+              Calculated at checkout
+            </p>
           </div>
         </div>
         <div
@@ -59,7 +67,13 @@ async function redirectToCheckout() {
         </div>
         <SfButton
           size="lg"
-          class="w-full !bg-green-400 text-gray-900"
+          class="w-full !text-gray-900"
+          :class="
+            loading
+              ? '!bg-gray-400 hover:!bg-gray-400'
+              : '!bg-green-400 hover:!bg-green-500'
+          "
+          :disabled="loading"
           @click="redirectToCheckout"
         >
           Checkout

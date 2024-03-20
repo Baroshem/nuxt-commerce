@@ -190,7 +190,7 @@ const navigation = [
         <SfButton
           square
           variant="tertiary"
-          class="absolute right-2 top-2 text-white"
+          class="absolute right-8 top-10 text-white"
           @click="close"
         >
           <SfIconClose />
