@@ -2,7 +2,7 @@
 
 Demo E-Commerce application built with [Nuxt](https://nuxt.com), [Storefront UI](https://docs.storefrontui.io/v2/) & [Shopify](https://www.shopify.com/)
 
-Made with 💚 by [Nuxt](https://nuxt.com) & [Vue Storefront](https://vuestorefront.io/)
+Made with 💚 by [Nuxt](https://nuxt.com) & [Alokai](https://alokai.com/)
 
 ![Demo](./public/landing.png)
 
@@ -32,6 +32,24 @@ Building modern e-commerce websites might require you to add other functionaliti
 ## Have more advanced use case?
 
 Does your project need Data Orchestration, third party integrations, hosting or other e-commerce related functionalities? Check out [Vue Storefront](https://vuestorefront.io/) and the [open source Nuxt template using agnostic sdk & middleware](https://github.com/vuestorefront/storefront-nuxt3-boilerplate)
+
+## Integrations
+
+If you wish to add an integration with 3rd Party service like Content Management System, Search Engine, or Payment Provider, you can do so by using the regular Nuxt module approach.
+
+Create a new folder in the `modules` directory named as your integration (i.e `storyblok`) and inside of it, and `index.ts` file.
+If your integration already has a Nuxt module existing, you can import it as follows:
+```ts
+//modules/storyblok/index.ts
+
+export default defineNuxtModule({
+  async setup() {
+    await installModule('@storyblok/nuxt')
+  }
+})
+```
+
+In this file, you can also add integration specific code like components, composables, pages, and more!
 
 ## Setup
 

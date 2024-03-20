@@ -4,6 +4,7 @@ const toast = ref<string | undefined>(undefined);
 const cart = ref<GetCartQuery['cart']>(undefined);
 
 export const useCart = () => {
+  const nuxtApp = useNuxtApp()
   const loading = ref(false);
 
   const getPriceWithCurrency = (
@@ -69,10 +70,9 @@ export const useCart = () => {
       cartId.value = data.value.cartCreate?.cart?.id;
     }
 
-    const { data } = await useAsyncGql("getCart", {
+    const { data } = await nuxtApp.runWithContext(() => useAsyncGql("getCart", {
       cartId: cartId.value as string,
-    });
-
+    }));
     cart.value = data.value.cart
   }
 
