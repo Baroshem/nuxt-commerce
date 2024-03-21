@@ -17,7 +17,7 @@ const galleryImages = computed(
   () =>
     product?.value?.images.edges.map((edge) => ({
       src: edge.node.url as string,
-      thumbnail: edge.node.url.split('?')[0] as string,
+      thumbnail: edge.node.url.split("?")[0] as string,
       alt: edge.node.altText as string,
     })) || []
 );
@@ -36,8 +36,7 @@ useSeoMeta({
   description: product.value?.seo.description || product.value?.description,
   ogTitle: product.value?.seo.title || product.value?.title,
   ogDescription: product.value?.seo.description || product.value?.description,
-  ogImage:
-    product.value?.featuredImage?.url || `${config.siteUrl}/logo.svg`,
+  ogImage: product.value?.featuredImage?.url || `${config.siteUrl}/logo.svg`,
   twitterCard: "summary_large_image",
 });
 </script>
@@ -46,18 +45,13 @@ useSeoMeta({
   <div>
     <div class="block lg:flex justify-between">
       <ProductImageGallery :images="galleryImages" />
-      <ProductInfoDetails
-        v-if="product"
-        :product="product"
-      />
+      <ProductInfoDetails v-if="product" :product="product" />
     </div>
-    <section
-      class="max-w-[1536px] w-full mx-auto my-20 text-left ml-4 lg:ml-0"
-    >
-      <h2 class="text-3xl mb-10 text-white">
-        Related Products
-      </h2>
-      <div class="flex overflow-x-scroll">
+    <section class="max-w-[1536px] w-full mx-auto my-20 text-left ml-4 lg:ml-0">
+      <h2 class="text-3xl mb-10 text-white">Related Products</h2>
+      <div
+        class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+      >
         <ProductTileCard
           v-for="recommendedProduct in recommendedProducts"
           :key="recommendedProduct.id"
