@@ -53,11 +53,22 @@ import { SfButton } from "@storefront-ui/vue";
         </p>
         <div class="flex flex-col md:flex-row gap-4 mt-6">
           <NuxtLink to="/collection/latest-stuff">
-            <SfButton size="lg"> See products </SfButton>
+            <SfButton
+              size="lg"
+              class="!bg-green-400 hover:!bg-green-500 !text-slate-950"
+            >
+              See products
+            </SfButton>
           </NuxtLink>
 
           <NuxtLink to="/about">
-            <SfButton size="lg" variant="secondary"> About </SfButton>
+            <SfButton
+              size="lg"
+              variant="secondary"
+              class="border-green-400 border !text-green-400 hover:!bg-gray-900"
+            >
+              About
+            </SfButton>
           </NuxtLink>
         </div>
       </div>

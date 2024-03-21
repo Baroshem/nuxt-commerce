@@ -99,7 +99,7 @@ const assignRef = (
 </script>
 
 <template>
-  <div class="relative flex max-h-[600px] aspect-[4/3] w-full">
+  <div class="relative flex max-h-[460px] aspect-[4/3] w-full">
     <SfScrollable
       ref="thumbsRef"
       class="items-center w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"

@@ -156,18 +156,23 @@ const socialIcons = [
         class="mb-4 max-w-[688px] mx-auto h-max w-full"
         @submit.prevent="subscribeNewsletter(inputValue)"
       >
-        <p class="text-white text-base text-left mb-4">
+        <p class="text-white text-base text-left mb-2">
           Subscribe to our newsletter
         </p>
         <div class="flex gap-1">
           <SfInput
             v-model="inputValue"
             type="email"
-            wrapper-class="grow !bg-gray-700 ring-gray-500 mr-2"
-            class="bg-gray-700 placeholder:text-white"
+            wrapper-class="grow !bg-gray-900 !ring-gray-700 mr-2 "
+            class="bg-gray-900 placeholder:text-gray-500"
             placeholder="you@example.com"
           />
-          <SfButton type="submit"> Subscribe </SfButton>
+          <SfButton
+            type="submit"
+            class="!bg-green-400 hover:!bg-green-500 !text-slate-950"
+          >
+            Subscribe
+          </SfButton>
         </div>
       </form>
     </div>
