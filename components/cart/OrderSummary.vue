@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { SfButton, SfIconShoppingCart } from "@storefront-ui/vue";
-import type { CartFragment } from "#gql";
 
 const {
   getPriceWithCurrency,
@@ -20,7 +19,7 @@ async function updateQuantity({
   item,
   quantity,
 }: {
-  item: CartFragment["lines"]["edges"][0]["node"];
+  item: ShopifyCartLineItem;
   quantity: number;
 }) {
   await updateItemQuantity(item, quantity);

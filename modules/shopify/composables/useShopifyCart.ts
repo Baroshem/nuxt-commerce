@@ -1,7 +1,7 @@
-import type { CartFragment, GetCartQuery, GetProductQuery } from "#gql";
+import type { CartFragment } from "#gql";
 
 const toast = ref<string | undefined>(undefined);
-const cart = ref<GetCartQuery["cart"]>(undefined);
+const cart = ref<ShopifyCart>(undefined);
 
 export const useShopifyCart = () => {
   const nuxtApp = useNuxtApp();
@@ -16,7 +16,7 @@ export const useShopifyCart = () => {
   };
 
   const addToCart = async (
-    product: GetProductQuery["product"],
+    product: ShopifyProduct,
     variantId?: string,
     quantity: number = 1
   ) => {
@@ -97,7 +97,7 @@ export const useShopifyCart = () => {
   }
 
   async function updateItemQuantity(
-    product: CartFragment["lines"]["edges"][0]["node"],
+    product: ShopifyCartLineItem,
     quantity: number
   ) {
     if (!cart?.value?.id || !product) return;

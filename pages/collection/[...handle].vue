@@ -77,12 +77,16 @@ useSeoMeta({
       </div>
       <div class="mt-8 w-full">
         <div class="flex justify-between ml-10">
-          <h2 class=" text-lg text-white font-medium">
+          <h2 class="text-lg text-white font-medium">
             All products ({{ collectionProducts?.length }})
           </h2>
-          <CollectionSortSelector @sorting-updated="(newVal) => (sortKey = newVal)" />
+          <CollectionSortSelector
+            @sorting-updated="(newVal: string) => (sortKey = newVal)"
+          />
         </div>
-        <div class="flex flex-wrap gap-10 justify-center lg:justify-normal mt-8 lg:ml-10">
+        <div
+          class="flex flex-wrap gap-10 justify-center lg:justify-normal mt-8 lg:ml-10"
+        >
           <ProductTileCard
             v-for="{ node } in collectionProducts"
             :key="node.id"

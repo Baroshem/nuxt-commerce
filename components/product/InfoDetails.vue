@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import type { GetProductQuery } from "#gql";
 import { SfButton, SfChip, SfIconShoppingCart } from "@storefront-ui/vue";
 
 const props = defineProps({
   product: {
-    type: Object as PropType<GetProductQuery["product"]>,
+    type: Object as PropType<ShopifyProduct>,
     default: () => ({}),
   },
 });

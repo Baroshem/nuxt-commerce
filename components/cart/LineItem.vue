@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { CartFragment } from "#gql";
 import { SfButton, SfListItem, SfIconClose } from "@storefront-ui/vue";
 
 const { getPriceWithCurrency } = useShopifyCart();
@@ -8,13 +7,13 @@ const emit = defineEmits<{
   (e: "remove-item", value: string): void;
   (
     e: "update-quantity",
-    value: { item: CartFragment["lines"]["edges"][0]["node"]; quantity: number }
+    value: { item: ShopifyCartLineItem; quantity: number }
   ): void;
 }>();
 
 defineProps({
   item: {
-    type: Object as PropType<CartFragment["lines"]["edges"][0]["node"]>,
+    type: Object as PropType<ShopifyCartLineItem>,
     required: true,
   },
   disabled: {

@@ -18,6 +18,7 @@ export default defineNuxtModule({
   async setup() {
     const { resolve } = createResolver(import.meta.url);
     addImportsDir(resolve("composables"));
+    addImportsDir(resolve("types"))
 
     await installModule("nuxt-graphql-client", {
       documentPaths: ['./modules/shopify/graphql'],

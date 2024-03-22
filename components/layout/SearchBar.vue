@@ -12,13 +12,12 @@ import {
   useDropdown,
   useTrapFocus,
 } from "@storefront-ui/vue";
-import type { GetProductsQuery } from "#gql";
 
 const inputModel = ref("");
 const inputRef = ref();
 const dropdownListRef = ref();
 const isLoadingSnippets = ref(false);
-const result = ref<GetProductsQuery["products"]>();
+const result = ref<ShopifyProducts>();
 const { isOpen, close, open } = useDisclosure();
 const { referenceRef, floatingRef, style } = useDropdown({
   isOpen,
