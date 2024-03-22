@@ -1,5 +1,9 @@
 <script lang="ts" setup>
-import { SfButton, SfIconShoppingCart } from "@storefront-ui/vue";
+import {
+  SfButton,
+  SfIconShoppingCart,
+  SfLoaderCircular,
+} from "@storefront-ui/vue";
 
 const props = defineProps({
   product: {
@@ -7,6 +11,8 @@ const props = defineProps({
     default: () => ({}),
   },
 });
+
+const isImageLoading = ref(true);
 
 const { addToCart, loading, getPriceWithCurrency } = useShopifyCart();
 
@@ -26,13 +32,20 @@ const computedPrice = computed(
   >
     <div class="relative">
       <NuxtLink :to="`/product/${product?.handle}`" class="block">
+        <SfLoaderCircular
+          v-if="isImageLoading"
+          class="self-center"
+          size="3xl"
+        />
         <NuxtImg
+          v-show="!isImageLoading"
           :src="product?.featuredImage?.url.split('?')[0]"
           alt="Great product"
           class="block object-cover rounded-md aspect-square h-72"
           width="300"
           height="300"
           format="avif"
+          @load="isImageLoading = false"
         />
       </NuxtLink>
     </div>

@@ -125,7 +125,7 @@ const socialIcons = [
 <template>
   <footer class="pt-12 border-t border-slate-800">
     <div
-      class="lg:grid px-4 lg:px-0 justify-center grid-cols-[1fr_1fr] md:grid-cols-[repeat(4,1fr)] pb-10 max-w-[1536px] mx-auto"
+      class="lg:grid lg:px-0 justify-center grid-cols-[1fr_1fr] md:grid-cols-[repeat(4,1fr)] pb-10 max-w-7xl px-6 mx-auto text-center"
     >
       <div
         v-for="{ label, subcategories } in categories"
@@ -164,12 +164,12 @@ const socialIcons = [
             v-model="inputValue"
             type="email"
             wrapper-class="grow !bg-gray-900 !ring-gray-700 mr-2 "
-            class="bg-gray-900 placeholder:text-gray-500"
+            class="bg-gray-900 placeholder:text-gray-500 text-white caret-primary-400"
             placeholder="you@example.com"
           />
           <SfButton
             type="submit"
-            class="bg-primary-400 hover:bg-primary-500 text-slate-950"
+            class="!bg-primary-400 hover:!bg-primary-500 !text-slate-950"
           >
             Subscribe
           </SfButton>
@@ -177,7 +177,7 @@ const socialIcons = [
       </form>
     </div>
     <div
-      class="justify-between flex max-w-[1536px] min-w-full text-center border-t border-slate-800 py-8 items-center flex-col lg:flex-row gap-5 lg:gap-0"
+      class="justify-between flex text-center border-t border-slate-800 py-8 items-center flex-col lg:flex-row gap-5 lg:gap-0 max-w-7xl px-6 mx-auto"
     >
       <div>
         <ul class="flex">

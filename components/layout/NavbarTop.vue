@@ -6,8 +6,10 @@ import {
   useDisclosure,
   SfModal,
   SfIconClose,
+  SfIconSearch,
   SfBadge,
 } from "@storefront-ui/vue";
+import { onClickOutside } from "@vueuse/core";
 
 const {
   isOpen: isCategoryMenuOpen,
@@ -15,6 +17,10 @@ const {
   close: closeCategoryMenu,
 } = useDisclosure({ initialValue: false });
 const { cart, isCartOpen } = useShopifyCart();
+
+const isSearchBarOpen = ref(false);
+const searchBar = ref(null);
+onClickOutside(searchBar, () => (isSearchBarOpen.value = false));
 
 const navigation = [
   {
@@ -37,7 +43,7 @@ const navigation = [
     class="flex justify-center w-full py-2 lg:py-5 border-b border-slate-800"
   >
     <div
-      class="flex flex-wrap lg:flex-nowrap items-center justify-between flex-row h-full w-full text-slate-200 pb-2 lg:pb-0"
+      class="flex flex-wrap lg:flex-nowrap items-center justify-between flex-row h-full w-full text-slate-200 pb-2 lg:pb-0 max-w-7xl px-6"
     >
       <div class="flex items-center">
         <SfButton
@@ -95,6 +101,7 @@ const navigation = [
           </SfButton>
           <h3 class="text-4xl">Navigation</h3>
           <LayoutSearchBar class="mt-4 lg:mt-0" />
+
           <ul class="flex flex-col mt-4 text-left">
             <li v-for="{ name, to } in navigation" :key="name" class="py-2">
               <NuxtLink
@@ -115,16 +122,30 @@ const navigation = [
           <NuxtLink
             :to="`/collection/${to}`"
             variant="secondary"
-            class="mx-4 hover:text-primary-500 text-slate-200 font-semibold text-sm"
+            class="mx-4 hover:text-primary-500 text-slate-200 font-medium text-sm"
           >
             {{ name }}
           </NuxtLink>
         </li>
       </ul>
+
       <div class="flex items-baseline lg:items-center">
-        <LayoutSearchBar class="w-60 mt-2 lg:mt-0 hidden xs:block" />
+        <LayoutSearchBar
+          v-if="isSearchBarOpen"
+          class="w-60 mt-2 lg:mt-0 hidden sm:block"
+          ref="searchBar"
+        />
         <SfButton
-          class="mr-2 ml-4 rounded-md text-slate-200 hover:bg-primary-100 active:bg-primary-200 hover:text-primary-600 active:text-primary-700 relative"
+          @click="isSearchBarOpen = true"
+          variant="tertiary"
+          square
+          class="text-slate-200 active:bg-primary-200 hover:!bg-slate-700 hover:text-white hidden sm:block"
+          v-else
+        >
+          <SfIconSearch />
+        </SfButton>
+        <SfButton
+          class="mr-2 ml-4 rounded-md text-slate-200 hover:!bg-slate-700 hover:text-white active:bg-primary-200 active:text-primary-700 relative"
           aria-label="Cart"
           variant="tertiary"
           square
@@ -135,6 +156,7 @@ const navigation = [
             <SfBadge
               v-if="cart?.lines?.edges?.length"
               :content="cart?.lines.edges.length"
+              class="bg-primary-400 !text-slate-950 w-4 h-4 text-sm"
             />
           </template>
         </SfButton>

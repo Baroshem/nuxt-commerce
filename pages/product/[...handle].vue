@@ -1,10 +1,15 @@
 <script setup lang="ts">
+import { SfButton, SfIconArrowBack } from "@storefront-ui/vue";
 const route = useRoute();
+const router = useRouter();
 const config = useRuntimeConfig();
+
+console.log(router);
 
 const { data } = await useAsyncGql("getProduct", {
   handle: route.params.handle[0],
   variants: 10,
+  country: "US",
 });
 
 if (!data?.value?.product) {
@@ -42,8 +47,17 @@ useSeoMeta({
 </script>
 
 <template>
-  <div>
-    <div class="block lg:flex justify-between">
+  <div class="max-w-7xl px-6 text-center mx-auto">
+    <div class="text-left mb-8 mt-10 items-center">
+      <SfButton
+        @click="router.back()"
+        variant="tertiary"
+        class="mx-4 hover:bg-transparent hover:text-gray-400 active:bg-transparent active:text-gray-400 text-gray-400 self-end"
+      >
+        <SfIconArrowBack /> Back to the list
+      </SfButton>
+    </div>
+    <div class="block lg:flex justify-between gap-16">
       <ProductImageGallery :images="galleryImages" />
       <ProductInfoDetails v-if="product" :product="product" />
     </div>

@@ -25,7 +25,7 @@ const contactOptions = [
 </script>
 
 <template>
-  <div class="py-16 md:flex md:mx-auto max-w-[1536px]">
+  <div class="py-16 md:flex md:mx-auto max-w-7xl px-6 mx-auto text-center">
     <div
       v-for="{ label, icon, details } in contactOptions"
       :key="label"

@@ -29,7 +29,7 @@ const products = computed(() => data.value?.products?.edges);
 </script>
 
 <template>
-  <div>
+  <div class="max-w-7xl px-6 mx-auto text-center">
     <HomeHeroBanner />
     <section class="justify-center">
       <div class="flex justify-between my-16">

@@ -149,7 +149,7 @@ watchDebounced(
       </div>
       <div
         v-else-if="!result?.edges?.length"
-        class="py-2 bg-white border border-solid rounded-md border-neutral-100 drop-shadow-md"
+        class="py-2 bg-white border border-solid rounded-md border-neutral-100 drop-shadow-md text-center"
       >
         No results found
       </div>

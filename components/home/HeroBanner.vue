@@ -20,7 +20,7 @@ import { SfButton } from "@storefront-ui/vue";
         />
       </div>
       <div
-        class="p-4 md:max-w-[768px] md:flex md:flex-col md:justify-center md:items-start md:basis-2/4"
+        class="p-4 md:flex md:flex-col md:justify-center md:items-start md:basis-2/4"
       >
         <h1 class="text-6xl md:leading-[67.5px] font-bold mt-2 mb-4 text-white">
           Nuxt <span class="text-primary-400">Commerce</span>
@@ -49,7 +49,6 @@ import { SfButton } from "@storefront-ui/vue";
             aria-label="Link to Shopify Home Page"
             >Shopify</a
           >
-          🚀
         </p>
         <div class="flex flex-col md:flex-row gap-4 mt-6">
           <NuxtLink to="/collection/latest-stuff">

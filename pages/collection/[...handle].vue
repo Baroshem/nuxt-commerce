@@ -60,7 +60,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <div>
+  <div class="max-w-7xl px-6 text-center mx-auto">
     <section class="my-20">
       <h1 class="text-5xl font-semibold text-white">
         {{ collection?.title }}
