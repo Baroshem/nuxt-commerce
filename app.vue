@@ -8,6 +8,7 @@ await getCart();
   <Body class="bg-slate-950" />
   <main class="max-w-[1536px] text-center mx-auto my-0">
     <LayoutNavbarTop class="mb-5" />
+    <CartOrderModal />
     <LayoutToastAlert />
     <NuxtPage />
     <LayoutLazyFooter class="mt-5" />

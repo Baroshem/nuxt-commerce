@@ -23,7 +23,7 @@ import { SfButton } from "@storefront-ui/vue";
         class="p-4 md:max-w-[768px] md:flex md:flex-col md:justify-center md:items-start md:basis-2/4"
       >
         <h1 class="text-6xl md:leading-[67.5px] font-bold mt-2 mb-4 text-white">
-          Nuxt <span class="text-green-400">Commerce</span>
+          Nuxt <span class="text-primary-400">Commerce</span>
         </h1>
         <p class="typography-text-base md:typography-text-lg text-white">
           E-Commerce template built with
@@ -55,7 +55,7 @@ import { SfButton } from "@storefront-ui/vue";
           <NuxtLink to="/collection/latest-stuff">
             <SfButton
               size="lg"
-              class="!bg-green-400 hover:!bg-green-500 !text-slate-950"
+              class="!bg-primary-400 hover:!bg-primary-500 !text-slate-950"
             >
               See products
             </SfButton>
@@ -65,7 +65,7 @@ import { SfButton } from "@storefront-ui/vue";
             <SfButton
               size="lg"
               variant="secondary"
-              class="border-green-400 border !text-green-400 hover:!bg-gray-900"
+              class="border-primary-400 border !text-primary-400 hover:!bg-gray-900"
             >
               About
             </SfButton>

@@ -9,13 +9,12 @@ import {
   SfBadge,
 } from "@storefront-ui/vue";
 
-const { isOpen, open, close } = useDisclosure({ initialValue: false });
 const {
   isOpen: isCategoryMenuOpen,
   open: openCategoryMenu,
   close: closeCategoryMenu,
 } = useDisclosure({ initialValue: false });
-const { cart } = useShopifyCart();
+const { cart, isCartOpen } = useShopifyCart();
 
 const navigation = [
   {
@@ -73,21 +72,6 @@ const navigation = [
       <transition
         enter-active-class="transition duration-200 ease-out"
         leave-active-class="transition duration-200 ease-out"
-        enter-from-class="opacity-0"
-        enter-to-class="opacity-100"
-        leave-from-class="opacity-100"
-        leave-to-class="opacity-0"
-      >
-        <div
-          v-if="isCategoryMenuOpen"
-          class="fixed inset-0 bg-neutral-700 bg-opacity-50 z-[11]"
-        />
-      </transition>
-
-      <!-- Modal -->
-      <transition
-        enter-active-class="transition duration-200 ease-out"
-        leave-active-class="transition duration-200 ease-out"
         enter-from-class="opacity-0 translate-y-10"
         enter-to-class="opacity-100 translate-y-0"
         leave-from-class="opacity-100 translate-y-0"
@@ -95,7 +79,7 @@ const navigation = [
       >
         <SfModal
           v-model="isCategoryMenuOpen"
-          class="max-w-[70%] md:max-w-lg z-[11] ml-0 h-full !p-6 !w-auto !rounded-none !bg-gray-900 border-none"
+          class="md:max-w-lg z-[11] ml-0 h-full !p-6 !w-auto !rounded-none !bg-gray-900 border-none"
           tag="section"
           role="alertdialog"
           aria-labelledby="promoModalTitle"
@@ -131,7 +115,7 @@ const navigation = [
           <NuxtLink
             :to="`/collection/${to}`"
             variant="secondary"
-            class="mx-4 hover:text-green-500 text-slate-200 font-semibold text-sm"
+            class="mx-4 hover:text-primary-500 text-slate-200 font-semibold text-sm"
           >
             {{ name }}
           </NuxtLink>
@@ -144,7 +128,7 @@ const navigation = [
           aria-label="Cart"
           variant="tertiary"
           square
-          @click="open"
+          @click="isCartOpen = true"
         >
           <template #prefix>
             <SfIconShoppingCart />
@@ -156,48 +140,5 @@ const navigation = [
         </SfButton>
       </div>
     </div>
-
-    <transition
-      enter-active-class="transition duration-200 ease-out"
-      leave-active-class="transition duration-200 ease-out"
-      enter-from-class="opacity-0"
-      enter-to-class="opacity-100"
-      leave-from-class="opacity-100"
-      leave-to-class="opacity-0"
-    >
-      <div
-        v-if="isOpen"
-        class="fixed inset-0 bg-neutral-700 bg-opacity-50 z-[11]"
-      />
-    </transition>
-
-    <!-- Modal -->
-    <transition
-      enter-active-class="transition duration-200 ease-out"
-      leave-active-class="transition duration-200 ease-out"
-      enter-from-class="opacity-0 translate-y-10"
-      enter-to-class="opacity-100 translate-y-0"
-      leave-from-class="opacity-100 translate-y-0"
-      leave-to-class="opacity-0 translate-y-10"
-    >
-      <SfModal
-        v-model="isOpen"
-        class="max-w-[90%] md:max-w-lg z-[11] mr-0 h-full !p-6 !w-auto !rounded-none !bg-gray-900 border-none text-white"
-        tag="section"
-        role="alertdialog"
-        aria-labelledby="promoModalTitle"
-        aria-describedby="promoModalDesc"
-      >
-        <SfButton
-          square
-          variant="tertiary"
-          class="absolute right-8 top-10 text-white"
-          @click="close"
-        >
-          <SfIconClose />
-        </SfButton>
-        <CartOrderSummary />
-      </SfModal>
-    </transition>
   </header>
 </template>

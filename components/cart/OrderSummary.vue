@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { SfButton, SfIconShoppingCart } from "@storefront-ui/vue";
+import { SfButton, SfIconShoppingCart, SfIconClose } from "@storefront-ui/vue";
 
 const {
   getPriceWithCurrency,
@@ -7,6 +7,7 @@ const {
   loading,
   updateItemQuantity,
   removeFromCart,
+  isCartOpen,
 } = useShopifyCart();
 
 const costs = computed(() => cart?.value?.cost);
@@ -35,9 +36,19 @@ async function removeItem(id: string) {
     <div
       class="block justify-between items-end py-2 px-4 md:px-6 md:pt-6 md:pb-4"
     >
-      <p class="typography-headline-4 font-semibold md:typography-headline-3">
-        Order Summary
-      </p>
+      <div class="flex justify-between">
+        <p class="typography-headline-4 font-semibold md:typography-headline-3">
+          Order Summary
+        </p>
+        <SfButton
+          square
+          variant="tertiary"
+          class="text-white w-8 h-8 hover:!bg-slate-700 hover:text-white"
+          @click="isCartOpen = false"
+        >
+          <SfIconClose />
+        </SfButton>
+      </div>
       <p class="typography-text-base font-medium mt-2">
         {{ cart?.lines?.edges?.length }} item(s)
       </p>
@@ -93,7 +104,7 @@ async function removeItem(id: string) {
           :class="
             loading
               ? '!bg-gray-400 hover:!bg-gray-400'
-              : '!bg-green-400 hover:!bg-green-500'
+              : '!bg-primary-400 hover:!bg-primary-500'
           "
           :disabled="loading"
           @click="redirectToCheckout"

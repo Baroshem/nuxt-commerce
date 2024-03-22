@@ -53,9 +53,9 @@ watch(count, (newVal: number) => {
         v-model="count"
         type="number"
         role="spinbutton"
-        :disabled="disabled"
+        disabled
         aria-label="Quantity Selector"
-        class="appearance-none w-8 text-center bg-transparent font-medium [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-inner-spin-button]:display-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-outer-spin-button]:display-none [&::-webkit-outer-spin-button]:m-0 [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none disabled:placeholder-disabled-900 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm"
+        class="w-8 text-center bg-transparent font-medium [&::-webkit-inner-spin-button]:appearance-none disabled:placeholder-disabled-900"
         :class="!small && 'mx-2'"
         :min="min"
         :max="max"
@@ -65,7 +65,7 @@ watch(count, (newVal: number) => {
         variant="tertiary"
         :disabled="count >= max || disabled"
         square
-        class="rounded-l-none"
+        class="rounded-l-none hover:!bg-slate-700"
         :class="small && '!p-1'"
         :aria-controls="inputId"
         aria-label="Increase value"

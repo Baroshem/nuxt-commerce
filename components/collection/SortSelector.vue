@@ -61,14 +61,10 @@ const selectOption = (option: SelectOption) => {
 
 <template>
   <div class="text-white">
-    <label
-      class="font-medium typography-label-sm hidden"
-      :for="id"
-    >Sorting</label>
-    <div
-      ref="referenceRef"
-      class="relative"
+    <label class="font-medium typography-label-sm hidden" :for="id"
+      >Sorting</label
     >
+    <div ref="referenceRef" class="relative">
       <div
         :id="id"
         ref="selectTriggerRef"
@@ -79,7 +75,7 @@ const selectOption = (option: SelectOption) => {
         :aria-activedescendant="
           selectedOption ? `${listboxId}-${selectedOption.value}` : undefined
         "
-        class="mt-0.5 w-44 bg-gray-900 flex items-center gap-8 relative font-normal typography-text-base ring-1 ring-gray-700 ring-inset rounded-md py-2 px-4 hover:ring-green-500 active:ring-green-500 active:ring-2 focus:ring-green-700 focus:ring-2 focus-visible:outline focus-visible:outline-offset cursor-pointer"
+        class="mt-0.5 w-44 bg-gray-900 flex items-center gap-8 relative font-normal typography-text-base ring-1 ring-gray-700 ring-inset rounded-md py-2 px-4 hover:ring-primary-500 active:ring-primary-500 active:ring-2 focus:ring-primary-700 focus:ring-2 focus-visible:outline focus-visible:outline-offset cursor-pointer"
         tabindex="0"
         @keydown.space="toggle()"
         @click="toggle()"
@@ -87,10 +83,7 @@ const selectOption = (option: SelectOption) => {
         <template v-if="selectedOption">
           <span class="font-medium">{{ selectedOption.label }}</span>
         </template>
-        <span
-          v-else
-          class="text-neutral-500"
-        >Choose from the list</span>
+        <span v-else class="text-neutral-500">Choose from the list</span>
         <SfIconExpandMore
           class="ml-auto text-neutral-500 transition-transform ease-in-out duration-300"
           :class="{ 'rotate-180': isOpen }"
@@ -112,8 +105,11 @@ const selectOption = (option: SelectOption) => {
           role="option"
           tabindex="0"
           :aria-selected="option.value === selectedOption?.value"
-          class="block ml-1 hover:text-slate-500 hover:bg-transparent "
-          :class="{ 'text-green-400 hover:text-green-400': option.value === selectedOption?.value }"
+          class="block ml-1 hover:text-slate-500 hover:bg-transparent"
+          :class="{
+            'text-primary-400 hover:text-primary-400':
+              option.value === selectedOption?.value,
+          }"
           @click="selectOption(option)"
           @keydown.enter="selectOption(option)"
           @keydown.space="selectOption(option)"

@@ -131,7 +131,7 @@ const assignRef = (
         :aria-label="alt || 'Product Thumbnail'"
         :aria-current="activeIndex === index"
         :class="`md:h-auto relative rounded-lg shrink-0 mx-4 -mb-2 border-2 snap-start cursor-pointer focus-visible:outline focus-visible:outline-offset transition-colors flex-grow md:flex-grow-0  ${
-          activeIndex === index ? 'border-green-400' : 'border-transparent'
+          activeIndex === index ? 'border-primary-400' : 'border-transparent'
         }`"
         @mouseover="activeIndex = index"
         @focus="activeIndex = index"

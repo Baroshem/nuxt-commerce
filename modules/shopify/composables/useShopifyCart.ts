@@ -1,7 +1,6 @@
-import type { CartFragment } from "#gql";
-
 const toast = ref<string | undefined>(undefined);
 const cart = ref<ShopifyCart>(undefined);
+const isCartOpen = ref(false)
 
 export const useShopifyCart = () => {
   const nuxtApp = useNuxtApp();
@@ -125,6 +124,7 @@ export const useShopifyCart = () => {
     getCart,
     getPriceWithCurrency,
     updateItemQuantity,
+    isCartOpen
   };
 };
 

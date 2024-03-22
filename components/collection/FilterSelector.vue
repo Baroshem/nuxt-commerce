@@ -22,20 +22,19 @@ function isActiveCollection(collectionHandle: string) {
         Collections
       </h6>
       <ul class="mt-2 mb-6 ml-3 border-l border-slate-800">
-        <li
-          v-for="collection in collections"
-          :key="collection.title"
-        >
+        <li v-for="collection in collections" :key="collection.title">
           <div
-            :class="[
-              'rounded-md flex py-2 ml-4 justify-between text-left ',
-            ]"
+            :class="['rounded-md flex py-2 ml-4 justify-between text-left ']"
           >
             <NuxtLink
               :to="`/collection/${collection.handle}`"
               class="flex items-center text-slate-400 hover:text-slate-500"
             >
-              <p :class="isActiveCollection(collection.handle) && 'text-green-400'">
+              <p
+                :class="
+                  isActiveCollection(collection.handle) && 'text-primary-400'
+                "
+              >
                 {{ collection.title }}
               </p>
             </NuxtLink>

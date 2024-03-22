@@ -104,8 +104,8 @@ function toggleOption(name: string, value: string) {
           class="w-48 md:w-full !text-slate-950 !h-[42px] ml-8 lg:ml-0"
           :class="
             loading || !areOptionsSelected
-              ? '!bg-gray-400 hover:!bg-gray-400'
-              : '!bg-green-400 hover:!bg-green-500'
+              ? 'bg-gray-400 hover:bg-gray-400'
+              : 'bg-primary-400 hover:bg-primary-500'
           "
           :disabled="loading || !areOptionsSelected"
           @click="addToCart(product, computedVariant?.id, quantity)"

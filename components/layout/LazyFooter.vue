@@ -169,7 +169,7 @@ const socialIcons = [
           />
           <SfButton
             type="submit"
-            class="!bg-green-400 hover:!bg-green-500 !text-slate-950"
+            class="bg-primary-400 hover:bg-primary-500 text-slate-950"
           >
             Subscribe
           </SfButton>
