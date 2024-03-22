@@ -39,6 +39,7 @@
     "eslint-config-prettier": "^9.0.0",
     "lint-staged": "^15.0.2",
     "nuxt": "^3.10.0",
+    "nuxt-og-image": "^3.0.0-rc.47",
     "nuxt-security": "^1.2.2",
     "nuxt-simple-robots": "^4.0.0-rc.14",
     "nuxt-simple-sitemap": "^4.4.1",
@@ -46,6 +47,7 @@
     "vitest": "^1.0.4"
   },
   "dependencies": {
+    "@nuxt/fonts": "^0.4.0",
     "nuxt-graphql-client": "^0.2.31"
   }
 }

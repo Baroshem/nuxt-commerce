@@ -4,8 +4,6 @@ const route = useRoute();
 const router = useRouter();
 const config = useRuntimeConfig();
 
-console.log(router);
-
 const { data } = await useAsyncGql("getProduct", {
   handle: route.params.handle[0],
   variants: 10,
@@ -52,7 +50,7 @@ useSeoMeta({
       <SfButton
         @click="router.back()"
         variant="tertiary"
-        class="mx-4 hover:bg-transparent hover:text-gray-400 active:bg-transparent active:text-gray-400 text-gray-400 self-end"
+        class="mx-4 hover:bg-transparent hover:text-gray-400 active:bg-transparent active:text-gray-400 !text-gray-400 self-end"
       >
         <SfIconArrowBack /> Back to the list
       </SfButton>

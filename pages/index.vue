@@ -41,9 +41,9 @@ const products = computed(() => data.value?.products?.edges);
         <NuxtLink
           to="/collection/latest-stuff"
           variant="secondary"
-          class="mx-4 hover:underline hover:text-primary-500 text-white self-end"
+          class="mx-4 hover:text-primary-500 text-white self-end flex"
         >
-          See all <SfIconArrowForward />
+          See all <SfIconArrowForward class="ml-2" />
         </NuxtLink>
       </div>
 
@@ -54,7 +54,7 @@ const products = computed(() => data.value?.products?.edges);
           v-for="{ node } in collectionProducts"
           :key="node.id"
           :product="node"
-          class="mx-2"
+          class="mx-3"
         />
       </div>
 
@@ -67,9 +67,9 @@ const products = computed(() => data.value?.products?.edges);
         <NuxtLink
           to="/collection/latest-stuff"
           variant="secondary"
-          class="mx-4 hover:underline hover:text-primary-500 text-white self-end"
+          class="mx-4 hover:text-primary-500 text-white self-end flex"
         >
-          See all <SfIconArrowForward />
+          See all <SfIconArrowForward class="ml-2" />
         </NuxtLink>
       </div>
 
@@ -80,7 +80,7 @@ const products = computed(() => data.value?.products?.edges);
           v-for="{ node } in products"
           :key="node.id"
           :product="node"
-          class="mx-2"
+          class="mx-3"
         />
       </div>
 

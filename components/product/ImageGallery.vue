@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import {
   SfScrollable,
-  SfButton,
-  SfIconChevronLeft,
-  SfIconChevronRight,
   SfLoaderCircular,
   type SfScrollableOnDragEndData,
 } from "@storefront-ui/vue";
@@ -107,22 +104,8 @@ const assignRef = (
       :active-index="activeIndex"
       :previous-disabled="activeIndex === 0"
       :next-disabled="activeIndex === images.length - 1"
-      buttons-placement="floating"
+      buttons-placement="none"
     >
-      <template #previousButton="defaultProps">
-        <SfButton
-          v-if="!firstThumbVisible"
-          v-bind="defaultProps"
-          :disabled="activeIndex === 0"
-          class="absolute !rounded-full z-10 top-4 rotate-90 bg-white"
-          variant="secondary"
-          size="sm"
-          aria-label="Scroll Thumbnail Images to Top"
-          square
-        >
-          <SfIconChevronLeft size="sm" />
-        </SfButton>
-      </template>
       <button
         v-for="({ thumbnail, alt }, index) in images"
         :key="`${alt}-${index}-thumbnail`"
@@ -145,20 +128,6 @@ const assignRef = (
           :src="thumbnail"
         />
       </button>
-      <template #nextButton="defaultProps">
-        <SfButton
-          v-if="!lastThumbVisible"
-          v-bind="defaultProps"
-          :disabled="activeIndex === images.length"
-          class="absolute !rounded-full z-10 bottom-4 rotate-90 bg-white"
-          variant="secondary"
-          aria-label="Scroll Thumbnail Images to Bottom"
-          size="sm"
-          square
-        >
-          <SfIconChevronRight size="sm" />
-        </SfButton>
-      </template>
     </SfScrollable>
     <SfScrollable
       class="w-full h-full snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"

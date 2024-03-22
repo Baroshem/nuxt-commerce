@@ -125,12 +125,12 @@ const socialIcons = [
 <template>
   <footer class="pt-12 border-t border-slate-800">
     <div
-      class="lg:grid lg:px-0 justify-center grid-cols-[1fr_1fr] md:grid-cols-[repeat(4,1fr)] pb-10 max-w-7xl px-6 mx-auto text-center"
+      class="xs:grid justify-center grid-cols-[1fr_1fr] md:grid-cols-[repeat(4,1fr)] pb-10 max-w-7xl px-6 mx-auto text-center"
     >
       <div
         v-for="{ label, subcategories } in categories"
         :key="label"
-        class="grid grid-cols xs:pb-4 text-center lg:text-left"
+        class="xs:pb-4 text-center xs:text-left"
       >
         <div class="text-lg font-medium leading-7 text-white font-body">
           {{ label }}
@@ -176,62 +176,49 @@ const socialIcons = [
         </div>
       </form>
     </div>
-    <div
-      class="justify-between flex text-center border-t border-slate-800 py-8 items-center flex-col lg:flex-row gap-5 lg:gap-0 max-w-7xl px-6 mx-auto"
-    >
-      <div>
-        <ul class="flex">
-          <li v-for="icon in paymentIcons" :key="icon.id">
-            <NuxtImg
-              width="24"
-              height="24"
-              class="mx-2"
-              :alt="icon.name"
-              :src="icon.path"
-              loading="lazy"
-              fetch-priority="low"
-            />
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <p
-          class="flex items-center justify-center leading-5 text-center typography-text-sm text-white/50 font-body"
-        >
-          Copyright © 2024-present Nuxt - MIT License
-        </p>
-        <p
-          class="flex items-center justify-center py-2 leading-5 text-center typography-text-sm text-white/50 font-body"
-        >
-          Made with 💚 by
-          <a
-            href="https://alokai.com"
-            target="_blank"
-            aria-label="Link to Vue Alokai Home Page"
-            class="ml-1 hover:underline"
-          >
-            Alokai
-          </a>
-        </p>
-      </div>
-
-      <div>
-        <ul class="flex">
-          <li v-for="icon in socialIcons" :key="icon.id">
-            <a :href="icon.link" target="_blank" :aria-label="icon.name">
+    <div class="border-t border-slate-800 py-8">
+      <div class="max-w-7xl px-6 mx-auto flex justify-between">
+        <div>
+          <ul class="flex">
+            <li v-for="icon in paymentIcons" :key="icon.id">
               <NuxtImg
-                width="30"
-                height="30"
+                width="24"
+                height="24"
                 class="mx-2"
                 :alt="icon.name"
                 :src="icon.path"
                 loading="lazy"
                 fetch-priority="low"
               />
-            </a>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p
+            class="flex items-center justify-center leading-5 text-center typography-text-sm text-white/50 font-body"
+          >
+            Copyright © 2024-present Nuxt & Alokai - MIT License
+          </p>
+        </div>
+
+        <div>
+          <ul class="flex">
+            <li v-for="icon in socialIcons" :key="icon.id">
+              <a :href="icon.link" target="_blank" :aria-label="icon.name">
+                <NuxtImg
+                  width="30"
+                  height="30"
+                  class="mx-2"
+                  :alt="icon.name"
+                  :src="icon.path"
+                  loading="lazy"
+                  fetch-priority="low"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </footer>

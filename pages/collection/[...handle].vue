@@ -71,7 +71,7 @@ useSeoMeta({
       </p>
     </section>
 
-    <div class="block lg:flex border-t border-slate-800">
+    <div class="block lg:flex">
       <div class="mx-0 min-w-full lg:min-w-fit mt-8">
         <CollectionFilterSelector :collections="collections" />
       </div>
@@ -85,7 +85,7 @@ useSeoMeta({
           />
         </div>
         <div
-          class="flex flex-wrap gap-10 justify-center lg:justify-normal mt-8 lg:ml-10"
+          class="flex flex-wrap gap-6 justify-center lg:justify-normal mt-8 lg:ml-10"
         >
           <ProductTileCard
             v-for="{ node } in collectionProducts"

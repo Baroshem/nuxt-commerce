@@ -156,7 +156,7 @@ const navigation = [
             <SfBadge
               v-if="cart?.lines?.edges?.length"
               :content="cart?.lines.edges.length"
-              class="bg-primary-400 !text-slate-950 w-4 h-4 text-sm"
+              class="!bg-primary-400 !text-slate-950 w-4 h-4 text-sm !leading-3"
             />
           </template>
         </SfButton>

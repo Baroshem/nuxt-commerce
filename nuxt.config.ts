@@ -24,8 +24,10 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxtjs/tailwindcss",
+    "@nuxt/fonts",
     "nuxt-simple-robots",
     "nuxt-simple-sitemap",
+    "nuxt-og-image",
     [
       "@nuxt/image",
       {

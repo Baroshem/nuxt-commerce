@@ -5,7 +5,7 @@ import { SfButton } from "@storefront-ui/vue";
 <template>
   <div class="relative min-h-[600px]">
     <div
-      class="md:flex md:flex-row-reverse md:justify-center max-w[1536px] mx-auto md:min-h-[600px]"
+      class="md:flex md:flex-row-reverse md:justify-center mx-auto md:min-h-[600px]"
     >
       <div class="flex flex-col md:items-stretch md:overflow-hidden">
         <NuxtImg
@@ -20,7 +20,7 @@ import { SfButton } from "@storefront-ui/vue";
         />
       </div>
       <div
-        class="p-4 md:flex md:flex-col md:justify-center md:items-start md:basis-2/4"
+        class="md:flex md:flex-col md:justify-center md:items-start md:basis-2/4"
       >
         <h1 class="text-6xl md:leading-[67.5px] font-bold mt-2 mb-4 text-white">
           Nuxt <span class="text-primary-400">Commerce</span>
