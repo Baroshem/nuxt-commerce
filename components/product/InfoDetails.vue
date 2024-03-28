@@ -60,10 +60,10 @@ function toggleOption(name: string, value: string) {
 <template>
   <section class="md:max-w-[640px] text-left p-4 lg:p-0 text-white">
     <div class="flex justify-between font-bold">
-      <h1 class="mb-1 typography-headline-2">
+      <h1 class="mb-1 text-5xl">
         {{ product?.title }}
       </h1>
-      <strong class="block typography-headline-3">{{
+      <strong class="block text-3xl">{{
         getPriceWithCurrency(computedVariant?.price)
       }}</strong>
     </div>

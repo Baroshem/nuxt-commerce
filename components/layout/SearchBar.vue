@@ -143,23 +143,27 @@ watchDebounced(
     >
       <div
         v-if="isLoadingSnippets"
-        class="flex items-center justify-center w-full h-20 py-2 bg-white border border-solid rounded-md border-neutral-100 drop-shadow-md"
+        class="flex items-center justify-center w-full h-20 py-2 bg-gray-700 border border-solid rounded-md border-gray-700 drop-shadow-md"
       >
         <SfLoaderCircular />
       </div>
       <div
         v-else-if="!result?.edges?.length"
-        class="py-2 bg-white border border-solid rounded-md border-neutral-100 drop-shadow-md text-center"
+        class="py-2 bg-gray-700 text-gray-300 border border-solid rounded-md border-gray-700 drop-shadow-md text-center"
       >
         No results found
       </div>
       <ul
         v-else
         ref="dropdownListRef"
-        class="py-2 bg-white border border-solid rounded-md border-neutral-100 drop-shadow-md"
+        class="py-2 bg-gray-700 text-gray-300 border border-solid rounded-md border-gray-700 drop-shadow-md relative -left-40 w-[400px]"
       >
         <li v-for="{ node } in result?.edges" :key="node.id">
-          <SfListItem tag="button" type="button" class="flex justify-start">
+          <SfListItem
+            tag="button"
+            type="button"
+            class="flex justify-start hover:bg-gray-800 border-b-gray-800 border-b-2 active:bg-gray-800"
+          >
             <NuxtLink
               class="flex items-center justify-between"
               :to="`/product/${node.handle}`"

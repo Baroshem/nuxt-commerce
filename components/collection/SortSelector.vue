@@ -105,7 +105,7 @@ const selectOption = (option: SelectOption) => {
           role="option"
           tabindex="0"
           :aria-selected="option.value === selectedOption?.value"
-          class="block ml-1 hover:text-slate-500 hover:bg-transparent"
+          class="block ml-1 hover:text-slate-500 hover:bg-transparent active:bg-transparent"
           :class="{
             'text-primary-400 hover:text-primary-400':
               option.value === selectedOption?.value,

@@ -41,6 +41,8 @@ watch(sortKey, async (newVal) => {
   collectionData.value = sortedCollectionData.value;
 });
 
+console.log(collection);
+
 useSeoMeta({
   title: collection.value?.seo.title || collection.value?.title,
   description:
@@ -66,8 +68,7 @@ useSeoMeta({
         {{ collection?.title }}
       </h1>
       <p class="text-slate-400 text-base mt-6">
-        Nuxt is an open source framework that makes web development intuitive
-        and powerful..
+        Search through collection of products
       </p>
     </section>
 

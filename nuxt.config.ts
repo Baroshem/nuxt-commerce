@@ -37,8 +37,6 @@ export default defineNuxtConfig({
     [
       "nuxt-security",
       {
-        // rateLimiter will be optional and disabled by default due to issues
-        rateLimiter: false,
         headers: {
           contentSecurityPolicy: {
             "img-src": [

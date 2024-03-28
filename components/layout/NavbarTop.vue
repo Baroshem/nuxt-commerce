@@ -129,18 +129,26 @@ const navigation = [
         </li>
       </ul>
 
-      <div class="flex items-baseline lg:items-center">
-        <LayoutSearchBar
-          v-if="isSearchBarOpen"
-          class="w-60 mt-2 lg:mt-0 hidden sm:block"
-          ref="searchBar"
-        />
+      <div class="flex items-baseline lg:items-center relative">
+        <transition
+          enter-active-class="transition duration-200 ease-out"
+          leave-active-class="transition duration-200 ease-out"
+          enter-from-class="opacity-0"
+          enter-to-class="opacity-100"
+          leave-from-class="opacity-100"
+          leave-to-class="opacity-0"
+        >
+          <LayoutSearchBar
+            v-show="isSearchBarOpen"
+            class="w-60 mt-2 lg:mt-0 hidden sm:block !absolute right-[60px]"
+            ref="searchBar"
+          />
+        </transition>
         <SfButton
           @click="isSearchBarOpen = true"
           variant="tertiary"
           square
           class="text-slate-200 active:bg-primary-200 hover:!bg-slate-700 hover:text-white hidden sm:block"
-          v-else
         >
           <SfIconSearch />
         </SfButton>

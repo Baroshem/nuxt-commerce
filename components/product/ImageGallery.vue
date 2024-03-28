@@ -113,7 +113,7 @@ const assignRef = (
         type="button"
         :aria-label="alt || 'Product Thumbnail'"
         :aria-current="activeIndex === index"
-        :class="`md:h-auto relative rounded-lg shrink-0 mx-4 -mb-2 border-2 snap-start cursor-pointer focus-visible:outline focus-visible:outline-offset transition-colors flex-grow md:flex-grow-0  ${
+        :class="`md:h-auto relative rounded-xl shrink-0 mx-4 -mb-2 border-2 snap-start cursor-pointer focus-visible:outline focus-visible:outline-offset transition-colors flex-grow md:flex-grow-0  ${
           activeIndex === index ? 'border-primary-400' : 'border-transparent'
         }`"
         @mouseover="activeIndex = index"
