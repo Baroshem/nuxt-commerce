@@ -158,7 +158,10 @@ watchDebounced(
         ref="dropdownListRef"
         class="py-2 bg-gray-700 text-gray-300 border border-solid rounded-md border-gray-700 drop-shadow-md relative xs:-left-40 xs:w-[400px] overflow-auto max-h-[400px]"
       >
-        <li v-for="{ node } in result?.edges" :key="node.id">
+        <li
+          v-for="{ node } in result?.edges"
+          :key="node.id"
+        >
           <SfListItem
             tag="button"
             type="button"

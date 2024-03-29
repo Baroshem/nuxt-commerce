@@ -34,8 +34,12 @@ const products = computed(() => data.value?.products?.edges);
     <section class="justify-center">
       <div class="flex justify-between my-16">
         <div class="text-left">
-          <h2 class="text-4xl font-medium text-white mb-6">New Collection</h2>
-          <p class="text-slate-400">Newest collection products</p>
+          <h2 class="text-4xl font-medium text-white mb-6">
+            New Collection
+          </h2>
+          <p class="text-slate-400">
+            Newest collection products
+          </p>
         </div>
 
         <NuxtLink
@@ -60,8 +64,12 @@ const products = computed(() => data.value?.products?.edges);
 
       <div class="flex justify-between my-16">
         <div class="text-left">
-          <h2 class="text-4xl font-medium text-white mb-6">Top products</h2>
-          <p class="text-slate-400">Most popular products</p>
+          <h2 class="text-4xl font-medium text-white mb-6">
+            Top products
+          </h2>
+          <p class="text-slate-400">
+            Most popular products
+          </p>
         </div>
 
         <NuxtLink

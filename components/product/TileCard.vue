@@ -31,7 +31,10 @@ const computedPrice = computed(
     class="rounded-md hover:shadow-lg max-w-full lg:max-w-[220px] min-w-[220px] max-h-[469px] text-left"
   >
     <div class="relative">
-      <NuxtLink :to="`/product/${product?.handle}`" class="block">
+      <NuxtLink
+        :to="`/product/${product?.handle}`"
+        class="block"
+      >
         <SfLoaderCircular
           v-if="isImageLoading"
           class="self-center"

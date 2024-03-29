@@ -61,10 +61,14 @@ const selectOption = (option: SelectOption) => {
 
 <template>
   <div class="text-white">
-    <label class="font-medium typography-label-sm hidden" :for="id"
-      >Sorting</label
+    <label
+      class="font-medium typography-label-sm hidden"
+      :for="id"
+    >Sorting</label>
+    <div
+      ref="referenceRef"
+      class="relative"
     >
-    <div ref="referenceRef" class="relative">
       <div
         :id="id"
         ref="selectTriggerRef"
@@ -83,7 +87,10 @@ const selectOption = (option: SelectOption) => {
         <template v-if="selectedOption">
           <span class="font-medium">{{ selectedOption.label }}</span>
         </template>
-        <span v-else class="text-neutral-500">Choose from the list</span>
+        <span
+          v-else
+          class="text-neutral-500"
+        >Choose from the list</span>
         <SfIconExpandMore
           class="ml-auto text-neutral-500 transition-transform ease-in-out duration-300"
           :class="{ 'rotate-180': isOpen }"

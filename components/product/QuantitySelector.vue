@@ -59,7 +59,7 @@ watch(count, (newVal: number) => {
         :class="!small && 'mx-2'"
         :min="min"
         :max="max"
-      />
+      >
       <SfButton
         type="button"
         variant="tertiary"

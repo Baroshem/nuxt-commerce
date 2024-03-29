@@ -4,7 +4,7 @@ const route = useRoute();
 defineProps({
   collections: {
     type: Object as PropType<ShopifyCollections>,
-    default: () => [],
+    default: () => ({}),
   },
 });
 
@@ -22,7 +22,10 @@ function isActiveCollection(collectionHandle: string) {
         Collections
       </h6>
       <ul class="mt-2 mb-6 ml-3 border-l border-slate-800">
-        <li v-for="{ node } in collections.edges" :key="node.title">
+        <li
+          v-for="{ node } in collections.edges"
+          :key="node.title"
+        >
           <div
             :class="['rounded-md flex py-2 ml-4 justify-between text-left ']"
           >

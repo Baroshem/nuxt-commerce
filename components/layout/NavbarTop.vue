@@ -65,7 +65,7 @@ const navigation = [
             <source
               srcset="/logo-nuxt-commerce.svg"
               media="(min-width: 768px)"
-            />
+            >
             <NuxtImg
               src="/logo.svg"
               alt="Nuxt Commerce Logo"
@@ -113,7 +113,11 @@ const navigation = [
               <LayoutSearchBar class="mt-4 lg:mt-0" />
 
               <ul class="flex flex-col mt-4 text-left">
-                <li v-for="{ name, to } in navigation" :key="name" class="py-2">
+                <li
+                  v-for="{ name, to } in navigation"
+                  :key="name"
+                  class="py-2"
+                >
                   <NuxtLink
                     :to="`/collection/${to}`"
                     variant="secondary"
@@ -130,7 +134,10 @@ const navigation = [
       </transition>
 
       <ul class="hidden lg:flex">
-        <li v-for="{ name, to } in navigation" :key="name">
+        <li
+          v-for="{ name, to } in navigation"
+          :key="name"
+        >
           <NuxtLink
             :to="`/collection/${to}`"
             variant="secondary"
@@ -152,15 +159,15 @@ const navigation = [
         >
           <LayoutSearchBar
             v-show="isSearchBarOpen"
-            class="w-60 mt-2 lg:mt-0 hidden sm:block !absolute right-[60px]"
             ref="searchBar"
+            class="w-60 mt-2 lg:mt-0 hidden sm:block !absolute right-[60px]"
           />
         </transition>
         <SfButton
-          @click="isSearchBarOpen = true"
           variant="tertiary"
           square
           class="text-slate-200 active:bg-primary-200 hover:!bg-slate-700 hover:text-white hidden sm:block"
+          @click="isSearchBarOpen = true"
         >
           <SfIconSearch />
         </SfButton>

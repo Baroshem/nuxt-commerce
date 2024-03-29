@@ -72,7 +72,11 @@ function toggleOption(name: string, value: string) {
       {{ product?.description }}
     </p>
 
-    <div v-for="option in product?.options" :key="option.id" class="my-6">
+    <div
+      v-for="option in product?.options"
+      :key="option.id"
+      class="my-6"
+    >
       <p class="mb-2 text-slate-400">
         {{ option.name }}
       </p>
@@ -91,7 +95,9 @@ function toggleOption(name: string, value: string) {
     <div class="py-4 mb-4">
       <div class="items-end flex">
         <div class="w-max">
-          <p class="text-slate-400 mb-2">Quantity</p>
+          <p class="text-slate-400 mb-2">
+            Quantity
+          </p>
           <ProductQuantitySelector
             class="mr-0 lg:mr-4 items-stretch xs:items-center lg:w-auto"
             @quantity-updated="(newVal: number) => (quantity = newVal)"

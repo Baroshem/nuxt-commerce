@@ -23,7 +23,11 @@ const handleError = () => clearError({ redirect: "/" });
       <h3 class="text-3xl text-slate-400">
         {{ error.message }}
       </h3>
-      <SfButton size="lg" class="mt-4" @click="handleError">
+      <SfButton
+        size="lg"
+        class="mt-4"
+        @click="handleError"
+      >
         Back to home
       </SfButton>
     </section>
