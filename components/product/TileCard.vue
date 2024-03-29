@@ -59,7 +59,7 @@ const computedPrice = computed(
           size="sm"
           :disabled="loading"
           aria-label="Add to cart button"
-          class="w-full lg:w-auto h-10 bg-transparent hover:bg-transparent hover:text-slate-300"
+          class="lg:w-auto h-10 bg-transparent hover:bg-transparent hover:text-slate-300 w-10"
           @click="addToCart(product)"
         >
           <SfIconShoppingCart
