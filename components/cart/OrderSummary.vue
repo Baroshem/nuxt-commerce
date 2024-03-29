@@ -1,5 +1,10 @@
 <script lang="ts" setup>
-import { SfButton, SfIconShoppingCart, SfIconClose } from "@storefront-ui/vue";
+import {
+  SfButton,
+  SfIconShoppingCart,
+  SfIconClose,
+  SfLoaderCircular,
+} from "@storefront-ui/vue";
 
 const {
   getPriceWithCurrency,
@@ -11,8 +16,10 @@ const {
 } = useShopifyCart();
 
 const costs = computed(() => cart?.value?.cost);
+const isRedirectingToCheckout = ref(false);
 
 async function redirectToCheckout() {
+  isRedirectingToCheckout.value = true;
   window.location.href = cart?.value?.checkoutUrl;
 }
 
@@ -100,7 +107,7 @@ async function removeItem(id: string) {
           <p>{{ getPriceWithCurrency(costs?.totalAmount) }}</p>
         </div>
         <SfButton
-          class="w-full !text-gray-900"
+          class="w-full"
           :class="
             loading
               ? '!bg-gray-400 hover:!bg-gray-400'
@@ -109,7 +116,10 @@ async function removeItem(id: string) {
           :disabled="loading"
           @click="redirectToCheckout"
         >
-          Checkout
+          <span v-if="!isRedirectingToCheckout" class="text-gray-900"
+            >Checkout</span
+          >
+          <SfLoaderCircular v-else />
         </SfButton>
       </div>
     </div>

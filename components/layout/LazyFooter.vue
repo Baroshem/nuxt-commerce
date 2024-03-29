@@ -153,7 +153,7 @@ const socialIcons = [
       </div>
 
       <form
-        class="mb-4 max-w-[688px] mx-auto h-max w-full"
+        class="mb-4 max-w-[688px] mx-auto h-max w-full mt-5 xs:mt-0"
         @submit.prevent="subscribeNewsletter(inputValue)"
       >
         <p class="text-white text-base text-left mb-2">
@@ -177,7 +177,9 @@ const socialIcons = [
       </form>
     </div>
     <div class="border-t border-slate-800 py-8">
-      <div class="max-w-7xl px-6 mx-auto flex justify-between">
+      <div
+        class="max-w-7xl px-6 mx-auto flex justify-center xs:justify-between flex-wrap xs:flex-nowrap gap-5 xs:gap-0"
+      >
         <div>
           <ul class="flex">
             <li v-for="icon in paymentIcons" :key="icon.id">

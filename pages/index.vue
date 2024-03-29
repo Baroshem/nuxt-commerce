@@ -41,7 +41,7 @@ const products = computed(() => data.value?.products?.edges);
         <NuxtLink
           to="/collection/latest-stuff"
           variant="secondary"
-          class="mx-4 hover:text-primary-500 text-white self-end flex"
+          class="min-w-fit hover:text-primary-500 text-white self-end flex"
         >
           See all <SfIconArrowForward class="ml-2" />
         </NuxtLink>
@@ -67,7 +67,7 @@ const products = computed(() => data.value?.products?.edges);
         <NuxtLink
           to="/collection/latest-stuff"
           variant="secondary"
-          class="mx-4 hover:text-primary-500 text-white self-end flex"
+          class="min-w-fit hover:text-primary-500 text-white self-end flex"
         >
           See all <SfIconArrowForward class="ml-2" />
         </NuxtLink>

@@ -91,29 +91,41 @@ const navigation = [
           aria-labelledby="promoModalTitle"
           aria-describedby="promoModalDesc"
         >
-          <SfButton
-            square
-            variant="tertiary"
-            class="absolute right-2 top-2 text-white"
-            @click="closeCategoryMenu"
-          >
-            <SfIconClose />
-          </SfButton>
-          <h3 class="text-4xl">Navigation</h3>
-          <LayoutSearchBar class="mt-4 lg:mt-0" />
+          <div class="text-left h-full flex flex-col">
+            <div
+              class="block justify-between items-end py-2 px-4 md:px-6 md:pt-6 md:pb-4"
+            >
+              <div class="flex justify-between">
+                <p
+                  class="typography-headline-4 font-semibold md:typography-headline-3"
+                >
+                  Navigation
+                </p>
+                <SfButton
+                  square
+                  variant="tertiary"
+                  class="text-white w-8 h-8 hover:!bg-slate-700 hover:text-white"
+                  @click="closeCategoryMenu"
+                >
+                  <SfIconClose />
+                </SfButton>
+              </div>
+              <LayoutSearchBar class="mt-4 lg:mt-0" />
 
-          <ul class="flex flex-col mt-4 text-left">
-            <li v-for="{ name, to } in navigation" :key="name" class="py-2">
-              <NuxtLink
-                :to="`/collection/${to}`"
-                variant="secondary"
-                class="mx-4 hover:underline hover:text-primary-500 text-xl"
-                @click="closeCategoryMenu"
-              >
-                {{ name }}
-              </NuxtLink>
-            </li>
-          </ul>
+              <ul class="flex flex-col mt-4 text-left">
+                <li v-for="{ name, to } in navigation" :key="name" class="py-2">
+                  <NuxtLink
+                    :to="`/collection/${to}`"
+                    variant="secondary"
+                    class="mx-4 hover:underline hover:text-primary-500 text-base"
+                    @click="closeCategoryMenu"
+                  >
+                    {{ name }}
+                  </NuxtLink>
+                </li>
+              </ul>
+            </div>
+          </div>
         </SfModal>
       </transition>
 

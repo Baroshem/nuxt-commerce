@@ -23,12 +23,12 @@ const { data: collectionsData } = await useAsyncGql("getCollections", {
   first: 20,
 });
 
-const collections = computed(() =>
-  collectionsData.value.collections.edges.map(({ node }) => ({
-    title: node.title,
-    handle: node.handle,
-  }))
-);
+// const collections = computed(() =>
+//   collectionsData.value.collections.edges.map(({ node }) => ({
+//     title: node.title,
+//     handle: node.handle,
+//   }))
+// );
 
 watch(sortKey, async (newVal) => {
   const { data: sortedCollectionData } = await useAsyncGql("getCollection", {
@@ -40,8 +40,6 @@ watch(sortKey, async (newVal) => {
 
   collectionData.value = sortedCollectionData.value;
 });
-
-console.log(collection);
 
 useSeoMeta({
   title: collection.value?.seo.title || collection.value?.title,
@@ -74,10 +72,10 @@ useSeoMeta({
 
     <div class="block lg:flex">
       <div class="mx-0 min-w-full lg:min-w-fit mt-8">
-        <CollectionFilterSelector :collections="collections" />
+        <CollectionFilterSelector :collections="collectionsData.collections" />
       </div>
       <div class="mt-8 w-full">
-        <div class="flex justify-between ml-10">
+        <div class="flex justify-between xs:ml-10 items-center">
           <h2 class="text-lg text-white font-medium">
             All products ({{ collectionProducts?.length }})
           </h2>

@@ -156,13 +156,13 @@ watchDebounced(
       <ul
         v-else
         ref="dropdownListRef"
-        class="py-2 bg-gray-700 text-gray-300 border border-solid rounded-md border-gray-700 drop-shadow-md relative -left-40 w-[400px]"
+        class="py-2 bg-gray-700 text-gray-300 border border-solid rounded-md border-gray-700 drop-shadow-md relative xs:-left-40 xs:w-[400px] overflow-auto max-h-[400px]"
       >
         <li v-for="{ node } in result?.edges" :key="node.id">
           <SfListItem
             tag="button"
             type="button"
-            class="flex justify-start hover:bg-gray-800 border-b-gray-800 border-b-2 active:bg-gray-800"
+            class="flex justify-start hover:!bg-gray-800 border-b-gray-800 border-b-2 active:bg-gray-800"
           >
             <NuxtLink
               class="flex items-center justify-between"
