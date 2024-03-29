@@ -58,46 +58,42 @@ function toggleOption(name: string, value: string) {
 </script>
 
 <template>
-  <section class="md:max-w-[640px] text-left p-4 lg:p-0 text-white">
-    <div class="flex justify-between font-bold">
-      <h1 class="mb-1 text-5xl">
+  <section class="md:max-w-[640px] text-left py-4 lg:p-0 text-white">
+    <div class="block justify-between font-bold">
+      <h1 class="mb-1 text-3xl sm:text-5xl">
         {{ product?.title }}
       </h1>
-      <strong class="block text-3xl">{{
+      <span class="block text-2xl sm:text-3xl font-semibold">{{
         getPriceWithCurrency(computedVariant?.price)
-      }}</strong>
+      }}</span>
     </div>
 
     <p class="mt-6 text-slate-400">
       {{ product?.description }}
     </p>
 
-    <div
-      v-for="option in product?.options"
-      :key="option.id"
-      class="my-6"
-    >
+    <div v-for="option in product?.options" :key="option.id" class="my-6">
       <p class="mb-2 text-slate-400">
         {{ option.name }}
       </p>
-      <SfChip
-        v-for="value in option.values"
-        :key="value"
-        size="base"
-        class="mr-6 bg-gray-800 rounded-lg !px-6 !ring-gray-700 hover:!bg-gray-700"
-        :input-props="{ disabled: isOptionDisabled(option.name, value) }"
-        @click="toggleOption(option.name, value)"
-      >
-        {{ value }}
-      </SfChip>
+      <div class="flex gap-6 flex-wrap">
+        <SfChip
+          v-for="value in option.values"
+          :key="value"
+          size="base"
+          class="bg-gray-800 rounded-lg !px-6 !ring-gray-700 hover:!bg-gray-700"
+          :input-props="{ disabled: isOptionDisabled(option.name, value) }"
+          @click="toggleOption(option.name, value)"
+        >
+          {{ value }}
+        </SfChip>
+      </div>
     </div>
 
     <div class="py-4 mb-4">
       <div class="items-end flex">
         <div class="w-max">
-          <p class="text-slate-400 mb-2">
-            Quantity
-          </p>
+          <p class="text-slate-400 mb-2">Quantity</p>
           <ProductQuantitySelector
             class="mr-0 lg:mr-4 items-stretch xs:items-center lg:w-auto"
             @quantity-updated="(newVal: number) => (quantity = newVal)"
@@ -107,7 +103,7 @@ function toggleOption(name: string, value: string) {
         <SfButton
           type="button"
           size="lg"
-          class="w-48 md:w-full !text-slate-950 !h-[42px] ml-8 lg:ml-0"
+          class="w-48 md:w-full !text-slate-950 !h-[42px] ml-4 lg:ml-0"
           :class="
             loading || !areOptionsSelected
               ? '!bg-gray-400 hover:!bg-gray-400'

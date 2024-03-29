@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { SfButton, SfListItem, SfIconClose } from "@storefront-ui/vue";
 
-const { getPriceWithCurrency } = useShopifyCart();
+const { getPriceWithCurrency, isCartOpen } = useShopifyCart();
 
 const emit = defineEmits<{
   (e: "remove-item", value: string): void;
@@ -30,7 +30,10 @@ defineProps({
     <div class="flex items-center justify-between">
       <div class="flex items-center max-h-[92px] w-full">
         <div class="relative">
-          <NuxtLink :to="`/product/${item.merchandise.product.handle}`">
+          <NuxtLink
+            :to="`/product/${item.merchandise.product.handle}`"
+            @click="isCartOpen = false"
+          >
             <NuxtImg
               :src="item.merchandise.product.featuredImage?.url"
               width="92"
