@@ -57,10 +57,15 @@ useSeoMeta({
     </div>
     <div class="block lg:flex justify-between gap-16">
       <ProductImageGallery :images="galleryImages" />
-      <ProductInfoDetails v-if="product" :product="product" />
+      <ProductInfoDetails
+        v-if="product"
+        :product="product"
+      />
     </div>
     <section class="max-w-[1536px] w-full mx-auto my-20 text-left ml-4 lg:ml-0">
-      <h2 class="text-3xl mb-10 text-white">Related Products</h2>
+      <h2 class="text-3xl mb-10 text-white">
+        Related Products
+      </h2>
       <div
         class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4"
       >
