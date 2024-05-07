@@ -99,7 +99,7 @@ const assignRef = (
   <div class="relative flex max-h-[460px] aspect-[4/3] w-full">
     <SfScrollable
       ref="thumbsRef"
-      class="items-center w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+      class="items-center w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] overflow-y-visible"
       direction="vertical"
       :active-index="activeIndex"
       :previous-disabled="activeIndex === 0"
@@ -113,7 +113,7 @@ const assignRef = (
         type="button"
         :aria-label="alt || 'Product Thumbnail'"
         :aria-current="activeIndex === index"
-        :class="`md:h-auto relative rounded-xl shrink-0 mx-4 -mb-2 border-2 snap-start cursor-pointer focus-visible:outline focus-visible:outline-offset transition-colors flex-grow md:flex-grow-0  ${
+        :class="`md:h-auto relative rounded-xl shrink-0 mr-4 -mb-2 border-2 snap-start cursor-pointer focus-visible:outline focus-visible:outline-offset transition-colors flex-grow md:flex-grow-0  ${
           activeIndex === index ? 'border-primary-400' : 'border-transparent'
         }`"
         @mouseover="activeIndex = index"

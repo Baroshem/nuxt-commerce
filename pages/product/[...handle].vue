@@ -49,7 +49,7 @@ useSeoMeta({
     <div class="text-left mb-8 mt-10 items-center">
       <SfButton
         variant="tertiary"
-        class="mx-4 hover:bg-transparent hover:text-gray-400 active:bg-transparent active:text-gray-400 !text-gray-400 self-end"
+        class="hover:bg-transparent hover:text-gray-400 active:bg-transparent active:text-gray-400 !text-gray-400 self-end pl-0"
         @click="router.back()"
       >
         <SfIconArrowBack /> Back to the list
@@ -57,23 +57,17 @@ useSeoMeta({
     </div>
     <div class="block lg:flex justify-between gap-16">
       <ProductImageGallery :images="galleryImages" />
-      <ProductInfoDetails
-        v-if="product"
-        :product="product"
-      />
+      <ProductInfoDetails v-if="product" :product="product" />
     </div>
     <section class="max-w-[1536px] w-full mx-auto my-20 text-left ml-4 lg:ml-0">
-      <h2 class="text-3xl mb-10 text-white">
-        Related Products
-      </h2>
+      <h2 class="text-3xl mb-10 text-white">Related Products</h2>
       <div
-        class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4"
       >
         <ProductTileCard
           v-for="recommendedProduct in recommendedProducts"
           :key="recommendedProduct.id"
           :product="recommendedProduct"
-          class="mx-2"
         />
       </div>
     </section>

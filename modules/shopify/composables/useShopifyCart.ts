@@ -7,11 +7,11 @@ export const useShopifyCart = () => {
   const loading = ref(false);
 
   const getPriceWithCurrency = (
-    price?: { amount: string; currencyCode: string } | null
+    price?: ShopifyPrice | null
   ) => {
     if (!price) return "";
 
-    return `${price.currencyCode} ${price.amount}`;
+    return `${price.currencyCode === 'CAD' ? '$' : price.currencyCode} ${price.amount}`;
   };
 
   const addToCart = async (
