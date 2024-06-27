@@ -1,9 +1,5 @@
 <script lang="ts" setup>
-import {
-  SfScrollable,
-  SfLoaderCircular,
-  type SfScrollableOnDragEndData,
-} from "@storefront-ui/vue";
+import { type SfScrollableOnDragEndData } from "@storefront-ui/vue";
 import {
   unrefElement,
   useIntersectionObserver,

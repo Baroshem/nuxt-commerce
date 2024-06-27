@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { getCart } = useShopifyCart();
+const { getCart, toast } = useShopifyCart();
 
 await getCart();
 </script>
@@ -9,7 +9,7 @@ await getCart();
   <main>
     <LayoutNavbarTop class="mb-5" />
     <CartOrderModal />
-    <LayoutToastAlert />
+    <LayoutToastAlert :toast="toast" />
     <NuxtPage />
     <LayoutLazyFooter class="mt-5" />
   </main>

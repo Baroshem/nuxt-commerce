@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { useCounter } from "@vueuse/core";
-import { SfButton, SfIconAdd, SfIconRemove, useId } from "@storefront-ui/vue";
 
 const props = defineProps({
   quantity: {
@@ -59,7 +58,7 @@ watch(count, (newVal: number) => {
         :class="!small && 'mx-2'"
         :min="min"
         :max="max"
-      >
+      />
       <SfButton
         type="button"
         variant="tertiary"

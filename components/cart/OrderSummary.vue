@@ -1,11 +1,4 @@
 <script lang="ts" setup>
-import {
-  SfButton,
-  SfIconShoppingCart,
-  SfIconClose,
-  SfLoaderCircular,
-} from "@storefront-ui/vue";
-
 const {
   getPriceWithCurrency,
   cart,
@@ -79,9 +72,7 @@ async function removeItem(id: string) {
         class="px-4 md:px-6 mt-6 flex flex-col flex-grow overflow-auto text-center"
       >
         <SfIconShoppingCart class="text-center mx-auto my-2 !w-24 !h-24" />
-        <p class="text-lg">
-          No items in cart
-        </p>
+        <p class="text-lg">No items in cart</p>
       </div>
       <div class="px-4 pb-1 mt-3 md:px-6 md:pb-6">
         <div
@@ -89,12 +80,8 @@ async function removeItem(id: string) {
         >
           <div class="flex flex-col grow pr-2 text-slate-400">
             <p>Subtotal</p>
-            <p class="mt-2">
-              Sales Tax
-            </p>
-            <p class="mt-2">
-              Shipping
-            </p>
+            <p class="mt-2">Sales Tax</p>
+            <p class="mt-2">Shipping</p>
           </div>
           <div class="flex flex-col text-right">
             <p>{{ getPriceWithCurrency(costs?.subtotalAmount) }}</p>
@@ -122,10 +109,9 @@ async function removeItem(id: string) {
           :disabled="loading"
           @click="redirectToCheckout"
         >
-          <span
-            v-if="!isRedirectingToCheckout"
-            class="text-gray-900"
-          >Checkout</span>
+          <span v-if="!isRedirectingToCheckout" class="text-gray-900"
+            >Checkout</span
+          >
           <SfLoaderCircular v-else />
         </SfButton>
       </div>

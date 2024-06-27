@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { SfButton, SfListItem, SfIconClose } from "@storefront-ui/vue";
-
 const { getPriceWithCurrency, isCartOpen } = useShopifyCart();
 
 const emit = defineEmits<{

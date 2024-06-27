@@ -33,6 +33,7 @@ export default defineNuxtConfig({
     "@nuxt/fonts",
     "nuxt-simple-robots",
     "nuxt-simple-sitemap",
+    '@storefront-ui/nuxt',
     "nuxt-og-image",
     [
       "@nuxt/image",

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { SfModal } from "@storefront-ui/vue";
 const { isCartOpen } = useShopifyCart();
 </script>
 

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { SfLink, SfListItem, SfInput, SfButton } from "@storefront-ui/vue";
 const inputValue = ref("");
 
 function subscribeNewsletter(email: string) {
@@ -182,10 +181,7 @@ const socialIcons = [
       >
         <div>
           <ul class="flex">
-            <li
-              v-for="icon in paymentIcons"
-              :key="icon.id"
-            >
+            <li v-for="icon in paymentIcons" :key="icon.id">
               <NuxtImg
                 width="24"
                 height="24"
@@ -209,15 +205,8 @@ const socialIcons = [
 
         <div>
           <ul class="flex">
-            <li
-              v-for="icon in socialIcons"
-              :key="icon.id"
-            >
-              <a
-                :href="icon.link"
-                target="_blank"
-                :aria-label="icon.name"
-              >
+            <li v-for="icon in socialIcons" :key="icon.id">
+              <a :href="icon.link" target="_blank" :aria-label="icon.name">
                 <NuxtImg
                   width="30"
                   height="30"

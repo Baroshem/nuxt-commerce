@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { SfButton } from "@storefront-ui/vue";
 const config = useRuntimeConfig();
 
 const cardDetails = [
@@ -65,9 +64,7 @@ useSeoMeta({
 <template>
   <section class="text-white max-w-7xl px-6 mx-auto text-center">
     <div class="mb-8">
-      <h2 class="text-4xl mb-6">
-        Nuxt Commerce
-      </h2>
+      <h2 class="text-4xl mb-6">Nuxt Commerce</h2>
       <p class="typography-text-base md:typography-text-lg text-slate-400">
         E-Commerce template built with
         <a
@@ -75,26 +72,27 @@ useSeoMeta({
           target="_blank"
           class="hover:underline hover:text-primary-500"
           aria-label="Link to Nuxt Home Page"
-        >Nuxt</a>,
+          >Nuxt</a
+        >,
         <a
           href="https://docs.storefrontui.io/v2/"
           target="_blank"
           class="hover:underline hover:text-primary-500"
           aria-label="Link to Storefront UI Documentation Page"
-        >Storefront UI</a>
+          >Storefront UI</a
+        >
         &
         <a
           href="https://www.shopify.com/"
           target="_blank"
           class="hover:underline hover:text-primary-500"
           aria-label="Link to Shopify Home Page"
-        >Shopify</a>
+          >Shopify</a
+        >
         🚀
       </p>
 
-      <p class="mt-2 text-slate-400">
-        Made with 💚 by Nuxt & Alokai
-      </p>
+      <p class="mt-2 text-slate-400">Made with 💚 by Nuxt & Alokai</p>
     </div>
 
     <div class="flex flex-wrap gap-4 lg:gap-6 justify-center">
@@ -121,10 +119,7 @@ useSeoMeta({
             </p>
           </div>
 
-          <NuxtLink
-            :to="link"
-            class="self-end"
-          >
+          <NuxtLink :to="link" class="self-end">
             <SfButton
               size="sm"
               class="relative mt-auto !bg-primary-400 hover:!bg-primary-500 !text-slate-950"
