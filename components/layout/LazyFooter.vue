@@ -158,7 +158,7 @@ const socialIcons = [
             type="email"
             placeholder="you@example.com"
           />
-          <UButton type="submit"> Subscribe </UButton>
+          <UButton type="submit" class="ml-2"> Subscribe </UButton>
         </div>
       </form>
     </div>

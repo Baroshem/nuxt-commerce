@@ -6,7 +6,6 @@ const config = useRuntimeConfig();
 const { data } = await useAsyncGql("getProduct", {
   handle: route.params.handle[0],
   variants: 10,
-  country: "US",
 });
 
 if (!data?.value?.product) {
