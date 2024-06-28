@@ -62,7 +62,7 @@ function toggleOption(name: string, value: string) {
         {{ product?.title }}
       </h1>
       <span class="block text-2xl sm:text-3xl font-semibold">{{
-        getPriceWithCurrency(computedVariant?.price)
+        getPriceWithCurrency(computedVariant?.price) || "-"
       }}</span>
     </div>
 
@@ -74,22 +74,22 @@ function toggleOption(name: string, value: string) {
       <p class="mb-2 text-slate-400">
         {{ option.name }}
       </p>
-      <div class="flex gap-6 flex-wrap">
-        <SfChip
+      <div class="flex gap-4 flex-wrap">
+        <UButton
           v-for="value in option.values"
           :key="value"
-          size="base"
-          class="bg-gray-800 rounded-lg !px-6 !ring-gray-700 hover:!bg-gray-700"
-          :input-props="{ disabled: isOptionDisabled(option.name, value) }"
+          :color="isOptionDisabled(option.name, value) ? 'gray' : 'primary'"
+          class="w-16 justify-center"
+          :disabled="isOptionDisabled(option.name, value)"
           @click="toggleOption(option.name, value)"
         >
           {{ value }}
-        </SfChip>
+        </UButton>
       </div>
     </div>
 
     <div class="py-4 mb-4">
-      <div class="items-end flex">
+      <div class="items-end flex gap-3 sm:gap-0">
         <div class="w-max">
           <p class="text-slate-400 mb-2">Quantity</p>
           <ProductQuantitySelector
@@ -98,23 +98,15 @@ function toggleOption(name: string, value: string) {
           />
         </div>
 
-        <SfButton
-          type="button"
+        <UButton
           size="lg"
-          class="w-48 md:w-full !text-slate-950 !h-[42px] ml-4 lg:ml-0"
-          :class="
-            loading || !areOptionsSelected
-              ? '!bg-gray-400 hover:!bg-gray-400'
-              : '!bg-primary-400 hover:!bg-primary-500'
-          "
+          class="w-max justify-center flex-grow"
           :disabled="loading || !areOptionsSelected"
           @click="addToCart(product, computedVariant?.id, quantity)"
         >
-          <template #suffix>
-            <SfIconShoppingCart size="sm" />
-          </template>
           Add to cart
-        </SfButton>
+          <UIcon name="i-heroicons-shopping-cart" />
+        </UButton>
       </div>
     </div>
   </section>

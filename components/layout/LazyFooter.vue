@@ -11,19 +11,19 @@ const categories = [
     subcategories: [
       {
         subcategoryLabel: "About us",
-        link: "#",
+        link: "/about",
       },
       {
         subcategoryLabel: "Order pickup",
-        link: "#",
+        link: "/",
       },
       {
         subcategoryLabel: "Purchase status",
-        link: "#",
+        link: "/",
       },
       {
         subcategoryLabel: "Track orders",
-        link: "#",
+        link: "/",
       },
     ],
   },
@@ -32,19 +32,19 @@ const categories = [
     subcategories: [
       {
         subcategoryLabel: "Payment methods",
-        link: "#",
+        link: "/",
       },
       {
         subcategoryLabel: "Order pickup",
-        link: "#",
+        link: "/",
       },
       {
         subcategoryLabel: "Purchase status",
-        link: "#",
+        link: "/",
       },
       {
         subcategoryLabel: "Track orders",
-        link: "#",
+        link: "/",
       },
     ],
   },
@@ -53,19 +53,19 @@ const categories = [
     subcategories: [
       {
         subcategoryLabel: "Help centers",
-        link: "#",
+        link: "/",
       },
       {
         subcategoryLabel: "Security & fraud",
-        link: "#",
+        link: "/",
       },
       {
         subcategoryLabel: "Feedback",
-        link: "#",
+        link: "/",
       },
       {
         subcategoryLabel: "Contact",
-        link: "#",
+        link: "/",
       },
     ],
   },
@@ -122,62 +122,49 @@ const socialIcons = [
 </script>
 
 <template>
-  <footer class="pt-12 border-t border-slate-800">
-    <div
-      class="xs:grid justify-center grid-cols-[1fr_1fr] md:grid-cols-[repeat(4,1fr)] pb-10 max-w-7xl px-6 mx-auto text-center"
-    >
+  <footer class="pt-12 border-t border-slate-800 text-center">
+    <div class="block sm:flex justify-between mb-10 max-w-7xl px-6 mx-auto">
       <div
         v-for="{ label, subcategories } in categories"
         :key="label"
-        class="xs:pb-4 text-center xs:text-left"
+        class="sm:pb-4 text-center sm:text-left"
       >
-        <div class="text-lg font-medium leading-7 text-white font-body">
+        <div class="text-lg font-medium leading-7 text-white font-body mb-2">
           {{ label }}
         </div>
         <ul>
-          <SfListItem
+          <li
             v-for="{ subcategoryLabel, link } in subcategories"
             :key="subcategoryLabel"
-            class="!bg-transparent typography-text-sm font-body !px-0"
+            class="text-sm text-gray-400 mb-2"
           >
-            <SfLink
-              class="no-underline text-slate-400 hover:text-slate-500 active:underline active:!text-neutral-900"
-              variant="secondary"
-              :href="link"
-            >
+            <NuxtLink :to="link">
               {{ subcategoryLabel }}
-            </SfLink>
-          </SfListItem>
+            </NuxtLink>
+          </li>
         </ul>
       </div>
 
       <form
-        class="mb-4 max-w-[688px] mx-auto h-max w-full mt-5 xs:mt-0"
+        class="mb-4 mt-5 sm:mt-0"
         @submit.prevent="subscribeNewsletter(inputValue)"
       >
         <p class="text-white text-base text-left mb-2">
           Subscribe to our newsletter
         </p>
         <div class="flex gap-1">
-          <SfInput
+          <UInput
             v-model="inputValue"
             type="email"
-            wrapper-class="grow !bg-gray-900 !ring-gray-700 mr-2 "
-            class="bg-gray-900 placeholder:text-gray-500 text-white caret-primary-400"
             placeholder="you@example.com"
           />
-          <SfButton
-            type="submit"
-            class="!bg-primary-400 hover:!bg-primary-500 !text-slate-950"
-          >
-            Subscribe
-          </SfButton>
+          <UButton type="submit"> Subscribe </UButton>
         </div>
       </form>
     </div>
     <div class="border-t border-slate-800 py-8">
       <div
-        class="max-w-7xl px-6 mx-auto flex justify-center xs:justify-between flex-wrap xs:flex-nowrap gap-5 xs:gap-0"
+        class="max-w-7xl px-6 mx-auto flex justify-center sm:justify-between flex-wrap sm:flex-nowrap gap-5 sm:gap-0"
       >
         <div>
           <ul class="flex">
@@ -197,7 +184,7 @@ const socialIcons = [
 
         <div>
           <p
-            class="flex items-center justify-center leading-5 text-center typography-text-sm text-white/50 font-body"
+            class="flex items-center justify-center leading-5 text-center text-white/50 font-body text-sm"
           >
             Copyright © 2024-present Nuxt & Alokai - MIT License
           </p>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
 const config = useRuntimeConfig();
-const sortKey = ref("");
 
 const { data: collectionData } = await useAsyncGql("getCollection", {
   handle: route.params.handle[0],
@@ -23,23 +22,18 @@ const { data: collectionsData } = await useAsyncGql("getCollections", {
   first: 20,
 });
 
-// const collections = computed(() =>
-//   collectionsData.value.collections.edges.map(({ node }) => ({
-//     title: node.title,
-//     handle: node.handle,
-//   }))
-// );
-
-watch(sortKey, async (newVal) => {
-  const { data: sortedCollectionData } = await useAsyncGql("getCollection", {
-    handle: route.params.handle[0],
-    items: 10,
-    variants: 1,
-    sortKey: newVal as any,
-  });
-
-  collectionData.value = sortedCollectionData.value;
-});
+watch(
+  () => route.query.sortKey,
+  async (newVal) => {
+    collectionData.value = await GqlGetCollection({
+      handle: route.params.handle[0],
+      items: 10,
+      variants: 1,
+      // TODO: fix following `any`
+      sortKey: newVal as any,
+    });
+  }
+);
 
 useSeoMeta({
   title: collection.value?.seo.title || collection.value?.title,
@@ -79,9 +73,7 @@ useSeoMeta({
           <h2 class="text-lg text-white font-medium">
             All products ({{ collectionProducts?.length }})
           </h2>
-          <CollectionSortSelector
-            @sorting-updated="(newVal: string) => (sortKey = newVal)"
-          />
+          <CollectionSortSelector />
         </div>
         <div
           class="flex flex-wrap gap-6 justify-center lg:justify-normal mt-8 lg:ml-10"

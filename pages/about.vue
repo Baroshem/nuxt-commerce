@@ -3,10 +3,9 @@ const config = useRuntimeConfig();
 
 const cardDetails = [
   {
-    title: "Storefront UI",
-    description:
-      "Fast, accessible, and fully customizable components built for e-commerce.",
-    link: "https://docs.storefrontui.io/v2/",
+    title: "Nuxt UI",
+    description: "A UI Library for Modern Web Apps",
+    link: "https://ui.nuxt.com/",
   },
   {
     title: "GraphQL Client",
@@ -51,11 +50,9 @@ const cardDetails = [
 
 useSeoMeta({
   title: "Nuxt Commerce - About",
-  description:
-    "E-Commerce application built with Nuxt, Storefront UI & Shopify",
+  description: "E-Commerce application built with Nuxt & Shopify",
   ogTitle: "Nuxt Commerce",
-  ogDescription:
-    "E-Commerce application built with Nuxt, Storefront UI & Shopify",
+  ogDescription: "E-Commerce application built with Nuxt & Shopify",
   ogImage: `${config.siteUrl}/logo.svg`,
   twitterCard: "summary_large_image",
 });
@@ -65,7 +62,7 @@ useSeoMeta({
   <section class="text-white max-w-7xl px-6 mx-auto text-center">
     <div class="mb-8">
       <h2 class="text-4xl mb-6">Nuxt Commerce</h2>
-      <p class="typography-text-base md:typography-text-lg text-slate-400">
+      <p class="text-slate-400">
         E-Commerce template built with
         <a
           href="https://nuxt.com/"
@@ -73,13 +70,6 @@ useSeoMeta({
           class="hover:underline hover:text-primary-500"
           aria-label="Link to Nuxt Home Page"
           >Nuxt</a
-        >,
-        <a
-          href="https://docs.storefrontui.io/v2/"
-          target="_blank"
-          class="hover:underline hover:text-primary-500"
-          aria-label="Link to Storefront UI Documentation Page"
-          >Storefront UI</a
         >
         &
         <a
@@ -92,7 +82,7 @@ useSeoMeta({
         🚀
       </p>
 
-      <p class="mt-2 text-slate-400">Made with 💚 by Nuxt & Alokai</p>
+      <p class="mt-2 text-slate-400">Made with 💚 by Nuxt</p>
     </div>
 
     <div class="flex flex-wrap gap-4 lg:gap-6 justify-center">
@@ -109,24 +99,13 @@ useSeoMeta({
         />
         <div class="flex flex-col items-start p-4 grow justify-between">
           <div class="text-left">
-            <p class="font-medium typography-text-base">
+            <p class="font-medium">
               {{ title }}
             </p>
-            <p
-              class="mt-1 mb-4 font-normal typography-text-sm text-slate-400 text-left"
-            >
+            <p class="mt-1 mb-4 font-normal text-slate-400 text-left">
               {{ description }}
             </p>
           </div>
-
-          <NuxtLink :to="link" class="self-end">
-            <SfButton
-              size="sm"
-              class="relative mt-auto !bg-primary-400 hover:!bg-primary-500 !text-slate-950"
-            >
-              Read more
-            </SfButton>
-          </NuxtLink>
         </div>
       </div>
     </div>

@@ -33,20 +33,18 @@ watch(count, (newVal: number) => {
 
 <template>
   <div class="inline-flex flex-col items-center">
-    <div class="flex border border-gray-700 rounded-md bg-gray-800">
-      <SfButton
+    <div class="flex border border-gray-700 rounded-md bg-gray-800 h-10">
+      <UButton
         type="button"
-        variant="tertiary"
         :disabled="count <= min || disabled"
-        square
         class="rounded-r-none"
         :class="small && '!p-1'"
         :aria-controls="inputId"
+        variant="ghost"
         aria-label="Decrease value"
         @click="dec()"
-      >
-        <SfIconRemove />
-      </SfButton>
+        icon="i-heroicons-minus-20-solid"
+      />
       <input
         :id="inputId"
         v-model="count"
@@ -59,19 +57,17 @@ watch(count, (newVal: number) => {
         :min="min"
         :max="max"
       />
-      <SfButton
+      <UButton
         type="button"
-        variant="tertiary"
         :disabled="count >= max || disabled"
-        square
-        class="rounded-l-none hover:!bg-slate-700"
+        class="rounded-l-none"
         :class="small && '!p-1'"
         :aria-controls="inputId"
+        variant="ghost"
         aria-label="Increase value"
         @click="inc()"
-      >
-        <SfIconAdd />
-      </SfButton>
+        icon="i-heroicons-plus-20-solid"
+      />
     </div>
   </div>
 </template>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { SfIconArrowForward } from "@storefront-ui/vue";
 const config = useRuntimeConfig();
 
 useSeoMeta({
@@ -34,20 +33,17 @@ const products = computed(() => data.value?.products?.edges);
     <section class="justify-center">
       <div class="flex justify-between my-16">
         <div class="text-left">
-          <h2 class="text-4xl font-medium text-white mb-6">
-            New Collection
-          </h2>
-          <p class="text-slate-400">
-            Newest collection products
-          </p>
+          <h2 class="text-4xl font-medium text-white mb-6">New Collection</h2>
+          <p class="text-slate-400">Newest collection products</p>
         </div>
 
         <NuxtLink
           to="/collection/latest-stuff"
           variant="secondary"
-          class="min-w-fit hover:text-primary-500 text-white self-end flex"
+          class="min-w-fit hover:text-primary-500 text-white self-end flex items-center"
         >
-          See all <SfIconArrowForward class="ml-2" />
+          See all
+          <UIcon name="i-heroicons-arrow-small-right-solid" class="ml-2" />
         </NuxtLink>
       </div>
 
@@ -63,20 +59,17 @@ const products = computed(() => data.value?.products?.edges);
 
       <div class="flex justify-between my-16">
         <div class="text-left">
-          <h2 class="text-4xl font-medium text-white mb-6">
-            Top products
-          </h2>
-          <p class="text-slate-400">
-            Most popular products
-          </p>
+          <h2 class="text-4xl font-medium text-white mb-6">Top products</h2>
+          <p class="text-slate-400">Most popular products</p>
         </div>
 
         <NuxtLink
           to="/collection/latest-stuff"
           variant="secondary"
-          class="min-w-fit hover:text-primary-500 text-white self-end flex"
+          class="min-w-fit hover:text-primary-500 text-white self-end flex items-center"
         >
-          See all <SfIconArrowForward class="ml-2" />
+          See all
+          <UIcon name="i-heroicons-arrow-small-right-solid" class="ml-2" />
         </NuxtLink>
       </div>
 

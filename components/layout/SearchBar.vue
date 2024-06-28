@@ -1,192 +1,107 @@
 <script lang="ts" setup>
-import { offset } from "@floating-ui/vue";
 import { watchDebounced } from "@vueuse/shared";
-import { unrefElement } from "@vueuse/core";
-import { useDisclosure, useDropdown, useTrapFocus } from "@storefront-ui/vue";
+import { onClickOutside } from "@vueuse/core";
 
-const inputModel = ref("");
-const inputRef = ref();
-const dropdownListRef = ref();
+const searchBar = ref();
 const isLoadingSnippets = ref(false);
 const result = ref<ShopifyProducts>();
-const { isOpen, close, open } = useDisclosure();
-const { referenceRef, floatingRef, style } = useDropdown({
-  isOpen,
-  onClose: close,
-  placement: "bottom-start",
-  middleware: [offset(4)],
-});
-const { focusables: focusableElements } = useTrapFocus(
-  dropdownListRef as Ref<HTMLElement>,
-  {
-    trapTabs: false,
-    arrowKeysUpDown: true,
-    activeState: isOpen,
-    initialFocus: false,
-  }
-);
+const isSearchBarOpen = ref(false);
 const { getPriceWithCurrency } = useShopifyCart();
-
-const submit = () => {
-  close();
-  alert(`Search for phrase: ${inputModel.value}`);
-};
-
-const focusInput = () => {
-  const inputEl = unrefElement(inputRef)?.querySelector("input");
-  inputEl?.focus();
-};
-
-const reset = () => {
-  inputModel.value = "";
-  result.value = undefined;
-  close();
-  focusInput();
-};
-
-const handleInputKeyDown = (event: KeyboardEvent) => {
-  if (event.key === "Escape") reset();
-  if (event.key === "ArrowUp") {
-    open();
-    if (isOpen && focusableElements.value.length > 0) {
-      focusableElements.value[focusableElements.value.length - 1].focus();
-    }
-  }
-  if (event.key === "ArrowDown") {
-    open();
-    if (isOpen && focusableElements.value.length > 0) {
-      focusableElements.value[0].focus();
-    }
-  }
-};
-
-watch(inputModel, () => {
-  if (inputModel.value === "") {
-    reset();
-  }
-});
+onClickOutside(searchBar, () => resetState());
+const query = ref("");
 
 watchDebounced(
-  inputModel,
-  () => {
-    if (inputModel.value) {
-      const getSnippets = async () => {
-        open();
-        isLoadingSnippets.value = true;
-        try {
-          const { data } = await useAsyncGql("getProducts", {
-            first: 10,
-            variants: 1,
-            query: inputModel.value,
-          });
-          result.value = data.value.products;
-        } catch (error) {
-          close();
-          console.error(error);
-        }
-        isLoadingSnippets.value = false;
-      };
-
-      getSnippets();
+  query,
+  async () => {
+    if (query.value) {
+      isLoadingSnippets.value = true;
+      try {
+        const { data } = await useAsyncGql("getProducts", {
+          first: 10,
+          variants: 1,
+          query: query.value,
+        });
+        result.value = data.value.products;
+      } catch (error) {
+        console.error(error);
+      }
+      isLoadingSnippets.value = false;
     }
   },
   { debounce: 500 }
 );
+
+function resetState() {
+  isSearchBarOpen.value = false;
+  query.value = "";
+  result.value = undefined;
+}
 </script>
 
 <template>
-  <form
-    ref="referenceRef"
-    role="search"
-    class="relative text-black bg-gray-700"
-    @submit.prevent="submit"
+  <UInput
+    v-model="query"
+    ref="searchBar"
+    name="query"
+    placeholder="Search..."
+    icon="i-heroicons-magnifying-glass-20-solid"
+    autocomplete="off"
+    @focus="isSearchBarOpen = true"
+    class="relative w-64"
+    :ui="{ icon: { trailing: { pointer: '' } } }"
   >
-    <SfInput
-      ref="inputRef"
-      v-model="inputModel"
-      aria-label="Search"
-      placeholder="Search 'Shirt' or 'Boot'..."
-      wrapper-class="!bg-gray-800 !ring-gray-700"
-      class="bg-gray-800 text-white"
-      @focus="open"
-      @keydown="handleInputKeyDown"
-    >
-      <template #prefix>
-        <SfIconSearch />
-      </template>
-      <template #suffix>
-        <button
-          v-if="inputModel"
-          type="button"
-          aria-label="Reset search"
-          class="flex rounded-md focus-visible:outline focus-visible:outline-offset"
-          @click="reset"
-        >
-          <SfIconCancel />
-        </button>
-      </template>
-    </SfInput>
-    <div
-      v-if="isOpen"
-      ref="floatingRef"
-      :style="style"
-      class="left-0 right-0 z-50"
-    >
+    <template #trailing>
+      <UButton
+        v-show="query !== ''"
+        color="gray"
+        icon="i-heroicons-x-mark-20-solid"
+        :padded="false"
+        @click="resetState"
+      />
+    </template>
+    <div v-if="isSearchBarOpen" class="right-0 z-50 absolute w-64">
       <div
-        v-if="isLoadingSnippets"
-        class="flex items-center justify-center w-full h-20 py-2 bg-gray-700 border border-solid rounded-md border-gray-700 drop-shadow-md"
-      >
-        <SfLoaderCircular />
-      </div>
-      <div
-        v-else-if="!result?.edges?.length"
+        v-if="!result?.edges?.length"
         class="py-2 bg-gray-700 text-gray-300 border border-solid rounded-md border-gray-700 drop-shadow-md text-center"
       >
         No results found
       </div>
       <ul
         v-else
-        ref="dropdownListRef"
         class="py-2 bg-gray-700 text-gray-300 border border-solid rounded-md border-gray-700 drop-shadow-md relative xs:-left-40 xs:w-[400px] overflow-auto max-h-[400px]"
       >
-        <li v-for="{ node } in result?.edges" :key="node.id">
-          <SfListItem
-            tag="button"
-            type="button"
-            class="flex justify-start hover:!bg-gray-800 border-b-gray-800 border-b-2 active:bg-gray-800"
+        <li v-for="{ node } in result?.edges" :key="node.id" class="mb-1 px-2">
+          <NuxtLink
+            class="flex items-center justify-between"
+            :to="`/product/${node.handle}`"
+            @click="resetState"
           >
-            <NuxtLink
-              class="flex items-center justify-between"
-              :to="`/product/${node.handle}`"
-              @click="reset"
-            >
-              <div class="flex items-center">
-                <NuxtImg
-                  :src="node.featuredImage?.url.split('?')[0]"
-                  :alt="
-                    node.featuredImage?.altText || node.seo.title || node.title
-                  "
-                  format="avif"
-                  width="48"
-                  height="48"
-                />
-                <p class="ml-4">
-                  {{ node.title }}
-                </p>
-              </div>
-
-              <p class="font-bold">
-                {{
-                  getPriceWithCurrency({
-                    amount: node.priceRange.maxVariantPrice.amount,
-                    currencyCode: node.priceRange.minVariantPrice.currencyCode,
-                  })
-                }}
+            <div class="flex items-center">
+              <NuxtImg
+                :src="node.featuredImage?.url.split('?')[0]"
+                :alt="
+                  node.featuredImage?.altText || node.seo.title || node.title
+                "
+                format="avif"
+                width="48"
+                height="48"
+              />
+              <p class="ml-2 text-xs truncate w-20">
+                {{ node.title }}
               </p>
-            </NuxtLink>
-          </SfListItem>
+            </div>
+
+            <p class="font-bold text-sm">
+              {{
+                getPriceWithCurrency({
+                  amount: node.priceRange.maxVariantPrice.amount,
+                  currencyCode: node.priceRange.minVariantPrice.currencyCode,
+                })
+              }}
+            </p>
+          </NuxtLink>
         </li>
       </ul>
     </div>
-  </form>
+  </UInput>
 </template>

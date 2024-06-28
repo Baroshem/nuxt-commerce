@@ -34,24 +34,18 @@ async function removeItem(id: string) {
 <template>
   <div class="text-left h-full flex flex-col">
     <div
-      class="block justify-between items-end py-2 px-4 md:px-6 md:pt-6 md:pb-4"
+      class="block justify-between items-center py-2 px-4 md:px-6 md:pt-6 md:pb-4"
     >
-      <div class="flex justify-between">
-        <p class="typography-headline-4 font-semibold md:typography-headline-3">
-          Order Summary
-        </p>
-        <SfButton
-          square
-          variant="tertiary"
-          class="text-white w-8 h-8 hover:!bg-slate-700 hover:text-white"
+      <div class="flex justify-between items-center">
+        <p class="font-semibold">Order Summary</p>
+        <UButton
           @click="isCartOpen = false"
-        >
-          <SfIconClose />
-        </SfButton>
+          color="gray"
+          variant="ghost"
+          icon="i-heroicons-x-mark-20-solid"
+        />
       </div>
-      <p class="typography-text-base font-medium mt-2">
-        {{ cart?.lines?.edges?.length }} item(s)
-      </p>
+      <p class="font-medium mt-2">{{ cart?.lines?.edges?.length }} item(s)</p>
     </div>
     <div class="flex flex-col h-full justify-between overflow-hidden">
       <ul
@@ -71,13 +65,11 @@ async function removeItem(id: string) {
         v-else
         class="px-4 md:px-6 mt-6 flex flex-col flex-grow overflow-auto text-center"
       >
-        <SfIconShoppingCart class="text-center mx-auto my-2 !w-24 !h-24" />
+        Cart icon
         <p class="text-lg">No items in cart</p>
       </div>
       <div class="px-4 pb-1 mt-3 md:px-6 md:pb-6">
-        <div
-          class="flex justify-between typography-text-base pb-4 border-t border-slate-800 pt-6"
-        >
+        <div class="flex justify-between pb-4 border-t border-slate-800 pt-6">
           <div class="flex flex-col grow pr-2 text-slate-400">
             <p>Subtotal</p>
             <p class="mt-2">Sales Tax</p>
@@ -93,27 +85,18 @@ async function removeItem(id: string) {
             </p>
           </div>
         </div>
-        <div
-          class="flex justify-between typography-headline-4 md:typography-headline-3 font-medium pb-4 mb-4"
-        >
+        <div class="flex justify-between font-medium pb-4 mb-4">
           <p>Total</p>
           <p>{{ getPriceWithCurrency(costs?.totalAmount) }}</p>
         </div>
-        <SfButton
-          class="w-full"
-          :class="
-            loading
-              ? '!bg-gray-400 hover:!bg-gray-400'
-              : '!bg-primary-400 hover:!bg-primary-500'
-          "
+        <UButton
+          class="w-full mb-4 justify-center"
           :disabled="loading"
           @click="redirectToCheckout"
+          size="xl"
         >
-          <span v-if="!isRedirectingToCheckout" class="text-gray-900"
-            >Checkout</span
-          >
-          <SfLoaderCircular v-else />
-        </SfButton>
+          Checkout
+        </UButton>
       </div>
     </div>
   </div>

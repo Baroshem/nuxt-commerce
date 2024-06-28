@@ -16,12 +16,7 @@ if (!data?.value?.product) {
 const product = computed(() => data?.value?.product);
 
 const galleryImages = computed(
-  () =>
-    product?.value?.images.edges.map((edge) => ({
-      src: edge.node.url as string,
-      thumbnail: edge.node.url.split("?")[0] as string,
-      alt: edge.node.altText as string,
-    })) || []
+  () => product?.value?.images.edges.map((edge) => edge.node.url) || []
 );
 
 const { data: recommended } = await useAsyncGql("getProductRecommendations", {
@@ -46,19 +41,29 @@ useSeoMeta({
 <template>
   <div class="max-w-7xl px-6 text-center mx-auto">
     <div class="text-left mb-8 mt-10 items-center">
-      <SfButton
-        variant="tertiary"
-        class="hover:bg-transparent hover:text-gray-400 active:bg-transparent active:text-gray-400 !text-gray-400 self-end pl-0"
+      <UButton
         @click="router.back()"
+        icon="i-heroicons-arrow-small-left-solid"
+        variant="link"
+        color="gray"
+        class="pl-0"
+        >Back to the list</UButton
       >
-        <SfIconArrowBack /> Back to the list
-      </SfButton>
     </div>
     <div class="block lg:flex justify-between gap-16">
-      <ProductImageGallery :images="galleryImages" />
+      <UCarousel
+        v-slot="{ item }"
+        :items="galleryImages"
+        :ui="{ item: 'basis-full' }"
+        class="rounded-lg overflow-hidden max-h-[600px]"
+        arrows
+        indicators
+      >
+        <img :src="item" class="w-full" draggable="false" />
+      </UCarousel>
       <ProductInfoDetails v-if="product" :product="product" />
     </div>
-    <section class="max-w-[1536px] w-full mx-auto my-20 text-left ml-4 lg:ml-0">
+    <section class="max-w-[1536px] w-full mx-auto my-20 text-left">
       <h2 class="text-3xl mb-10 text-white">Related Products</h2>
       <div
         class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4"

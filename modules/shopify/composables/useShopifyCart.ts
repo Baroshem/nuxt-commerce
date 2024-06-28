@@ -1,17 +1,15 @@
-const toast = ref<string | undefined>(undefined);
 const cart = ref<ShopifyCart>(undefined);
-const isCartOpen = ref(false)
+const isCartOpen = ref(false);
 
 export const useShopifyCart = () => {
   const nuxtApp = useNuxtApp();
   const loading = ref(false);
+  const toast = useToast();
 
-  const getPriceWithCurrency = (
-    price?: ShopifyPrice | null
-  ) => {
+  const getPriceWithCurrency = (price?: ShopifyPrice | null, quantity: number = 1) => {
     if (!price) return "";
 
-    return `${price.currencyCode === 'CAD' ? '$' : price.currencyCode} ${price.amount}`;
+    return `${price.currencyCode === "CAD" ? "$" : price.currencyCode} ${price.amount * quantity}`;
   };
 
   const addToCart = async (
@@ -115,6 +113,10 @@ export const useShopifyCart = () => {
     }
   }
 
+  function displayToast(title: string) {
+    toast.add({ title });
+  }
+
   return {
     cart,
     toast,
@@ -124,13 +126,7 @@ export const useShopifyCart = () => {
     getCart,
     getPriceWithCurrency,
     updateItemQuantity,
-    isCartOpen
+    isCartOpen,
+    displayToast
   };
 };
-
-function displayToast(text: string) {
-  toast.value = text;
-  setTimeout(() => {
-    toast.value = undefined;
-  }, 5000);
-}

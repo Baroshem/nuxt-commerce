@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const { toast } = useShopifyCart();
-
 defineProps({
   error: {
     type: Object,
@@ -15,7 +13,7 @@ const handleError = () => clearError({ redirect: "/" });
   <Body class="font-body bg-slate-950" />
   <main class="max-w-[1536px] text-center mx-auto my-0">
     <LayoutNavbarTop class="mb-5" />
-    <LayoutToastAlert :toast="toast" />
+    <UNotifications />
     <section>
       <h2 class="text-9xl mb-4 text-slate-400">
         {{ error.statusCode }}
@@ -23,9 +21,7 @@ const handleError = () => clearError({ redirect: "/" });
       <h3 class="text-3xl text-slate-400">
         {{ error.message }}
       </h3>
-      <SfButton size="lg" class="mt-4" @click="handleError">
-        Back to home
-      </SfButton>
+      <UButton class="mt-4" @click="handleError"> Back to home </UButton>
     </section>
     <LayoutLazyFooter class="mt-5" />
   </main>

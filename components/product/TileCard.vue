@@ -26,11 +26,7 @@ const computedPrice = computed(
   >
     <div class="relative">
       <NuxtLink :to="`/product/${product?.handle}`" class="block">
-        <SfLoaderCircular
-          v-if="isImageLoading"
-          class="self-center"
-          size="3xl"
-        />
+        <USkeleton class="h-72" v-if="isImageLoading" />
         <NuxtImg
           v-show="!isImageLoading"
           :src="product?.featuredImage?.url.split('?')[0]"
@@ -48,19 +44,14 @@ const computedPrice = computed(
         <p class="truncate text-slate-300">
           {{ product?.title }}
         </p>
-        <SfButton
-          type="button"
-          size="sm"
+        <UButton
           :disabled="loading"
           aria-label="Add to cart button"
-          class="lg:w-auto h-10 bg-transparent hover:bg-transparent hover:text-slate-300 w-10"
           @click="addToCart(product)"
-        >
-          <SfIconShoppingCart
-            size="sm"
-            class="text-slate-400 hover:text-slate-600"
-          />
-        </SfButton>
+          color="gray"
+          variant="link"
+          icon="i-heroicons-shopping-cart"
+        />
       </div>
       <span class="block pb-2 text-slate-400 text-sm">{{ computedPrice }}</span>
     </div>

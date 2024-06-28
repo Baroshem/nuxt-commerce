@@ -22,9 +22,7 @@ defineProps({
 </script>
 
 <template>
-  <SfListItem
-    class="!px-0 !cursor-default hover:bg-transparent active:bg-transparent"
-  >
+  <li class="my-2">
     <div class="flex items-center justify-between">
       <div class="flex items-center max-h-[92px] w-full">
         <div class="relative">
@@ -40,13 +38,13 @@ defineProps({
             />
           </NuxtLink>
 
-          <SfButton
-            square
-            class="text-white absolute -top-3 -right-3 h-6 w-6 !bg-gray-800 border-gray-700 border hover:!bg-slate-700"
+          <UButton
+            class="absolute -right-3 -top-3"
             @click="emit('remove-item', item.id)"
-          >
-            <SfIconClose class="min-h-[16px] min-w-[16px]" />
-          </SfButton>
+            size="xs"
+            color="gray"
+            icon="i-heroicons-x-mark-20-solid"
+          />
         </div>
 
         <div class="ml-5 relative w-full">
@@ -80,5 +78,5 @@ defineProps({
         </div>
       </div>
     </div>
-  </SfListItem>
+  </li>
 </template>

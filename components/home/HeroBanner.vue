@@ -21,49 +21,33 @@
         <h1 class="text-6xl md:leading-[67.5px] font-bold mt-2 mb-4 text-white">
           Nuxt <span class="text-primary-400">Commerce</span>
         </h1>
-        <p class="typography-text-base md:typography-text-lg text-white">
+        <p class="text-white">
           E-Commerce template built with
           <a
             href="https://nuxt.com/"
             target="_blank"
-            class="hover:underline hover:text-primary-500"
+            class="hover:underline hover:text-primary-400"
             aria-label="Link to Nuxt Home Page"
             >Nuxt</a
-          >,
-          <a
-            href="https://docs.storefrontui.io/v2/"
-            target="_blank"
-            class="hover:underline hover:text-primary-500"
-            aria-label="Link to Storefront UI Documentation Page"
-            >Storefront UI</a
           >
           &
           <a
             href="https://www.shopify.com/"
             target="_blank"
-            class="hover:underline hover:text-primary-500"
+            class="hover:underline hover:text-primary-400"
             aria-label="Link to Shopify Home Page"
             >Shopify</a
           >
         </p>
         <div class="flex flex-col md:flex-row gap-4 mt-6">
           <NuxtLink to="/collection/latest-stuff">
-            <SfButton
-              size="lg"
-              class="!bg-primary-400 hover:!bg-primary-500 !text-slate-950"
-            >
-              See products
-            </SfButton>
+            <UButton color="primary" size="xl"> See products </UButton>
           </NuxtLink>
 
           <NuxtLink to="/about">
-            <SfButton
-              size="lg"
-              variant="secondary"
-              class="border-primary-400 border !text-primary-400 hover:!bg-gray-900"
-            >
+            <UButton color="primary" variant="outline" size="xl">
               About
-            </SfButton>
+            </UButton>
           </NuxtLink>
         </div>
       </div>

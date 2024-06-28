@@ -1,25 +1,19 @@
 <script setup lang="ts">
-import {
-  SfIconCall,
-  SfIconContactSupport,
-  SfIconHelp,
-} from "@storefront-ui/vue";
-
 const contactOptions = [
   {
-    label: "Help center",
-    details: ["Find answers online anytime"],
-    icon: SfIconHelp,
+    label: "Free shipping $75+",
+    details: "Orders over $75 include free US shipping.",
+    icon: "i-heroicons-cube-20-solid",
   },
   {
-    label: "Live chat",
-    details: ["Mon–Fri, 5am–10pm PT", "Sat–Sun, 6am–9pm PT"],
-    icon: SfIconContactSupport,
+    label: "100% Risk-free",
+    details: "Get a full refund if you’re not feeling the love",
+    icon: "i-heroicons-shield-check-20-solid",
   },
   {
-    label: "1 234 567 8901",
-    details: ["Mon–Fri, 5am–10pm PT", "Sat–Sun, 6am–9pm PT"],
-    icon: SfIconCall,
+    label: "Loving support",
+    details: "We’re sticking with you every step of the way.",
+    icon: "i-heroicons-heart-20-solid",
   },
 ];
 </script>
@@ -27,29 +21,21 @@ const contactOptions = [
 <template>
   <div class="py-16 md:flex md:mx-auto max-w-7xl px-6 mx-auto text-center">
     <div
-      v-for="{ label, icon, details } in contactOptions"
+      v-for="{ label, details, icon } in contactOptions"
       :key="label"
       class="mx-auto my-4 text-center text-slate-300"
     >
       <div
         class="border border-gray-700 rounded-md w-8 h-8 p-1 text-center my-0 m-auto flex items-center justify-center bg-gray-900"
       >
-        <component
-          :is="icon"
-          size="lg"
-          class="!w-5 !h-5 text-gray-500"
-        />
+        <UIcon :name="icon" class="text-gray-400" />
       </div>
 
-      <p class="py-1 my-2 font-medium typography-text-lg font-body text-white">
+      <p class="py-1 my-2 font-medium font-body text-white">
         {{ label }}
       </p>
-      <p
-        v-for="option in details"
-        :key="option"
-        class="leading-5 typography-text-sm text-slate-400 font-body"
-      >
-        {{ option }}
+      <p class="leading-5 text-slate-400 font-body">
+        {{ details }}
       </p>
     </div>
   </div>

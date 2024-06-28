@@ -1,4 +1,5 @@
 import type { CartFragment, CollectionFragment, GetCartQuery, GetCollectionsQuery, GetProductQuery, GetProductsQuery, ProductFragment } from "#gql";
+export { ProductCollectionSortKeys } from "#gql/default";
 
 // Price
 export type ShopifyPrice = ProductFragment['priceRange']['maxVariantPrice']

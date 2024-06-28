@@ -1,39 +1,20 @@
 <script lang="ts" setup>
-import {
-  SfButton,
-  SfIconShoppingCart,
-  SfIconMenu,
-  useDisclosure,
-  SfModal,
-  SfIconClose,
-  SfIconSearch,
-  SfBadge,
-} from "@storefront-ui/vue";
-import { onClickOutside } from "@vueuse/core";
-
-const {
-  isOpen: isCategoryMenuOpen,
-  open: openCategoryMenu,
-  close: closeCategoryMenu,
-} = useDisclosure({ initialValue: false });
 const { cart, isCartOpen } = useShopifyCart();
 
-const isSearchBarOpen = ref(false);
-const searchBar = ref(null);
-onClickOutside(searchBar, () => (isSearchBarOpen.value = false));
+const isCategoryMenuOpen = ref(false);
 
-const navigation = [
+const links = [
   {
-    name: "Latest Stuff",
-    to: "latest-stuff",
+    label: "Latest Stuff",
+    to: "/collection/latest-stuff",
   },
   {
-    name: "Casual Things",
-    to: "casual-things",
+    label: "Casual Things",
+    to: "/collection/casual-things",
   },
   {
-    name: "Summer Clothes",
-    to: "summer-collection",
+    label: "Summer Clothes",
+    to: "/collection/summer-collection",
   },
 ];
 </script>
@@ -43,19 +24,16 @@ const navigation = [
     class="flex justify-center w-full py-2 lg:py-5 border-b border-slate-800"
   >
     <div
-      class="flex flex-wrap lg:flex-nowrap items-center justify-between flex-row h-full w-full text-slate-200 pb-2 lg:pb-0 max-w-7xl px-6"
+      class="flex flex-wrap lg:flex-nowrap items-center justify-between flex-row h-full w-full py-2 lg:py-0 max-w-7xl px-6"
     >
-      <div class="flex items-center">
-        <SfButton
-          aria-label="Open categories"
-          class="lg:hidden mr-4 text-white"
-          square
-          variant="tertiary"
-          size="lg"
-          @click="openCategoryMenu"
-        >
-          <SfIconMenu />
-        </SfButton>
+      <div class="flex items-center flex-1 gap-1.5">
+        <UButton
+          color="gray"
+          variant="ghost"
+          class="lg:hidden mr-2"
+          @click="isCategoryMenuOpen = true"
+          icon="i-heroicons-bars-3-20-solid"
+        />
         <NuxtLink
           to="/"
           aria-label="SF Homepage"
@@ -65,7 +43,7 @@ const navigation = [
             <source
               srcset="/logo-nuxt-commerce.svg"
               media="(min-width: 768px)"
-            >
+            />
             <NuxtImg
               src="/logo.svg"
               alt="Nuxt Commerce Logo"
@@ -75,118 +53,58 @@ const navigation = [
         </NuxtLink>
       </div>
 
-      <transition
-        enter-active-class="transition duration-200 ease-out"
-        leave-active-class="transition duration-200 ease-out"
-        enter-from-class="opacity-0 translate-y-10"
-        enter-to-class="opacity-100 translate-y-0"
-        leave-from-class="opacity-100 translate-y-0"
-        leave-to-class="opacity-0 translate-y-10"
-      >
-        <SfModal
-          v-model="isCategoryMenuOpen"
-          class="md:max-w-lg z-[11] ml-0 h-full !p-6 !w-auto !rounded-none !bg-gray-900 border-none"
-          tag="section"
-          role="alertdialog"
-          aria-labelledby="promoModalTitle"
-          aria-describedby="promoModalDesc"
-        >
-          <div class="text-left h-full flex flex-col">
-            <div
-              class="block justify-between items-end py-2 px-4 md:px-6 md:pt-6 md:pb-4"
-            >
-              <div class="flex justify-between">
-                <p
-                  class="typography-headline-4 font-semibold md:typography-headline-3"
-                >
-                  Navigation
-                </p>
-                <SfButton
-                  square
-                  variant="tertiary"
-                  class="text-white w-8 h-8 hover:!bg-slate-700 hover:text-white"
-                  @click="closeCategoryMenu"
-                >
-                  <SfIconClose />
-                </SfButton>
-              </div>
-              <LayoutSearchBar class="mt-4 lg:mt-0" />
-
-              <ul class="flex flex-col mt-4 text-left">
-                <li
-                  v-for="{ name, to } in navigation"
-                  :key="name"
-                  class="py-2"
-                >
-                  <NuxtLink
-                    :to="`/collection/${to}`"
-                    variant="secondary"
-                    class="mx-4 hover:underline hover:text-primary-500 text-base"
-                    @click="closeCategoryMenu"
-                  >
-                    {{ name }}
-                  </NuxtLink>
-                </li>
-              </ul>
+      <USlideover v-model="isCategoryMenuOpen" side="left">
+        <div class="text-left h-full flex flex-col">
+          <div class="block justify-between items-end py-2 px-6 pt-6 pb-4">
+            <div class="flex justify-between items-center">
+              <p class="font-semibold">Navigation</p>
+              <UButton
+                @click="isCategoryMenuOpen = false"
+                color="gray"
+                variant="ghost"
+                icon="i-heroicons-x-mark-20-solid"
+              />
             </div>
+            <LayoutSearchBar class="mt-4 w-full" />
+
+            <UVerticalNavigation :links="links" class="mt-4">
+              <template #default="{ link }">
+                <span
+                  class="group-hover:text-primary relative"
+                  @click="isCategoryMenuOpen = false"
+                  >{{ link.label }}</span
+                >
+              </template>
+            </UVerticalNavigation>
           </div>
-        </SfModal>
-      </transition>
+        </div>
+      </USlideover>
 
-      <ul class="hidden lg:flex">
-        <li
-          v-for="{ name, to } in navigation"
-          :key="name"
-        >
-          <NuxtLink
-            :to="`/collection/${to}`"
-            variant="secondary"
-            class="mx-4 hover:text-primary-500 text-slate-200 font-medium text-sm"
-          >
-            {{ name }}
-          </NuxtLink>
-        </li>
-      </ul>
+      <UHorizontalNavigation :links="links" class="hidden lg:flex w-fit">
+        <template #default="{ link }">
+          <span class="group-hover:text-primary relative">{{
+            link.label
+          }}</span>
+        </template>
+      </UHorizontalNavigation>
 
-      <div class="flex items-baseline lg:items-center relative">
-        <transition
-          enter-active-class="transition duration-200 ease-out"
-          leave-active-class="transition duration-200 ease-out"
-          enter-from-class="opacity-0"
-          enter-to-class="opacity-100"
-          leave-from-class="opacity-100"
-          leave-to-class="opacity-0"
+      <div class="flex items-center relative flex-1 gap-1.5 justify-end">
+        <LayoutSearchBar class="hidden sm:flex" />
+        <UChip
+          v-if="cart?.lines?.edges?.length"
+          :text="cart?.lines.edges.length"
+          size="2xl"
         >
-          <LayoutSearchBar
-            v-show="isSearchBarOpen"
-            ref="searchBar"
-            class="w-60 mt-2 lg:mt-0 hidden sm:block !absolute right-[60px]"
+          <UButton
+            class="mr-2 ml-4"
+            aria-label="Cart"
+            :padded="false"
+            color="gray"
+            variant="link"
+            @click="isCartOpen = true"
+            icon="i-heroicons-shopping-cart"
           />
-        </transition>
-        <SfButton
-          variant="tertiary"
-          square
-          class="text-slate-200 active:bg-primary-200 hover:!bg-slate-700 hover:text-white hidden sm:block"
-          @click="isSearchBarOpen = true"
-        >
-          <SfIconSearch />
-        </SfButton>
-        <SfButton
-          class="mr-2 ml-4 rounded-md text-slate-200 hover:!bg-slate-700 hover:text-white active:bg-primary-200 active:text-primary-700 relative"
-          aria-label="Cart"
-          variant="tertiary"
-          square
-          @click="isCartOpen = true"
-        >
-          <template #prefix>
-            <SfIconShoppingCart />
-            <SfBadge
-              v-if="cart?.lines?.edges?.length"
-              :content="cart?.lines.edges.length"
-              class="!bg-primary-400 !text-slate-950 w-4 h-4 text-sm !leading-3"
-            />
-          </template>
-        </SfButton>
+        </UChip>
       </div>
     </div>
   </header>

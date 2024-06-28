@@ -29,12 +29,11 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    "@nuxtjs/tailwindcss",
     "@nuxt/fonts",
     "nuxt-simple-robots",
     "nuxt-simple-sitemap",
-    '@storefront-ui/nuxt',
     "nuxt-og-image",
+    "@nuxt/ui",
     [
       "@nuxt/image",
       {
@@ -50,14 +49,16 @@ export default defineNuxtConfig({
               "https://cdn.shopify.com",
               "http://localhost:*",
               "https://commerce-nuxt-js.vercel.app/",
+              'data: w3.org/svg/2000'
             ],
             // Needed for SSG
             "script-src-attr": [
               "'unsafe-inline'",
             ],
           },
-          crossOriginEmbedderPolicy: false, // TODO: check if this will be necessary in the final application
+          crossOriginEmbedderPolicy: false,
         },
+        rateLimiter: false
       },
     ],
   ],
