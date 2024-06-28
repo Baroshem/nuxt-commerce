@@ -1,124 +1,124 @@
 <script lang="ts" setup>
-const inputValue = ref("");
+const inputValue = ref('')
 
 function subscribeNewsletter(email: string) {
-  console.log(email);
+  console.log(email)
 }
 
 const categories = [
   {
-    label: "About",
+    label: 'About',
     subcategories: [
       {
-        subcategoryLabel: "About us",
-        link: "/about",
+        subcategoryLabel: 'About us',
+        link: '/about',
       },
       {
-        subcategoryLabel: "Order pickup",
-        link: "/",
+        subcategoryLabel: 'Order pickup',
+        link: '/',
       },
       {
-        subcategoryLabel: "Purchase status",
-        link: "/",
+        subcategoryLabel: 'Purchase status',
+        link: '/',
       },
       {
-        subcategoryLabel: "Track orders",
-        link: "/",
+        subcategoryLabel: 'Track orders',
+        link: '/',
       },
     ],
   },
   {
-    label: "How to buy",
+    label: 'How to buy',
     subcategories: [
       {
-        subcategoryLabel: "Payment methods",
-        link: "/",
+        subcategoryLabel: 'Payment methods',
+        link: '/',
       },
       {
-        subcategoryLabel: "Order pickup",
-        link: "/",
+        subcategoryLabel: 'Order pickup',
+        link: '/',
       },
       {
-        subcategoryLabel: "Purchase status",
-        link: "/",
+        subcategoryLabel: 'Purchase status',
+        link: '/',
       },
       {
-        subcategoryLabel: "Track orders",
-        link: "/",
+        subcategoryLabel: 'Track orders',
+        link: '/',
       },
     ],
   },
   {
-    label: "Help",
+    label: 'Help',
     subcategories: [
       {
-        subcategoryLabel: "Help centers",
-        link: "/",
+        subcategoryLabel: 'Help centers',
+        link: '/',
       },
       {
-        subcategoryLabel: "Security & fraud",
-        link: "/",
+        subcategoryLabel: 'Security & fraud',
+        link: '/',
       },
       {
-        subcategoryLabel: "Feedback",
-        link: "/",
+        subcategoryLabel: 'Feedback',
+        link: '/',
       },
       {
-        subcategoryLabel: "Contact",
-        link: "/",
+        subcategoryLabel: 'Contact',
+        link: '/',
       },
     ],
   },
-];
+]
 
 const paymentIcons = [
   {
     id: 0,
-    name: "Paypal Icon",
-    path: "/icons/paypal.png",
+    name: 'Paypal Icon',
+    path: '/icons/paypal.png',
   },
   {
     id: 1,
-    name: "Visa Icon",
-    path: "/icons/visa.png",
+    name: 'Visa Icon',
+    path: '/icons/visa.png',
   },
   {
     id: 2,
-    name: "Master Card Icon",
-    path: "/icons/mastercard.png",
+    name: 'Master Card Icon',
+    path: '/icons/mastercard.png',
   },
   {
     id: 3,
-    name: "Apple Pay Icon",
-    path: "/icons/applepay.png",
+    name: 'Apple Pay Icon',
+    path: '/icons/applepay.png',
   },
   {
     id: 4,
-    name: "Google Pay Icon",
-    path: "/icons/googlepay.png",
+    name: 'Google Pay Icon',
+    path: '/icons/googlepay.png',
   },
-];
+]
 
 const socialIcons = [
   {
     id: 0,
-    name: "Nuxt Twitter Icon",
-    path: "/icons/twitter.png",
-    link: "https://twitter.com/nuxt_js",
+    name: 'Nuxt Twitter Icon',
+    path: '/icons/twitter.png',
+    link: 'https://twitter.com/nuxt_js',
   },
   {
     id: 1,
-    name: "Nuxt Discord Icon",
-    path: "/icons/discord.png",
-    link: "https://discord.com/invite/ps2h6QT",
+    name: 'Nuxt Discord Icon',
+    path: '/icons/discord.png',
+    link: 'https://discord.com/invite/ps2h6QT',
   },
   {
     id: 2,
-    name: "Nuxt GitHub Icon",
-    path: "/icons/github.png",
-    link: "https://github.com/nuxt",
+    name: 'Nuxt GitHub Icon',
+    path: '/icons/github.png',
+    link: 'https://github.com/nuxt',
   },
-];
+]
 </script>
 
 <template>
@@ -158,7 +158,12 @@ const socialIcons = [
             type="email"
             placeholder="you@example.com"
           />
-          <UButton type="submit" class="ml-2"> Subscribe </UButton>
+          <UButton
+            type="submit"
+            class="ml-2"
+          >
+            Subscribe
+          </UButton>
         </div>
       </form>
     </div>
@@ -168,7 +173,10 @@ const socialIcons = [
       >
         <div>
           <ul class="flex">
-            <li v-for="icon in paymentIcons" :key="icon.id">
+            <li
+              v-for="icon in paymentIcons"
+              :key="icon.id"
+            >
               <NuxtImg
                 width="24"
                 height="24"
@@ -192,8 +200,15 @@ const socialIcons = [
 
         <div>
           <ul class="flex">
-            <li v-for="icon in socialIcons" :key="icon.id">
-              <a :href="icon.link" target="_blank" :aria-label="icon.name">
+            <li
+              v-for="icon in socialIcons"
+              :key="icon.id"
+            >
+              <a
+                :href="icon.link"
+                target="_blank"
+                :aria-label="icon.name"
+              >
                 <NuxtImg
                   width="30"
                   height="30"

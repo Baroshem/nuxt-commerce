@@ -1,67 +1,69 @@
 <script lang="ts" setup>
-const config = useRuntimeConfig();
+const config = useRuntimeConfig()
 
 const cardDetails = [
   {
-    title: "Nuxt UI",
-    description: "A UI Library for Modern Web Apps",
-    link: "https://ui.nuxt.com/",
+    title: 'Nuxt UI',
+    description: 'A UI Library for Modern Web Apps',
+    link: 'https://ui.nuxt.com/',
   },
   {
-    title: "GraphQL Client",
-    description: "Minimal GraphQL Client + Code Generation",
-    link: "https://nuxt-graphql-client.web.app/",
+    title: 'GraphQL Client',
+    description: 'Minimal GraphQL Client + Code Generation',
+    link: 'https://nuxt-graphql-client.web.app/',
   },
   {
-    title: "Image Optimization",
+    title: 'Image Optimization',
     description:
-      "Resize and transform your images using built-in optimizer or your favorite images CDN",
-    link: "https://image.nuxt.com/",
+      'Resize and transform your images using built-in optimizer or your favorite images CDN',
+    link: 'https://image.nuxt.com/',
   },
   {
-    title: "Fonts",
-    description: "Deliver optimized fonts for better performance",
-    link: "https://nuxt.com/modules/fonts",
+    title: 'Fonts',
+    description: 'Deliver optimized fonts for better performance',
+    link: 'https://nuxt.com/modules/fonts',
   },
   {
-    title: "Hybrid rendering",
+    title: 'Hybrid rendering',
     description:
-      "Set different caching rules per route using Route Rules and decide how the server should respond to a new request on a given URL",
-    link: "https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering",
+      'Set different caching rules per route using Route Rules and decide how the server should respond to a new request on a given URL',
+    link: 'https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering',
   },
   {
-    title: "Security",
+    title: 'Security',
     description:
-      "Security Response Headers and middlewares to make your app more secure by default",
-    link: "https://nuxt-security.vercel.app/",
+      'Security Response Headers and middlewares to make your app more secure by default',
+    link: 'https://nuxt-security.vercel.app/',
   },
   {
-    title: "SEO",
-    description: "Simple configuration for both Sitemap & Robots",
-    link: "https://nuxtseo.com/",
+    title: 'SEO',
+    description: 'Simple configuration for both Sitemap & Robots',
+    link: 'https://nuxtseo.com/',
   },
   {
-    title: "Performance audits",
+    title: 'Performance audits',
     description:
-      "Lighthouse CI to contionously audit performance of your website",
-    link: "https://github.com/GoogleChrome/lighthouse-ci",
+      'Lighthouse CI to contionously audit performance of your website',
+    link: 'https://github.com/GoogleChrome/lighthouse-ci',
   },
-];
+]
 
 useSeoMeta({
-  title: "Nuxt Commerce - About",
-  description: "E-Commerce application built with Nuxt & Shopify",
-  ogTitle: "Nuxt Commerce",
-  ogDescription: "E-Commerce application built with Nuxt & Shopify",
+  title: 'Nuxt Commerce - About',
+  description: 'E-Commerce application built with Nuxt & Shopify',
+  ogTitle: 'Nuxt Commerce',
+  ogDescription: 'E-Commerce application built with Nuxt & Shopify',
   ogImage: `${config.siteUrl}/logo.svg`,
-  twitterCard: "summary_large_image",
-});
+  twitterCard: 'summary_large_image',
+})
 </script>
 
 <template>
   <section class="text-white max-w-7xl px-6 mx-auto text-center">
     <div class="mb-8">
-      <h2 class="text-4xl mb-6">Nuxt Commerce</h2>
+      <h2 class="text-4xl mb-6">
+        Nuxt Commerce
+      </h2>
       <p class="text-slate-400">
         E-Commerce template built with
         <a
@@ -69,20 +71,20 @@ useSeoMeta({
           target="_blank"
           class="hover:underline hover:text-primary-500"
           aria-label="Link to Nuxt Home Page"
-          >Nuxt</a
-        >
+        >Nuxt</a>
         &
         <a
           href="https://www.shopify.com/"
           target="_blank"
           class="hover:underline hover:text-primary-500"
           aria-label="Link to Shopify Home Page"
-          >Shopify</a
-        >
+        >Shopify</a>
         🚀
       </p>
 
-      <p class="mt-2 text-slate-400">Made with 💚 by Nuxt</p>
+      <p class="mt-2 text-slate-400">
+        Made with 💚 by Nuxt
+      </p>
     </div>
 
     <div class="flex flex-wrap gap-4 lg:gap-6 justify-center">

@@ -1,22 +1,22 @@
 <script lang="ts" setup>
-const { cart, isCartOpen } = useShopifyCart();
+const { cart, isCartOpen } = useShopifyCart()
 
-const isCategoryMenuOpen = ref(false);
+const isCategoryMenuOpen = ref(false)
 
 const links = [
   {
-    label: "Latest Stuff",
-    to: "/collection/latest-stuff",
+    label: 'Latest Stuff',
+    to: '/collection/latest-stuff',
   },
   {
-    label: "Casual Things",
-    to: "/collection/casual-things",
+    label: 'Casual Things',
+    to: '/collection/casual-things',
   },
   {
-    label: "Summer Clothes",
-    to: "/collection/summer-collection",
+    label: 'Summer Clothes',
+    to: '/collection/summer-collection',
   },
-];
+]
 </script>
 
 <template>
@@ -31,8 +31,8 @@ const links = [
           color="gray"
           variant="ghost"
           class="lg:hidden mr-2"
-          @click="isCategoryMenuOpen = true"
           icon="i-heroicons-bars-3-20-solid"
+          @click="isCategoryMenuOpen = true"
         />
         <NuxtLink
           to="/"
@@ -43,7 +43,7 @@ const links = [
             <source
               srcset="/logo-nuxt-commerce.svg"
               media="(min-width: 768px)"
-            />
+            >
             <NuxtImg
               src="/logo.svg"
               alt="Nuxt Commerce Logo"
@@ -53,34 +53,44 @@ const links = [
         </NuxtLink>
       </div>
 
-      <USlideover v-model="isCategoryMenuOpen" side="left">
+      <USlideover
+        v-model="isCategoryMenuOpen"
+        side="left"
+      >
         <div class="text-left h-full flex flex-col">
           <div class="block justify-between items-end py-2 px-6 pt-6 pb-4">
             <div class="flex justify-between items-center">
-              <p class="font-semibold">Navigation</p>
+              <p class="font-semibold">
+                Navigation
+              </p>
               <UButton
-                @click="isCategoryMenuOpen = false"
                 color="gray"
                 variant="ghost"
                 icon="i-heroicons-x-mark-20-solid"
+                @click="isCategoryMenuOpen = false"
               />
             </div>
             <LayoutSearchBar class="mt-4 w-full" />
 
-            <UVerticalNavigation :links="links" class="mt-4">
+            <UVerticalNavigation
+              :links="links"
+              class="mt-4"
+            >
               <template #default="{ link }">
                 <span
                   class="group-hover:text-primary relative"
                   @click="isCategoryMenuOpen = false"
-                  >{{ link.label }}</span
-                >
+                >{{ link.label }}</span>
               </template>
             </UVerticalNavigation>
           </div>
         </div>
       </USlideover>
 
-      <UHorizontalNavigation :links="links" class="hidden lg:flex w-fit">
+      <UHorizontalNavigation
+        :links="links"
+        class="hidden lg:flex w-fit"
+      >
         <template #default="{ link }">
           <span class="group-hover:text-primary relative">{{
             link.label
@@ -101,8 +111,8 @@ const links = [
             :padded="false"
             color="gray"
             variant="link"
-            @click="isCartOpen = true"
             icon="i-heroicons-shopping-cart"
+            @click="isCartOpen = true"
           />
         </UChip>
       </div>

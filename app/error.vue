@@ -4,9 +4,9 @@ defineProps({
     type: Object,
     default: () => ({}),
   },
-});
+})
 
-const handleError = () => clearError({ redirect: "/" });
+const handleError = () => clearError({ redirect: '/' })
 </script>
 
 <template>
@@ -21,7 +21,12 @@ const handleError = () => clearError({ redirect: "/" });
       <h3 class="text-3xl text-slate-400">
         {{ error.message }}
       </h3>
-      <UButton class="mt-4" @click="handleError"> Back to home </UButton>
+      <UButton
+        class="mt-4"
+        @click="handleError"
+      >
+        Back to home
+      </UButton>
     </section>
     <LayoutLazyFooter class="mt-5" />
   </main>

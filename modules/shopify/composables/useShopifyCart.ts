@@ -1,120 +1,126 @@
-const cart = ref<ShopifyCart>(undefined);
-const isCartOpen = ref(false);
+const cart = ref<ShopifyCart>(undefined)
+const isCartOpen = ref(false)
 
 export const useShopifyCart = () => {
-  const nuxtApp = useNuxtApp();
-  const loading = ref(false);
-  const toast = useToast();
+  const nuxtApp = useNuxtApp()
+  const loading = ref(false)
+  const toast = useToast()
 
   const getPriceWithCurrency = (price?: ShopifyPrice | null, quantity: number = 1) => {
-    if (!price) return "";
+    if (!price) return ''
 
-    return `${price.currencyCode === "CAD" ? "$" : price.currencyCode} ${price.amount * quantity}`;
-  };
+    return `${price.currencyCode === 'CAD' ? '$' : price.currencyCode} ${price.amount * quantity}`
+  }
 
   const addToCart = async (
     product: ShopifyProduct,
     variantId?: string,
-    quantity: number = 1
+    quantity: number = 1,
   ) => {
-    loading.value = true;
+    loading.value = true
 
-    const cartId = useCookie("cartId");
+    const cartId = useCookie('cartId')
     const computedVariantId = computed(
-      () => variantId || product?.variants.nodes[0].id
-    );
+      () => variantId || product?.variants.nodes[0].id,
+    )
 
-    if (!computedVariantId.value) return "Missing Variant ID";
+    if (!computedVariantId.value) return 'Missing Variant ID'
 
-    let cart;
+    let cart
 
     if (cartId.value) {
-      const { data } = await useAsyncGql("getCart", { cartId: cartId.value });
+      const { data } = await useAsyncGql('getCart', { cartId: cartId.value })
 
-      cart = data.value && data.value.cart;
+      cart = data.value && data.value.cart
     }
 
     if (!cartId.value || !cart) {
-      const { data } = await useAsyncGql("createCart");
+      const { data } = await useAsyncGql('createCart')
 
-      cart = data.value.cartCreate?.cart;
+      cart = data.value.cartCreate?.cart
 
-      cartId.value = cart?.id;
+      cartId.value = cart?.id
     }
 
-    if (!cartId.value) return "Missing Cart ID";
+    if (!cartId.value) return 'Missing Cart ID'
 
     try {
-      await useAsyncGql("addToCart", {
+      await useAsyncGql('addToCart', {
         cartId: cartId.value,
         lines: [{ merchandiseId: computedVariantId.value, quantity }],
-      });
+      })
 
-      await getCart();
+      await getCart()
 
-      displayToast("Product added to cart.");
-    } catch (e) {
-      return "Error adding item to cart";
-    } finally {
-      loading.value = false;
+      displayToast('Product added to cart.')
     }
-  };
+    catch (e) {
+      return 'Error adding item to cart'
+    }
+    finally {
+      loading.value = false
+    }
+  }
 
   async function getCart() {
-    const cartId = useCookie("cartId");
+    const cartId = useCookie('cartId')
     if (!cartId.value) {
-      const { data } = await useAsyncGql("createCart");
-      cartId.value = data.value.cartCreate?.cart?.id;
+      const { data } = await useAsyncGql('createCart')
+      cartId.value = data.value.cartCreate?.cart?.id
     }
 
     const { data } = await nuxtApp.runWithContext(() =>
-      useAsyncGql("getCart", {
+      useAsyncGql('getCart', {
         cartId: cartId.value as string,
-      })
-    );
-    cart.value = data.value.cart;
+      }),
+    )
+    cart.value = data.value.cart
   }
 
   async function removeFromCart(itemId: string) {
-    if (!cart?.value?.id) return;
-    loading.value = true;
+    if (!cart?.value?.id) return
+    loading.value = true
     try {
-      await useAsyncGql("removeFromCart", {
+      await useAsyncGql('removeFromCart', {
         cartId: cart?.value.id,
         lineIds: [itemId],
-      });
-      await getCart();
+      })
+      await getCart()
 
-      displayToast("Product removed from cart.");
-    } catch (error) {
-      return "Error removing item from cart";
-    } finally {
-      loading.value = false;
+      displayToast('Product removed from cart.')
+    }
+    catch (error) {
+      return 'Error removing item from cart'
+    }
+    finally {
+      loading.value = false
     }
   }
 
   async function updateItemQuantity(
     product: ShopifyCartLineItem,
-    quantity: number
+    quantity: number,
   ) {
-    if (!cart?.value?.id || !product) return;
-    loading.value = true;
+    if (!cart?.value?.id || !product) return
+    loading.value = true
     try {
-      await useAsyncGql("updateItemQuantity", {
+      await useAsyncGql('updateItemQuantity', {
         cartId: cart?.value.id,
         lines: [{ id: product.id, quantity }],
-      });
+      })
 
-      await getCart();
-    } catch (error) {
-      return "Error updating item quantity";
-    } finally {
-      loading.value = false;
+      await getCart()
+    }
+    catch (error) {
+      return 'Error updating item quantity'
+    }
+    finally {
+      loading.value = false
     }
   }
 
   function displayToast(title: string) {
-    toast.add({ title });
+    toast.add({ title })
   }
 
   return {
@@ -127,6 +133,6 @@ export const useShopifyCart = () => {
     getPriceWithCurrency,
     updateItemQuantity,
     isCartOpen,
-    displayToast
-  };
-};
+    displayToast,
+  }
+}

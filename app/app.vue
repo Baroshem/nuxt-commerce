@@ -1,13 +1,13 @@
 <script setup lang="ts">
-const { getCart, isCartOpen } = useShopifyCart();
+const { getCart, isCartOpen } = useShopifyCart()
 
-await getCart();
+await getCart()
 
 useHead({
   titleTemplate: (titleChunk) => {
-    return titleChunk ? `${titleChunk} - Nuxt Commerce` : "Nuxt Commerce";
+    return titleChunk ? `${titleChunk} - Nuxt Commerce` : 'Nuxt Commerce'
   },
-});
+})
 </script>
 
 <template>

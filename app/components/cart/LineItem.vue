@@ -1,13 +1,13 @@
 <script setup lang="ts">
-const { getPriceWithCurrency, isCartOpen } = useShopifyCart();
+const { getPriceWithCurrency, isCartOpen } = useShopifyCart()
 
 const emit = defineEmits<{
-  (e: "remove-item", value: string): void;
+  (e: 'remove-item', value: string): void
   (
-    e: "update-quantity",
-    value: { item: ShopifyCartLineItem; quantity: number }
-  ): void;
-}>();
+    e: 'update-quantity',
+    value: { item: ShopifyCartLineItem, quantity: number }
+  ): void
+}>()
 
 defineProps({
   item: {
@@ -18,7 +18,7 @@ defineProps({
     type: Boolean,
     required: true,
   },
-});
+})
 </script>
 
 <template>
@@ -40,10 +40,10 @@ defineProps({
 
           <UButton
             class="absolute -right-3 -top-3"
-            @click="emit('remove-item', item.id)"
             size="xs"
             color="gray"
             icon="i-heroicons-x-mark-20-solid"
+            @click="emit('remove-item', item.id)"
           />
         </div>
 
@@ -54,7 +54,7 @@ defineProps({
           <p class="font-medium text-sm">
             {{
               getPriceWithCurrency(
-                item.merchandise.product.priceRange.minVariantPrice
+                item.merchandise.product.priceRange.minVariantPrice,
               )
             }}
           </p>

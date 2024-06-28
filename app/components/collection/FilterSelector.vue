@@ -1,27 +1,27 @@
 <script lang="ts" setup>
-const route = useRoute();
+const route = useRoute()
 
 const props = defineProps({
   collections: {
     type: Object as PropType<ShopifyCollections>,
     default: () => ({}),
   },
-});
+})
 
 function isActiveCollection(collectionHandle: string) {
-  return route.params.handle[0] === collectionHandle;
+  return route.params.handle[0] === collectionHandle
 }
 
 const selectOptions = computed(() => {
   return props.collections.edges.map(({ node }) => ({
     label: node.title,
     to: node.handle,
-  }));
-});
+  }))
+})
 
 const selected = ref(
-  selectOptions.value.find((option) => option.to === route.params.handle[0])
-);
+  selectOptions.value.find(option => option.to === route.params.handle[0]),
+)
 </script>
 
 <template>
@@ -47,7 +47,10 @@ const selected = ref(
         Collections
       </h6>
       <ul class="mt-2 mb-6 ml-3 border-l border-slate-800">
-        <li v-for="{ node } in collections.edges" :key="node.title">
+        <li
+          v-for="{ node } in collections.edges"
+          :key="node.title"
+        >
           <div
             :class="['rounded-md flex py-2 ml-4 justify-between text-left ']"
           >

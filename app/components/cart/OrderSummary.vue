@@ -6,28 +6,28 @@ const {
   updateItemQuantity,
   removeFromCart,
   isCartOpen,
-} = useShopifyCart();
+} = useShopifyCart()
 
-const costs = computed(() => cart?.value?.cost);
-const isRedirectingToCheckout = ref(false);
+const costs = computed(() => cart?.value?.cost)
+const isRedirectingToCheckout = ref(false)
 
 async function redirectToCheckout() {
-  isRedirectingToCheckout.value = true;
-  window.location.href = cart?.value?.checkoutUrl;
+  isRedirectingToCheckout.value = true
+  window.location.href = cart?.value?.checkoutUrl
 }
 
 async function updateQuantity({
   item,
   quantity,
 }: {
-  item: ShopifyCartLineItem;
-  quantity: number;
+  item: ShopifyCartLineItem
+  quantity: number
 }) {
-  await updateItemQuantity(item, quantity);
+  await updateItemQuantity(item, quantity)
 }
 
 async function removeItem(id: string) {
-  await removeFromCart(id);
+  await removeFromCart(id)
 }
 </script>
 
@@ -37,15 +37,19 @@ async function removeItem(id: string) {
       class="block justify-between items-center py-2 px-4 md:px-6 md:pt-6 md:pb-4"
     >
       <div class="flex justify-between items-center">
-        <p class="font-semibold">Order Summary</p>
+        <p class="font-semibold">
+          Order Summary
+        </p>
         <UButton
-          @click="isCartOpen = false"
           color="gray"
           variant="ghost"
           icon="i-heroicons-x-mark-20-solid"
+          @click="isCartOpen = false"
         />
       </div>
-      <p class="font-medium mt-2">{{ cart?.lines?.edges?.length }} item(s)</p>
+      <p class="font-medium mt-2">
+        {{ cart?.lines?.edges?.length }} item(s)
+      </p>
     </div>
     <div class="flex flex-col h-full justify-between overflow-hidden">
       <ul
@@ -66,14 +70,20 @@ async function removeItem(id: string) {
         class="px-4 md:px-6 mt-6 flex flex-col flex-grow overflow-auto text-center"
       >
         Cart icon
-        <p class="text-lg">No items in cart</p>
+        <p class="text-lg">
+          No items in cart
+        </p>
       </div>
       <div class="px-4 pb-1 mt-3 md:px-6 md:pb-6">
         <div class="flex justify-between pb-4 border-t border-slate-800 pt-6">
           <div class="flex flex-col grow pr-2 text-slate-400">
             <p>Subtotal</p>
-            <p class="mt-2">Sales Tax</p>
-            <p class="mt-2">Shipping</p>
+            <p class="mt-2">
+              Sales Tax
+            </p>
+            <p class="mt-2">
+              Shipping
+            </p>
           </div>
           <div class="flex flex-col text-right">
             <p>{{ getPriceWithCurrency(costs?.subtotalAmount) }}</p>
@@ -92,8 +102,8 @@ async function removeItem(id: string) {
         <UButton
           class="w-full mb-4 justify-center"
           :disabled="loading"
-          @click="redirectToCheckout"
           size="xl"
+          @click="redirectToCheckout"
         >
           Checkout
         </UButton>

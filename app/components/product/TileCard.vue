@@ -4,20 +4,20 @@ const props = defineProps({
     type: Object as PropType<ShopifyProduct>,
     default: () => ({}),
   },
-});
+})
 
-const isImageLoading = ref(true);
+const isImageLoading = ref(true)
 
-const { addToCart, loading, getPriceWithCurrency } = useShopifyCart();
+const { addToCart, loading, getPriceWithCurrency } = useShopifyCart()
 
 const computedPrice = computed(
   () =>
-    props.product?.priceRange.minVariantPrice &&
-    getPriceWithCurrency({
+    props.product?.priceRange.minVariantPrice
+    && getPriceWithCurrency({
       amount: props.product?.priceRange.minVariantPrice.amount,
       currencyCode: props.product?.priceRange.minVariantPrice.currencyCode,
-    })
-);
+    }),
+)
 </script>
 
 <template>
@@ -25,8 +25,14 @@ const computedPrice = computed(
     class="rounded-md hover:shadow-lg max-w-full lg:max-w-[220px] min-w-[220px] max-h-[469px] text-left"
   >
     <div class="relative">
-      <NuxtLink :to="`/product/${product?.handle}`" class="block">
-        <USkeleton class="h-72" v-if="isImageLoading" />
+      <NuxtLink
+        :to="`/product/${product?.handle}`"
+        class="block"
+      >
+        <USkeleton
+          v-if="isImageLoading"
+          class="h-72"
+        />
         <NuxtImg
           v-show="!isImageLoading"
           :src="product?.featuredImage?.url.split('?')[0]"
@@ -47,10 +53,10 @@ const computedPrice = computed(
         <UButton
           :disabled="loading"
           aria-label="Add to cart button"
-          @click="addToCart(product)"
           color="gray"
           variant="link"
           icon="i-heroicons-shopping-cart"
+          @click="addToCart(product)"
         />
       </div>
       <span class="block pb-2 text-slate-400 text-sm">{{ computedPrice }}</span>

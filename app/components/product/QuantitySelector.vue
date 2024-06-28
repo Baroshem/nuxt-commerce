@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useCounter } from "@vueuse/core";
+import { useCounter } from '@vueuse/core'
 
 const props = defineProps({
   quantity: {
@@ -14,21 +14,21 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-});
+})
 
-const min = ref(1);
-const max = ref(999);
-const inputId = useId();
+const min = ref(1)
+const max = ref(999)
+const inputId = useId()
 const { count, inc, dec } = useCounter(props.quantity, {
   min: min.value,
   max: max.value,
-});
+})
 
-const emit = defineEmits<(e: "quantity-updated", value: number) => void>();
+const emit = defineEmits<(e: 'quantity-updated', value: number) => void>()
 
 watch(count, (newVal: number) => {
-  emit("quantity-updated", newVal);
-});
+  emit('quantity-updated', newVal)
+})
 </script>
 
 <template>
@@ -42,8 +42,8 @@ watch(count, (newVal: number) => {
         :aria-controls="inputId"
         variant="ghost"
         aria-label="Decrease value"
-        @click="dec()"
         icon="i-heroicons-minus-20-solid"
+        @click="dec()"
       />
       <input
         :id="inputId"
@@ -56,7 +56,7 @@ watch(count, (newVal: number) => {
         :class="!small && 'mx-2'"
         :min="min"
         :max="max"
-      />
+      >
       <UButton
         type="button"
         :disabled="count >= max || disabled"
@@ -65,8 +65,8 @@ watch(count, (newVal: number) => {
         :aria-controls="inputId"
         variant="ghost"
         aria-label="Increase value"
-        @click="inc()"
         icon="i-heroicons-plus-20-solid"
+        @click="inc()"
       />
     </div>
   </div>

@@ -28,24 +28,31 @@
             target="_blank"
             class="hover:underline hover:text-primary-400"
             aria-label="Link to Nuxt Home Page"
-            >Nuxt</a
-          >
+          >Nuxt</a>
           &
           <a
             href="https://www.shopify.com/"
             target="_blank"
             class="hover:underline hover:text-primary-400"
             aria-label="Link to Shopify Home Page"
-            >Shopify</a
-          >
+          >Shopify</a>
         </p>
         <div class="flex flex-col md:flex-row gap-4 mt-6">
           <NuxtLink to="/collection/latest-stuff">
-            <UButton color="primary" size="xl"> See products </UButton>
+            <UButton
+              color="primary"
+              size="xl"
+            >
+              See products
+            </UButton>
           </NuxtLink>
 
           <NuxtLink to="/about">
-            <UButton color="primary" variant="outline" size="xl">
+            <UButton
+              color="primary"
+              variant="outline"
+              size="xl"
+            >
               About
             </UButton>
           </NuxtLink>

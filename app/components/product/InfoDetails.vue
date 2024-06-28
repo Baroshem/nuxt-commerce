@@ -4,53 +4,54 @@ const props = defineProps({
     type: Object as PropType<ShopifyProduct>,
     default: () => ({}),
   },
-});
+})
 
-const { addToCart, loading, getPriceWithCurrency } = useShopifyCart();
-const router = useRouter();
-const currentRoute = useRoute();
+const { addToCart, loading, getPriceWithCurrency } = useShopifyCart()
+const router = useRouter()
+const currentRoute = useRoute()
 
-const quantity = ref<number>(1);
+const quantity = ref<number>(1)
 
-const optionsInUrl = computed(() => Object.keys(currentRoute.query).length);
+const optionsInUrl = computed(() => Object.keys(currentRoute.query).length)
 
 const areOptionsSelected = computed(
-  () => optionsInUrl.value === props.product?.options.length
-);
+  () => optionsInUrl.value === props.product?.options.length,
+)
 
 const computedVariant = computed(() => {
-  const productVariants = props.product?.variants.nodes;
+  const productVariants = props.product?.variants.nodes
 
-  if (!productVariants) return undefined;
+  if (!productVariants) return undefined
 
   if (!optionsInUrl.value) {
-    return productVariants[0];
+    return productVariants[0]
   }
 
-  return productVariants.find((variant) =>
+  return productVariants.find(variant =>
     variant.selectedOptions.every(
-      (option) => option.value === currentRoute.query[option.name]
-    )
-  );
-});
+      option => option.value === currentRoute.query[option.name],
+    ),
+  )
+})
 
 function isOptionDisabled(name: string, value: string) {
-  if (!optionsInUrl.value) return false;
+  if (!optionsInUrl.value) return false
 
-  if (!currentRoute.query[name]) return false;
+  if (!currentRoute.query[name]) return false
 
-  return currentRoute.query[name] !== value;
+  return currentRoute.query[name] !== value
 }
 
 function toggleOption(name: string, value: string) {
-  if (isOptionDisabled(name, value)) return;
+  if (isOptionDisabled(name, value)) return
 
   if (currentRoute.query[name]) {
-    router.replace({ query: { ...currentRoute.query, [name]: undefined } });
-  } else {
+    router.replace({ query: { ...currentRoute.query, [name]: undefined } })
+  }
+  else {
     router.replace({
       query: { ...currentRoute.query, [name]: value },
-    });
+    })
   }
 }
 </script>
@@ -70,7 +71,11 @@ function toggleOption(name: string, value: string) {
       {{ product?.description }}
     </p>
 
-    <div v-for="option in product?.options" :key="option.id" class="my-6">
+    <div
+      v-for="option in product?.options"
+      :key="option.id"
+      class="my-6"
+    >
       <p class="mb-2 text-slate-400">
         {{ option.name }}
       </p>
@@ -91,7 +96,9 @@ function toggleOption(name: string, value: string) {
     <div class="py-4 mb-4">
       <div class="items-end flex gap-3 sm:gap-0">
         <div class="w-max">
-          <p class="text-slate-400 mb-2">Quantity</p>
+          <p class="text-slate-400 mb-2">
+            Quantity
+          </p>
           <ProductQuantitySelector
             class="mr-0 lg:mr-4 items-stretch xs:items-center lg:w-auto"
             @quantity-updated="(newVal: number) => (quantity = newVal)"

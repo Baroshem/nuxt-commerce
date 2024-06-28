@@ -1,26 +1,26 @@
 <script setup lang="ts">
-const route = useRoute();
-const config = useRuntimeConfig();
+const route = useRoute()
+const config = useRuntimeConfig()
 
-const { data: collectionData } = await useAsyncGql("getCollection", {
+const { data: collectionData } = await useAsyncGql('getCollection', {
   handle: route.params.handle[0],
   items: 12,
   variants: 1,
-});
+})
 
 if (!collectionData?.value?.collection) {
-  throw createError({ statusCode: 404, statusMessage: "Collection Not Found" });
+  throw createError({ statusCode: 404, statusMessage: 'Collection Not Found' })
 }
 
-const collection = computed(() => collectionData?.value?.collection);
+const collection = computed(() => collectionData?.value?.collection)
 
 const collectionProducts = computed(
-  () => collectionData.value.collection?.products.edges
-);
+  () => collectionData.value.collection?.products.edges,
+)
 
-const { data: collectionsData } = await useAsyncGql("getCollections", {
+const { data: collectionsData } = await useAsyncGql('getCollections', {
   first: 20,
-});
+})
 
 watch(
   () => route.query.sortKey,
@@ -31,26 +31,26 @@ watch(
       variants: 1,
       // TODO: fix following `any`
       sortKey: newVal as any,
-    });
-  }
-);
+    })
+  },
+)
 
 useSeoMeta({
   title: collection.value?.seo.title || collection.value?.title,
   description:
-    collection.value?.seo.description ||
-    collection.value?.description ||
-    collection.value?.seo.title ||
-    collection.value?.title,
+    collection.value?.seo.description
+    || collection.value?.description
+    || collection.value?.seo.title
+    || collection.value?.title,
   ogTitle: collection.value?.seo.title || collection.value?.title,
   ogDescription:
-    collection.value?.seo.description ||
-    collection.value?.description ||
-    collection.value?.seo.title ||
-    collection.value?.title,
+    collection.value?.seo.description
+    || collection.value?.description
+    || collection.value?.seo.title
+    || collection.value?.title,
   ogImage: `${config.siteUrl}/logo.svg`,
-  twitterCard: "summary_large_image",
-});
+  twitterCard: 'summary_large_image',
+})
 </script>
 
 <template>
