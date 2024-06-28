@@ -59,11 +59,13 @@ useSeoMeta({
         arrows
         indicators
       >
-        <img
+        <NuxtImg
           :src="item"
           class="w-full"
           draggable="false"
-        >
+          width="600"
+          height="600"
+        />
       </UCarousel>
       <ProductInfoDetails
         v-if="product"
