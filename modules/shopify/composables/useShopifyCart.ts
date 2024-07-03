@@ -21,7 +21,7 @@ export const useShopifyCart = () => {
 
     const cartId = useCookie('cartId')
     const computedVariantId = computed(
-      () => variantId || product?.variants.nodes[0].id,
+      () => variantId || product?.variants.nodes[0]?.id,
     )
 
     if (!computedVariantId.value) return 'Missing Variant ID'
@@ -29,15 +29,15 @@ export const useShopifyCart = () => {
     let cart
 
     if (cartId.value) {
-      const { data } = await useAsyncGql('getCart', { cartId: cartId.value })
+      const data = await GqlGetCart({ cartId: cartId.value })
 
-      cart = data.value && data.value.cart
+      cart = data && data.cart
     }
 
     if (!cartId.value || !cart) {
-      const { data } = await useAsyncGql('createCart')
+      const data = await GqlCreateCart()
 
-      cart = data.value.cartCreate?.cart
+      cart = data.cartCreate?.cart
 
       cartId.value = cart?.id
     }
@@ -45,7 +45,7 @@ export const useShopifyCart = () => {
     if (!cartId.value) return 'Missing Cart ID'
 
     try {
-      await useAsyncGql('addToCart', {
+      await GqlAddToCart({
         cartId: cartId.value,
         lines: [{ merchandiseId: computedVariantId.value, quantity }],
       })
@@ -65,16 +65,16 @@ export const useShopifyCart = () => {
   async function getCart() {
     const cartId = useCookie('cartId')
     if (!cartId.value) {
-      const { data } = await useAsyncGql('createCart')
-      cartId.value = data.value.cartCreate?.cart?.id
+      const data = await GqlCreateCart()
+      cartId.value = data.cartCreate?.cart?.id
     }
 
-    const { data } = await nuxtApp.runWithContext(() =>
-      useAsyncGql('getCart', {
+    const data = await nuxtApp.runWithContext(() =>
+      GqlGetCart({
         cartId: cartId.value as string,
       }),
     )
-    cart.value = data.value.cart
+    cart.value = data.cart
   }
 
   async function removeFromCart(itemId: string) {

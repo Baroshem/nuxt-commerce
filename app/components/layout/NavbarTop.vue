@@ -30,6 +30,7 @@ const links = [
         <UButton
           color="gray"
           variant="ghost"
+          aria-label="Category Menu Open Button"
           class="lg:hidden mr-2"
           icon="i-heroicons-bars-3-20-solid"
           @click="isCategoryMenuOpen = true"
@@ -101,8 +102,8 @@ const links = [
       <div class="flex items-center relative flex-1 gap-1.5 justify-end">
         <LayoutSearchBar class="hidden sm:flex" />
         <UChip
-          v-if="cart?.lines?.edges?.length"
           :text="cart?.lines.edges.length"
+          :show="cart?.lines.edges.length ? true : false"
           size="2xl"
         >
           <UButton

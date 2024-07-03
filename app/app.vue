@@ -1,7 +1,9 @@
 <script setup lang="ts">
 const { getCart, isCartOpen } = useShopifyCart()
 
-await getCart()
+onMounted(async () => {
+  await getCart()
+})
 
 useHead({
   titleTemplate: (titleChunk) => {
@@ -23,6 +25,6 @@ useHead({
 
     <NuxtPage />
 
-    <LayoutLazyFooter class="mt-5" />
+    <LazyLayoutTheFooter class="mt-5" />
   </main>
 </template>

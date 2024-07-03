@@ -1,8 +1,7 @@
 <script setup lang="ts">
 const config = useRuntimeConfig()
 
-useSeoMeta({
-  title: 'Nuxt Commerce',
+useServerSeoMeta({
   description:
     'E-Commerce application built with Nuxt, Storefront UI & Shopify',
   ogTitle: 'Nuxt Commerce',
@@ -57,7 +56,7 @@ const products = computed(() => data.value?.products?.edges)
       <div
         class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4"
       >
-        <ProductTileCard
+        <LazyProductTileCard
           v-for="{ node } in collectionProducts"
           :key="node.id"
           :product="node"
@@ -90,7 +89,7 @@ const products = computed(() => data.value?.products?.edges)
       <div
         class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4"
       >
-        <ProductTileCard
+        <LazyProductTileCard
           v-for="{ node } in products"
           :key="node.id"
           :product="node"

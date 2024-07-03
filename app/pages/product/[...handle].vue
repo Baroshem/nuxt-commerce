@@ -3,6 +3,13 @@ const route = useRoute()
 const router = useRouter()
 const config = useRuntimeConfig()
 
+if (!route.params.handle?.length || !route.params.handle[0]) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Missing Product Handle',
+  })
+}
+
 const { data } = await useAsyncGql('getProduct', {
   handle: route.params.handle[0],
   variants: 10,
@@ -27,7 +34,7 @@ const recommendedProducts = computed(
   () => recommended.value.productRecommendations,
 )
 
-useSeoMeta({
+useServerSeoMeta({
   title: product.value?.seo.title || product.value?.title,
   description: product.value?.seo.description || product.value?.description,
   ogTitle: product.value?.seo.title || product.value?.title,
@@ -52,7 +59,7 @@ useSeoMeta({
     </div>
     <div class="block lg:flex justify-between gap-16">
       <UCarousel
-        v-slot="{ item }"
+        v-slot="{ item, index }"
         :items="galleryImages"
         :ui="{ item: 'basis-full' }"
         class="rounded-lg overflow-hidden max-h-[600px]"
@@ -61,6 +68,9 @@ useSeoMeta({
       >
         <NuxtImg
           :src="item"
+          format="avif"
+          :preload="index === 0"
+          :fetch-priority="index === 0 ? 'high' : 'low'"
           class="w-full"
           draggable="false"
           width="600"

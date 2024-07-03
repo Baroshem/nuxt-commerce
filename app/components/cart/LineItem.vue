@@ -5,7 +5,7 @@ const emit = defineEmits<{
   (e: 'remove-item', value: string): void
   (
     e: 'update-quantity',
-    value: { item: ShopifyCartLineItem, quantity: number }
+    value: { item: ShopifyCartLineItem, quantity: number },
   ): void
 }>()
 
@@ -30,12 +30,12 @@ defineProps({
             :to="`/product/${item.merchandise.product.handle}`"
             @click="isCartOpen = false"
           >
-            <NuxtImg
+            <img
               :src="item.merchandise.product.featuredImage?.url"
               width="92"
               height="92"
               class="rounded-xl max-w-[92px] max-h-[92px]"
-            />
+            >
           </NuxtLink>
 
           <UButton

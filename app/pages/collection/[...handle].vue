@@ -2,6 +2,13 @@
 const route = useRoute()
 const config = useRuntimeConfig()
 
+if (!route.params.handle?.length || !route.params.handle[0]) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Missing Collection Handle',
+  })
+}
+
 const { data: collectionData } = await useAsyncGql('getCollection', {
   handle: route.params.handle[0],
   items: 12,
@@ -25,17 +32,19 @@ const { data: collectionsData } = await useAsyncGql('getCollections', {
 watch(
   () => route.query.sortKey,
   async (newVal) => {
-    collectionData.value = await GqlGetCollection({
-      handle: route.params.handle[0],
-      items: 10,
-      variants: 1,
-      // TODO: fix following `any`
-      sortKey: newVal as any,
-    })
+    if (route.params.handle?.length && route.params.handle[0]) {
+      collectionData.value = await GqlGetCollection({
+        handle: route.params.handle[0],
+        items: 10,
+        variants: 1,
+        // TODO: fix following `any`
+        sortKey: newVal as any,
+      })
+    }
   },
 )
 
-useSeoMeta({
+useServerSeoMeta({
   title: collection.value?.seo.title || collection.value?.title,
   description:
     collection.value?.seo.description

@@ -72,6 +72,10 @@ export default defineNuxtConfig({
     siteUrl: 'https://commerce.nuxtjs.org',
   },
 
+  site: {
+    url: 'https://commerce.nuxtjs.org',
+  },
+
   eslint: {
     config: {
       stylistic: {
