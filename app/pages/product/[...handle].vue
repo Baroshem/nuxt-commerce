@@ -2,6 +2,7 @@
 const route = useRoute()
 const router = useRouter()
 const config = useRuntimeConfig()
+const { getImagePath } = useShopifyCart()
 
 if (!route.params.handle?.length || !route.params.handle[0]) {
   throw createError({
@@ -15,11 +16,11 @@ const { data } = await useAsyncGql('getProduct', {
   variants: 10,
 })
 
-if (!data?.value?.product) {
+const product = computed(() => data?.value?.product)
+
+if (!product.value) {
   throw createError({ statusCode: 404, statusMessage: 'Product Not Found' })
 }
-
-const product = computed(() => data?.value?.product)
 
 const galleryImages = computed(
   () => product?.value?.images.edges.map(edge => edge.node.url) || [],
@@ -67,7 +68,8 @@ useServerSeoMeta({
         indicators
       >
         <NuxtImg
-          :src="item"
+          :src="getImagePath(item)"
+          :alt="`Image ${index} of - ${product?.title}`"
           format="avif"
           :preload="index === 0"
           :fetch-priority="index === 0 ? 'high' : 'low'"

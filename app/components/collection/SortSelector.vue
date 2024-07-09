@@ -5,23 +5,23 @@ const currentRoute = useRoute()
 const options = [
   {
     label: 'Relevance',
-    value: ProductCollectionSortKeys.RELEVANCE,
+    value: ShopifyCollectionSortKeys.RELEVANCE,
   },
   {
     label: 'Title',
-    value: ProductCollectionSortKeys.TITLE,
+    value: ShopifyCollectionSortKeys.TITLE,
   },
   {
     label: 'Price',
-    value: ProductCollectionSortKeys.PRICE,
+    value: ShopifyCollectionSortKeys.PRICE,
   },
   {
     label: 'Best Selling',
-    value: ProductCollectionSortKeys.BEST_SELLING,
+    value: ShopifyCollectionSortKeys.BEST_SELLING,
   },
   {
     label: 'Created',
-    value: ProductCollectionSortKeys.CREATED,
+    value: ShopifyCollectionSortKeys.CREATED,
   },
 ]
 

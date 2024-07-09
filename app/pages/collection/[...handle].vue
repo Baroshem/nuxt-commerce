@@ -15,11 +15,11 @@ const { data: collectionData } = await useAsyncGql('getCollection', {
   variants: 1,
 })
 
-if (!collectionData?.value?.collection) {
+const collection = computed(() => collectionData?.value?.collection)
+
+if (!collection.value) {
   throw createError({ statusCode: 404, statusMessage: 'Collection Not Found' })
 }
-
-const collection = computed(() => collectionData?.value?.collection)
 
 const collectionProducts = computed(
   () => collectionData.value.collection?.products.edges,
@@ -35,10 +35,9 @@ watch(
     if (route.params.handle?.length && route.params.handle[0]) {
       collectionData.value = await GqlGetCollection({
         handle: route.params.handle[0],
-        items: 10,
+        items: 12,
         variants: 1,
-        // TODO: fix following `any`
-        sortKey: newVal as any,
+        sortKey: newVal as ShopifyCollectionSortKey,
       })
     }
   },

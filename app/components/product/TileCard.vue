@@ -8,7 +8,8 @@ const props = defineProps({
 
 const isImageLoading = ref(true)
 
-const { addToCart, loading, getPriceWithCurrency } = useShopifyCart()
+const { addToCart, loading, getPriceWithCurrency, getImagePath }
+  = useShopifyCart()
 
 const computedPrice = computed(
   () =>
@@ -35,7 +36,7 @@ const computedPrice = computed(
         />
         <NuxtImg
           v-show="!isImageLoading"
-          :src="product?.featuredImage?.url.split('?')[0]"
+          :src="getImagePath(product?.featuredImage?.url)"
           alt="Great product"
           class="block object-cover rounded-md aspect-square h-72"
           width="300"

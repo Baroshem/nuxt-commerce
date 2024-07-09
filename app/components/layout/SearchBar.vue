@@ -6,7 +6,7 @@ const searchBar = ref()
 const isLoadingSnippets = ref(false)
 const result = ref<ShopifyProducts>()
 const isSearchBarOpen = ref(false)
-const { getPriceWithCurrency } = useShopifyCart()
+const { getPriceWithCurrency, getImagePath } = useShopifyCart()
 onClickOutside(searchBar, () => resetState())
 const query = ref('')
 
@@ -62,7 +62,7 @@ function resetState() {
     </template>
     <div
       v-if="isSearchBarOpen"
-      class="right-0 z-50 absolute w-64"
+      class="right-0 top-8 z-50 absolute w-64"
     >
       <div
         v-if="!result?.edges?.length"
@@ -85,15 +85,14 @@ function resetState() {
             @click="resetState"
           >
             <div class="flex items-center">
-              <NuxtImg
-                :src="node.featuredImage?.url.split('?')[0]"
+              <img
+                :src="getImagePath(node.featuredImage?.url)"
                 :alt="
                   node.featuredImage?.altText || node.seo.title || node.title
                 "
-                format="avif"
                 width="48"
                 height="48"
-              />
+              >
               <p class="ml-2 text-xs truncate w-20">
                 {{ node.title }}
               </p>
