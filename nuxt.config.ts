@@ -54,6 +54,8 @@ export default defineNuxtConfig({
               'https://cdn.shopify.com',
               'http://localhost:*',
               'https://commerce-nuxt-js.vercel.app/',
+              // For preview deployments only
+              '*.vercel.app',
               'data: w3.org/svg/2000',
             ],
             // Needed for SSG
