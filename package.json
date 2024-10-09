@@ -47,7 +47,7 @@
     "vitest": "^1.0.4"
   },
   "dependencies": {
-    "@nuxt/fonts": "^0.4.0",
+    "@nuxt/fonts": "^0.10.0",
     "nuxt-graphql-client": "^0.2.31"
   }
 }
