@@ -21,14 +21,9 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/product': {
-      isr: true,
-    },
-    '/collection': {
-      isr: true,
-    },
     '/**': {
       index: true,
+      isr: 60
     },
   },
 
