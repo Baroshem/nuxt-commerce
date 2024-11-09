@@ -8,7 +8,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "stackblitz": "yarn && yarn dev",
+    "stackblitz": "pnpm install && pnpm run dev",
     "test": "vitest run --silent",
     "test:watch": "vitest watch",
     "lhci": "lhci autorun"
@@ -18,7 +18,7 @@
   },
   "stackblitz": {
     "installDependencies": false,
-    "startCommand": "yarn stackblitz"
+    "startCommand": "pnpm run stackblitz"
   },
   "devDependencies": {
     "@lhci/cli": "^0.14.0",
