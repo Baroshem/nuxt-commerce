@@ -23,7 +23,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/**': {
       index: true,
-      isr: 60
+      isr: 60,
     },
   },
 

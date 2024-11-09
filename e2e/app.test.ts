@@ -1,5 +1,5 @@
 import { setup, $fetch } from '@nuxt/test-utils/e2e'
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from 'vitest'
 
 const NUXT_COMMERCE_TEXT = 'Nuxt Commerce'
 
