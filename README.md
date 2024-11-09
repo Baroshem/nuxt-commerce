@@ -6,6 +6,32 @@ This template uses Nuxt UI, Image & Font optimization, Hybrid Rendering, Securit
 
 Made with 💚 by [Nuxt](https://nuxt.com).
 
+<details>
+<summary>Features</summary>
+
+Nuxt Commerce comes with several useful features out of the box:
+1. [Nuxt UI](https://ui.nuxt.com/) - A UI Library for Modern Web Apps.
+2. [GraphQL Client](https://nuxt-graphql-client.web.app/) - Minimal GraphQL Client + Code Generation
+3. [Image Optimization](https://image.nuxtjs.org/) - Resize and transform your images using built-in optimizer or your favorite images CDN
+4. [Fonts](https://font.nuxt.com/) - Deliver optimized fonts for better performance
+5. [Hybrid rendering](https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering) - Set different caching rules per route using Route Rules and decide how the server should respond to a new request on a given URL
+6. [Security](https://nuxt-security.vercel.app/) - Security Response Headers and middlewares to make your app more secure by default
+7. [Performance audits](https://github.com/GoogleChrome/lighthouse-ci) - Lighthouse CI to contionously audit performance of your website
+8. [Tests](https://vitest.dev/) - Test runner configured for easy usage
+9. [SEO](https://github.com/harlan-zw/nuxt-simple-sitemap) - Simple configuration for both Sitemap & Robots
+</details>
+
+<details>
+<summary>Looking for more?</summary>
+
+Building modern e-commerce websites might require you to add other functionalities that are not part of Nuxt Commerce. Below, there is a list of tools that you can use to address them:
+
+1. [JSON LD](https://github.com/ymmooot/nuxt-jsonld)
+2. [PWA](https://vite-pwa-org.netlify.app/)
+3. [Delayed Hydration](https://github.com/harlan-zw/nuxt-delay-hydration)
+4. [I18N](https://v8.i18n.nuxtjs.org/)
+</details>
+
 ## Integrations
 
 If you wish to add an integration with 3rd Party service like Content Management System, Search Engine, or Payment Provider, you can do so by using the regular Nuxt module approach.
@@ -92,29 +118,6 @@ pnpm run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-## Features
-
-Nuxt Commerce comes with several useful features out of the box:
-
-1. [Nuxt UI](https://ui.nuxt.com/) - A UI Library for Modern Web Apps.
-2. [GraphQL Client](https://nuxt-graphql-client.web.app/) - Minimal GraphQL Client + Code Generation
-3. [Image Optimization](https://image.nuxtjs.org/) - Resize and transform your images using built-in optimizer or your favorite images CDN
-4. [Fonts](https://font.nuxt.com/) - Deliver optimized fonts for better performance
-5. [Hybrid rendering](https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering) - Set different caching rules per route using Route Rules and decide how the server should respond to a new request on a given URL
-6. [Security](https://nuxt-security.vercel.app/) - Security Response Headers and middlewares to make your app more secure by default
-7. [Performance audits](https://github.com/GoogleChrome/lighthouse-ci) - Lighthouse CI to contionously audit performance of your website
-8. [Tests](https://vitest.dev/) - Test runner configured for easy usage
-9. [SEO](https://github.com/harlan-zw/nuxt-simple-sitemap) - Simple configuration for both Sitemap & Robots
-
-## Looking for more?
-
-Building modern e-commerce websites might require you to add other functionalities that are not part of Nuxt Commerce. Below, there is a list of tools that you can use to address them:
-
-1. [JSON LD](https://github.com/ymmooot/nuxt-jsonld)
-2. [PWA](https://vite-pwa-org.netlify.app/)
-3. [Delayed Hydration](https://github.com/harlan-zw/nuxt-delay-hydration)
-4. [I18N](https://v8.i18n.nuxtjs.org/)
 
 ## Kudos
 
