@@ -22,10 +22,10 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/product': {
-      swr: true,
+      isr: true,
     },
     '/collection': {
-      swr: true,
+      isr: true,
     },
     '/**': {
       index: true,
