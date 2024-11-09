@@ -1,68 +1,88 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  app: {
-    head: {
-      htmlAttrs: { lang: "en" },
-      link: [
-        { rel: "icon", href: "/logo.svg", type: "image/svg+xml" },
-        { rel: 'preconnect', href: 'https://graphql.myshopify.com' }
-      ],
-    },
+  future: {
+    compatibilityVersion: 4,
   },
 
   experimental: {
-    viewTransition: true
+    viewTransition: true,
   },
 
   devtools: { enabled: true },
 
+  app: {
+    head: {
+      htmlAttrs: { lang: 'en' },
+      link: [
+        { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' },
+        { rel: 'preconnect', href: 'https://graphql.myshopify.com' },
+      ],
+    },
+  },
+
   routeRules: {
     '/product': {
-      swr: true
+      swr: true,
     },
     '/collection': {
-      swr: true
+      swr: true,
     },
     '/**': {
-      index: true
-    }
+      index: true,
+    },
   },
 
   modules: [
-    "@nuxtjs/tailwindcss",
-    "@nuxt/fonts",
-    "nuxt-simple-robots",
-    "nuxt-simple-sitemap",
-    '@storefront-ui/nuxt',
-    "nuxt-og-image",
+    '@nuxt/fonts',
+    '@nuxtjs/sitemap',
+    '@nuxt/ui',
+    '@nuxt/eslint',
+    'nuxt-simple-robots',
+    'nuxt-og-image',
     [
-      "@nuxt/image",
+      '@nuxt/image',
       {
-        domains: ["cdn.shopify.com"],
+        domains: ['cdn.shopify.com'],
       },
     ],
     [
-      "nuxt-security",
+      'nuxt-security',
       {
         headers: {
           contentSecurityPolicy: {
-            "img-src": [
-              "https://cdn.shopify.com",
-              "http://localhost:*",
-              "https://commerce-nuxt-js.vercel.app/",
+            'img-src': [
+              'https://cdn.shopify.com',
+              'http://localhost:*',
+              'https://commerce-nuxt-js.vercel.app/',
+              // For preview deployments only
+              '*.vercel.app',
+              'data: w3.org/svg/2000',
             ],
             // Needed for SSG
-            "script-src-attr": [
-              "'unsafe-inline'",
+            'script-src-attr': [
+              '\'unsafe-inline\'',
             ],
           },
-          crossOriginEmbedderPolicy: false, // TODO: check if this will be necessary in the final application
+          crossOriginEmbedderPolicy: false,
         },
+        rateLimiter: false,
       },
     ],
   ],
 
   runtimeConfig: {
-    siteUrl: "https://commerce.nuxtjs.org"
-  }
-});
+    siteUrl: 'https://commerce.nuxtjs.org',
+  },
+
+  site: {
+    url: 'https://commerce.nuxtjs.org',
+  },
+
+  eslint: {
+    config: {
+      stylistic: {
+        quotes: 'single',
+      },
+    },
+  },
+})
