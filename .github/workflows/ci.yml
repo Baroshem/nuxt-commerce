@@ -3,10 +3,9 @@ name: ci
 on:
   push:
     branches:
-      - main
+      - 'main'
   pull_request:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   ci:
@@ -25,26 +24,39 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
       - name: cache node_modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: node_modules
-          key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/pnpm-lock.yaml')) }}
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn
+        run: pnpm install
 
       - name: Lint
-        run: yarn lint
+        run: pnpm run lint
 
       - name: Test
-        run: yarn test
+        run: pnpm run test
 
       - name: Generate Project
-        run: yarn generate
+        run: pnpm run generate
 
       - name: lighthouse mobile audit
-        run: yarn lhci
+        run: pnpm run lhci
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: lighthouse desktop audit
+        run: pnpm run lhci:desktop
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
