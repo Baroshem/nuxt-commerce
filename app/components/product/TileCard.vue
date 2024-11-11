@@ -42,6 +42,7 @@ const computedPrice = computed(
           width="300"
           height="300"
           format="avif"
+          loading="lazy"
           @load="isImageLoading = false"
         />
       </NuxtLink>

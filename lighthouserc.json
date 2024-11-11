@@ -17,8 +17,8 @@
       "staticDistDir": "./.output/public",
       "url": [
         "http://localhost:3000/",
-        "http://localhost:3000/product/ekktar-crew-jumper",
-        "http://localhost:3000/collection/casual-things"
+        "http://localhost:3000/product/ekktar-crew-jumper/",
+        "http://localhost:3000/collection/casual-things/"
       ],
       "numberOfRuns": 3
     },
