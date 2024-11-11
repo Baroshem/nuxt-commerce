@@ -1,6 +1,8 @@
 const cart = ref<ShopifyCart>(undefined)
 const isCartOpen = ref(false)
 
+export { ProductCollectionSortKeys as ShopifyCollectionSortKeys } from '#gql/default'
+
 export const useShopifyCart = () => {
   const nuxtApp = useNuxtApp()
   const loading = ref(false)
