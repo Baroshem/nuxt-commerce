@@ -6,15 +6,10 @@ const {
   updateItemQuantity,
   removeFromCart,
   isCartOpen,
+  redirectToCheckout,
 } = useShopifyCart()
 
 const costs = computed(() => cart?.value?.cost)
-const isRedirectingToCheckout = ref(false)
-
-async function redirectToCheckout() {
-  isRedirectingToCheckout.value = true
-  window.location.href = cart?.value?.checkoutUrl
-}
 
 async function updateQuantity({
   item,

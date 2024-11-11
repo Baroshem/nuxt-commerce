@@ -9,7 +9,7 @@ const props = defineProps({
 })
 
 function isActiveCollection(collectionHandle: string) {
-  return route.params.handle[0] === collectionHandle
+  return route.params.handle && route.params.handle[0] === collectionHandle
 }
 
 const selectOptions = computed(() => {
@@ -20,7 +20,9 @@ const selectOptions = computed(() => {
 })
 
 const selected = ref(
-  selectOptions.value.find(option => option.to === route.params.handle[0]),
+  selectOptions.value.find(
+    option => route.params.handle && option.to === route.params.handle[0],
+  ),
 )
 </script>
 

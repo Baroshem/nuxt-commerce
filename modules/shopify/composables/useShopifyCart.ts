@@ -129,6 +129,11 @@ export const useShopifyCart = () => {
     }
   }
 
+  function redirectToCheckout() {
+    loading.value = true
+    window.location.href = cart?.value?.checkoutUrl
+  }
+
   return {
     cart,
     toast,
@@ -140,5 +145,6 @@ export const useShopifyCart = () => {
     updateItemQuantity,
     isCartOpen,
     getImagePath,
+    redirectToCheckout,
   }
 }

@@ -3,7 +3,6 @@ import { watchDebounced } from '@vueuse/shared'
 import { onClickOutside } from '@vueuse/core'
 
 const searchBar = ref()
-const isLoadingSnippets = ref(false)
 const result = ref<ShopifyProducts>()
 const isSearchBarOpen = ref(false)
 const { getPriceWithCurrency, getImagePath } = useShopifyCart()
@@ -14,7 +13,6 @@ watchDebounced(
   query,
   async () => {
     if (query.value) {
-      isLoadingSnippets.value = true
       try {
         const { data } = await useAsyncGql('getProducts', {
           first: 10,
@@ -26,7 +24,6 @@ watchDebounced(
       catch (error) {
         console.error(error)
       }
-      isLoadingSnippets.value = false
     }
   },
   { debounce: 500 },
@@ -61,7 +58,7 @@ function resetState() {
       />
     </template>
     <div
-      v-if="isSearchBarOpen"
+      v-if="isSearchBarOpen && query"
       class="right-0 top-8 z-50 absolute w-64"
     >
       <div
