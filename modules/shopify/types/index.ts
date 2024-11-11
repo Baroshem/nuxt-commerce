@@ -15,3 +15,4 @@ export type ShopifyProducts = GetProductsQuery['products']
 export type ShopifyCollection = CollectionFragment
 export type ShopifyCollections = GetCollectionsQuery['collections']
 export type ShopifyCollectionSortKey = GetCollectionQueryVariables['sortKey']
+export { ProductCollectionSortKeys as ShopifyCollectionSortKeys } from '#gql/default'
