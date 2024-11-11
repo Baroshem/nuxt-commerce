@@ -14,7 +14,7 @@ useHead({
 
 <template>
   <Body class="bg-slate-950" />
-  <main>
+  <main id="main">
     <LayoutNavbarTop class="mb-5" />
 
     <USlideover v-model="isCartOpen">
@@ -28,3 +28,9 @@ useHead({
     <LazyLayoutTheFooter class="mt-5" />
   </main>
 </template>
+
+<style lang="css" scoped>
+#main {
+  font-family: "Inter", sans-serif;
+}
+</style>
