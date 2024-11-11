@@ -53,6 +53,9 @@ jobs:
 
       - name: Generate Project
         run: pnpm run generate
+        env:
+          SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
+          SHOPIFY_GRAPHQL_API_URL: ${{ secrets.SHOPIFY_GRAPHQL_API_URL }}
 
       - name: lighthouse mobile audit
         run: pnpm run lhci
