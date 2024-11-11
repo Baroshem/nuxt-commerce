@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const config = useRuntimeConfig()
 
-useServerSeoMeta({
+useSeoMeta({
   description:
     'E-Commerce application built with Nuxt, Storefront UI & Shopify',
   ogTitle: 'Nuxt Commerce',

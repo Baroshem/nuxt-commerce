@@ -48,7 +48,7 @@ const cardDetails = [
   },
 ]
 
-useServerSeoMeta({
+useSeoMeta({
   title: 'About',
   description: 'E-Commerce application built with Nuxt & Shopify',
   ogTitle: 'Nuxt Commerce',

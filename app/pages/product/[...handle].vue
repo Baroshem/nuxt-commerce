@@ -35,7 +35,7 @@ const recommendedProducts = computed(
   () => recommended.value.productRecommendations,
 )
 
-useServerSeoMeta({
+useSeoMeta({
   title: product.value?.seo.title || product.value?.title,
   description: product.value?.seo.description || product.value?.description,
   ogTitle: product.value?.seo.title || product.value?.title,

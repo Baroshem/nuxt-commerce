@@ -43,7 +43,7 @@ watch(
   },
 )
 
-useServerSeoMeta({
+useSeoMeta({
   title: collection.value?.seo.title || collection.value?.title,
   description:
     collection.value?.seo.description
