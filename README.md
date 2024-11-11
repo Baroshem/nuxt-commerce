@@ -112,6 +112,7 @@ Make sure to install the dependencies:
 
 ```bash
 pnpm install
+copy .env.example .env
 pnpm run dev
 pnpm run build
 pnpm run preview
