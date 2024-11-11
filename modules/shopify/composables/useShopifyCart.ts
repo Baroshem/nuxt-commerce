@@ -54,9 +54,11 @@ export const useShopifyCart = () => {
 
       await getCart()
 
-      displayToast('Product added to cart.')
+      toast.add({ title: 'Product added to cart.' })
     }
-    catch (e) {
+    catch (error) {
+      toast.add({ title: 'Error adding item to cart', color: 'red' })
+      console.error('Error adding item to cart:', error)
       return 'Error adding item to cart'
     }
     finally {
@@ -89,9 +91,11 @@ export const useShopifyCart = () => {
       })
       await getCart()
 
-      displayToast('Product removed from cart.')
+      toast.add({ title: 'Product removed from cart.' })
     }
     catch (error) {
+      toast.add({ title: 'Error removing item from cart', color: 'red' })
+      console.error('Error removing item from cart', error)
       return 'Error removing item from cart'
     }
     finally {
@@ -121,10 +125,6 @@ export const useShopifyCart = () => {
     }
   }
 
-  function displayToast(title: string) {
-    toast.add({ title })
-  }
-
   return {
     cart,
     toast,
@@ -135,7 +135,6 @@ export const useShopifyCart = () => {
     getPriceWithCurrency,
     updateItemQuantity,
     isCartOpen,
-    displayToast,
     getImagePath,
   }
 }
