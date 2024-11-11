@@ -66,7 +66,9 @@ export default defineNuxtConfig({
   ],
 
   runtimeConfig: {
-    siteUrl: 'https://commerce.nuxtjs.org',
+    public: {
+      siteUrl: 'https://commerce.nuxtjs.org',
+    },
   },
 
   site: {

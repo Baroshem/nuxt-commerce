@@ -69,7 +69,10 @@ async function removeItem(id: string) {
         v-else
         class="px-4 md:px-6 mt-6 flex flex-col flex-grow overflow-auto text-center"
       >
-        <UIcon name="i-heroicons-shopping-bag-20-solid" class="w-10 h-10 self-center" />
+        <UIcon
+          name="i-heroicons-shopping-bag-20-solid"
+          class="w-10 h-10 self-center"
+        />
         <p class="text-lg mt-4">
           No items in cart
         </p>

@@ -56,7 +56,7 @@ useServerSeoMeta({
     || collection.value?.description
     || collection.value?.seo.title
     || collection.value?.title,
-  ogImage: `${config.siteUrl}/logo.svg`,
+  ogImage: `${config.public.siteUrl}/logo.svg`,
   twitterCard: 'summary_large_image',
 })
 </script>

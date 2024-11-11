@@ -40,7 +40,8 @@ useServerSeoMeta({
   description: product.value?.seo.description || product.value?.description,
   ogTitle: product.value?.seo.title || product.value?.title,
   ogDescription: product.value?.seo.description || product.value?.description,
-  ogImage: product.value?.featuredImage?.url || `${config.siteUrl}/logo.svg`,
+  ogImage:
+    product.value?.featuredImage?.url || `${config.public.siteUrl}/logo.svg`,
   twitterCard: 'summary_large_image',
 })
 </script>
@@ -63,7 +64,7 @@ useServerSeoMeta({
         v-slot="{ item, index }"
         :items="galleryImages"
         :ui="{ item: 'basis-full' }"
-        class="rounded-lg overflow-hidden max-h-[600px]"
+        class="rounded-lg overflow-hidden min-w-[304px] min-h-[304px] md:min-w-[600px] md:min-h-[600px]"
         arrows
         indicators
       >
@@ -73,7 +74,6 @@ useServerSeoMeta({
           format="avif"
           :preload="index === 0"
           :fetch-priority="index === 0 ? 'high' : 'low'"
-          class="w-full"
           draggable="false"
           width="600"
           height="600"
