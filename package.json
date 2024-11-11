@@ -23,29 +23,29 @@
   "devDependencies": {
     "@lhci/cli": "^0.14.0",
     "@nuxt/devtools": "latest",
-    "@nuxt/eslint-config": "^0.3.13",
-    "@nuxt/image": "^1.7.0",
-    "@nuxt/test-utils": "^3.14.2",
-    "@nuxt/ui": "^2.17.0",
-    "@nuxt/eslint": "^0.3.13",
-    "@nuxtjs/sitemap": "5.2.2",
-    "@types/node": "^20.14.3",
+    "@nuxt/eslint-config": "^0.6.1",
+    "@nuxt/image": "^1.8.1",
+    "@nuxt/test-utils": "^3.14.4",
+    "@nuxt/ui": "^2.19.2",
+    "@nuxt/eslint": "^0.6.1",
+    "@nuxtjs/sitemap": "6.1.5",
+    "@nuxtjs/robots": "4.1.11",
+    "@types/node": "^22.9.0",
     "eslint": "latest",
-    "lint-staged": "^15.2.7",
-    "nuxt": "^3.12.2",
-    "nuxt-og-image": "^2.2.6",
-    "nuxt-security": "^2.0.0-rc.9",
-    "nuxt-simple-robots": "^4.0.0-rc.19",
-    "prettier": "^3.3.2",
-    "playwright-core": "^1.47.2",
+    "lint-staged": "^15.2.10",
+    "nuxt": "^3.14.159",
+    "nuxt-og-image": "^3.0.8",
+    "nuxt-security": "^2.0.0",
+    "prettier": "^3.3.3",
+    "playwright-core": "^1.48.2",
     "@vue/test-utils": "^2.4.6",
-    "happy-dom": "^15.7.4",
-    "vitest": "^2.1.1",
-    "typescript": "^5.4.5"
+    "happy-dom": "^15.11.0",
+    "vitest": "^2.1.4",
+    "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@nuxt/fonts": "^0.7.1",
-    "nuxt-graphql-client": "^0.2.35"
+    "@nuxt/fonts": "^0.10.2",
+    "nuxt-graphql-client": "^0.2.39"
   },
    "packageManager": "pnpm@8.11.0+sha512.9df87c16c98db27b4e051d787e67f2207ec47e809ccb07bf7b5ec4acdcd1613355839a38d0b900144923d6a7057700b74d2a0ccb1558beb241647a1206a9a7ab"
 }

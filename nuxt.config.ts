@@ -1,38 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  future: {
-    compatibilityVersion: 4,
-  },
-
-  experimental: {
-    viewTransition: true,
-  },
-
-  devtools: { enabled: true },
-
-  app: {
-    head: {
-      htmlAttrs: { lang: 'en' },
-      link: [
-        { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' },
-        { rel: 'preconnect', href: 'https://graphql.myshopify.com' },
-      ],
-    },
-  },
-
-  routeRules: {
-    '/**': {
-      index: true,
-      isr: 60,
-    },
-  },
 
   modules: [
     '@nuxt/fonts',
     '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
     '@nuxt/ui',
     '@nuxt/eslint',
-    'nuxt-simple-robots',
     'nuxt-og-image',
     [
       '@nuxt/image',
@@ -65,15 +39,43 @@ export default defineNuxtConfig({
     ],
   ],
 
-  runtimeConfig: {
-    public: {
-      siteUrl: 'https://commerce.nuxtjs.org',
+  devtools: { enabled: true },
+
+  app: {
+    head: {
+      htmlAttrs: { lang: 'en' },
+      link: [
+        { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' },
+        { rel: 'preconnect', href: 'https://graphql.myshopify.com' },
+      ],
     },
   },
 
   site: {
     url: 'https://commerce.nuxtjs.org',
   },
+
+  runtimeConfig: {
+    public: {
+      siteUrl: 'https://commerce.nuxtjs.org',
+    },
+  },
+
+  routeRules: {
+    '/**': {
+      index: true,
+      isr: 60,
+    },
+  },
+  future: {
+    compatibilityVersion: 4,
+  },
+
+  experimental: {
+    viewTransition: true,
+  },
+
+  compatibilityDate: '2024-11-11',
 
   eslint: {
     config: {
