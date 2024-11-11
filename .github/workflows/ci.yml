@@ -42,14 +42,11 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: pnpm install
 
-      - name: Postinstall
-        run: pnpm run postinstall
-
       - name: Lint
         run: pnpm run lint
 
       - name: Test
-        run: pnpm run test
+        run: pnpm run postinstall && pnpm run test
 
       - name: Generate Project
         run: pnpm run generate
