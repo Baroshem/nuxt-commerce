@@ -5,12 +5,6 @@ import {
   addImportsDir,
 } from '@nuxt/kit'
 
-const SHOPIFY_GRAPHQL_API_URL
-  = process.env.SHOPIFY_GRAPHQL_API_URL
-  || 'https://graphql.myshopify.com/api/2023-07/graphql.json'
-const SHOPIFY_ACCESS_TOKEN
-  = process.env.SHOPIFY_ACCESS_TOKEN || 'ecdc7f91ed0970e733268535c828fbbe'
-
 export default defineNuxtModule({
   meta: {
     name: 'shopify',
@@ -24,12 +18,12 @@ export default defineNuxtModule({
       documentPaths: ['../modules/shopify/graphql'],
       clients: {
         default: {
-          host: SHOPIFY_GRAPHQL_API_URL,
+          host: process.env.SHOPIFY_GRAPHQL_API_URL as string,
           codegenHeaders: {
-            'X-Shopify-Storefront-Access-Token': SHOPIFY_ACCESS_TOKEN,
+            'X-Shopify-Storefront-Access-Token': process.env.SHOPIFY_ACCESS_TOKEN as string,
           },
           headers: {
-            'X-Shopify-Storefront-Access-Token': SHOPIFY_ACCESS_TOKEN,
+            'X-Shopify-Storefront-Access-Token': process.env.SHOPIFY_ACCESS_TOKEN as string,
             'Content-Type': 'application/json',
           },
         },
