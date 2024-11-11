@@ -116,8 +116,12 @@ export const useShopifyCart = () => {
       })
 
       await getCart()
+
+      toast.add({ title: 'Quantity updated.' })
     }
     catch (error) {
+      toast.add({ title: 'Error updating item quantity', color: 'red' })
+      console.error('Error updating item quantity', error)
       return 'Error updating item quantity'
     }
     finally {
