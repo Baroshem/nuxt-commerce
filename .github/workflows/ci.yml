@@ -51,8 +51,8 @@ jobs:
           SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
           SHOPIFY_GRAPHQL_API_URL: ${{ secrets.SHOPIFY_GRAPHQL_API_URL }}
 
-      - name: Generate Project
-        run: pnpm run generate
+      - name: Build Project
+        run: pnpm run build
         env:
           SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
           SHOPIFY_GRAPHQL_API_URL: ${{ secrets.SHOPIFY_GRAPHQL_API_URL }}

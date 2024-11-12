@@ -6,12 +6,14 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "start": "nuxt start",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "stackblitz": "pnpm install && pnpm run dev",
     "test": "vitest run --silent",
     "test:watch": "vitest watch",
-    "lhci": "lhci autorun"
+    "lhci": "lhci autorun",
+    "lhci:desktop": "lhci autorun --collect.settings.preset=desktop"
   },
   "git": {
     "pre-commit": "lint-staged"

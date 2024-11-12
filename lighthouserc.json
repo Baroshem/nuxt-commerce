@@ -14,7 +14,7 @@
       }
     },
     "collect": {
-      "staticDistDir": "./.output/public",
+      "startServerCommand": "pnpm run start",
       "url": [
         "http://localhost:3000/",
         "http://localhost:3000/product/ekktar-crew-jumper/",
