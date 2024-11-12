@@ -91,7 +91,7 @@ useSeoMeta({
       <div
         class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4"
       >
-        <ProductTileCard
+        <LazyProductTileCard
           v-for="recommendedProduct in recommendedProducts"
           :key="recommendedProduct.id"
           :product="recommendedProduct"

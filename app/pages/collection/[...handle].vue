@@ -86,7 +86,7 @@ useSeoMeta({
         <div
           class="flex flex-wrap gap-6 justify-center lg:justify-normal mt-8 lg:ml-10"
         >
-          <ProductTileCard
+          <LazyProductTileCard
             v-for="{ node } in collectionProducts"
             :key="node.id"
             :product="node"

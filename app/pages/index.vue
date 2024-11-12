@@ -96,7 +96,7 @@ const products = computed(() => data.value?.products?.edges)
         />
       </div>
 
-      <HomeContactOptions />
+      <LazyHomeContactOptions />
     </section>
   </div>
 </template>
