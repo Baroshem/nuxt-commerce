@@ -29,8 +29,10 @@ useHead({
   </main>
 </template>
 
-<style lang="css" scoped>
+<!-- Web Font affects performance by a lot (dropping score by 10 points and increasing LCP by 2 seconds) -->
+<!-- Related issue https://github.com/nuxt/fonts/issues/382 -->
+<!-- <style lang="css" scoped>
 #main {
   font-family: "Inter", sans-serif;
 }
-</style>
+</style> -->
