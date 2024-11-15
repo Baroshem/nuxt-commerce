@@ -3,10 +3,10 @@ const config = useRuntimeConfig()
 
 useSeoMeta({
   description:
-    'E-Commerce application built with Nuxt, Storefront UI & Shopify',
+    'A high-performance, server-rendered E-commerce app built with Nuxt & Shopify.',
   ogTitle: 'Nuxt Commerce',
   ogDescription:
-    'E-Commerce application built with Nuxt, Storefront UI & Shopify',
+    'A high-performance, server-rendered E-commerce app built with Nuxt & Shopify.',
   ogImage: `${config.public.siteUrl}/logo.svg`,
   twitterCard: 'summary_large_image',
 })
