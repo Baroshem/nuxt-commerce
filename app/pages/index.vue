@@ -31,7 +31,7 @@ const products = computed(() => data.value?.products?.edges)
     <HomeHeroBanner />
     <section class="justify-center">
       <div class="flex justify-between my-16">
-        <div class="text-left">
+        <div class="text-center sm:text-left w-full">
           <h2 class="text-4xl font-medium text-white mb-6">
             New Collection
           </h2>
@@ -43,7 +43,7 @@ const products = computed(() => data.value?.products?.edges)
         <NuxtLink
           to="/collection/latest-stuff"
           variant="secondary"
-          class="min-w-fit hover:text-primary-500 text-white self-end flex items-center"
+          class="min-w-fit hover:text-primary-500 text-white self-end flex items-center hidden sm:flex"
         >
           See all
           <UIcon
@@ -63,8 +63,20 @@ const products = computed(() => data.value?.products?.edges)
         />
       </div>
 
+      <NuxtLink
+          to="/collection/latest-stuff"
+          variant="secondary"
+          class="min-w-fit hover:text-primary-500 text-white justify-center mt-4 flex items-center sm:hidden"
+        >
+          See all
+          <UIcon
+            name="i-heroicons-arrow-small-right-solid"
+            class="ml-2"
+          />
+        </NuxtLink>
+
       <div class="flex justify-between my-16">
-        <div class="text-left">
+        <div class="text-center sm:text-left w-full">
           <h2 class="text-4xl font-medium text-white mb-6">
             Top products
           </h2>
@@ -76,7 +88,7 @@ const products = computed(() => data.value?.products?.edges)
         <NuxtLink
           to="/collection/latest-stuff"
           variant="secondary"
-          class="min-w-fit hover:text-primary-500 text-white self-end flex items-center"
+          class="min-w-fit hover:text-primary-500 text-white self-end flex items-center hidden sm:flex"
         >
           See all
           <UIcon
@@ -95,6 +107,18 @@ const products = computed(() => data.value?.products?.edges)
           :product="node"
         />
       </div>
+
+      <NuxtLink
+          to="/collection/latest-stuff"
+          variant="secondary"
+          class="min-w-fit hover:text-primary-500 text-white justify-center mt-4 flex items-center sm:hidden"
+        >
+          See all
+          <UIcon
+            name="i-heroicons-arrow-small-right-solid"
+            class="ml-2"
+          />
+        </NuxtLink>
 
       <LazyHomeContactOptions />
     </section>

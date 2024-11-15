@@ -38,6 +38,7 @@ async function removeItem(id: string) {
         <UButton
           color="gray"
           variant="ghost"
+          size="xl"
           icon="i-heroicons-x-mark-20-solid"
           @click="isCartOpen = false"
         />
@@ -72,7 +73,7 @@ async function removeItem(id: string) {
           No items in cart
         </p>
       </div>
-      <div class="px-4 pb-1 mt-3 md:px-6 md:pb-6">
+      <div v-if="cart?.lines?.edges?.length" class="px-4 pb-1 mt-3 md:px-6 md:pb-6">
         <div class="flex justify-between pb-4 border-t border-slate-800 pt-6">
           <div class="flex flex-col grow pr-2 text-slate-400">
             <p>Subtotal</p>

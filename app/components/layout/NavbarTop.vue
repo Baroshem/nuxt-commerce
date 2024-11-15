@@ -67,6 +67,7 @@ const links = [
               <UButton
                 color="gray"
                 variant="ghost"
+                size="xl"
                 icon="i-heroicons-x-mark-20-solid"
                 @click="isCategoryMenuOpen = false"
               />

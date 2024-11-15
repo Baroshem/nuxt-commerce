@@ -194,7 +194,7 @@ const socialIcons = [
           <p
             class="flex items-center justify-center leading-5 text-center text-white/50 font-body text-sm"
           >
-            Copyright © 2024-present Nuxt & Alokai - MIT License
+            Copyright © 2024-present Nuxt - MIT License
           </p>
         </div>
 
