@@ -16,7 +16,7 @@
         />
       </div>
       <div
-        class="md:flex md:flex-col md:justify-center md:items-start md:basis-2/4"
+        class="md:flex md:flex-col md:justify-center md:items-start md:basis-2/4 text-left"
       >
         <h1 class="text-6xl md:leading-[67.5px] font-bold mt-2 mb-4 text-white">
           Nuxt <span class="text-primary-400">Commerce</span>

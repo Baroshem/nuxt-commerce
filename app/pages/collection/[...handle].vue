@@ -78,7 +78,7 @@ useSeoMeta({
       </div>
       <div class="mt-8 w-full">
         <div class="flex justify-between xs:ml-10 items-center">
-          <h2 class="text-lg text-white font-medium">
+          <h2 class="text-lg text-white font-medium lg:ml-10">
             All products ({{ collectionProducts?.length }})
           </h2>
           <CollectionSortSelector />
