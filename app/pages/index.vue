@@ -64,16 +64,16 @@ const products = computed(() => data.value?.products?.edges)
       </div>
 
       <NuxtLink
-          to="/collection/latest-stuff"
-          variant="secondary"
-          class="min-w-fit hover:text-primary-500 text-white justify-center mt-4 flex items-center sm:hidden"
-        >
-          See all
-          <UIcon
-            name="i-heroicons-arrow-small-right-solid"
-            class="ml-2"
-          />
-        </NuxtLink>
+        to="/collection/latest-stuff"
+        variant="secondary"
+        class="min-w-fit hover:text-primary-500 text-white justify-center mt-4 flex items-center sm:hidden"
+      >
+        See all
+        <UIcon
+          name="i-heroicons-arrow-small-right-solid"
+          class="ml-2"
+        />
+      </NuxtLink>
 
       <div class="flex justify-between my-16">
         <div class="text-center sm:text-left w-full">
@@ -109,16 +109,16 @@ const products = computed(() => data.value?.products?.edges)
       </div>
 
       <NuxtLink
-          to="/collection/latest-stuff"
-          variant="secondary"
-          class="min-w-fit hover:text-primary-500 text-white justify-center mt-4 flex items-center sm:hidden"
-        >
-          See all
-          <UIcon
-            name="i-heroicons-arrow-small-right-solid"
-            class="ml-2"
-          />
-        </NuxtLink>
+        to="/collection/latest-stuff"
+        variant="secondary"
+        class="min-w-fit hover:text-primary-500 text-white justify-center mt-4 flex items-center sm:hidden"
+      >
+        See all
+        <UIcon
+          name="i-heroicons-arrow-small-right-solid"
+          class="ml-2"
+        />
+      </NuxtLink>
 
       <LazyHomeContactOptions />
     </section>
