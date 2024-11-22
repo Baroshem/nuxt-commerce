@@ -6,8 +6,6 @@ const props = defineProps({
   },
 })
 
-const isImageLoading = ref(true)
-
 const { addToCart, loading, getPriceWithCurrency, getImagePath }
   = useShopifyCart()
 
@@ -30,19 +28,14 @@ const computedPrice = computed(
         :to="`/product/${product?.handle}`"
         class="block"
       >
-        <USkeleton
-          v-if="isImageLoading"
-          class="h-72"
-        />
         <NuxtImg
-          v-show="!isImageLoading"
           :src="getImagePath(product?.featuredImage?.url)"
           alt="Great product"
           class="block object-cover rounded-md aspect-square h-72"
           width="300"
           height="300"
-          format="avif"
-          @load="isImageLoading = false"
+          sizes="100vw md:300px"
+          loading="lazy"
         />
       </NuxtLink>
     </div>
