@@ -90,7 +90,7 @@ useSeoMeta({
             v-for="{ node }, index in collectionProducts"
             :key="node.id"
             :product="node"
-            :lazy="index === 0"
+            :lazy="index !== 0"
           />
         </div>
       </div>
