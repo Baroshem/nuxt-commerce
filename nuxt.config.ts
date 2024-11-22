@@ -1,4 +1,16 @@
 export default defineNuxtConfig({
+  devtools: { enabled: true },
+
+  app: {
+    head: {
+      htmlAttrs: { lang: 'en' },
+      link: [
+        { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' },
+        { rel: 'preconnect', href: 'https://graphql.myshopify.com' },
+      ],
+    },
+  },
+  
   modules: [
     '@nuxt/fonts',
     '@nuxtjs/sitemap',
@@ -36,18 +48,6 @@ export default defineNuxtConfig({
       },
     ],
   ],
-
-  devtools: { enabled: true },
-
-  app: {
-    head: {
-      htmlAttrs: { lang: 'en' },
-      link: [
-        { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' },
-        { rel: 'preconnect', href: 'https://graphql.myshopify.com' },
-      ],
-    },
-  },
 
   site: {
     url: 'https://commerce.nuxtjs.org',
