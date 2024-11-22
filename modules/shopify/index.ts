@@ -12,6 +12,17 @@ export default defineNuxtModule({
   async setup() {
     const { resolve } = createResolver(import.meta.url)
 
+    addImportsDir(resolve('composables'))
+    addImportsDir(resolve('types'))
+
+    if (!process.env.SHOPIFY_GRAPHQL_API_URL) {
+      throw Error(`Required Environment Variable 'SHOPIFY_GRAPHQL_API_URL' missing`)
+    }
+
+    if (!process.env.SHOPIFY_ACCESS_TOKEN) {
+      throw Error(`Required Environment Variable 'SHOPIFY_ACCESS_TOKEN' missing`)
+    }
+
     await installModule('nuxt-graphql-client', {
       documentPaths: ['../modules/shopify/graphql'],
       clients: {
@@ -27,8 +38,5 @@ export default defineNuxtModule({
         },
       },
     })
-
-    addImportsDir(resolve('composables'))
-    addImportsDir(resolve('types'))
   },
 })
