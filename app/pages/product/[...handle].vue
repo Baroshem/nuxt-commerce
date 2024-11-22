@@ -71,8 +71,8 @@ useSeoMeta({
         <NuxtImg
           :src="getImagePath(item)"
           :alt="`Image ${index} of - ${product?.title}`"
-          format="avif"
           :preload="index === 0"
+          :loading="index === 0 ? 'eager' : 'lazy'"
           :fetch-priority="index === 0 ? 'high' : 'low'"
           draggable="false"
           width="600"

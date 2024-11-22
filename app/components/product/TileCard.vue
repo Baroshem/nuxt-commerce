@@ -4,6 +4,10 @@ const props = defineProps({
     type: Object as PropType<ShopifyProduct>,
     default: () => ({}),
   },
+  lazy: {
+    type: Boolean,
+    default: true
+  }
 })
 
 const { addToCart, loading, getPriceWithCurrency, getImagePath }
@@ -32,10 +36,8 @@ const computedPrice = computed(
           :src="getImagePath(product?.featuredImage?.url)"
           alt="Great product"
           class="block object-cover rounded-md aspect-square h-72"
-          width="300"
-          height="300"
-          sizes="100vw md:300px"
-          loading="lazy"
+          sizes="200px md:300px"
+          :loading="lazy ? 'lazy' : 'eager'"
         />
       </NuxtLink>
     </div>
