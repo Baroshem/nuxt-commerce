@@ -6,8 +6,8 @@ const props = defineProps({
   },
   lazy: {
     type: Boolean,
-    default: true
-  }
+    default: true,
+  },
 })
 
 const { addToCart, loading, getPriceWithCurrency, getImagePath }

@@ -7,6 +7,10 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
+  SHOPIFY_GRAPHQL_API_URL: ${{ secrets.SHOPIFY_GRAPHQL_API_URL }}
+
 jobs:
   ci:
     runs-on: ${{ matrix.os }}
@@ -41,24 +45,15 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: pnpm install
-        env:
-          SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
-          SHOPIFY_GRAPHQL_API_URL: ${{ secrets.SHOPIFY_GRAPHQL_API_URL }}
 
       - name: Lint
         run: pnpm run lint
 
       - name: Test
         run: pnpm run test
-        env:
-          SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
-          SHOPIFY_GRAPHQL_API_URL: ${{ secrets.SHOPIFY_GRAPHQL_API_URL }}
 
-      - name: Generate Project
-        run: pnpm run generate
-        env:
-          SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
-          SHOPIFY_GRAPHQL_API_URL: ${{ secrets.SHOPIFY_GRAPHQL_API_URL }}
+      - name: Build Project
+        run: pnpm run build
 
       - name: lighthouse mobile audit
         run: pnpm run lhci
