@@ -120,7 +120,7 @@ const products = computed(() => data.value?.products?.edges)
         />
       </NuxtLink>
 
-      <LazyHomeContactOptions />
+      <HomeContactOptions />
     </section>
   </div>
 </template>

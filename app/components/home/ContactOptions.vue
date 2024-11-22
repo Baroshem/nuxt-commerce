@@ -3,17 +3,17 @@ const contactOptions = [
   {
     label: 'Free shipping $75+',
     details: 'Orders over $75 include free US shipping.',
-    icon: 'i-heroicons-cube',
+    icon: 'i-heroicons-cube-20-solid',
   },
   {
     label: '100% Risk-free',
     details: 'Get a full refund if you’re not feeling the love',
-    icon: 'i-heroicons-shield-check',
+    icon: 'i-heroicons-shield-check-20-solid',
   },
   {
     label: 'Loving support',
     details: 'We’re sticking with you every step of the way.',
-    icon: 'i-heroicons-heart',
+    icon: 'i-heroicons-heart-20-solid',
   },
 ]
 </script>
