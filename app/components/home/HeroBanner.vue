@@ -37,7 +37,7 @@
             aria-label="Link to Shopify Home Page"
           >Shopify</a>
         </p>
-        <div class="flex flex-col md:flex-row gap-4 mt-6">
+        <div class="flex flex-row gap-4 mt-6">
           <NuxtLink to="/collection/latest-stuff">
             <UButton
               color="primary"
