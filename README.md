@@ -122,6 +122,6 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ## Kudos
 
-This project was higly inspired by the amazing work by @scottyzen to build Nuxt e-commerce template with WooCommerce -> <https://v3.woonuxt.com/>
+This project was higly inspired by the amazing work by @scottyzen to build Nuxt e-commerce template with WooCommerce -> <https://v3.woonuxt.com/> and Next Commerce by @vercel -> <https://demo.vercel.store/>
 
 Also, thanks to everyone who shared their feedback in the initial [RFC](https://github.com/nuxt/commerce/issues/1) 💚
