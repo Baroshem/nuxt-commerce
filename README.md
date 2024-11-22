@@ -32,6 +32,27 @@ Building modern e-commerce websites might require you to add other functionaliti
 4. [I18N](https://v8.i18n.nuxtjs.org/)
 </details>
 
+## Start here
+
+You will need to use the environment variables [defined in `.env.example`](.env.example) to run Nuxt Commerce.
+
+> Note: You should not commit your `.env` file or it will expose secrets that will allow others to control your Shopify store.
+
+```bash
+pnpm install
+copy .env.example .env
+pnpm run dev
+```
+
+Your app should now be running on [localhost:3000](http://localhost:3000/).
+
+You can also inspect production build like so:
+
+```bash
+pnpm run build
+pnpm run preview
+```
+
 ## Integrations
 
 If you wish to add an integration with 3rd Party service like Content Management System, Search Engine, or Payment Provider, you can do so by using the regular Nuxt module approach.
@@ -105,17 +126,3 @@ export default defineNuxtModule({
 8. Have fun and enjoy your new e-commerce app!
 
 After creating a custom integration module, please let us know so that we could add it to our documentation as a source of knowledge for others to use it in their project :)
-
-## Running locally
-
-Make sure to install the dependencies:
-
-```bash
-pnpm install
-copy .env.example .env
-pnpm run dev
-pnpm run build
-pnpm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
