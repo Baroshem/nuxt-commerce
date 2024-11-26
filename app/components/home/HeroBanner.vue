@@ -6,13 +6,13 @@
       <div class="flex flex-col md:items-stretch md:overflow-hidden">
         <NuxtImg
           src="/hero.png"
-          alt="Headphones"
-          format="avif"
+          alt="Nuxt Commerce Hero"
           height="600"
           fetch-priority="high"
           preload
           width="800"
           class="h-full object-cover object-left"
+          placeholder
         />
       </div>
       <div
@@ -38,24 +38,22 @@
           >Shopify</a>
         </p>
         <div class="flex flex-row gap-4 mt-6">
-          <NuxtLink to="/collection/latest-stuff">
-            <UButton
-              color="primary"
-              size="xl"
-            >
-              See products
-            </UButton>
-          </NuxtLink>
+          <UButton
+            color="primary"
+            size="xl"
+            to="/collection/latest-stuff"
+          >
+            See products
+          </UButton>
 
-          <NuxtLink to="/about">
-            <UButton
-              color="primary"
-              variant="outline"
-              size="xl"
-            >
-              About
-            </UButton>
-          </NuxtLink>
+          <UButton
+            color="primary"
+            variant="outline"
+            size="xl"
+            to="/about"
+          >
+            About
+          </UButton>
         </div>
       </div>
     </div>

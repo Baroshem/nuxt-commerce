@@ -25,7 +25,7 @@ const computedPrice = computed(
 
 <template>
   <div
-    class="rounded-md hover:shadow-lg max-w-full lg:max-w-[220px] min-w-[220px] max-h-[469px] text-left"
+    class="rounded-md hover:shadow-lg w-[220px] max-h-[356px] text-left"
   >
     <div class="relative">
       <NuxtLink
@@ -35,9 +35,11 @@ const computedPrice = computed(
         <NuxtImg
           :src="getImagePath(product?.featuredImage?.url)"
           alt="Great product"
-          class="block object-cover rounded-md aspect-square h-72"
-          sizes="200px md:300px"
+          class="block object-cover rounded-md aspect-square h-72 min-w-[216px]"
           :loading="lazy ? 'lazy' : 'eager'"
+          width="216"
+          height="288"
+          placeholder
         />
       </NuxtLink>
     </div>

@@ -77,6 +77,7 @@ useSeoMeta({
           draggable="false"
           width="600"
           height="600"
+          placeholder
         />
       </UCarousel>
       <ProductInfoDetails
