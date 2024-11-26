@@ -84,19 +84,21 @@ useSeoMeta({
         :product="product"
       />
     </div>
-    <section class="max-w-[1536px] w-full mx-auto my-20 text-left">
-      <h2 class="text-3xl mb-10 text-white">
-        Related Products
-      </h2>
-      <div
-        class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4"
-      >
-        <LazyProductTileCard
-          v-for="recommendedProduct in recommendedProducts"
-          :key="recommendedProduct.id"
-          :product="recommendedProduct"
-        />
-      </div>
-    </section>
+    <NuxtLazyHydrate when-visible>
+      <section class="max-w-[1536px] w-full mx-auto my-20 text-left">
+        <h2 class="text-3xl mb-10 text-white">
+          Related Products
+        </h2>
+        <div
+          class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4"
+        >
+          <LazyProductTileCard
+            v-for="recommendedProduct in recommendedProducts"
+            :key="recommendedProduct.id"
+            :product="recommendedProduct"
+          />
+        </div>
+      </section>
+    </NuxtLazyHydrate>
   </div>
 </template>

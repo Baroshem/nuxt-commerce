@@ -36,6 +36,7 @@ export default defineNuxtConfig({
         rateLimiter: false,
       },
     ],
+    'nuxt-lazy-hydrate',
   ],
   devtools: { enabled: true },
 

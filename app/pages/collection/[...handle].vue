@@ -83,16 +83,18 @@ useSeoMeta({
           </h2>
           <CollectionSortSelector />
         </div>
-        <div
-          class="flex flex-wrap gap-6 justify-center lg:justify-normal mt-8 lg:ml-10"
-        >
-          <LazyProductTileCard
-            v-for="{ node }, index in collectionProducts"
-            :key="node.id"
-            :product="node"
-            :lazy="index !== 0"
-          />
-        </div>
+        <NuxtLazyHydrate when-visible>
+          <div
+            class="flex flex-wrap gap-6 justify-center lg:justify-normal mt-8 lg:ml-10"
+          >
+            <LazyProductTileCard
+              v-for="{ node }, index in collectionProducts"
+              :key="node.id"
+              :product="node"
+              :lazy="index !== 0"
+            />
+          </div>
+        </NuxtLazyHydrate>
       </div>
     </div>
   </div>
