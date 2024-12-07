@@ -76,7 +76,7 @@ const links = [
 
             <UVerticalNavigation
               :links="links"
-              class="mt-4"
+              class="mt-4 text-white"
             >
               <template #default="{ link }">
                 <span
@@ -91,7 +91,7 @@ const links = [
 
       <UHorizontalNavigation
         :links="links"
-        class="hidden lg:flex w-fit"
+        class="hidden lg:flex w-fit text-white"
       >
         <template #default="{ link }">
           <span class="group-hover:text-primary relative">{{

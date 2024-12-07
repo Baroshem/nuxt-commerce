@@ -45,9 +45,9 @@ const selected = ref(
       </template>
     </USelectMenu>
     <div class="w-full md:max-w-[376px] hidden lg:block">
-      <h6 class="text-white text-left mb-4 rounded tracking-widest">
+      <h2 class="text-white text-left mb-4 rounded tracking-widest">
         Collections
-      </h6>
+      </h2>
       <ul class="mt-2 mb-6 ml-3 border-l border-slate-800">
         <li
           v-for="{ node } in collections.edges"
