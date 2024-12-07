@@ -54,6 +54,10 @@ export default defineNuxtConfig({
     url: 'https://commerce.nuxtjs.org',
   },
 
+  colorMode: {
+    preference: 'dark',
+  },
+
   runtimeConfig: {
     public: {
       siteUrl: 'https://commerce.nuxtjs.org',
