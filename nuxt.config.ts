@@ -63,7 +63,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/**': {
       robots: true,
-      isr: 60,
+      swr: 60,
     },
   },
   future: {
