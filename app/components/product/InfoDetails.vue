@@ -23,11 +23,7 @@ const areOptionsSelected = computed(
 const computedVariant = computed(() => {
   const productVariants = props.product?.variants.nodes
 
-  if (!productVariants) return undefined
-
-  if (!optionsInUrl.value) {
-    return productVariants[0]
-  }
+  if (!productVariants || !optionsInUrl.value) return undefined
 
   return productVariants.find(variant =>
     variant.selectedOptions.every(
