@@ -10,8 +10,7 @@ const props = defineProps({
   },
 })
 
-const { addToCart, loading, getPriceWithCurrency, getImagePath }
-  = useShopifyCart()
+const { getPriceWithCurrency, getImagePath } = useShopifyCart()
 
 const computedPrice = computed(
   () =>
@@ -48,14 +47,6 @@ const computedPrice = computed(
         <p class="truncate text-slate-300">
           {{ product?.title }}
         </p>
-        <UButton
-          :disabled="loading"
-          aria-label="Add to cart button"
-          color="gray"
-          variant="link"
-          icon="i-heroicons-shopping-cart"
-          @click="addToCart(product)"
-        />
       </div>
       <span class="block pb-2 text-slate-400 text-sm">{{ computedPrice }}</span>
     </div>

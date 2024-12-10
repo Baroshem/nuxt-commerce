@@ -14,8 +14,6 @@ const quantity = ref<number>(1)
 
 const optionsInUrl = computed(() => Object.keys(currentRoute.query).length)
 
-handleOneOptionState()
-
 const areOptionsSelected = computed(
   () => optionsInUrl.value === props.product?.options.length,
 )
@@ -32,18 +30,8 @@ const computedVariant = computed(() => {
   )
 })
 
-function isOptionDisabled(name: string, value: string) {
-  if (!optionsInUrl.value) return false
-
-  if (!currentRoute.query[name]) return false
-
-  return currentRoute.query[name] !== value
-}
-
 function toggleOption(name: string, value: string) {
-  if (isOptionDisabled(name, value)) return
-
-  if (currentRoute.query[name]) {
+  if (currentRoute.query[name] === value) {
     router.replace({ query: { ...currentRoute.query, [name]: undefined } })
   }
   else {
@@ -51,14 +39,6 @@ function toggleOption(name: string, value: string) {
       query: { ...currentRoute.query, [name]: value },
     })
   }
-}
-
-function handleOneOptionState() {
-  props.product?.options.forEach((option) => {
-    if (option.values.length === 1) {
-      toggleOption(option.name, option.values[0]!)
-    }
-  })
 }
 </script>
 
@@ -89,9 +69,8 @@ function handleOneOptionState() {
         <UButton
           v-for="value in option.values"
           :key="value"
-          :color="isOptionDisabled(option.name, value) ? 'gray' : 'primary'"
+          :color="currentRoute.query[option.name] === value ? 'primary' : 'gray'"
           class="w-16 justify-center"
-          :disabled="isOptionDisabled(option.name, value) || option.values.length === 1"
           @click="toggleOption(option.name, value)"
         >
           {{ value }}
@@ -118,7 +97,10 @@ function handleOneOptionState() {
           @click="addToCart(product, computedVariant?.id, quantity)"
         >
           Add to cart
-          <UIcon name="i-heroicons-shopping-cart" />
+          <UIcon
+            name="i-heroicons-shopping-cart"
+            size="16"
+          />
         </UButton>
       </div>
     </div>

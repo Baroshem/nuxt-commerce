@@ -161,6 +161,7 @@ const socialIcons = [
           <UButton
             type="submit"
             class="ml-2"
+            color="black"
           >
             Subscribe
           </UButton>

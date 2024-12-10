@@ -1,9 +1,7 @@
 <script setup lang="ts">
 const { getCart, isCartOpen } = useShopifyCart()
 
-onMounted(async () => {
-  await getCart()
-})
+await getCart()
 
 useHead({
   titleTemplate: (titleChunk) => {
@@ -13,7 +11,7 @@ useHead({
 </script>
 
 <template>
-  <Body class="bg-slate-950" />
+  <Body class="bg-[#020420]" />
   <main id="main">
     <LayoutNavbarTop class="mb-5" />
 
@@ -33,6 +31,6 @@ useHead({
 <!-- Related issue https://github.com/nuxt/fonts/issues/382 -->
 <!-- <style lang="css" scoped>
 #main {
-  font-family: "Inter", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 </style> -->

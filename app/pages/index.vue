@@ -44,12 +44,13 @@ const products = computed(() => data.value?.products?.edges)
           <NuxtLink
             to="/collection/latest-stuff"
             variant="secondary"
-            class="min-w-fit hover:text-primary-500 text-white self-end flex items-center hidden sm:flex"
+            class="min-w-fit hover:text-primary-500 text-white self-end items-center hidden sm:flex"
           >
             See all
             <UIcon
               name="i-heroicons-arrow-small-right-solid"
               class="ml-2"
+              size="20"
             />
           </NuxtLink>
         </div>
@@ -73,6 +74,7 @@ const products = computed(() => data.value?.products?.edges)
           <UIcon
             name="i-heroicons-arrow-small-right-solid"
             class="ml-2"
+            size="20"
           />
         </NuxtLink>
 
@@ -87,14 +89,15 @@ const products = computed(() => data.value?.products?.edges)
           </div>
 
           <NuxtLink
-            to="/collection/latest-stuff"
+            to="/collection/casual-things"
             variant="secondary"
-            class="min-w-fit hover:text-primary-500 text-white self-end flex items-center hidden sm:flex"
+            class="min-w-fit hover:text-primary-500 text-white self-end items-center hidden sm:flex"
           >
             See all
             <UIcon
               name="i-heroicons-arrow-small-right-solid"
               class="ml-2"
+              size="20"
             />
           </NuxtLink>
         </div>
@@ -110,7 +113,7 @@ const products = computed(() => data.value?.products?.edges)
         </div>
 
         <NuxtLink
-          to="/collection/latest-stuff"
+          to="/collection/casual-things"
           variant="secondary"
           class="min-w-fit hover:text-primary-500 text-white justify-center mt-4 flex items-center sm:hidden"
         >
@@ -118,6 +121,7 @@ const products = computed(() => data.value?.products?.edges)
           <UIcon
             name="i-heroicons-arrow-small-right-solid"
             class="ml-2"
+            size="20"
           />
         </NuxtLink>
 

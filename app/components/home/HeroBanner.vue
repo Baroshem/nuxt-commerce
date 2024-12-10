@@ -12,7 +12,6 @@
           preload
           width="800"
           class="h-full object-cover object-left"
-          placeholder
         />
       </div>
       <div

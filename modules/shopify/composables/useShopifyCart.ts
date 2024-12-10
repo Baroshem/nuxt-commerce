@@ -54,10 +54,10 @@ export const useShopifyCart = () => {
 
       await getCart()
 
-      toast.add({ title: 'Product added to cart.' })
+      toast.add({ title: 'Product added to cart.', timeout: 3000 })
     }
     catch (error) {
-      toast.add({ title: 'Error adding item to cart', color: 'red' })
+      toast.add({ title: 'Error adding item to cart', color: 'red', timeout: 3000 })
       console.error('Error adding item to cart:', error)
       return 'Error adding item to cart'
     }
@@ -91,10 +91,10 @@ export const useShopifyCart = () => {
       })
       await getCart()
 
-      toast.add({ title: 'Product removed from cart.' })
+      toast.add({ title: 'Product removed from cart.', timeout: 3000 })
     }
     catch (error) {
-      toast.add({ title: 'Error removing item from cart', color: 'red' })
+      toast.add({ title: 'Error removing item from cart', color: 'red', timeout: 3000 })
       console.error('Error removing item from cart', error)
       return 'Error removing item from cart'
     }
@@ -117,10 +117,10 @@ export const useShopifyCart = () => {
 
       await getCart()
 
-      toast.add({ title: 'Quantity updated.' })
+      toast.add({ title: 'Quantity updated.', timeout: 3000 })
     }
     catch (error) {
-      toast.add({ title: 'Error updating item quantity', color: 'red' })
+      toast.add({ title: 'Error updating item quantity', color: 'red', timeout: 3000 })
       console.error('Error updating item quantity', error)
       return 'Error updating item quantity'
     }
