@@ -70,7 +70,7 @@ function toggleOption(name: string, value: string) {
           v-for="value in option.values"
           :key="value"
           :color="currentRoute.query[option.name] === value ? 'primary' : 'gray'"
-          class="w-16 justify-center"
+          class="min-w-16 justify-center"
           @click="toggleOption(option.name, value)"
         >
           {{ value }}

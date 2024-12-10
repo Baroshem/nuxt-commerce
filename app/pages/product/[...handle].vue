@@ -65,7 +65,7 @@ useSeoMeta({
         :items="galleryImages"
         :ui="{ item: 'basis-full' }"
         class="rounded-lg overflow-hidden min-w-[304px] min-h-[304px] md:min-w-[600px] md:min-h-[600px]"
-        arrows
+        :arrows="galleryImages.length > 1"
         indicators
       >
         <NuxtImg
@@ -86,7 +86,10 @@ useSeoMeta({
       />
     </div>
     <NuxtLazyHydrate when-visible>
-      <section class="max-w-[1536px] w-full mx-auto my-20 text-left">
+      <section
+        v-if="recommendedProducts?.length"
+        class="max-w-[1536px] w-full mx-auto my-20 text-left"
+      >
         <h2 class="text-3xl mb-10 text-white">
           Related Products
         </h2>
