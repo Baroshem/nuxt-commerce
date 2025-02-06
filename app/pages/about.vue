@@ -30,21 +30,9 @@ const cardDetails = [
     link: 'https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering',
   },
   {
-    title: 'Security',
-    description:
-      'Security Response Headers and middlewares to make your app more secure by default',
-    link: 'https://nuxt-security.vercel.app/',
-  },
-  {
     title: 'SEO',
     description: 'Simple configuration for both Sitemap & Robots',
     link: 'https://nuxtseo.com/',
-  },
-  {
-    title: 'Performance audits',
-    description:
-      'Lighthouse CI to contionously audit performance of your website',
-    link: 'https://github.com/GoogleChrome/lighthouse-ci',
   },
 ]
 
