@@ -15,7 +15,7 @@ Nuxt Commerce comes with several useful features out of the box:
 3. [Image Optimization](https://image.nuxtjs.org/) - Resize and transform your images using built-in optimizer or your favorite images CDN
 4. [Fonts](https://font.nuxt.com/) - Deliver optimized fonts for better performance
 5. [Hybrid rendering](https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering) - Set different caching rules per route using Route Rules and decide how the server should respond to a new request on a given URL
-6. [Tests](https://vitest.dev/) - Test runner configured for easy usage
+6. [Tests](https://nuxt.com/docs/getting-started/testing) - Test runner configured to work with Vitest
 7. [SEO](https://github.com/harlan-zw/nuxt-simple-sitemap) - Simple configuration for both Sitemap & Robots
 </details>
 

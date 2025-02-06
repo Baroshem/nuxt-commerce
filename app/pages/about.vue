@@ -30,6 +30,12 @@ const cardDetails = [
     link: 'https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering',
   },
   {
+    title: 'Tests',
+    description:
+      'Test runner configured to work with Vitest',
+    link: 'https://nuxt.com/docs/getting-started/testing',
+  },
+  {
     title: 'SEO',
     description: 'Simple configuration for both Sitemap & Robots',
     link: 'https://nuxtseo.com/',
