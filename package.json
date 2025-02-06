@@ -9,9 +9,7 @@
     "start": "nuxt start",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "stackblitz": "pnpm install && pnpm run dev",
-    "test": "vitest run --silent",
-    "test:watch": "vitest watch"
+    "stackblitz": "pnpm install && pnpm run dev"
   },
   "git": {
     "pre-commit": "lint-staged"
@@ -25,22 +23,16 @@
     "@nuxt/eslint": "^0.7.2",
     "@nuxt/eslint-config": "^0.7.2",
     "@nuxt/image": "^1.8.1",
-    "@nuxt/test-utils": "^3.15.1",
     "@nuxt/ui": "^2.20.0",
     "@nuxtjs/robots": "5.0.1",
     "@nuxtjs/sitemap": "7.0.0",
-    "@types/node": "^22.10.1",
-    "@vue/test-utils": "^2.4.6",
     "eslint": "9.16.0",
-    "happy-dom": "^15.11.7",
     "lint-staged": "^15.2.10",
     "nuxt": "^3.14.1592",
     "nuxt-lazy-hydrate": "^1.0.0",
     "nuxt-og-image": "^4.0.1",
-    "playwright-core": "^1.49.1",
     "prettier": "^3.4.2",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "typescript": "^5.7.2"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.10.3",
