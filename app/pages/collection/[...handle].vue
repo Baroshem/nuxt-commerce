@@ -63,14 +63,10 @@ useSeoMeta({
 
 <template>
   <div class="max-w-7xl px-6 text-center mx-auto">
-    <section class="my-20">
-      <h1 class="text-5xl font-semibold text-white">
-        {{ collection?.title }}
-      </h1>
-      <p class="text-slate-400 text-base mt-6">
-        Search through collection of products
-      </p>
-    </section>
+    <SharedHeaderSection
+      :title="collection?.title"
+      description="Search through collection of products"
+    />
 
     <div class="block lg:flex">
       <div class="mx-0 min-w-full lg:min-w-fit mt-8">
