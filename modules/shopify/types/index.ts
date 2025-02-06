@@ -1,4 +1,4 @@
-import type { CartFragment, CollectionFragment, GetCartQuery, GetCollectionQueryVariables, GetCollectionsQuery, GetProductQuery, GetProductsQuery, ProductFragment } from '#gql'
+import type { CartFragment, GetCartQuery, GetCollectionQueryVariables, GetCollectionsQuery, GetProductQuery, GetProductsQuery, ProductFragment } from '#gql'
 
 // Price
 export type ShopifyPrice = ProductFragment['priceRange']['maxVariantPrice']
@@ -12,7 +12,6 @@ export type ShopifyProduct = GetProductQuery['product']
 export type ShopifyProducts = GetProductsQuery['products']
 
 // Collection
-export type ShopifyCollection = CollectionFragment
 export type ShopifyCollections = GetCollectionsQuery['collections']
 export type ShopifyCollectionSortKey = GetCollectionQueryVariables['sortKey']
 

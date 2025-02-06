@@ -11,19 +11,17 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
-const { data: collectionData } = await useAsyncGql('getCollection', {
+const { data: latestStuffCollection } = await useAsyncGql('getCollection', {
   handle: 'latest-stuff',
   items: 10,
   variants: 1,
 })
 
-const collectionProducts = computed(
-  () => collectionData.value.collection?.products.edges,
-)
-
-const { data } = await useAsyncGql('getProducts', { first: 10, variants: 1 })
-
-const products = computed(() => data.value?.products?.edges)
+const { data: casualThingsCollection } = await useAsyncGql('getCollection', {
+  handle: 'casual-things',
+  items: 10,
+  variants: 1,
+}, { lazy: true })
 </script>
 
 <template>
@@ -31,39 +29,12 @@ const products = computed(() => data.value?.products?.edges)
     <HomeHeroBanner />
     <NuxtLazyHydrate when-visible>
       <section class="justify-center">
-        <div class="flex justify-between my-16">
-          <div class="text-center sm:text-left w-full">
-            <h2 class="text-4xl font-medium text-white mb-6">
-              New Collection
-            </h2>
-            <p class="text-slate-400">
-              Newest collection products
-            </p>
-          </div>
-
-          <NuxtLink
-            to="/collection/latest-stuff"
-            variant="secondary"
-            class="min-w-fit hover:text-primary-500 text-white self-end items-center hidden sm:flex"
-          >
-            See all
-            <UIcon
-              name="i-heroicons-arrow-small-right-solid"
-              class="ml-2"
-              size="20"
-            />
-          </NuxtLink>
-        </div>
-
-        <div
-          class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4"
-        >
-          <LazyProductTileCard
-            v-for="{ node } in collectionProducts"
-            :key="node.id"
-            :product="node"
-          />
-        </div>
+        <HomeProductCarousel
+          title="New Collection"
+          description="Newest collection products"
+          link="/collection/latest-stuff"
+          :products="latestStuffCollection?.collection?.products"
+        />
 
         <NuxtLink
           to="/collection/latest-stuff"
@@ -78,39 +49,12 @@ const products = computed(() => data.value?.products?.edges)
           />
         </NuxtLink>
 
-        <div class="flex justify-between my-16">
-          <div class="text-center sm:text-left w-full">
-            <h2 class="text-4xl font-medium text-white mb-6">
-              Top products
-            </h2>
-            <p class="text-slate-400">
-              Most popular products
-            </p>
-          </div>
-
-          <NuxtLink
-            to="/collection/casual-things"
-            variant="secondary"
-            class="min-w-fit hover:text-primary-500 text-white self-end items-center hidden sm:flex"
-          >
-            See all
-            <UIcon
-              name="i-heroicons-arrow-small-right-solid"
-              class="ml-2"
-              size="20"
-            />
-          </NuxtLink>
-        </div>
-
-        <div
-          class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4"
-        >
-          <LazyProductTileCard
-            v-for="{ node } in products"
-            :key="node.id"
-            :product="node"
-          />
-        </div>
+        <HomeProductCarousel
+          title="Casual Things"
+          description="Casual things for everyday"
+          link="/collection/casual-things"
+          :products="casualThingsCollection?.collection?.products"
+        />
 
         <NuxtLink
           to="/collection/casual-things"
