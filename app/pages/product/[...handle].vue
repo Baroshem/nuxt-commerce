@@ -2,7 +2,6 @@
 const route = useRoute()
 const router = useRouter()
 const config = useRuntimeConfig()
-const { getImagePath } = useShopifyCart()
 
 if (!route.params.handle?.length || !route.params.handle[0]) {
   throw createError({
@@ -29,7 +28,7 @@ const galleryImages = computed(
 const { data: recommended } = await useAsyncGql('getProductRecommendations', {
   productId: product.value!.id,
   variants: 1,
-})
+}, { lazy: true })
 
 const recommendedProducts = computed(
   () => recommended.value.productRecommendations,
@@ -60,26 +59,10 @@ useSeoMeta({
       </UButton>
     </div>
     <div class="block lg:flex justify-between gap-16">
-      <UCarousel
-        v-slot="{ item, index }"
-        :items="galleryImages"
-        :ui="{ item: 'basis-full' }"
-        class="rounded-lg overflow-hidden min-w-[304px] min-h-[304px] md:min-w-[600px] md:min-h-[600px]"
-        :arrows="galleryImages.length > 1"
-        indicators
-      >
-        <NuxtImg
-          :src="getImagePath(item)"
-          :alt="`Image ${index + 1} of - ${product?.title}`"
-          :preload="index === 0 ? true : false"
-          :loading="index === 0 ? 'eager' : 'lazy'"
-          :fetch-priority="index === 0 ? 'high' : 'low'"
-          draggable="false"
-          width="600"
-          height="600"
-          placeholder
-        />
-      </UCarousel>
+      <ProductImageGallery
+        :images="galleryImages"
+        :product-title="product?.title"
+      />
       <ProductInfoDetails
         v-if="product"
         :product="product"
