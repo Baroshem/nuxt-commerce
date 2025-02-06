@@ -37,7 +37,6 @@
     "nuxt": "^3.14.1592",
     "nuxt-lazy-hydrate": "^1.0.0",
     "nuxt-og-image": "^4.0.1",
-    "nuxt-security": "^2.1.5",
     "playwright-core": "^1.49.1",
     "prettier": "^3.4.2",
     "typescript": "^5.7.2",

@@ -61,9 +61,6 @@ devDependencies:
   nuxt-og-image:
     specifier: ^4.0.1
     version: 4.1.2(vite@6.1.0)(vue@3.5.13)
-  nuxt-security:
-    specifier: ^2.1.5
-    version: 2.1.5
   playwright-core:
     specifier: ^1.49.1
     version: 1.50.1
@@ -4787,13 +4784,6 @@ packages:
   /base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
-  /basic-auth@2.0.1:
-    resolution: {integrity: sha512-NF+epuEdnUYVlGuhaxbbq+dvJttwLnGY+YixlXlME5KpQ5W3CnXA5cVTneY3SPbPDRkcjMbifrwmFYcClgOZeg==}
-    engines: {node: '>= 0.8'}
-    dependencies:
-      safe-buffer: 5.1.2
-    dev: true
-
   /binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
@@ -5576,6 +5566,7 @@ packages:
     resolution: {integrity: sha512-FAaLDaplstoRsDR8XGYH51znUN0UY7nMc6Z9/fvE8EXGwvJE9hu7W2vHwx1+bd6gCYnln9nLbzxFTrcO9YQDZw==}
     requiresBuild: true
     dev: true
+    optional: true
 
   /cssnano-preset-default@7.0.6(postcss@8.5.1):
     resolution: {integrity: sha512-ZzrgYupYxEvdGGuqL+JKOY70s7+saoNlHSCK/OGn1vB2pQK8KSET8jvenzItcY+kA7NoWvfbb/YhlzuzNKjOhQ==}
@@ -8672,18 +8663,6 @@ packages:
     resolution: {integrity: sha512-2vPPEi+Z7WqML2jZYddDIfy5Dqb0r2fze2zTxNNknZaFpVHU3mFB3R+DWeJWGVx0ecvttSGlJTI+WG+8Z4cDWw==}
     dev: false
 
-  /nuxt-csurf@1.6.5:
-    resolution: {integrity: sha512-/DMNTON8LIVhntamKbBmAuM879B0QnuSJa7ZAkmkZe+21m+1QGcjVUxtSkizaM48NUvkuAGYOG0ncn+kqEgrzw==}
-    dependencies:
-      '@nuxt/kit': 3.15.4(magicast@0.3.5)
-      defu: 6.1.4
-      uncsrf: 1.2.0
-    transitivePeerDependencies:
-      - magicast
-      - rollup
-      - supports-color
-    dev: true
-
   /nuxt-graphql-client@0.2.43(@babel/core@7.26.7)(@types/node@22.13.1)(graphql-tag@2.12.6)(typescript@5.7.3):
     resolution: {integrity: sha512-I/IX0ejtchMFGWMwp/4T5PvRsnol++joSmgtF8ouHjrnbCUdRIPTCZl2eMHM0I5roZleH9G7L0HNkaOcsuHTnw==}
     dependencies:
@@ -8765,23 +8744,6 @@ packages:
       - supports-color
       - vite
       - vue
-    dev: true
-
-  /nuxt-security@2.1.5:
-    resolution: {integrity: sha512-2nrkEsj1tS7RqqFq+sdmYatsAtISHt/o91w8xfMPeUz95CYxZ+HPbodKf+oAGdOmmCJcgYs6e+5XNba45M6BIw==}
-    engines: {node: '>=18.0.0'}
-    dependencies:
-      '@nuxt/kit': 3.15.4(magicast@0.3.5)
-      basic-auth: 2.0.1
-      defu: 6.1.4
-      nuxt-csurf: 1.6.5
-      pathe: 1.1.2
-      unplugin-remove: 1.0.3
-      xss: 1.0.15
-    transitivePeerDependencies:
-      - magicast
-      - rollup
-      - supports-color
     dev: true
 
   /nuxt-site-config-kit@3.0.6(vue@3.5.13):
@@ -11146,10 +11108,6 @@ packages:
   /uncrypto@0.1.3:
     resolution: {integrity: sha512-Ql87qFHB3s/De2ClA9e0gsnS6zXG27SkTiSJwjCc9MebbfapQfuPzumMIUMi38ezPZVNFcHI9sUIepeQfw8J8Q==}
 
-  /uncsrf@1.2.0:
-    resolution: {integrity: sha512-EyeG1tIx1zisLuqokSXZ5LhndzaUd2WBMS+18IlBUYobJsKSUQMpLIEm6QUfY/Azmhnnz0v2QbkrT6/u2K/Y1g==}
-    dev: true
-
   /unctx@2.4.1:
     resolution: {integrity: sha512-AbaYw0Nm4mK4qjhns67C+kgxR2YWiwlDBPzxrN8h8C6VtAdCgditAY5Dezu3IJy4XVqAnbrXt9oQJvsn3fyozg==}
     dependencies:
@@ -11261,21 +11219,6 @@ packages:
     dependencies:
       normalize-path: 2.1.1
     dev: false
-
-  /unplugin-remove@1.0.3:
-    resolution: {integrity: sha512-BZMt9v8Y/Z27cY7YQv+DpcW928znjP1cqplBXOirbANiFQtM2YCdiyNAJhHCvjppT0lScNn1aDrQnXqnRp32pQ==}
-    dependencies:
-      '@babel/core': 7.26.7
-      '@babel/generator': 7.26.5
-      '@babel/parser': 7.26.7
-      '@babel/traverse': 7.26.7
-      '@rollup/pluginutils': 5.1.4(rollup@4.34.4)
-      magic-string: 0.30.17
-      unplugin: 1.16.1
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-    dev: true
 
   /unplugin-vue-router@0.11.2(vue-router@4.5.0)(vue@3.5.13):
     resolution: {integrity: sha512-X8BbQ3BNnMqaCYeMj80jtz5jC4AB0jcpdmECIYey9qKm6jy/upaPZ/WzfuT+iTGRiQAY4WemHueXxuzH127oOg==}
@@ -12091,6 +12034,7 @@ packages:
       commander: 2.20.3
       cssfilter: 0.0.10
     dev: true
+    optional: true
 
   /y18n@4.0.3:
     resolution: {integrity: sha512-JKhqTOwSrqNA1NY5lSztJ1GrBiUodLMmIZuLiDaMRJ+itFd+ABVE8XBjOvIWL+rSqNDC74LCSFmlb/U4UZ4hJQ==}
