@@ -13,29 +13,6 @@ export default defineNuxtConfig({
         domains: ['cdn.shopify.com'],
       },
     ],
-    [
-      'nuxt-security',
-      {
-        headers: {
-          contentSecurityPolicy: {
-            'img-src': [
-              'https://cdn.shopify.com',
-              'http://localhost:*',
-              'https://commerce-nuxt-js.vercel.app/',
-              // For preview deployments only
-              '*.vercel.app',
-              'data: w3.org/svg/2000',
-            ],
-            // Needed for SSG
-            'script-src-attr': [
-              '\'unsafe-inline\'',
-            ],
-          },
-          crossOriginEmbedderPolicy: false,
-        },
-        rateLimiter: false,
-      },
-    ],
     'nuxt-lazy-hydrate',
   ],
   devtools: { enabled: true },
