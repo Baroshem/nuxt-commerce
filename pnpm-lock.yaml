@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@iconify-json/heroicons':
+    specifier: ^1.2.2
+    version: 1.2.2
   '@nuxt/fonts':
     specifier: ^0.10.3
     version: 0.10.3(vite@6.1.0)
@@ -1922,7 +1925,6 @@ packages:
     resolution: {integrity: sha512-qoW4pXr5kTTL6juEjgTs83OJIwpePu7q1tdtKVEdj+i0zyyVHgg/dd9grsXJQnpTpBt6/VwNjrXBvFjRsKPENg==}
     dependencies:
       '@iconify/types': 2.0.0
-    dev: true
 
   /@iconify/collections@1.0.514:
     resolution: {integrity: sha512-vdHSxEmiTOGf3vdJ5k1V9OotdEG05ZO9RUZ9V/eJxDaEqgW79YQvRQ5bdvNmjFuIjDIq6JrEeflHY3Zu3c4/vA==}
@@ -1932,7 +1934,6 @@ packages:
 
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
-    dev: true
 
   /@iconify/utils@2.3.0:
     resolution: {integrity: sha512-GmQ78prtwYW6EtzXRU1rY+KwOKfz32PD7iJh6Iyqw68GiKuoZ2A6pRtzWONz5VQJbp50mEjXh/7NkumtrAgRKA==}
