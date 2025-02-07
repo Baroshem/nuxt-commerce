@@ -1,6 +1,5 @@
 import type { SitemapUrlInput } from '#sitemap/types'
 
-// server/api/__sitemap__/urls.ts
 export default defineSitemapEventHandler(async () => {
   const collections = await GqlGetSitemapCollections({ first: 20 })
 
