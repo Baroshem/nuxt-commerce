@@ -1,0 +1,23 @@
+# Queries with fragments cannot be used to generate sitemap.xml file.
+
+query getSitemapCollections($first: Int!) {
+  collections(first: $first, sortKey: TITLE) {
+    edges {
+      node {
+        handle
+        updatedAt
+      }
+    }
+  }
+}
+
+query getSitemapProducts($first: Int!) {
+  products(first: $first) {
+    edges {
+      node {
+        handle
+        updatedAt
+      }
+    }
+  }
+}
