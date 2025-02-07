@@ -31,8 +31,13 @@ const cardDetails = [
   },
   {
     title: 'SEO',
-    description: 'Simple configuration for both Sitemap & Robots',
+    description: 'Simple configuration for Sitemap.xml, Robots.txt, and Meta',
     link: 'https://nuxtseo.com/',
+  },
+  {
+    title: 'JSON-LD',
+    description: 'Lightweight Linked Data format for products',
+    link: 'https://json-ld.org/',
   },
 ]
 

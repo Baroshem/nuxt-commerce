@@ -2,9 +2,7 @@
 
 A high-performance, server-rendered E-commerce app built with Nuxt & Shopify.
 
-This template uses Nuxt UI, Image & Font optimization, Hybrid Rendering, Security, and more.
-
-Made with 💚 by [Nuxt](https://nuxt.com).
+This template uses Nuxt UI, Image & Font optimization, Hybrid Rendering, SEO and more.
 
 <details>
 <summary>Features</summary>
@@ -15,19 +13,10 @@ Nuxt Commerce comes with several useful features out of the box:
 3. [Image Optimization](https://image.nuxtjs.org/) - Resize and transform your images using built-in optimizer or your favorite images CDN
 4. [Fonts](https://font.nuxt.com/) - Deliver optimized fonts for better performance
 5. [Hybrid rendering](https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering) - Set different caching rules per route using Route Rules and decide how the server should respond to a new request on a given URL
-6. [SEO](https://github.com/harlan-zw/nuxt-simple-sitemap) - Simple configuration for both Sitemap & Robots
+6. [SEO](https://github.com/harlan-zw/nuxt-simple-sitemap) - Simple configuration for Sitemap.xml, Robots.txt, and Meta
+7. [JSON-LD](https://json-ld.org/) - Lightweight Linked Data format for products
 </details>
 
-<details>
-<summary>Looking for more?</summary>
-
-Building modern e-commerce websites might require you to add other functionalities that are not part of Nuxt Commerce. Below, there is a list of tools that you can use to address them:
-
-1. [JSON LD](https://github.com/ymmooot/nuxt-jsonld)
-2. [PWA](https://vite-pwa-org.netlify.app/)
-3. [Delayed Hydration](https://github.com/harlan-zw/nuxt-delay-hydration)
-4. [I18N](https://v8.i18n.nuxtjs.org/)
-</details>
 
 ## Start here
 
@@ -87,11 +76,9 @@ export default defineNuxtModule({
 
 In case of funcionality that does not have a Nuxt module yet, instead of `installModule` function, you would need to write a custom plugin youself.
 
-## E-Commerce Backend
+## E-Commerce Platform
 
-By default, Nuxt Commerce works with Shopify as the E-Commerce Backend but you can different backends as well like Medusa, BigCommerce, Magento, or WooCommerce.
-
-To do so, you would need to create a custom integration by following thse steps:
+By default, Nuxt Commerce works with Shopify as the E-Commerce Platform but you can use different platforms as well such as Medusa. To do so, you would need to create a custom integration by following thse steps:
 
 1. Create a new folder in `modules` directory
 2. In this folder, create a new `index.ts` file where the e-commerce backend code will be.
@@ -108,7 +95,7 @@ export default defineNuxtModule({
     const { resolve } = createResolver(import.meta.url);
     addImportsDir(resolve("composables"));  // enable auto import for components/composables/types
 
-    await installModule('nuxt-medusa', {
+    await installModule('@nuxtjs/medusa', {
       baseUrl: '<YOUR_BASE_URL>'
       // more configuration options
     })
@@ -122,4 +109,14 @@ export default defineNuxtModule({
 7. Adjust the application to the new types and logic
 8. Have fun and enjoy your new e-commerce app!
 
-After creating a custom integration module, please let us know so that we could add it to our documentation as a source of knowledge for others to use it in their project :)
+## Kudos
+
+This project wouldn't be live without a help of amazing people below:
+
+1. Daniel Roe
+2. Alex Lichter
+3. Lucie Haberer
+4. Julien Huang
+5. Sebastien Chopin
+6. ScottyZen -> Check out [WooNuxt](https://woonuxt.com/) 🚀
+7. Rylan Harper -> Check out [Nitrogen](https://github.com/rylanharper/Nitrogen) 🚀
