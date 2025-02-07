@@ -26,13 +26,9 @@ const galleryImages = computed(
 )
 
 const { data: recommended } = await useAsyncGql('getProductRecommendations', {
-  productId: product.value!.id,
+  productId: product.value.id,
   variants: 1,
 }, { lazy: true })
-
-const recommendedProducts = computed(
-  () => recommended.value.productRecommendations,
-)
 
 useSeoMeta({
   title: product.value?.seo.title || product.value?.title,
@@ -42,6 +38,30 @@ useSeoMeta({
   ogImage:
     product.value?.featuredImage?.url || `${config.public.siteUrl}/logo.svg`,
   twitterCard: 'summary_large_image',
+})
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        'name': product.value.title,
+        'description': product.value.description,
+        'image': product.value.featuredImage?.url,
+        'offers': {
+          '@type': 'AggregateOffer',
+          'availability': product.value.availableForSale
+            ? 'https://schema.org/InStock'
+            : 'https://schema.org/OutOfStock',
+          'priceCurrency': product.value.priceRange.minVariantPrice.currencyCode,
+          'highPrice': product.value.priceRange.maxVariantPrice.amount,
+          'lowPrice': product.value.priceRange.minVariantPrice.amount,
+        },
+      }),
+    },
+  ],
 })
 </script>
 
@@ -70,7 +90,7 @@ useSeoMeta({
     </div>
     <NuxtLazyHydrate when-visible>
       <section
-        v-if="recommendedProducts?.length"
+        v-if="recommended?.productRecommendations?.length"
         class="max-w-[1536px] w-full mx-auto my-20 text-left"
       >
         <h2 class="text-3xl mb-10 text-white">
@@ -80,7 +100,7 @@ useSeoMeta({
           class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4"
         >
           <LazyProductTileCard
-            v-for="recommendedProduct in recommendedProducts"
+            v-for="recommendedProduct in recommended?.productRecommendations"
             :key="recommendedProduct.id"
             :product="recommendedProduct"
           />
