@@ -11,16 +11,6 @@ const {
 
 const costs = computed(() => cart?.value?.cost)
 
-async function updateQuantity({
-  item,
-  quantity,
-}: {
-  item: ShopifyCartLineItem
-  quantity: number
-}) {
-  await updateItemQuantity(item, quantity)
-}
-
 async function removeItem(id: string) {
   await removeFromCart(id)
 }
@@ -58,7 +48,7 @@ async function removeItem(id: string) {
           :item="node"
           :disabled="loading"
           @remove-item="removeItem"
-          @update-quantity="updateQuantity"
+          @update-quantity="updateItemQuantity"
         />
       </ul>
       <div

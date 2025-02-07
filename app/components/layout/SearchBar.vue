@@ -2,28 +2,25 @@
 import { watchDebounced } from '@vueuse/shared'
 import { onClickOutside } from '@vueuse/core'
 
+const { getPriceWithCurrency, getImagePath } = useShopifyCart()
+
 const searchBar = ref()
 const result = ref<ShopifyProducts>()
 const isSearchBarOpen = ref(false)
-const { getPriceWithCurrency, getImagePath } = useShopifyCart()
-onClickOutside(searchBar, () => resetState())
 const query = ref('')
+
+onClickOutside(searchBar, () => resetState())
 
 watchDebounced(
   query,
   async () => {
     if (query.value) {
-      try {
-        const { data } = await useAsyncGql('getProducts', {
-          first: 10,
-          variants: 1,
-          query: query.value,
-        })
-        result.value = data.value.products
-      }
-      catch (error) {
-        console.error(error)
-      }
+      const { data } = await useAsyncGql('getProducts', {
+        first: 10,
+        variants: 1,
+        query: query.value,
+      })
+      result.value = data.value.products
     }
   },
   { debounce: 500 },

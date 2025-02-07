@@ -1,18 +1,13 @@
 <script lang="ts" setup>
-const props = defineProps({
-  product: {
-    type: Object as PropType<ShopifyProduct>,
-    default: () => ({}),
-  },
-})
+const props = defineProps<{ product?: ShopifyProduct }>()
 
 const { addToCart, loading, getPriceWithCurrency } = useShopifyCart()
 const router = useRouter()
-const currentRoute = useRoute()
+const route = useRoute()
 
 const quantity = ref<number>(1)
 
-const optionsInUrl = computed(() => Object.keys(currentRoute.query).length)
+const optionsInUrl = computed(() => Object.keys(route.query).length)
 
 const areOptionsSelected = computed(
   () => optionsInUrl.value === props.product?.options.length,
@@ -25,18 +20,18 @@ const computedVariant = computed(() => {
 
   return productVariants.find(variant =>
     variant.selectedOptions.every(
-      option => option.value === currentRoute.query[option.name],
+      option => option.value === route.query[option.name],
     ),
   )
 })
 
 function toggleOption(name: string, value: string) {
-  if (currentRoute.query[name] === value) {
-    router.replace({ query: { ...currentRoute.query, [name]: undefined } })
+  if (route.query[name] === value) {
+    router.replace({ query: { ...route.query, [name]: undefined } })
   }
   else {
     router.replace({
-      query: { ...currentRoute.query, [name]: value },
+      query: { ...route.query, [name]: value },
     })
   }
 }
@@ -69,7 +64,7 @@ function toggleOption(name: string, value: string) {
         <UButton
           v-for="value in option.values"
           :key="value"
-          :color="currentRoute.query[option.name] === value ? 'primary' : 'gray'"
+          :color="route.query[option.name] === value ? 'primary' : 'gray'"
           class="min-w-16 justify-center"
           @click="toggleOption(option.name, value)"
         >

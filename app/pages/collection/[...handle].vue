@@ -22,7 +22,7 @@ if (!collection.value) {
 }
 
 const collectionProducts = computed(
-  () => collectionData.value.collection?.products.edges,
+  () => collection.value?.products.edges,
 )
 
 const { data: collectionsData } = await useAsyncGql('getCollections', {
@@ -47,15 +47,11 @@ useSeoMeta({
   title: collection.value?.seo.title || collection.value?.title,
   description:
     collection.value?.seo.description
-    || collection.value?.description
-    || collection.value?.seo.title
-    || collection.value?.title,
+    || collection.value?.description,
   ogTitle: collection.value?.seo.title || collection.value?.title,
   ogDescription:
     collection.value?.seo.description
-    || collection.value?.description
-    || collection.value?.seo.title
-    || collection.value?.title,
+    || collection.value?.description,
   ogImage: `${config.public.siteUrl}/logo.svg`,
   twitterCard: 'summary_large_image',
 })

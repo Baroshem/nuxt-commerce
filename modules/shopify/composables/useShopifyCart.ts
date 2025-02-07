@@ -103,16 +103,16 @@ export const useShopifyCart = () => {
     }
   }
 
-  async function updateItemQuantity(
-    product: ShopifyCartLineItem,
-    quantity: number,
-  ) {
-    if (!cart?.value?.id || !product) return
+  async function updateItemQuantity({ item, quantity }: {
+    item: ShopifyCartLineItem
+    quantity: number
+  }) {
+    if (!cart?.value?.id || !item) return
     loading.value = true
     try {
       await useAsyncGql('updateItemQuantity', {
         cartId: cart?.value.id,
-        lines: [{ id: product.id, quantity }],
+        lines: [{ id: item.id, quantity }],
       })
 
       await getCart()

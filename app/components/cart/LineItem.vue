@@ -9,16 +9,7 @@ const emit = defineEmits<{
   ): void
 }>()
 
-defineProps({
-  item: {
-    type: Object as PropType<ShopifyCartLineItem>,
-    required: true,
-  },
-  disabled: {
-    type: Boolean,
-    required: true,
-  },
-})
+defineProps<{ item: ShopifyCartLineItem, disabled: boolean }>()
 </script>
 
 <template>

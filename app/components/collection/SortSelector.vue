@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const router = useRouter()
-const currentRoute = useRoute()
+const route = useRoute()
 
 const options = [
   {
@@ -26,8 +26,8 @@ const options = [
 ]
 
 const selected = ref(
-  currentRoute.query.sortKey
-    ? options.find(option => option.value === currentRoute.query.sortKey)
+  route.query.sortKey
+    ? options.find(option => option.value === route.query.sortKey)
     : options[0],
 )
 
