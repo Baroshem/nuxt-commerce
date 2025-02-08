@@ -45,7 +45,7 @@ watch(count, (newVal: number) => {
         @click="dec()"
       >
         <UIcon
-          name="i-heroicons-minus-20-solid"
+          name="i-heroicons-minus"
           size="20"
         />
       </UButton>
@@ -72,7 +72,7 @@ watch(count, (newVal: number) => {
         @click="inc()"
       >
         <UIcon
-          name="i-heroicons-plus-20-solid"
+          name="i-heroicons-plus"
           size="20"
         />
       </UButton>
