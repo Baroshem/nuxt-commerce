@@ -44,7 +44,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/**': {
       robots: true,
-      swr: process.env.NODE_ENV === 'development' ? false : 60,
+      isr: process.env.NODE_ENV === 'development' ? false : 60,
     },
   },
   future: {
