@@ -20,11 +20,15 @@ const computedPrice = computed(
       currencyCode: props.product?.priceRange.minVariantPrice.currencyCode,
     }),
 )
+
+const shouldDisplaySecondImage = ref(false)
 </script>
 
 <template>
   <div
     class="rounded-md hover:shadow-lg w-[220px] max-h-[356px] text-left"
+    @mouseover="shouldDisplaySecondImage = true"
+    @mouseleave="shouldDisplaySecondImage = false"
   >
     <div class="relative">
       <NuxtLink
@@ -32,13 +36,23 @@ const computedPrice = computed(
         class="block"
       >
         <NuxtImg
+          v-show="!shouldDisplaySecondImage"
           :src="getImagePath(product?.featuredImage?.url)"
-          alt="Great product"
+          :alt="`Image of a product ${product?.title}`"
           class="block object-cover rounded-md aspect-square h-72 min-w-[216px]"
           :loading="lazy ? 'lazy' : 'eager'"
           width="216"
           height="288"
-          placeholder
+          :placeholder="[50, 25, 75, 5]"
+        />
+        <NuxtImg
+          v-show="shouldDisplaySecondImage"
+          :src="getImagePath(product?.images?.edges?.[1]?.node?.url)"
+          :alt="`Image of a product ${product?.title}`"
+          class="block object-cover rounded-md aspect-square h-72 min-w-[216px]"
+          loading="lazy"
+          width="216"
+          height="288"
         />
       </NuxtLink>
     </div>

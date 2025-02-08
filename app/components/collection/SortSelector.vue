@@ -1,4 +1,11 @@
 <script lang="ts" setup>
+defineProps({
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+})
+
 const router = useRouter()
 const route = useRoute()
 
@@ -33,9 +40,9 @@ const selected = ref(
 
 router.replace({ query: { sortKey: selected.value?.value } })
 
-watch(selected, (newVal) => {
-  if (!newVal) return
-  router.replace({ query: { sortKey: newVal.value } })
+watch(selected, (newSortKey) => {
+  if (!newSortKey) return
+  router.replace({ query: { sortKey: newSortKey.value } })
 })
 </script>
 
@@ -43,6 +50,7 @@ watch(selected, (newVal) => {
   <USelectMenu
     v-model="selected"
     :options="options"
+    :disabled="disabled"
     class="w-44"
   />
 </template>
