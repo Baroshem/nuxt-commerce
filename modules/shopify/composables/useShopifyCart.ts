@@ -12,7 +12,7 @@ export const useShopifyCart = () => {
     return `${price.currencyCode === 'CAD' ? '$' : price.currencyCode} ${price.amount * quantity}`
   }
 
-  const getImagePath = (url: string) => url.split('?')[0]
+  const getImagePath = (url: string) => url?.split('?')[0]
 
   const addToCart = async (
     product: ShopifyProduct,

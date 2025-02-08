@@ -27,7 +27,7 @@ function handleMouseOver(event: MouseEvent) {
   // On mobile devices, click event also triggers mouseover event
   const isMobileClickEvent = !event.relatedTarget
 
-  if (isMobileClickEvent) return
+  if (isMobileClickEvent || (props.product?.images?.edges && props.product?.images?.edges.length < 2)) return
 
   shouldDisplaySecondImage.value = true
 }
