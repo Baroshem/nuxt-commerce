@@ -36,6 +36,7 @@ function handleMouseOver(event: MouseEvent) {
 <template>
   <div
     class="rounded-md hover:shadow-lg w-[220px] max-h-[356px] text-left"
+    @click="shouldDisplaySecondImage = false"
     @mouseover="handleMouseOver"
     @mouseleave="shouldDisplaySecondImage = false"
   >

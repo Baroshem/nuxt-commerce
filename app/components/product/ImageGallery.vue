@@ -9,7 +9,7 @@ defineProps<{ images: string[], productTitle?: string }>()
     v-slot="{ item, index }"
     :items="images"
     :ui="{ item: 'basis-full' }"
-    class="rounded-lg overflow-hidden min-w-[304px] min-h-[304px] md:max-w-[600px] md:max-h-[600px]"
+    class="rounded-lg overflow-hidden min-w-[304px] min-h-[304px] md:min-w-[600px] md:max-w-[600px] md:max-h-[600px]"
     :arrows="images.length > 1"
     indicators
   >
@@ -23,6 +23,7 @@ defineProps<{ images: string[], productTitle?: string }>()
       width="600"
       height="600"
       placeholder
+      fit="contain"
     />
   </UCarousel>
 </template>
