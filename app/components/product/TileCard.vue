@@ -52,6 +52,7 @@ function handleMouseOver(event: MouseEvent) {
           class="block object-cover rounded-md aspect-square h-72 min-w-[216px]"
           :loading="lazy ? 'lazy' : 'eager'"
           width="216"
+          sizes="216px"
           height="288"
           :placeholder="[50, 25, 75, 5]"
         />
