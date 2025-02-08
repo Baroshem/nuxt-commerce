@@ -28,6 +28,20 @@ const selected = ref(
       :options="selectOptions"
       class="w-full md:max-w-[376px] block lg:hidden"
     >
+      <template #default="{ open }">
+        <UButton
+          color="gray"
+          class="flex-1 justify-between"
+        >
+          {{ selected?.label }}
+
+          <UIcon
+            name="i-heroicons-chevron-right-20-solid"
+            class="w-5 h-5 transition-transform text-gray-400 dark:text-gray-500"
+            :class="[open && 'transform rotate-90']"
+          />
+        </UButton>
+      </template>
       <template #option="{ option }">
         <NuxtLink
           :to="`/collection/${option.to}`"

@@ -42,9 +42,13 @@ watch(count, (newVal: number) => {
         :aria-controls="inputId"
         variant="ghost"
         aria-label="Decrease value"
-        icon="i-heroicons-minus-20-solid"
         @click="dec()"
-      />
+      >
+        <UIcon
+          name="i-heroicons-minus-20-solid"
+          size="20"
+        />
+      </UButton>
       <input
         :id="inputId"
         v-model="count"
@@ -65,9 +69,13 @@ watch(count, (newVal: number) => {
         :aria-controls="inputId"
         variant="ghost"
         aria-label="Increase value"
-        icon="i-heroicons-plus-20-solid"
         @click="inc()"
-      />
+      >
+        <UIcon
+          name="i-heroicons-plus-20-solid"
+          size="20"
+        />
+      </UButton>
     </div>
   </div>
 </template>
