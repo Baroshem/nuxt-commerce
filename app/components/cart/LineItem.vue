@@ -25,7 +25,7 @@ defineProps<{ item: ShopifyCartLineItem, disabled: boolean }>()
               :src="item.merchandise.product.featuredImage?.url"
               width="92"
               height="92"
-              class="rounded-xl max-w-[92px] max-h-[92px]"
+              class="rounded-xl max-w-[92px] max-h-[92px] object-contain"
             >
           </NuxtLink>
 
