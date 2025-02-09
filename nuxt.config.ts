@@ -70,4 +70,16 @@ export default defineNuxtConfig({
       '/api/__sitemap__/urls',
     ],
   },
+
+  tailwindcss: {
+    config: {
+      theme: {
+        extend: {
+          fontFamily: {
+            custom: ['Inter'],
+          },
+        },
+      },
+    },
+  },
 })

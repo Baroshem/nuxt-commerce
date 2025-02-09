@@ -29,8 +29,8 @@ useHead({
 
 <!-- Web Font affects performance by a lot (dropping score by 10 points and increasing LCP by 2 seconds) -->
 <!-- Related issue https://github.com/nuxt/fonts/issues/382 -->
-<!-- <style lang="css" scoped>
+<style>
 #main {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Inter", sans-serif;
 }
-</style> -->
+</style>
