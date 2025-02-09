@@ -136,7 +136,7 @@ const socialIcons = [
           <li
             v-for="{ subcategoryLabel, link } in subcategories"
             :key="subcategoryLabel"
-            class="text-sm text-gray-400 mb-2"
+            class="text-sm text-gray-400 mb-2 hover:underline hover:text-primary-400"
           >
             <NuxtLink :to="link">
               {{ subcategoryLabel }}
