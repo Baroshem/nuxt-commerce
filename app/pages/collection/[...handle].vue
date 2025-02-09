@@ -52,7 +52,7 @@ useSeoMeta({
   ogDescription:
     collection.value?.seo.description
     || collection.value?.description,
-  ogImage: `${config.public.siteUrl}/logo.svg`,
+  ogImage: `${config.public.siteUrl}/og-image.png`,
   twitterCard: 'summary_large_image',
 })
 </script>

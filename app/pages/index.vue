@@ -7,7 +7,7 @@ useSeoMeta({
   ogTitle: 'Nuxt Commerce',
   ogDescription:
     'A high-performance, server-rendered E-commerce app built with Nuxt & Shopify.',
-  ogImage: `${config.public.siteUrl}/logo.svg`,
+  ogImage: `${config.public.siteUrl}/og-image.png`,
   twitterCard: 'summary_large_image',
 })
 
