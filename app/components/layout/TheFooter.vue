@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+const toast = useToast()
 const inputValue = ref('')
 
 function subscribeNewsletter(email: string) {
-  console.log(email)
+  toast.add({ title: `Subscribed user with email: ${email}`, timeout: 3000 })
 }
 
 const categories = [
@@ -195,7 +196,7 @@ const socialIcons = [
           <p
             class="flex items-center justify-center leading-5 text-center text-white/50 font-body text-sm"
           >
-            Copyright © 2024-present Nuxt - MIT License
+            Copyright © 2025-present Nuxt - MIT License
           </p>
         </div>
 
