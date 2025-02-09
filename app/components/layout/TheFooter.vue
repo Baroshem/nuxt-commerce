@@ -117,7 +117,7 @@ const socialIcons = [
     id: 2,
     name: 'Nuxt GitHub Icon',
     path: '/icons/github.png',
-    link: 'https://github.com/nuxt',
+    link: 'https://github.com/Baroshem/commerce',
   },
 ]
 </script>
