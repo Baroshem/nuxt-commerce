@@ -47,6 +47,7 @@ export default defineNuxtConfig({
       isr: process.env.NODE_ENV === 'development' ? false : 60,
     },
   },
+
   future: {
     compatibilityVersion: 4,
   },

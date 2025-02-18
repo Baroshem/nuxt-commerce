@@ -5,7 +5,7 @@ import {
   addImportsDir,
 } from '@nuxt/kit'
 
-const DEFAULT_SHOPIFY_GRAPHQL_API_URL = 'https://graphql.myshopify.com/api/2024-07/graphql.json'
+const DEFAULT_SHOPIFY_GRAPHQL_API_URL = 'https://graphql.myshopify.com/api/2025-01/graphql.json'
 const DEFAULT_SHOPIFY_ACCESS_TOKEN = 'ecdc7f91ed0970e733268535c828fbbe'
 
 export default defineNuxtModule({

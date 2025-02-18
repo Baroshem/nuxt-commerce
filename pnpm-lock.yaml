@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@iconify-json/heroicons':
-    specifier: ^1.2.2
-    version: 1.2.2
   '@nuxt/fonts':
     specifier: ^0.10.3
     version: 0.10.3(vite@6.1.0)
@@ -16,6 +13,9 @@ dependencies:
     version: 0.2.43(@babel/core@7.26.7)(graphql-tag@2.12.6)(typescript@5.7.3)
 
 devDependencies:
+  '@iconify-json/heroicons':
+    specifier: ^1.2.2
+    version: 1.2.2
   '@nuxt/devtools':
     specifier: latest
     version: 2.0.0-beta.7(vite@6.1.0)(vue@3.5.13)
@@ -1925,6 +1925,7 @@ packages:
     resolution: {integrity: sha512-qoW4pXr5kTTL6juEjgTs83OJIwpePu7q1tdtKVEdj+i0zyyVHgg/dd9grsXJQnpTpBt6/VwNjrXBvFjRsKPENg==}
     dependencies:
       '@iconify/types': 2.0.0
+    dev: true
 
   /@iconify/collections@1.0.514:
     resolution: {integrity: sha512-vdHSxEmiTOGf3vdJ5k1V9OotdEG05ZO9RUZ9V/eJxDaEqgW79YQvRQ5bdvNmjFuIjDIq6JrEeflHY3Zu3c4/vA==}
@@ -1934,6 +1935,7 @@ packages:
 
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+    dev: true
 
   /@iconify/utils@2.3.0:
     resolution: {integrity: sha512-GmQ78prtwYW6EtzXRU1rY+KwOKfz32PD7iJh6Iyqw68GiKuoZ2A6pRtzWONz5VQJbp50mEjXh/7NkumtrAgRKA==}
@@ -4478,6 +4480,7 @@ packages:
 
   /buffer@5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
+    requiresBuild: true
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
@@ -9385,6 +9388,7 @@ packages:
   /readable-stream@3.6.2:
     resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
     engines: {node: '>= 6'}
+    requiresBuild: true
     dependencies:
       inherits: 2.0.4
       string_decoder: 1.3.0

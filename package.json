@@ -19,6 +19,7 @@
     "startCommand": "pnpm run stackblitz"
   },
   "devDependencies": {
+    "@iconify-json/heroicons": "^1.2.2",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint": "^0.7.2",
     "@nuxt/eslint-config": "^0.7.2",
@@ -35,7 +36,6 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@iconify-json/heroicons": "^1.2.2",
     "@nuxt/fonts": "^0.10.3",
     "nuxt-graphql-client": "^0.2.43"
   },
