@@ -67,6 +67,7 @@ export default defineNuxtConfig({
   },
 
   icon: {
+    // We have to add icons to the client bundle because otherwise the icons do not appear sometimes on client side navigation.
     clientBundle: {
       scan: true,
       includeCustomCollections: true,
