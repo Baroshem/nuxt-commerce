@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const route = useRoute()
-const config = useRuntimeConfig()
 
 if (!route.params.handle?.length || !route.params.handle[0]) {
   throw createError({
@@ -52,8 +51,15 @@ useSeoMeta({
   ogDescription:
     collection.value?.seo.description
     || collection.value?.description,
-  ogImage: `${config.public.siteUrl}/og-image.png`,
   twitterCard: 'summary_large_image',
+})
+
+defineOgImageComponent('Nuxt', {
+  title: `${collection.value?.seo.title || collection.value?.title} - Nuxt Commerce`,
+  description: collection.value?.seo.description || collection.value?.description,
+  theme: '#4ADE80',
+  headline: '',
+  colorMode: 'dark',
 })
 </script>
 

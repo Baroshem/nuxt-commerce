@@ -1,14 +1,20 @@
 <script setup lang="ts">
-const config = useRuntimeConfig()
-
 useSeoMeta({
+  title: 'Nuxt Commerce',
   description:
-    'A high-performance, server-rendered E-commerce app built with Nuxt & Shopify.',
+    'A high-performance, server-rendered E-commerce app built with Nuxt & Shopify',
   ogTitle: 'Nuxt Commerce',
   ogDescription:
-    'A high-performance, server-rendered E-commerce app built with Nuxt & Shopify.',
-  ogImage: `${config.public.siteUrl}/og-image.png`,
+    'A high-performance, server-rendered E-commerce app built with Nuxt & Shopify',
   twitterCard: 'summary_large_image',
+})
+
+defineOgImageComponent('Nuxt', {
+  title: 'Nuxt Commerce',
+  description: 'A high-performance, server-rendered E-commerce app built with Nuxt & Shopify',
+  theme: '#4ADE80',
+  headline: '',
+  colorMode: 'dark',
 })
 
 const { data: latestStuffCollection } = await useAsyncGql('getCollection', {

@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-const config = useRuntimeConfig()
-
 const cardDetails = [
   {
     title: 'Nuxt UI',
@@ -46,8 +44,15 @@ useSeoMeta({
   description: 'E-Commerce application built with Nuxt & Shopify',
   ogTitle: 'Nuxt Commerce',
   ogDescription: 'E-Commerce application built with Nuxt & Shopify',
-  ogImage: `${config.public.siteUrl}/og-image.png`,
   twitterCard: 'summary_large_image',
+})
+
+defineOgImageComponent('Nuxt', {
+  title: 'Nuxt Commerce',
+  description: 'A high-performance, server-rendered E-commerce app built with Nuxt & Shopify',
+  theme: '#4ADE80',
+  headline: '',
+  colorMode: 'dark',
 })
 </script>
 
