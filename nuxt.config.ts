@@ -67,7 +67,11 @@ export default defineNuxtConfig({
   },
 
   icon: {
-    serverBundle: 'remote',
+    clientBundle: {
+      scan: true,
+      includeCustomCollections: true,
+      sizeLimitKb: 256,
+    },
   },
 
   sitemap: {
