@@ -66,6 +66,10 @@ export default defineNuxtConfig({
     },
   },
 
+  icon: {
+    serverBundle: 'remote',
+  },
+
   sitemap: {
     sources: [
       '/api/__sitemap__/urls',
