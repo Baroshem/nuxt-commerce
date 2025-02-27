@@ -27,6 +27,7 @@
     "@nuxt/ui": "^2.20.0",
     "@nuxtjs/robots": "5.0.1",
     "@nuxtjs/sitemap": "7.0.0",
+    "@storyblok/nuxt": "6.2.2",
     "eslint": "9.16.0",
     "lint-staged": "^15.2.10",
     "nuxt": "^3.15.4",

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import BlogCardList from '~~/modules/storyblok/components/BlogCardList.vue'
+
 useSeoMeta({
   title: 'Nuxt Commerce',
   description:
@@ -74,6 +76,8 @@ const { data: casualThingsCollection } = await useAsyncGql('getCollection', {
             size="20"
           />
         </NuxtLink>
+
+        <BlogCardList />
 
         <HomeContactOptions />
       </section>
