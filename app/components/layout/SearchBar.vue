@@ -41,7 +41,7 @@ function resetState() {
     placeholder="Search..."
     icon="i-heroicons-magnifying-glass-20-solid"
     autocomplete="off"
-    class="relative w-64"
+    class="relative w-64 touch-none"
     :ui="{ icon: { trailing: { pointer: '' } } }"
     @focus="isSearchBarOpen = true"
   >
