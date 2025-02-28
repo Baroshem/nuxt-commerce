@@ -17,17 +17,17 @@ defineOgImageComponent('Nuxt', {
   colorMode: 'dark',
 })
 
-const { data: latestStuffCollection } = await useAsyncGql('getCollection', {
+const { data: latestStuffCollection } = await useAsyncData('latest-stuff-collection', () => GqlGetCollection({
   handle: 'latest-stuff',
   items: 10,
   variants: 1,
-})
+}))
 
-const { data: casualThingsCollection } = await useAsyncGql('getCollection', {
+const { data: casualThingsCollection } = await useAsyncData('casual-things-collection', () => GqlGetCollection({
   handle: 'casual-things',
   items: 10,
   variants: 1,
-}, { lazy: true })
+}), { lazy: true })
 </script>
 
 <template>

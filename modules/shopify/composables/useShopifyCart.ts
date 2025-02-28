@@ -54,10 +54,10 @@ export const useShopifyCart = () => {
 
       await getCart()
 
-      toast.add({ title: 'Product added to cart.', timeout: 3000 })
+      toast.add({ title: 'Product added to cart.', timeout: 2000 })
     }
     catch (error) {
-      toast.add({ title: 'Error adding item to cart', color: 'red', timeout: 3000 })
+      toast.add({ title: 'Error adding item to cart', color: 'red', timeout: 2000 })
       console.error('Error adding item to cart:', error)
     }
     finally {
@@ -84,16 +84,17 @@ export const useShopifyCart = () => {
     if (!cart?.value?.id) return
     loading.value = true
     try {
-      await useAsyncGql('removeFromCart', {
+      await GqlRemoveFromCart({
         cartId: cart?.value.id,
         lineIds: [itemId],
       })
+
       await getCart()
 
-      toast.add({ title: 'Product removed from cart.', timeout: 3000 })
+      toast.add({ title: 'Product removed from cart.', timeout: 2000 })
     }
     catch (error) {
-      toast.add({ title: 'Error removing item from cart', color: 'red', timeout: 3000 })
+      toast.add({ title: 'Error removing item from cart', color: 'red', timeout: 2000 })
       console.error('Error removing item from cart', error)
     }
     finally {
@@ -108,17 +109,17 @@ export const useShopifyCart = () => {
     if (!cart?.value?.id || !item) return
     loading.value = true
     try {
-      await useAsyncGql('updateItemQuantity', {
+      await GqlUpdateItemQuantity({
         cartId: cart?.value.id,
         lines: [{ id: item.id, quantity }],
       })
 
       await getCart()
 
-      toast.add({ title: 'Quantity updated.', timeout: 3000 })
+      toast.add({ title: 'Quantity updated.', timeout: 2000 })
     }
     catch (error) {
-      toast.add({ title: 'Error updating item quantity', color: 'red', timeout: 3000 })
+      toast.add({ title: 'Error updating item quantity', color: 'red', timeout: 2000 })
       console.error('Error updating item quantity', error)
     }
     finally {

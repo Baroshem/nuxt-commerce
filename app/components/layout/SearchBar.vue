@@ -15,12 +15,12 @@ watchDebounced(
   query,
   async () => {
     if (query.value) {
-      const { data } = await useAsyncGql('getProducts', {
+      const { data } = await useAsyncData('search-results', () => GqlGetProducts({
         first: 10,
         variants: 1,
         query: query.value,
-      })
-      result.value = data.value.products
+      }))
+      result.value = data.value?.products
     }
   },
   { debounce: 500 },

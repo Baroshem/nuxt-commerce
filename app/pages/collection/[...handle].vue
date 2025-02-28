@@ -8,11 +8,13 @@ if (!route.params.handle?.length || !route.params.handle[0]) {
   })
 }
 
-const { data: collectionData } = await useAsyncGql('getCollection', {
-  handle: route.params.handle[0],
+const handle = route.params.handle[0]
+
+const { data: collectionData } = await useAsyncData('collection-data', () => GqlGetCollection({
+  handle,
   items: 12,
   variants: 1,
-})
+}))
 
 const collection = computed(() => collectionData?.value?.collection)
 
@@ -24,9 +26,9 @@ const collectionProducts = computed(
   () => collection.value?.products.edges,
 )
 
-const { data: collectionsData } = await useAsyncGql('getCollections', {
+const { data: collectionsData } = await useAsyncData('collections-data', () => GqlGetCollections({
   first: 20,
-})
+}))
 
 watch(
   () => route.query.sortKey,
@@ -72,7 +74,7 @@ defineOgImageComponent('Nuxt', {
 
     <div class="block lg:flex">
       <div class="mx-0 min-w-full lg:min-w-fit mt-8">
-        <CollectionFilterSelector :collections="collectionsData.collections" />
+        <CollectionFilterSelector :collections="collectionsData?.collections" />
       </div>
       <div class="mt-8 w-full">
         <div class="flex justify-between xs:ml-10 items-center">

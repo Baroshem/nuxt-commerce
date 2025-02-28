@@ -10,10 +10,12 @@ if (!route.params.handle?.length || !route.params.handle[0]) {
   })
 }
 
-const { data } = await useAsyncGql('getProduct', {
-  handle: route.params.handle[0],
+const handle = route.params.handle?.[0]
+
+const { data } = await useAsyncData('product', () => GqlGetProduct({
+  handle,
   variants: 10,
-})
+}))
 
 const product = computed(() => data?.value?.product)
 
@@ -25,10 +27,12 @@ const galleryImages = computed(
   () => product?.value?.images.edges.map(edge => edge.node.url) || [],
 )
 
-const { data: recommended } = await useAsyncGql('getProductRecommendations', {
-  productId: product.value.id,
+const productId = product.value?.id
+
+const { data: recommended } = await useAsyncData('recommended', () => GqlGetProductRecommendations({
+  productId,
   variants: 1,
-}, { lazy: true })
+}), { lazy: true })
 
 useSeoMeta({
   title: product.value?.seo.title || product.value?.title,
