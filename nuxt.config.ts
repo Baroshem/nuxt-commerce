@@ -20,6 +20,9 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
+      meta: [
+        { name: 'viewport', content: 'width=device-width,, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' },
+      ],
       link: [
         { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' },
         { rel: 'preconnect', href: 'https://graphql.myshopify.com' },
