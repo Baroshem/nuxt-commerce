@@ -28,7 +28,7 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: 'https://demo-nuxt-commerce.vercel.app',
+    url: 'https://www.nuxt-commerce.dev',
   },
 
   colorMode: {
@@ -37,7 +37,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      siteUrl: 'https://demo-nuxt-commerce.vercel.app',
+      siteUrl: 'https://www.nuxt-commerce.dev',
     },
   },
 

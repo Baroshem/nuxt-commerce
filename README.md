@@ -1,6 +1,6 @@
 # Nuxt Commerce
 
-A high-performance, server-rendered E-commerce app built with Nuxt & Shopify.
+A high-performance, server-rendered E-commerce app built with Nuxt & Shopify ([Demo](https://www.nuxt-commerce.dev)).
 
 This template uses Nuxt UI, Image & Font optimization, Hybrid Rendering, SEO and more.
 
@@ -12,8 +12,8 @@ Nuxt Commerce comes with several useful features out of the box:
 2. [GraphQL Client](https://nuxt-graphql-client.web.app/) - Minimal GraphQL Client + Code Generation
 3. [Image Optimization](https://image.nuxtjs.org/) - Resize and transform your images using built-in optimizer or your favorite images CDN
 4. [Fonts](https://font.nuxt.com/) - Deliver optimized fonts for better performance
-5. [Hybrid rendering](https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering) - Set different caching rules per route using Route Rules and decide how the server should respond to a new request on a given URL
-6. [SEO](https://github.com/harlan-zw/nuxt-simple-sitemap) - Simple configuration for Sitemap.xml, Robots.txt, and Meta
+5. [Hybrid rendering](https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering) - Set different caching rules and rendering modes per route using Route Rules
+6. [SEO](https://nuxtseo.com/) - Simple configuration for Sitemap.xml, Robots.txt, Meta, and OG Images
 7. [JSON-LD](https://json-ld.org/) - Lightweight Linked Data format for products
 </details>
 
@@ -118,5 +118,6 @@ This project wouldn't be live without a help of amazing people below:
 3. Lucie Haberer
 4. Julien Huang
 5. Sebastien Chopin
-6. ScottyZen -> Check out [WooNuxt](https://woonuxt.com/) 🚀
-7. Rylan Harper -> Check out [Nitrogen](https://github.com/rylanharper/Nitrogen) 🚀
+6. Sarah Moriceu
+7. ScottyZen -> Check out [WooNuxt](https://woonuxt.com/) 🚀
+8. Rylan Harper -> Check out [Nitrogen](https://github.com/rylanharper/Nitrogen) 🚀
