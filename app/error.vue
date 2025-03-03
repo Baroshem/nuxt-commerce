@@ -8,7 +8,7 @@ defineProps<{ error: NuxtError }>()
   <Body class="bg-[#020420]" />
   <main class="text-center mx-auto my-0">
     <LayoutNavbarTop class="mb-5" />
-    <UNotifications />
+    <!-- <UNotifications /> -->
     <section>
       <h2 class="text-9xl mb-4">
         {{ error.statusCode }}

@@ -75,14 +75,14 @@ useHead({
       <UButton
         icon="i-heroicons-arrow-small-left-solid"
         variant="link"
-        color="gray"
+        color="neutral"
         class="pl-0"
         @click="router.back()"
       >
         Back to the list
       </UButton>
     </div>
-    <div class="block lg:flex justify-between gap-16">
+    <div class="flex flex-col md:flex-row justify-between md:gap-20">
       <ProductImageGallery
         :images="galleryImages"
         :product-title="product?.title"
@@ -95,7 +95,7 @@ useHead({
     <NuxtLazyHydrate when-visible>
       <section
         v-if="recommended?.productRecommendations?.length"
-        class="max-w-[1536px] w-full mx-auto my-20 text-left"
+        class="max-w-[1536px] w-full mx-auto my-6 md:my-20 text-left"
       >
         <h2 class="text-3xl mb-10 text-white">
           Related Products

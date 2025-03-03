@@ -34,37 +34,24 @@ const options = [
 
 const selected = ref(
   route.query.sortKey
-    ? options.find(option => option.value === route.query.sortKey)
-    : options[0],
+    ? options.find(option => option.value === route.query.sortKey)?.value
+    : options[0]?.value,
 )
 
-router.replace({ query: { sortKey: selected.value?.value } })
+router.replace({ query: { sortKey: selected.value } })
 
 watch(selected, (newSortKey) => {
   if (!newSortKey) return
-  router.replace({ query: { sortKey: newSortKey.value } })
+  router.replace({ query: { sortKey: newSortKey } })
 })
 </script>
 
 <template>
-  <USelectMenu
-    v-slot="{ open }"
+  <USelect
     v-model="selected"
-    :options="options"
+    value-key="value"
+    :items="options"
     :disabled="disabled"
     class="w-44"
-  >
-    <UButton
-      color="gray"
-      class="flex-1 justify-between"
-    >
-      {{ selected?.label }}
-
-      <UIcon
-        name="i-heroicons-chevron-right-20-solid"
-        class="w-5 h-5 transition-transform text-gray-400 dark:text-gray-500"
-        :class="[open && 'transform rotate-90']"
-      />
-    </UButton>
-  </USelectMenu>
+  />
 </template>

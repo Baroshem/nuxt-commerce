@@ -8,10 +8,9 @@ defineProps<{ images: string[], productTitle?: string }>()
   <UCarousel
     v-slot="{ item, index }"
     :items="images"
-    :ui="{ item: 'basis-full' }"
-    class="rounded-lg overflow-hidden min-w-[304px] min-h-[304px] md:min-w-[600px] md:max-w-[600px] md:max-h-[600px]"
+    class="rounded-lg max-w-[300px] max-h-[300px] md:min-w-[500px] md:max-w-[500px] md:max-h-[500px] text-center mx-auto md:text-left md:mx-0 md:ml-12 overflow-hidden md:overflow-visible"
     :arrows="images.length > 1"
-    indicators
+    dots
   >
     <NuxtImg
       :src="getImagePath(item)"
@@ -20,8 +19,8 @@ defineProps<{ images: string[], productTitle?: string }>()
       :loading="index === 0 ? 'eager' : 'lazy'"
       :fetch-priority="index === 0 ? 'high' : 'low'"
       draggable="false"
-      width="600"
-      height="600"
+      width="500"
+      height="500"
       placeholder
       fit="contain"
     />

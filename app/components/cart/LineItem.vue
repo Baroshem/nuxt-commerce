@@ -30,9 +30,10 @@ defineProps<{ item: ShopifyCartLineItem, disabled: boolean }>()
           </NuxtLink>
 
           <UButton
-            class="absolute -right-3 -top-3"
+            class="absolute -right-2 -top-2"
             size="xs"
-            color="gray"
+            color="neutral"
+            variant="outline"
             icon="i-heroicons-x-mark-20-solid"
             @click="emit('remove-item', item.id)"
           />

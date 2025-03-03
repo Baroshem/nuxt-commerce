@@ -5,7 +5,6 @@ const {
   loading,
   updateItemQuantity,
   removeFromCart,
-  isCartOpen,
   redirectToCheckout,
 } = useShopifyCart()
 
@@ -19,20 +18,8 @@ async function removeItem(id: string) {
 <template>
   <div class="text-left h-full flex flex-col">
     <div
-      class="block justify-between items-center py-2 px-4 md:px-6 md:pt-6 md:pb-4"
+      class="block justify-between items-center"
     >
-      <div class="flex justify-between items-center">
-        <p class="font-semibold">
-          Order Summary
-        </p>
-        <UButton
-          color="gray"
-          variant="ghost"
-          size="xl"
-          icon="i-heroicons-x-mark-20-solid"
-          @click="isCartOpen = false"
-        />
-      </div>
       <p class="font-medium mt-2">
         {{ cart?.lines?.edges?.length }} item(s)
       </p>
@@ -40,7 +27,7 @@ async function removeItem(id: string) {
     <div class="flex flex-col h-full justify-between overflow-hidden">
       <ul
         v-if="cart?.lines?.edges?.length"
-        class="px-4 md:px-6 pt-3 flex flex-col flex-grow overflow-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        class="flex flex-col flex-grow overflow-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         <CartLineItem
           v-for="{ node } in cart?.lines.edges"
@@ -53,7 +40,7 @@ async function removeItem(id: string) {
       </ul>
       <div
         v-else
-        class="px-4 md:px-6 mt-6 flex flex-col flex-grow overflow-auto text-center"
+        class="flex flex-col flex-grow overflow-auto text-center"
       >
         <UIcon
           name="i-heroicons-shopping-bag-20-solid"
@@ -65,7 +52,7 @@ async function removeItem(id: string) {
       </div>
       <div
         v-if="cart?.lines?.edges?.length"
-        class="px-4 pb-1 mt-3 md:px-6 md:pb-6"
+        class="pb-1 mt-3 md:pb-6"
       >
         <div class="flex justify-between pb-4 border-t border-slate-800 pt-6">
           <div class="flex flex-col grow pr-2 text-slate-400">

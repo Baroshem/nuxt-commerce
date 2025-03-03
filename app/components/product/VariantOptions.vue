@@ -14,6 +14,10 @@ function toggleOption(name: string, value: string) {
     })
   }
 }
+
+function isSelected(name: string, value: string) {
+  return route.query[name] === value
+}
 </script>
 
 <template>
@@ -31,7 +35,8 @@ function toggleOption(name: string, value: string) {
       <UButton
         v-for="value in option.values"
         :key="value"
-        :color="route.query[option.name] === value ? 'primary' : 'gray'"
+        :color="isSelected(option.name, value) ? 'primary' : 'neutral'"
+        :variant="isSelected(option.name, value) ? 'solid' : 'outline'"
         class="min-w-16 justify-center"
         @click="toggleOption(option.name, value)"
       >

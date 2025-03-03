@@ -8,6 +8,7 @@ const searchBar = ref()
 const result = ref<ShopifyProducts>()
 const isSearchBarOpen = ref(false)
 const query = ref('')
+const fetchStatus = ref('')
 
 onClickOutside(searchBar, () => resetState())
 
@@ -15,11 +16,12 @@ watchDebounced(
   query,
   async () => {
     if (query.value) {
-      const { data } = await useAsyncData('search-results', () => GqlGetProducts({
+      const { data, status } = await useAsyncData('search-results', () => GqlGetProducts({
         first: 10,
         variants: 1,
         query: query.value,
       }))
+      fetchStatus.value = status.value
       result.value = data.value?.products
     }
   },
@@ -30,7 +32,10 @@ function resetState() {
   isSearchBarOpen.value = false
   query.value = ''
   result.value = undefined
+  fetchStatus.value = ''
 }
+
+const isFetched = computed(() => fetchStatus.value === 'success' || fetchStatus.value === 'error')
 </script>
 
 <template>
@@ -42,20 +47,21 @@ function resetState() {
     icon="i-heroicons-magnifying-glass-20-solid"
     autocomplete="off"
     class="relative w-64 text-base"
-    :ui="{ icon: { trailing: { pointer: '' } } }"
     @focus="isSearchBarOpen = true"
   >
     <template #trailing>
       <UButton
         v-show="query !== ''"
-        color="gray"
+        color="neutral"
+        variant="link"
+        size="sm"
         icon="i-heroicons-x-mark-20-solid"
         :padded="false"
         @click="resetState"
       />
     </template>
     <div
-      v-if="isSearchBarOpen && query"
+      v-if="isSearchBarOpen && query && isFetched"
       class="right-0 top-8 z-50 absolute w-64"
     >
       <div

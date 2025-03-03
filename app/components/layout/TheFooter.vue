@@ -3,7 +3,7 @@ const toast = useToast()
 const inputValue = ref('')
 
 function subscribeNewsletter(email: string) {
-  toast.add({ title: `Subscribed user with email: ${email}`, timeout: 3000 })
+  toast.add({ title: `Subscribed user with email: ${email}` })
 }
 
 const categories = [
@@ -162,7 +162,7 @@ const socialIcons = [
           <UButton
             type="submit"
             class="ml-2"
-            color="black"
+            color="neutral"
           >
             Subscribe
           </UButton>
