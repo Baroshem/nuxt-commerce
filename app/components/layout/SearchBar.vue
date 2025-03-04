@@ -58,6 +58,7 @@ const isFetched = computed(() => fetchStatus.value === 'success' || fetchStatus.
         color="neutral"
         variant="link"
         size="sm"
+        aria-label="Clear search"
         icon="i-heroicons-x-mark-20-solid"
         :padded="false"
         @click="resetState"
