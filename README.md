@@ -1,3 +1,5 @@
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FBaroshem%2Fnuxt-commerce&project-name=commerce&repo-name=commerce&demo-title=Nuxt%20Commerce&demo-url=https%3A%2F%2Fnuxt-commerce.dev)
+
 # Nuxt Commerce
 
 A high-performance, server-rendered E-commerce app built with Nuxt & Shopify ([Demo](https://www.nuxt-commerce.dev)).
