@@ -20,7 +20,6 @@ useHead({
         v-model:open="isCartOpen"
         title="Order Summary"
         description="Review items in your cart"
-        close-icon="i-heroicons-x-mark-20-solid"
       >
         <template #body>
           <CartOrderSummary />
