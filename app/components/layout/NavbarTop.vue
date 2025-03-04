@@ -65,7 +65,10 @@ const links = [
         <template #body>
           <div class="text-left h-full flex flex-col">
             <div class="block justify-between items-end">
-              <LayoutSearchBar class="my-4 w-full" />
+              <LayoutSearchBar
+                class="my-4 w-full"
+                @item-selected="isCategoryMenuOpen = false"
+              />
               <UNavigationMenu
                 orientation="vertical"
                 :items="links"

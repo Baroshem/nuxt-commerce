@@ -25,8 +25,6 @@ useHead({
         </template>
       </USlideover>
 
-      <!-- <UNotifications /> -->
-
       <NuxtPage />
 
       <LazyLayoutTheFooter class="mt-5" />

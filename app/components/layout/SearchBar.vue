@@ -2,6 +2,8 @@
 import { watchDebounced } from '@vueuse/shared'
 import { onClickOutside } from '@vueuse/core'
 
+const emit = defineEmits(['item-selected'])
+
 const { getPriceWithCurrency, getImagePath } = useShopifyCart()
 
 const searchBar = ref()
@@ -33,6 +35,7 @@ function resetState() {
   query.value = ''
   result.value = undefined
   fetchStatus.value = ''
+  emit('item-selected')
 }
 
 const isFetched = computed(() => fetchStatus.value === 'success' || fetchStatus.value === 'error')
@@ -62,7 +65,7 @@ const isFetched = computed(() => fetchStatus.value === 'success' || fetchStatus.
     </template>
     <div
       v-if="isSearchBarOpen && query && isFetched"
-      class="right-0 top-8 z-50 absolute w-64"
+      class="right-0 top-8 z-50 absolute w-full md:w-64"
     >
       <div
         v-if="!result?.edges?.length"
@@ -72,7 +75,7 @@ const isFetched = computed(() => fetchStatus.value === 'success' || fetchStatus.
       </div>
       <ul
         v-else
-        class="py-2 bg-gray-700 text-gray-300 border border-solid rounded-md border-gray-700 drop-shadow-md relative xs:-left-40 xs:w-[400px] overflow-auto max-h-[400px]"
+        class="py-2 bg-gray-700 text-gray-300 border border-solid rounded-md border-gray-700 drop-shadow-md relative xs:-left-40 w-full md:w-[400px] overflow-auto max-h-[400px]"
       >
         <li
           v-for="{ node } in result?.edges"
