@@ -11,20 +11,26 @@ useHead({
 </script>
 
 <template>
-  <Body class="bg-[#020420]" />
-  <main id="main">
-    <LayoutNavbarTop class="mb-5" />
+  <UApp>
+    <Body class="bg-[#020420]" />
+    <main id="main">
+      <LayoutNavbarTop class="mb-5" />
 
-    <USlideover v-model="isCartOpen">
-      <CartOrderSummary />
-    </USlideover>
+      <USlideover
+        v-model:open="isCartOpen"
+        title="Order Summary"
+        description="Review items in your cart"
+      >
+        <template #body>
+          <CartOrderSummary />
+        </template>
+      </USlideover>
 
-    <UNotifications />
+      <NuxtPage />
 
-    <NuxtPage />
-
-    <LazyLayoutTheFooter class="mt-5" />
-  </main>
+      <LazyLayoutTheFooter class="mt-5" />
+    </main>
+  </UApp>
 </template>
 
 <!-- Web Font affects performance by a lot (dropping score by 10 points and increasing LCP by 2 seconds) -->

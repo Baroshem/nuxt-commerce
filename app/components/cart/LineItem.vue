@@ -9,7 +9,13 @@ const emit = defineEmits<{
   ): void
 }>()
 
-defineProps<{ item: ShopifyCartLineItem, disabled: boolean }>()
+const props = defineProps<{ item: ShopifyCartLineItem, disabled: boolean }>()
+
+function debouncedUpdateQuantity(newQuantity: number) {
+  setTimeout(() => {
+    emit('update-quantity', { item: props.item, quantity: newQuantity })
+  }, 700)
+}
 </script>
 
 <template>
@@ -30,9 +36,10 @@ defineProps<{ item: ShopifyCartLineItem, disabled: boolean }>()
           </NuxtLink>
 
           <UButton
-            class="absolute -right-3 -top-3"
+            class="absolute -right-2 -top-2"
             size="xs"
-            color="gray"
+            color="neutral"
+            variant="outline"
             icon="i-heroicons-x-mark-20-solid"
             @click="emit('remove-item', item.id)"
           />
@@ -61,10 +68,7 @@ defineProps<{ item: ShopifyCartLineItem, disabled: boolean }>()
             :quantity="item.quantity"
             :disabled="disabled"
             small
-            @quantity-updated="
-              (newVal: number) =>
-                emit('update-quantity', { item, quantity: newVal })
-            "
+            @quantity-updated="debouncedUpdateQuantity"
           />
         </div>
       </div>

@@ -36,7 +36,7 @@ const computedVariant = computed(() => {
       }}</span>
     </div>
 
-    <p class="mt-6 text-slate-400">
+    <p class="mt-6 text-slate-400 h-28 overflow-auto">
       {{ product?.description }}
     </p>
 

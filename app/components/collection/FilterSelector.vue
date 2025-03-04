@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-const route = useRoute()
-
 const props = defineProps<{ collections?: ShopifyCollections }>()
+
+const route = useRoute()
 
 function isActiveCollection(collectionHandle: string) {
   return route.params.handle && route.params.handle[0] === collectionHandle
@@ -9,7 +9,7 @@ function isActiveCollection(collectionHandle: string) {
 
 const selectOptions = computed(() => {
   return props.collections?.edges.map(({ node }) => ({
-    label: node.title,
+    value: node.title,
     to: node.handle,
   }))
 })
@@ -17,7 +17,7 @@ const selectOptions = computed(() => {
 const selected = ref(
   selectOptions.value?.find(
     option => route.params.handle && option.to === route.params.handle[0],
-  ),
+  )?.value,
 )
 </script>
 
@@ -25,30 +25,19 @@ const selected = ref(
   <aside class="sm:pr-4">
     <USelectMenu
       v-model="selected"
-      :options="selectOptions"
+      value-key="value"
+      :items="selectOptions"
+      :search-input="false"
       class="w-full md:max-w-[376px] block lg:hidden"
     >
-      <template #default="{ open }">
-        <UButton
-          color="gray"
-          class="flex-1 justify-between"
-        >
-          {{ selected?.label }}
-
-          <UIcon
-            name="i-heroicons-chevron-right-20-solid"
-            class="w-5 h-5 transition-transform text-gray-400 dark:text-gray-500"
-            :class="[open && 'transform rotate-90']"
-          />
-        </UButton>
-      </template>
-      <template #option="{ option }">
+      {{ selected }}
+      <template #item="{ item }">
         <NuxtLink
-          :to="`/collection/${option.to}`"
+          :to="`/collection/${item?.to}`"
           class="flex items-center text-slate-400 hover:text-slate-500"
         >
-          <p :class="isActiveCollection(option.to) && 'text-primary-400'">
-            {{ option.label }}
+          <p :class="isActiveCollection(item?.to) && 'text-primary-400'">
+            {{ item?.value }}
           </p>
         </NuxtLink>
       </template>

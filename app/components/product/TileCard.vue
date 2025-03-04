@@ -40,11 +40,12 @@ function handleMouseOver(event: MouseEvent) {
     @mouseover="handleMouseOver"
     @mouseleave="shouldDisplaySecondImage = false"
   >
-    <div class="relative">
-      <NuxtLink
-        :to="`/product/${product?.handle}`"
-        class="block"
-      >
+    <NuxtLink
+      :to="`/product/${product?.handle}`"
+      class="block"
+    >
+      <div class="relative">
+
         <NuxtImg
           v-show="!shouldDisplaySecondImage"
           :src="getImagePath(product?.featuredImage?.url)"
@@ -64,15 +65,15 @@ function handleMouseOver(event: MouseEvent) {
           width="216"
           height="288"
         />
-      </NuxtLink>
-    </div>
-    <div class="p-1 text-white">
-      <div class="flex justify-between items-center">
-        <p class="truncate text-slate-300">
-          {{ product?.title }}
-        </p>
       </div>
-      <span class="block pb-2 text-slate-400 text-sm">{{ computedPrice }}</span>
-    </div>
+      <div class="p-1 text-white">
+        <div class="flex justify-between items-center">
+          <p class="truncate text-slate-300">
+            {{ product?.title }}
+          </p>
+        </div>
+        <span class="block pb-2 text-slate-400 text-sm">{{ computedPrice }}</span>
+      </div>
+    </NuxtLink>
   </div>
 </template>

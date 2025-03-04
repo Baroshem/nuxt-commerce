@@ -7,14 +7,17 @@ const links = [
   {
     label: 'Latest Stuff',
     to: '/collection/latest-stuff',
+    onSelect: () => (isCategoryMenuOpen.value = false),
   },
   {
     label: 'Casual Things',
     to: '/collection/casual-things',
+    onSelect: () => (isCategoryMenuOpen.value = false),
   },
   {
     label: 'Summer Clothes',
     to: '/collection/summer-collection',
+    onSelect: () => (isCategoryMenuOpen.value = false),
   },
 ]
 </script>
@@ -28,7 +31,7 @@ const links = [
     >
       <div class="flex items-center flex-1 gap-1.5">
         <UButton
-          color="gray"
+          color="neutral"
           variant="ghost"
           aria-label="Category Menu Open Button"
           class="lg:hidden mr-2"
@@ -55,63 +58,44 @@ const links = [
       </div>
 
       <USlideover
-        v-model="isCategoryMenuOpen"
+        v-model:open="isCategoryMenuOpen"
         side="left"
+        title="Navigation"
+        description="Explore our categories"
       >
-        <div class="text-left h-full flex flex-col">
-          <div class="block justify-between items-end py-2 px-6 pt-6 pb-4">
-            <div class="flex justify-between items-center">
-              <p class="font-semibold">
-                Navigation
-              </p>
-              <UButton
-                color="gray"
-                variant="ghost"
-                size="xl"
-                icon="i-heroicons-x-mark-20-solid"
-                @click="isCategoryMenuOpen = false"
+        <template #body>
+          <div class="text-left h-full flex flex-col">
+            <div class="block justify-between items-end">
+              <LayoutSearchBar
+                class="my-4 w-full"
+                @item-selected="isCategoryMenuOpen = false"
+              />
+              <UNavigationMenu
+                orientation="vertical"
+                :items="links"
               />
             </div>
-            <LayoutSearchBar class="mt-4 w-full" />
-
-            <UVerticalNavigation
-              :links="links"
-              class="mt-4 text-white"
-            >
-              <template #default="{ link }">
-                <span
-                  class="group-hover:text-primary relative"
-                  @click="isCategoryMenuOpen = false"
-                >{{ link.label }}</span>
-              </template>
-            </UVerticalNavigation>
           </div>
-        </div>
+        </template>
       </USlideover>
 
-      <UHorizontalNavigation
-        :links="links"
+      <UNavigationMenu
+        :items="links"
         class="hidden lg:flex w-fit text-white"
-      >
-        <template #default="{ link }">
-          <span class="group-hover:text-primary relative">{{
-            link.label
-          }}</span>
-        </template>
-      </UHorizontalNavigation>
+      />
 
       <div class="flex items-center relative flex-1 gap-1.5 justify-end">
         <LayoutSearchBar class="hidden sm:flex" />
         <UChip
           :text="cart?.lines.edges.length"
           :show="cart?.lines.edges.length ? true : false"
-          size="2xl"
+          size="3xl"
         >
           <UButton
-            class="mr-2 ml-4"
+            class="ml-4"
             aria-label="Cart"
             :padded="false"
-            color="gray"
+            color="neutral"
             variant="link"
             icon="i-heroicons-shopping-cart"
             @click="isCartOpen = true"

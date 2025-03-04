@@ -26,7 +26,10 @@ export const useShopifyCart = () => {
       () => variantId || product?.variants.nodes[0]?.id,
     )
 
-    if (!computedVariantId.value) return 'Missing Variant ID'
+    if (!computedVariantId.value) {
+      console.error('Missing Variant ID')
+      return
+    }
 
     let cart
 
@@ -44,7 +47,10 @@ export const useShopifyCart = () => {
       cartId.value = cart?.id
     }
 
-    if (!cartId.value) return 'Missing Cart ID'
+    if (!cartId.value) {
+      console.error('Missing Cart ID')
+      return
+    }
 
     try {
       await GqlAddToCart({
@@ -54,10 +60,10 @@ export const useShopifyCart = () => {
 
       await getCart()
 
-      toast.add({ title: 'Product added to cart.', timeout: 2000 })
+      toast.add({ title: 'Product added to cart.' })
     }
     catch (error) {
-      toast.add({ title: 'Error adding item to cart', color: 'red', timeout: 2000 })
+      toast.add({ title: 'Error adding item to cart', color: 'error' })
       console.error('Error adding item to cart:', error)
     }
     finally {
@@ -90,11 +96,9 @@ export const useShopifyCart = () => {
       })
 
       await getCart()
-
-      toast.add({ title: 'Product removed from cart.', timeout: 2000 })
     }
     catch (error) {
-      toast.add({ title: 'Error removing item from cart', color: 'red', timeout: 2000 })
+      toast.add({ title: 'Error removing item from cart', color: 'error' })
       console.error('Error removing item from cart', error)
     }
     finally {
@@ -115,11 +119,9 @@ export const useShopifyCart = () => {
       })
 
       await getCart()
-
-      toast.add({ title: 'Quantity updated.', timeout: 2000 })
     }
     catch (error) {
-      toast.add({ title: 'Error updating item quantity', color: 'red', timeout: 2000 })
+      toast.add({ title: 'Error updating item quantity', color: 'error' })
       console.error('Error updating item quantity', error)
     }
     finally {
