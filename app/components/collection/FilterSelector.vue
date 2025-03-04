@@ -23,10 +23,11 @@ const selected = ref(
 
 <template>
   <aside class="sm:pr-4">
-    <USelect
+    <USelectMenu
       v-model="selected"
       value-key="value"
       :items="selectOptions"
+      :search-input="false"
       class="w-full md:max-w-[376px] block lg:hidden"
     >
       {{ selected }}
@@ -40,7 +41,7 @@ const selected = ref(
           </p>
         </NuxtLink>
       </template>
-    </USelect>
+    </USelectMenu>
     <div class="w-full md:max-w-[376px] hidden lg:block">
       <h2 class="text-white text-left mb-4 rounded tracking-widest">
         Collections
