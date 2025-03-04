@@ -20,7 +20,10 @@ async function removeItem(id: string) {
     <div
       class="block justify-between items-center"
     >
-      <p class="font-medium mt-2">
+      <p
+        v-if="cart?.lines?.edges?.length"
+        class="font-medium mt-2"
+      >
         {{ cart?.lines?.edges?.length }} item(s)
       </p>
     </div>
@@ -40,7 +43,7 @@ async function removeItem(id: string) {
       </ul>
       <div
         v-else
-        class="flex flex-col flex-grow overflow-auto text-center"
+        class="flex flex-col flex-grow overflow-auto text-center mt-20"
       >
         <UIcon
           name="i-heroicons-shopping-bag-20-solid"
