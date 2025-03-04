@@ -18,13 +18,14 @@ watchDebounced(
   query,
   async () => {
     if (query.value) {
-      const { data, status } = await useAsyncData('search-results', () => GqlGetProducts({
+      fetchStatus.value = 'loading'
+      const data = await GqlGetProducts({
         first: 10,
         variants: 1,
         query: query.value,
-      }))
-      fetchStatus.value = status.value
-      result.value = data.value?.products
+      })
+      fetchStatus.value = data.products ? 'success' : 'error'
+      result.value = data.products
     }
   },
   { debounce: 500 },
@@ -54,7 +55,6 @@ const isFetched = computed(() => fetchStatus.value === 'success' || fetchStatus.
   >
     <template #trailing>
       <UButton
-        v-show="query !== ''"
         color="neutral"
         variant="link"
         size="sm"
@@ -75,7 +75,7 @@ const isFetched = computed(() => fetchStatus.value === 'success' || fetchStatus.
       </div>
       <ul
         v-else
-        class="py-2 bg-gray-700 text-gray-300 border border-solid rounded-md border-gray-700 drop-shadow-md relative xs:-left-40 w-full md:w-[400px] overflow-auto max-h-[400px]"
+        class="py-2 bg-gray-700 text-gray-300 border border-solid rounded-md border-gray-700 drop-shadow-md relative xs:-left-40 overflow-auto max-h-[400px]"
       >
         <li
           v-for="{ node } in result?.edges"

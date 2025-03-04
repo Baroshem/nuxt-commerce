@@ -19,6 +19,7 @@ useHead({
       <USlideover
         v-model:open="isCartOpen"
         title="Order Summary"
+        description="Review items in your cart"
       >
         <template #body>
           <CartOrderSummary />

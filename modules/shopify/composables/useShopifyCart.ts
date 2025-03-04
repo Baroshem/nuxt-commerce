@@ -26,7 +26,10 @@ export const useShopifyCart = () => {
       () => variantId || product?.variants.nodes[0]?.id,
     )
 
-    if (!computedVariantId.value) return 'Missing Variant ID'
+    if (!computedVariantId.value) {
+      console.error('Missing Variant ID')
+      return
+    }
 
     let cart
 
@@ -44,7 +47,10 @@ export const useShopifyCart = () => {
       cartId.value = cart?.id
     }
 
-    if (!cartId.value) return 'Missing Cart ID'
+    if (!cartId.value) {
+      console.error('Missing Cart ID')
+      return
+    }
 
     try {
       await GqlAddToCart({

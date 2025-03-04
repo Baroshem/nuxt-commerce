@@ -61,6 +61,7 @@ const links = [
         v-model:open="isCategoryMenuOpen"
         side="left"
         title="Navigation"
+        description="Explore our categories"
       >
         <template #body>
           <div class="text-left h-full flex flex-col">
