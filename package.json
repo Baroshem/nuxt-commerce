@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "@iconify-json/heroicons": "^1.2.2",
-    "@iconify-json/lucide": "^1.2.28",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint": "^0.7.2",
     "@nuxt/eslint-config": "^0.7.2",
