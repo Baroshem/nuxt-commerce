@@ -63,17 +63,20 @@ If your integration already has a Nuxt module existing, you can import it like s
 
 export default defineNuxtModule({
   meta: {
-    name: "storyblok",
+    name: 'storyblok',
   },
   async setup() {
-    const { resolve } = createResolver(import.meta.url);
-    addImportsDir(resolve("composables"));  // enable auto import for components/composables/types
+    const { resolve } = createResolver(import.meta.url)
+    addComponentsDir({
+      path: resolve('components'), // enable auto import for components/composables/types
+    })
 
     await installModule('@storyblok/nuxt', {
-      apiKey: '<YOUR_API_KEY>'
+      accessToken: '<YOUR_API_KEY>',
+      componentsDir: '~/components',
       // more configuration options
     })
-  }
+  },
 })
 ```
 
