@@ -1,13 +1,5 @@
 <script setup lang="ts">
-import BlogCard from './BlogCard.vue'
-
-const nuxtApp = useNuxtApp()
-
-// Vercel provider for Nitro does not handle route query properly
-// We need another way to verify if page is displayed in Storyblok Live Editor
-const isInStoryblokLiveEditor = nuxtApp.ssrContext?.event.node.req.headers.referer?.includes('storyblok')
-
-const story = await useAsyncStoryblok('home', { version: isInStoryblokLiveEditor ? 'draft' : 'published' })
+const story = await useAsyncStoryblok('home', { version: 'draft' })
 </script>
 
 <template>
