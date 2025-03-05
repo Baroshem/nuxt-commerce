@@ -28,6 +28,7 @@
     "@nuxt/ui": "3.0.0-beta.2",
     "@nuxtjs/robots": "5.0.1",
     "@nuxtjs/sitemap": "7.0.0",
+    "@storyblok/nuxt": "^6.2.3",
     "@unhead/vue": "^1",
     "eslint": "9.16.0",
     "lint-staged": "^15.2.10",

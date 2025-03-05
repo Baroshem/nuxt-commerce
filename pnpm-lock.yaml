@@ -40,6 +40,9 @@ devDependencies:
   '@nuxtjs/sitemap':
     specifier: 7.0.0
     version: 7.0.0(h3@1.15.1)(vite@6.1.0)(vue@3.5.13)
+  '@storyblok/nuxt':
+    specifier: ^6.2.3
+    version: 6.2.3(vue@3.5.13)
   '@unhead/vue':
     specifier: ^1
     version: 1.11.20(vue@3.5.13)
@@ -3462,6 +3465,34 @@ packages:
   /@sindresorhus/merge-streams@4.0.0:
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
+    dev: true
+
+  /@storyblok/js@3.2.3:
+    resolution: {integrity: sha512-RRnskb6GCpy2CeVVxQMEwAgbWqG7ehnzCVqbidsR7GpPhcdfdCgsAYDlSnAePwzbpMZXqpW1itJXDnuLmm1LXQ==}
+    dependencies:
+      '@storyblok/richtext': 3.0.2
+      storyblok-js-client: 6.10.8
+    dev: true
+
+  /@storyblok/nuxt@6.2.3(vue@3.5.13):
+    resolution: {integrity: sha512-aJxF2WN3B0gUewtoqym9I8JqfUbvSnRQcK3POK/jPE/qF5Uos9RIA3x6bDv4iV/GPgL9VxrAIheiZxZWxz3IDg==}
+    dependencies:
+      '@storyblok/vue': 8.1.11(vue@3.5.13)
+    transitivePeerDependencies:
+      - vue
+    dev: true
+
+  /@storyblok/richtext@3.0.2:
+    resolution: {integrity: sha512-KBLx9ycNVMyVnNyPiwBH5g9uWmiJpMzp9YvpnnADXlPLoksusrwI56BusSM8HaIgJgcnB5RR0LvhySkPFdC8Zg==}
+    dev: true
+
+  /@storyblok/vue@8.1.11(vue@3.5.13):
+    resolution: {integrity: sha512-Ewce5hVOjzqEZKF8Q05ZM7HwMAxjzoFQ3Zp+DOqXJkLr1hp5kVO+ZPXVkgnvyb7bq5K/HNWRYLuN1CHosCFv3g==}
+    peerDependencies:
+      vue: '>=3.4'
+    dependencies:
+      '@storyblok/js': 3.2.3
+      vue: 3.5.13(typescript@5.7.3)
     dev: true
 
   /@stylistic/eslint-plugin@3.0.1(eslint@9.16.0)(typescript@5.7.3):
@@ -9962,6 +9993,10 @@ packages:
 
   /std-env@3.8.0:
     resolution: {integrity: sha512-Bc3YwwCB+OzldMxOXJIIvC6cPRWr/LxOp48CdQTOkPyk/t4JWWJbrilwBd7RJzKV8QW7tJkcgAmeuLLJugl5/w==}
+
+  /storyblok-js-client@6.10.8:
+    resolution: {integrity: sha512-yjXzKQO16ry+LMEUksfLjO/Eq88DwMflHVxg1YDF2Ak13fHhSD/M36XE/E1jrTbjdVuxSnlxrt8jYP6NiCnCSQ==}
+    dev: true
 
   /streamsearch@1.1.0:
     resolution: {integrity: sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==}

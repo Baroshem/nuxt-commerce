@@ -75,6 +75,8 @@ const { data: casualThingsCollection } = await useAsyncData('casual-things-colle
           />
         </NuxtLink>
 
+        <BlogCardList />
+
         <HomeContactOptions />
       </section>
     </NuxtLazyHydrate>
