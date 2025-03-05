@@ -80,6 +80,8 @@ export default defineNuxtModule({
 })
 ```
 
+Check out the full integration example [here](https://github.com/Baroshem/nuxt-commerce/tree/integration/storyblok)
+
 In case of funcionality that does not have a Nuxt module yet, instead of `installModule` function, you would need to write a custom plugin youself.
 
 ## E-Commerce Platform
