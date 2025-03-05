@@ -21,6 +21,7 @@ defineProps<{ images: string[], productTitle?: string }>()
       :loading="index === 0 ? 'eager' : 'lazy'"
       :fetch-priority="index === 0 ? 'high' : 'low'"
       draggable="false"
+      class="max-w-[300px] max-h-[300px] md:min-w-[500px] md:max-w-[500px] md:max-h-[500px]"
       width="500"
       height="500"
       fit="contain"
