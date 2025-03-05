@@ -7,12 +7,11 @@ const nuxtApp = useNuxtApp()
 // We need another way to verify if page is displayed in Storyblok Live Editor
 const isInStoryblokLiveEditor = nuxtApp.ssrContext?.event.node.req.headers.referer?.includes('storyblok')
 
-// const story = await useAsyncStoryblok('home', { version: isInStoryblokLiveEditor ? 'draft' : 'published' })
-const story = await useAsyncStoryblok('home', { version: 'draft' })
+const story = await useAsyncStoryblok('home', { version: isInStoryblokLiveEditor ? 'draft' : 'published' })
 </script>
 
 <template>
-  <div class="min-h-screen  py-12 px-4 sm:px-6 lg:px-8">
+  <div class="py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
       <h1 class="text-3xl font-bold  mb-8">
         Latest Blog Posts
