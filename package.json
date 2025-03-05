@@ -23,7 +23,7 @@
     "@nuxt/devtools": "latest",
     "@nuxt/eslint": "^0.7.2",
     "@nuxt/eslint-config": "^0.7.2",
-    "@nuxt/image": "^1.8.1",
+    "@nuxt/image": "^1.9.0",
     "@nuxt/ui": "3.0.0-beta.2",
     "@nuxtjs/robots": "5.0.1",
     "@nuxtjs/sitemap": "7.0.0",

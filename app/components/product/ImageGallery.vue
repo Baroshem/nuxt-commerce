@@ -21,7 +21,6 @@ defineProps<{ images: string[], productTitle?: string }>()
       draggable="false"
       width="500"
       height="500"
-      placeholder
       fit="contain"
     />
   </UCarousel>

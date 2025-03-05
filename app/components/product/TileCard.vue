@@ -60,7 +60,7 @@ function handleMouseOver(event: MouseEvent) {
           v-show="shouldDisplaySecondImage"
           :src="getImagePath(product?.images?.edges?.[1]?.node?.url)"
           :alt="`Image 2 of a product ${product?.title}`"
-          class="block object-cover rounded-md aspect-square h-72 min-w-[216px]"
+          class="block object-cover rounded-md aspect-square h-[188px] md:h-72 max-w-[146px] md:min-w-[216px]"
           loading="lazy"
           width="216"
           height="288"

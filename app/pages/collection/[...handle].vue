@@ -48,11 +48,11 @@ useSeoMeta({
   title: collection.value?.seo.title || collection.value?.title,
   description:
     collection.value?.seo.description
-    || collection.value?.description,
+    || collection.value?.description || 'Search through collection of products',
   ogTitle: collection.value?.seo.title || collection.value?.title,
   ogDescription:
     collection.value?.seo.description
-    || collection.value?.description,
+    || collection.value?.description || 'Search through collection of products',
   twitterCard: 'summary_large_image',
 })
 
