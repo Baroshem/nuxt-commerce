@@ -60,10 +60,10 @@ export const useShopifyCart = () => {
 
       await getCart()
 
-      toast.add({ title: 'Product added to cart.', closeIcon: 'i-heroicons-x-mark-solid-20' })
+      toast.add({ title: 'Product added to cart.', closeIcon: 'i-heroicons-x-mark-20-solid' })
     }
     catch (error) {
-      toast.add({ title: 'Error adding item to cart', color: 'error', closeIcon: 'i-heroicons-x-mark-solid-20' })
+      toast.add({ title: 'Error adding item to cart', color: 'error', closeIcon: 'i-heroicons-x-mark-20-solid' })
       console.error('Error adding item to cart:', error)
     }
     finally {
@@ -98,7 +98,7 @@ export const useShopifyCart = () => {
       await getCart()
     }
     catch (error) {
-      toast.add({ title: 'Error removing item from cart', color: 'error', closeIcon: 'i-heroicons-x-mark-solid-20' })
+      toast.add({ title: 'Error removing item from cart', color: 'error', closeIcon: 'i-heroicons-x-mark-20-solid' })
       console.error('Error removing item from cart', error)
     }
     finally {
@@ -121,7 +121,7 @@ export const useShopifyCart = () => {
       await getCart()
     }
     catch (error) {
-      toast.add({ title: 'Error updating item quantity', color: 'error', closeIcon: 'i-heroicons-x-mark-solid-20' })
+      toast.add({ title: 'Error updating item quantity', color: 'error', closeIcon: 'i-heroicons-x-mark-20-solid' })
       console.error('Error updating item quantity', error)
     }
     finally {

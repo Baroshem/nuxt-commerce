@@ -3,7 +3,7 @@ const toast = useToast()
 const inputValue = ref('')
 
 function subscribeNewsletter(email: string) {
-  toast.add({ title: `Subscribed user with email: ${email}`, closeIcon: 'i-heroicons-x-mark-solid-20' })
+  toast.add({ title: `Subscribed user with email: ${email}`, closeIcon: 'i-heroicons-x-mark-20-solid' })
 }
 
 const categories = [
