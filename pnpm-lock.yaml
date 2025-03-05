@@ -28,6 +28,9 @@ devDependencies:
   '@nuxt/image':
     specifier: ^1.9.0
     version: 1.9.0
+  '@nuxt/scripts':
+    specifier: 0.10.5
+    version: 0.10.5(@unhead/vue@1.11.20)(typescript@5.7.3)
   '@nuxt/ui':
     specifier: 3.0.0-beta.2
     version: 3.0.0-beta.2(embla-carousel@8.5.2)(typescript@5.7.3)(vite@6.1.0)(vue@3.5.13)
@@ -36,7 +39,10 @@ devDependencies:
     version: 5.0.1(vite@6.1.0)(vue@3.5.13)
   '@nuxtjs/sitemap':
     specifier: 7.0.0
-    version: 7.0.0(h3@1.14.0)(vite@6.1.0)(vue@3.5.13)
+    version: 7.0.0(h3@1.15.1)(vite@6.1.0)(vue@3.5.13)
+  '@unhead/vue':
+    specifier: ^1
+    version: 1.11.20(vue@3.5.13)
   eslint:
     specifier: 9.16.0
     version: 9.16.0
@@ -2555,6 +2561,67 @@ packages:
       pathe: 2.0.3
       std-env: 3.8.0
 
+  /@nuxt/scripts@0.10.5(@unhead/vue@1.11.20)(typescript@5.7.3):
+    resolution: {integrity: sha512-MZTGWN/kjkKBZzuJssIrzHO9evMWtceaLowF9R7FMZjACFLYWqnf127EP/2pzDfwii5+NkZUe5mfyeIDxXbkUw==}
+    peerDependencies:
+      '@stripe/stripe-js': ^5.6.0
+      '@types/google.maps': ^3.58.1
+      '@types/vimeo__player': ^2.18.3
+      '@types/youtube': ^0.1.0
+      '@unhead/vue': ^1
+    peerDependenciesMeta:
+      '@stripe/stripe-js':
+        optional: true
+      '@types/google.maps':
+        optional: true
+      '@types/vimeo__player':
+        optional: true
+      '@types/youtube':
+        optional: true
+    dependencies:
+      '@nuxt/kit': 3.15.4(magicast@0.3.5)
+      '@unhead/vue': 1.11.20(vue@3.5.13)
+      '@vueuse/core': 12.7.0(typescript@5.7.3)
+      consola: 3.4.0
+      defu: 6.1.4
+      h3: 1.15.1
+      magic-string: 0.30.17
+      ofetch: 1.4.1
+      ohash: 1.1.4
+      pathe: 2.0.3
+      pkg-types: 1.3.1
+      semver: 7.7.1
+      sirv: 3.0.1
+      std-env: 3.8.0
+      ufo: 1.5.4
+      unplugin: 2.2.0
+      unstorage: 1.14.4(db0@0.2.3)(ioredis@5.4.2)
+      valibot: 1.0.0-rc.3(typescript@5.7.3)
+    transitivePeerDependencies:
+      - '@azure/app-configuration'
+      - '@azure/cosmos'
+      - '@azure/data-tables'
+      - '@azure/identity'
+      - '@azure/keyvault-secrets'
+      - '@azure/storage-blob'
+      - '@capacitor/preferences'
+      - '@deno/kv'
+      - '@netlify/blobs'
+      - '@planetscale/database'
+      - '@upstash/redis'
+      - '@vercel/blob'
+      - '@vercel/kv'
+      - aws4fetch
+      - db0
+      - idb-keyval
+      - ioredis
+      - magicast
+      - rollup
+      - supports-color
+      - typescript
+      - uploadthing
+    dev: true
+
   /@nuxt/telemetry@2.6.4:
     resolution: {integrity: sha512-2Lgdn07Suraly5dSfVQ4ttBQBMtmjvCTGKGUHpc1UyH87HT9xCm3KLFO0UcVQ8+LNYCgoOaK7lq9qDJOfBfZ5A==}
     engines: {node: '>=18.20.5'}
@@ -2763,7 +2830,7 @@ packages:
       - vue
     dev: true
 
-  /@nuxtjs/sitemap@7.0.0(h3@1.14.0)(vite@6.1.0)(vue@3.5.13):
+  /@nuxtjs/sitemap@7.0.0(h3@1.15.1)(vite@6.1.0)(vue@3.5.13):
     resolution: {integrity: sha512-/wCP927/Bcfdbw/iVeD5+FOuogS+U2zuwVg+C1vyXqV9hVj5Br1Jy2pjkcerfXPK/REpp+ASBOmrcVWuHcewcA==}
     engines: {node: '>=18.0.0'}
     dependencies:
@@ -2771,7 +2838,7 @@ packages:
       '@nuxt/kit': 3.15.4(magicast@0.3.5)
       chalk: 5.4.1
       defu: 6.1.4
-      h3-compression: 0.3.2(h3@1.14.0)
+      h3-compression: 0.3.2(h3@1.15.1)
       nuxt-site-config: 3.0.6(vite@6.1.0)(vue@3.5.13)
       ofetch: 1.4.1
       pathe: 1.1.2
@@ -3811,18 +3878,6 @@ packages:
     dependencies:
       '@unhead/schema': 1.11.18
       '@unhead/shared': 1.11.18
-    dev: true
-
-  /@unhead/vue@1.11.18(vue@3.5.13):
-    resolution: {integrity: sha512-Jfi7t/XNBnlcauP9UTH3VHBcS69G70ikFd2e5zdgULLDRWpOlLs1sSTH1V2juNptc93DOk9RQfC5jLWbLcivFw==}
-    peerDependencies:
-      vue: '>=2.7 || >=3'
-    dependencies:
-      '@unhead/schema': 1.11.18
-      '@unhead/shared': 1.11.18
-      hookable: 5.5.3
-      unhead: 1.11.18
-      vue: 3.5.13(typescript@5.7.3)
     dev: true
 
   /@unhead/vue@1.11.20(vue@3.5.13):
@@ -6655,12 +6710,12 @@ packages:
       duplexer: 0.1.2
     dev: true
 
-  /h3-compression@0.3.2(h3@1.14.0):
+  /h3-compression@0.3.2(h3@1.15.1):
     resolution: {integrity: sha512-B+yCKyDRnO0BXSfjAP4tCXJgJwmnKp3GyH5Yh66mY9KuOCrrGQSPk/gBFG2TgH7OyB/6mvqNZ1X0XNVuy0qRsw==}
     peerDependencies:
       h3: ^1.6.0
     dependencies:
-      h3: 1.14.0
+      h3: 1.15.1
     dev: true
 
   /h3@1.14.0:
@@ -6676,6 +6731,20 @@ packages:
       ufo: 1.5.4
       uncrypto: 0.1.3
       unenv: 1.10.0
+
+  /h3@1.15.1:
+    resolution: {integrity: sha512-+ORaOBttdUm1E2Uu/obAyCguiI7MbBvsLTndc3gyK3zU+SYLoZXlyCP9Xgy0gikkGufFLTZXCXD6+4BsufnmHA==}
+    dependencies:
+      cookie-es: 1.2.2
+      crossws: 0.3.3
+      defu: 6.1.4
+      destr: 2.0.3
+      iron-webcrypto: 1.2.1
+      node-mock-http: 1.0.0
+      radix3: 1.1.2
+      ufo: 1.5.4
+      uncrypto: 0.1.3
+    dev: true
 
   /has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
@@ -8072,6 +8141,10 @@ packages:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
     dev: false
 
+  /node-mock-http@1.0.0:
+    resolution: {integrity: sha512-0uGYQ1WQL1M5kKvGRXWQ3uZCHtLTO8hln3oBjIusM75WoesZ909uQJs/Hb946i2SS+Gsrhkaa6iAO17jRIv6DQ==}
+    dev: true
+
   /node-releases@2.0.19:
     resolution: {integrity: sha512-xxOWJsBKtzAq7DY0J+DTzuz58K8e7sJbdgwkbMWQe8UYB6ekmsQ45q0M/tJDsGaZmbC+l7n57UV8Hl5tHxO9uw==}
 
@@ -8281,7 +8354,7 @@ packages:
       '@unhead/dom': 1.11.18
       '@unhead/shared': 1.11.18
       '@unhead/ssr': 1.11.18
-      '@unhead/vue': 1.11.18(vue@3.5.13)
+      '@unhead/vue': 1.11.20(vue@3.5.13)
       '@vue/shared': 3.5.13
       acorn: 8.14.0
       c12: 2.0.1(magicast@0.3.5)
@@ -9734,6 +9807,15 @@ packages:
       mrmime: 2.0.0
       totalist: 3.0.1
 
+  /sirv@3.0.1:
+    resolution: {integrity: sha512-FoqMu0NCGBLCcAkS1qA+XJIQTR6/JHfQXl+uGteNCQ76T91DMUjPa9xfmeqMY3z80nLSg9yQmNjK0Px6RWsH/A==}
+    engines: {node: '>=18'}
+    dependencies:
+      '@polka/url': 1.0.0-next.28
+      mrmime: 2.0.0
+      totalist: 3.0.1
+    dev: true
+
   /sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
     dev: true
@@ -10747,6 +10829,17 @@ packages:
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  /valibot@1.0.0-rc.3(typescript@5.7.3):
+    resolution: {integrity: sha512-LT0REa7Iqx4QGcaHLiTiTkcmJqJ9QdpOy89HALFFBJgejTS64GQFRIbDF7e4f6pauQbo/myfKGmWXCLhMeM6+g==}
+    peerDependencies:
+      typescript: '>=5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 5.7.3
+    dev: true
 
   /validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}

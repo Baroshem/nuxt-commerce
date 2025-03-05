@@ -22,6 +22,11 @@ const cardDetails = [
     link: 'https://nuxt.com/modules/fonts',
   },
   {
+    title: 'Scripts',
+    description: 'Load third-party scripts with better performance, privacy, security and DX',
+    link: 'https://scripts.nuxt.com/',
+  },
+  {
     title: 'Hybrid rendering',
     description:
       'Set different caching rules per route using Route Rules and decide how the server should respond to a new request on a given URL',
