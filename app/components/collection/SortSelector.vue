@@ -52,6 +52,7 @@ watch(selected, (newSortKey) => {
     value-key="value"
     :items="options"
     trailing-icon="i-heroicons-chevron-down-20-solid"
+    selected-icon="i-heroicons-check-20-solid"
     :disabled="disabled"
     class="w-44"
     aria-label="Select how products should be sorted"

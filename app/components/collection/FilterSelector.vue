@@ -27,6 +27,7 @@ const selected = ref(
       v-model="selected"
       value-key="value"
       trailing-icon="i-heroicons-chevron-down-20-solid"
+      selected-icon="i-heroicons-check-20-solid"
       :items="selectOptions"
       :search-input="false"
       class="w-full md:max-w-[376px] block lg:hidden"
