@@ -14,7 +14,7 @@ const { data: collectionData } = await useAsyncData('collection-data', () => Gql
   handle,
   items: 12,
   variants: 1,
-}))
+}), { lazy: true })
 
 const collection = computed(() => collectionData?.value?.collection)
 
