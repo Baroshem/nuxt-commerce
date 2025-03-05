@@ -17,11 +17,11 @@ const story = await useAsyncStoryblok('home', { version: 'draft' })
       <h1 class="text-3xl font-bold  mb-8">
         Latest Blog Posts
       </h1>
-      <div class="flex flex-wrap -mx-4 gap-8">
+      <div class="flex flex-wrap -mx-4 gap-8 justify-center">
         <BlogCard
           v-for="card in story?.content?.body[0].cards"
           :key="card.title"
-          v-editable
+          v-editable="card"
           v-bind="card"
         />
       </div>
