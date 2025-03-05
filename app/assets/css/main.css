@@ -1,2 +1,5 @@
 @import "tailwindcss" theme(static);
 @import "@nuxt/ui";
+
+/* For components created in modules folder we need to add below line so that TW classes will work correctly */
+@source "../../../modules";
