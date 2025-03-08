@@ -13,6 +13,7 @@ onMounted(() => {
     'title': 'Welcome to Nuxt Commerce',
     'description': 'A high-performance, server-rendered E-commerce app built with Nuxt & Shopify',
     'duration': Infinity,
+    'closeIcon': 'i-heroicons-x-mark-20-solid',
     'onClick': () => {},
     'onUpdate:open': () => {
       consent.value = 'cookie-consent'
@@ -23,5 +24,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <span />
+  <div />
 </template>
