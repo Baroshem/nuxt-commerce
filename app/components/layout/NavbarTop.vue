@@ -62,6 +62,7 @@ const links = [
         side="left"
         title="Navigation"
         description="Explore our categories"
+        close-icon="i-heroicons-x-mark-20-solid"
       >
         <template #body>
           <div class="text-left h-full flex flex-col">
