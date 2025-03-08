@@ -8,13 +8,6 @@ useHead({
     return titleChunk ? `${titleChunk} - Nuxt Commerce` : 'Nuxt Commerce'
   },
 })
-
-// Uncomment and adjust when you need Google Analytics
-// const { load } = useScriptGoogleAnalytics(
-//   { id: 'G-1234567', scriptOptions: { trigger: 'manual' } },
-// )
-
-// load()
 </script>
 
 <template>
@@ -35,6 +28,7 @@ useHead({
 
       <NuxtPage />
 
+      <LayoutCookieConsent />
       <LazyLayoutTheFooter class="mt-5" />
     </main>
   </UApp>
