@@ -38,8 +38,6 @@ const selected = ref(
     : options[0]?.value,
 )
 
-router.replace({ query: { sortKey: selected.value } })
-
 watch(selected, (newSortKey) => {
   if (!newSortKey) return
   router.replace({ query: { sortKey: newSortKey } })
