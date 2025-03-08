@@ -1,11 +1,21 @@
 export default defineNuxtConfig({
 
-  modules: ['@nuxt/fonts', '@nuxtjs/sitemap', '@nuxtjs/robots', '@nuxt/ui', '@nuxt/eslint', 'nuxt-og-image', [
-    '@nuxt/image',
-    {
-      domains: ['cdn.shopify.com'],
-    },
-  ], 'nuxt-lazy-hydrate', '@nuxt/scripts'],
+  modules: [
+    '@nuxt/scripts',
+    '@nuxt/ui',
+    '@nuxt/eslint',
+    [
+      '@nuxt/image',
+      {
+        domains: ['cdn.shopify.com'],
+      },
+    ],
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+    'nuxt-og-image',
+    'nuxt-lazy-hydrate',
+  ],
+
   devtools: { enabled: true },
 
   app: {

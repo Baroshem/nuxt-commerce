@@ -13,11 +13,10 @@ Nuxt Commerce comes with several useful features out of the box:
 1. [Nuxt UI](https://ui.nuxt.com/) - A UI Library for Modern Web Apps.
 2. [GraphQL Client](https://nuxt-graphql-client.web.app/) - Minimal GraphQL Client + Code Generation
 3. [Image Optimization](https://image.nuxtjs.org/) - Resize and transform your images using built-in optimizer or your favorite images CDN
-4. [Fonts](https://font.nuxt.com/) - Deliver optimized fonts for better performance
-5. [Scripts](https://scripts.nuxt.com/) - Load third-party scripts with better performance, privacy, security and DX
-6. [Hybrid rendering](https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering) - Set different caching rules and rendering modes per route using Route Rules
-7. [SEO](https://nuxtseo.com/) - Simple configuration for Sitemap.xml, Robots.txt, Meta, and OG Images
-8. [JSON-LD](https://json-ld.org/) - Lightweight Linked Data format for products
+4. [Scripts](https://scripts.nuxt.com/) - Load third-party scripts with better performance, privacy, security and DX
+5. [Hybrid rendering](https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering) - Set different caching rules and rendering modes per route using Route Rules
+6. [SEO](https://nuxtseo.com/) - Simple configuration for Sitemap.xml, Robots.txt, Meta, and OG Images
+7. [JSON-LD](https://json-ld.org/) - Lightweight Linked Data format for products
 </details>
 
 

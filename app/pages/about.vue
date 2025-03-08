@@ -17,11 +17,6 @@ const cardDetails = [
     link: 'https://image.nuxt.com/',
   },
   {
-    title: 'Fonts',
-    description: 'Deliver optimized fonts for better performance',
-    link: 'https://nuxt.com/modules/fonts',
-  },
-  {
     title: 'Scripts',
     description: 'Load third-party scripts with better performance, privacy, security and DX',
     link: 'https://scripts.nuxt.com/',
