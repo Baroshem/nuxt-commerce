@@ -4,15 +4,13 @@
       class="md:flex md:flex-row-reverse md:justify-center mx-auto md:min-h-[600px]"
     >
       <div class="flex flex-col md:items-stretch md:overflow-hidden">
-        <NuxtImg
+        <img
           src="/hero.png"
           alt="Nuxt Commerce Hero"
           height="600"
-          fetch-priority="high"
-          preload
           width="800"
           class="h-full object-cover object-left"
-        />
+        >
       </div>
       <div
         class="md:flex md:flex-col md:justify-center md:items-start md:basis-2/4 text-left"

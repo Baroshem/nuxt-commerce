@@ -179,15 +179,13 @@ const socialIcons = [
               v-for="icon in paymentIcons"
               :key="icon.id"
             >
-              <NuxtImg
+              <img
                 width="24"
                 height="24"
                 class="mx-2"
                 :alt="icon.name"
                 :src="icon.path"
-                loading="lazy"
-                fetch-priority="low"
-              />
+              >
             </li>
           </ul>
         </div>
@@ -211,15 +209,13 @@ const socialIcons = [
                 target="_blank"
                 :aria-label="icon.name"
               >
-                <NuxtImg
+                <img
                   width="30"
                   height="30"
                   class="mx-2"
                   :alt="icon.name"
                   :src="icon.path"
-                  loading="lazy"
-                  fetch-priority="low"
-                />
+                >
               </a>
             </li>
           </ul>

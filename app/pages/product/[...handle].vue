@@ -32,7 +32,7 @@ const productId = product.value?.id
 const { data: recommended } = await useAsyncData('recommended', () => GqlGetProductRecommendations({
   productId,
   variants: 1,
-}), { lazy: true })
+}))
 
 useSeoMeta({
   title: product.value?.seo.title || product.value?.title,
@@ -92,24 +92,22 @@ useHead({
         :product="product"
       />
     </div>
-    <NuxtLazyHydrate when-visible>
-      <section
-        v-if="recommended?.productRecommendations?.length"
-        class="max-w-[1536px] w-full mx-auto my-6 md:my-20 text-left"
+    <section
+      v-if="recommended?.productRecommendations?.length"
+      class="max-w-[1536px] w-full mx-auto my-6 md:my-20 text-left"
+    >
+      <h2 class="text-3xl mb-10 text-white">
+        Related Products
+      </h2>
+      <div
+        class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4"
       >
-        <h2 class="text-3xl mb-10 text-white">
-          Related Products
-        </h2>
-        <div
-          class="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4"
-        >
-          <LazyProductTileCard
-            v-for="recommendedProduct in recommended?.productRecommendations"
-            :key="recommendedProduct.id"
-            :product="recommendedProduct"
-          />
-        </div>
-      </section>
-    </NuxtLazyHydrate>
+        <ProductTileCard
+          v-for="recommendedProduct in recommended?.productRecommendations"
+          :key="recommendedProduct.id"
+          :product="recommendedProduct"
+        />
+      </div>
+    </section>
   </div>
 </template>

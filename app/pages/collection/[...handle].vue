@@ -83,27 +83,25 @@ defineOgImageComponent('Nuxt', {
           </h2>
           <CollectionSortSelector :disabled="!collectionProducts?.length" />
         </div>
-        <NuxtLazyHydrate when-visible>
-          <div
-            v-if="collectionProducts?.length"
-            class="flex flex-wrap gap-6 justify-center lg:justify-normal mt-8 lg:ml-10"
-          >
-            <LazyProductTileCard
-              v-for="{ node }, index in collectionProducts"
-              :key="node.id"
-              :product="node"
-              :lazy="index !== 0"
-            />
-          </div>
-          <div
-            v-else
-            class="mt-20"
-          >
-            <p class="text-white">
-              No products found in this collection.
-            </p>
-          </div>
-        </NuxtLazyHydrate>
+        <div
+          v-if="collectionProducts?.length"
+          class="flex flex-wrap gap-6 justify-center lg:justify-normal mt-8 lg:ml-10"
+        >
+          <ProductTileCard
+            v-for="{ node }, index in collectionProducts"
+            :key="node.id"
+            :product="node"
+            :lazy="index !== 0"
+          />
+        </div>
+        <div
+          v-else
+          class="mt-20"
+        >
+          <p class="text-white">
+            No products found in this collection.
+          </p>
+        </div>
       </div>
     </div>
   </div>

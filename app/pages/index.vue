@@ -27,7 +27,7 @@ const { data: casualThingsCollection } = await useAsyncData('casual-things-colle
   handle: 'casual-things',
   items: 10,
   variants: 1,
-}), { lazy: true })
+}))
 </script>
 
 <template>

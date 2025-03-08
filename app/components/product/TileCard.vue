@@ -46,25 +46,22 @@ function handleMouseOver(event: MouseEvent) {
     >
       <div class="relative">
 
-        <NuxtImg
+        <img
           v-show="!shouldDisplaySecondImage"
           :src="getImagePath(product?.featuredImage?.url)"
           :alt="`Image 1 of a product ${product?.title}`"
           class="block object-cover rounded-md aspect-square h-[188px] md:h-72 max-w-[146px] md:min-w-[216px]"
-          :loading="lazy ? 'lazy' : 'eager'"
           width="216"
           height="288"
-          :placeholder="[50, 25, 75, 5]"
-        />
-        <NuxtImg
+        >
+        <img
           v-show="shouldDisplaySecondImage"
           :src="getImagePath(product?.images?.edges?.[1]?.node?.url)"
           :alt="`Image 2 of a product ${product?.title}`"
           class="block object-cover rounded-md aspect-square h-[188px] md:h-72 max-w-[146px] md:min-w-[216px]"
-          loading="lazy"
           width="216"
           height="288"
-        />
+        >
       </div>
       <div class="p-1 text-white">
         <div class="flex justify-between items-center">

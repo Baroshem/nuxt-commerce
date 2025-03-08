@@ -35,7 +35,7 @@ useHead({
 
       <NuxtPage />
 
-      <LazyLayoutTheFooter class="mt-5" />
+      <LayoutTheFooter class="mt-5" />
     </main>
   </UApp>
 </template>

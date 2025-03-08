@@ -14,12 +14,9 @@ defineProps<{ images: string[], productTitle?: string }>()
     next-icon="i-heroicons-chevron-right-20-solid"
     dots
   >
-    <NuxtImg
+    <img
       :src="getImagePath(item)"
       :alt="`Image ${index + 1} of - ${productTitle}`"
-      :preload="index === 0 ? true : false"
-      :loading="index === 0 ? 'eager' : 'lazy'"
-      :fetch-priority="index === 0 ? 'high' : 'low'"
       draggable="false"
       class="max-w-[300px] max-h-[300px] md:min-w-[500px] md:max-w-[500px] md:max-h-[500px]"
       width="500"
