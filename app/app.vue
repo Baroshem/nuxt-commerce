@@ -23,7 +23,7 @@ useHead({
         close-icon="i-heroicons-x-mark-20-solid"
       >
         <template #body>
-          <CartOrderSummary />
+          <LazyCartOrderSummary />
         </template>
       </USlideover>
 
