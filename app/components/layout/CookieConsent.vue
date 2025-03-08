@@ -1,28 +1,20 @@
 <script setup lang="ts">
-const toast = useToast()
 const consent = useCookie('consent', { maxAge: 31536000, path: '/' })
 
 // Load Google Analytics Script after consent
 // https://scripts.nuxt.com/docs/guides/consent
-
-onMounted(() => {
-  if (document.cookie.includes('cookie-consent')) return
-
-  toast.add({
-    'id': 'welcome',
-    'title': 'Welcome to Nuxt Commerce',
-    'description': 'A high-performance, server-rendered E-commerce app built with Nuxt & Shopify',
-    'duration': Infinity,
-    'closeIcon': 'i-heroicons-x-mark-20-solid',
-    'onClick': () => {},
-    'onUpdate:open': () => {
-      consent.value = 'cookie-consent'
-      toast.remove('welcome')
-    },
-  })
-})
 </script>
 
 <template>
-  <div />
+  <UAlert
+    v-if="consent !== 'cookie-consent'"
+    color="neutral"
+    variant="outline"
+    title="Welcome to Nuxt Commerce"
+    description="A high-performance, server-rendered E-commerce app built with Nuxt & Shopify"
+    close
+    close-icon="i-heroicons-x-mark-20-solid"
+    class="fixed bottom-2 md:bottom-4 right-2 md:right-4 w-[calc(100%-16px)] md:w-max"
+    @update:open="consent = 'cookie-consent'"
+  />
 </template>
