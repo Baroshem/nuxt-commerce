@@ -24,6 +24,7 @@ defineProps<{ images: string[], productTitle?: string }>()
       class="max-w-[300px] max-h-[300px] md:min-w-[500px] md:max-w-[500px] md:max-h-[500px] object-contain"
       width="500"
       height="500"
+      fit="contain"
     />
   </UCarousel>
 </template>
