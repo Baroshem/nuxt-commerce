@@ -10,16 +10,11 @@ useHead({
 })
 
 // Uncomment and adjust when you need Google Analytics
-// const { onLoaded, proxy } = useScriptGoogleAnalytics(
-//   { id: 'G-1234567' },
-//   { trigger: 'manual' }
+// const { load } = useScriptGoogleAnalytics(
+//   { id: 'G-1234567', scriptOptions: { trigger: 'manual' } },
 // )
-// // send events
-// proxy.gtag('config', 'UA-123456789-1')
-// // ..
-// onLoaded(() => {
-//   // script loaded
-// })
+
+// load()
 </script>
 
 <template>
