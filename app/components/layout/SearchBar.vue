@@ -50,7 +50,7 @@ const isFetched = computed(() => fetchStatus.value === 'success' || fetchStatus.
     placeholder="Search..."
     icon="i-heroicons-magnifying-glass-20-solid"
     autocomplete="off"
-    class="relative w-64 text-base"
+    class="relative w-64 text-base touch-none"
     @focus.prevent="isSearchBarOpen = true"
   >
     <template #trailing>
