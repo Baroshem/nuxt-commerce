@@ -52,8 +52,7 @@ function handleMouseOver(event: MouseEvent) {
           :alt="`Image 1 of a product ${product?.title}`"
           class="block object-cover rounded-md aspect-square h-[188px] md:h-72 max-w-[146px] md:min-w-[216px]"
           :loading="lazy ? 'lazy' : 'eager'"
-          width="216"
-          height="288"
+          sizes="146px md:216px"
           :placeholder="[50, 25, 75, 5]"
         />
         <NuxtImg
@@ -62,8 +61,7 @@ function handleMouseOver(event: MouseEvent) {
           :alt="`Image 2 of a product ${product?.title}`"
           class="block object-cover rounded-md aspect-square h-[188px] md:h-72 max-w-[146px] md:min-w-[216px]"
           loading="lazy"
-          width="216"
-          height="288"
+          sizes="146px md:216px"
         />
       </div>
       <div class="p-1 text-white">
