@@ -9,10 +9,6 @@ const {
 } = useShopifyCart()
 
 const costs = computed(() => cart?.value?.cost)
-
-async function removeItem(id: string) {
-  await removeFromCart(id)
-}
 </script>
 
 <template>
@@ -37,7 +33,7 @@ async function removeItem(id: string) {
           :key="node.id"
           :item="node"
           :disabled="loading"
-          @remove-item="removeItem"
+          @remove-item="removeFromCart"
           @update-quantity="updateItemQuantity"
         />
       </ul>

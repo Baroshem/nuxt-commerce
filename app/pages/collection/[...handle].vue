@@ -74,7 +74,7 @@ defineOgImageComponent('Nuxt', {
 
     <div class="block lg:flex">
       <div class="mx-0 min-w-full lg:min-w-fit mt-8">
-        <CollectionFilterSelector :collections="collectionsData?.collections" />
+        <CollectionCategorySelector :collections="collectionsData?.collections" />
       </div>
       <div class="mt-8 w-full">
         <div class="flex justify-between xs:ml-10 items-center">

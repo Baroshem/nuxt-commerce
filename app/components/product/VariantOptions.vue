@@ -5,14 +5,7 @@ const router = useRouter()
 const route = useRoute()
 
 function toggleOption(name: string, value: string) {
-  if (route.query[name] === value) {
-    router.replace({ query: { ...route.query, [name]: undefined } })
-  }
-  else {
-    router.replace({
-      query: { ...route.query, [name]: value },
-    })
-  }
+  router.replace({ query: { ...route.query, [name]: route.query[name] === value ? undefined : value } })
 }
 
 function isSelected(name: string, value: string) {

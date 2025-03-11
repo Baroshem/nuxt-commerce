@@ -2,8 +2,8 @@
 const toast = useToast()
 const inputValue = ref('')
 
-function subscribeNewsletter(email: string) {
-  toast.add({ title: `Subscribed user with email: ${email}`, closeIcon: 'i-heroicons-x-mark-20-solid' })
+function subscribeNewsletter() {
+  toast.add({ title: `Subscribed user with email: ${inputValue.value}`, closeIcon: 'i-heroicons-x-mark-20-solid' })
 }
 
 const categories = [
@@ -148,7 +148,7 @@ const socialIcons = [
 
       <form
         class="mb-4 mt-5 sm:mt-0"
-        @submit.prevent="subscribeNewsletter(inputValue)"
+        @submit.prevent="subscribeNewsletter"
       >
         <p class="text-white text-base text-left mb-2">
           Subscribe to our newsletter

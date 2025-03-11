@@ -3,21 +3,25 @@ const { cart, isCartOpen } = useShopifyCart()
 
 const isCategoryMenuOpen = ref(false)
 
+function closeCategoryMenu() {
+  isCategoryMenuOpen.value = false
+}
+
 const links = [
   {
     label: 'Latest Stuff',
     to: '/collection/latest-stuff',
-    onSelect: () => (isCategoryMenuOpen.value = false),
+    onSelect: closeCategoryMenu,
   },
   {
     label: 'Casual Things',
     to: '/collection/casual-things',
-    onSelect: () => (isCategoryMenuOpen.value = false),
+    onSelect: closeCategoryMenu,
   },
   {
     label: 'Summer Clothes',
     to: '/collection/summer-collection',
-    onSelect: () => (isCategoryMenuOpen.value = false),
+    onSelect: closeCategoryMenu,
   },
 ]
 </script>
@@ -40,7 +44,7 @@ const links = [
         />
         <NuxtLink
           to="/"
-          aria-label="SF Homepage"
+          aria-label="Nuxt Commerce Homepage"
           class="inline-block focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0 lg:w-52"
         >
           <picture>
