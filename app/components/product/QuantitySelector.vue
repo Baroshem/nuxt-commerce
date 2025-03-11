@@ -79,3 +79,9 @@ watch(count, (newVal: number) => {
     </div>
   </div>
 </template>
+
+<style scoped>
+input[type=number] {
+  -moz-appearance:textfield;
+}
+</style>
