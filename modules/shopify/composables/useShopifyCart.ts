@@ -1,9 +1,8 @@
-const cart = ref<ShopifyCart>(undefined)
-const isCartOpen = ref(false)
-
 export const useShopifyCart = () => {
+  const cart = useState<ShopifyCart>('cart', () => undefined)
+  const isCartOpen = useState('isCartOpen', () => false)
   const nuxtApp = useNuxtApp()
-  const loading = ref(false)
+  const loading = useState('loading', () => false)
   const toast = useToast()
 
   const getPriceWithCurrency = (price?: ShopifyPrice | null, quantity: number = 1) => {
