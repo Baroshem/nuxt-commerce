@@ -58,7 +58,7 @@ const computedVariant = computed(() => {
 
         <UButton
           size="lg"
-          class="w-max justify-center flex-grow"
+          class="w-max justify-center flex-grow mb-0.5"
           :disabled="loading || !areOptionsSelected"
           @click="addToCart(product, computedVariant?.id, quantity)"
         >
