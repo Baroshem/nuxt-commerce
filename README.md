@@ -4,7 +4,7 @@
 
 A high-performance, server-rendered E-commerce app built with Nuxt & Shopify ([Demo](https://www.nuxt-commerce.dev)).
 
-This template uses Nuxt UI, Image & Font optimization, Hybrid Rendering, SEO and more.
+This template uses Nuxt UI, Image & Scripts optimization, Hybrid Rendering, SEO and more.
 
 <details>
 <summary>Features</summary>
