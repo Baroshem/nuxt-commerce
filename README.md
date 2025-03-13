@@ -118,7 +118,7 @@ export default defineNuxtModule({
 
 ## Kudos
 
-This project wouldn't be live without a help of amazing people below:
+This project wouldn't be possible without a help of amazing people below:
 
 1. Daniel Roe
 2. Alex Lichter
@@ -126,5 +126,7 @@ This project wouldn't be live without a help of amazing people below:
 4. Julien Huang
 5. Sebastien Chopin
 6. Sarah Moriceu
-7. ScottyZen -> Check out [WooNuxt](https://woonuxt.com/) 🚀
-8. Rylan Harper -> Check out [Nitrogen](https://github.com/rylanharper/Nitrogen) 🚀
+7. Thorsten Seyschab
+8. Alvaro Saburido
+9. ScottyZen -> Check out [WooNuxt](https://woonuxt.com/) 🚀
+10. Rylan Harper -> Check out [Nitrogen](https://github.com/rylanharper/Nitrogen) 🚀
